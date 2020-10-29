@@ -1,0 +1,21 @@
+{
+    "plugins" : ["prettier", "react", "react-hooks"],
+    "extends": ["react-app", "eslint:recommended", "plugin:prettier/recommended", "plugin:react-hooks/recommended"],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+        "jsx": true
+        }
+    },
+    "parser": "babel-parser",
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "ignorePatterns" : ["node_modules/"],
+    "rules": {
+        "prettier/prettier": "error"
+    }
+      
+}
