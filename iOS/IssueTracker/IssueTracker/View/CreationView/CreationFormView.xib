@@ -9,17 +9,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreationFormView" customModule="IssueTracker" customModuleProvider="target">
             <connections>
-                <outlet property="cancelButton" destination="0AK-3H-yl9" id="8yM-i1-lrG"/>
                 <outlet property="colorSampleView" destination="R7H-RA-wD2" id="jTp-BF-M64"/>
                 <outlet property="colorSettingView" destination="5Nn-eG-TQL" id="fb8-ym-QW4"/>
-                <outlet property="firstLabel" destination="5VW-Y5-vBx" id="yeq-I9-gdg"/>
-                <outlet property="firstTextField" destination="Hvl-Mk-eYQ" id="viC-6m-WEX"/>
-                <outlet property="resetButton" destination="gHj-j8-6a2" id="q9A-Dy-uzq"/>
-                <outlet property="saveButton" destination="Qww-jE-dZB" id="DHX-TM-W51"/>
-                <outlet property="secondLabel" destination="qzy-PY-HuA" id="Jds-NT-Lgj"/>
-                <outlet property="secondTextField" destination="bcd-n1-GWE" id="hmY-fm-SbD"/>
-                <outlet property="thirdLabel" destination="oWg-r2-bMG" id="OYL-5x-8oE"/>
-                <outlet property="thirdTextField" destination="xoJ-oO-cCe" id="0Vb-nx-5nk"/>
+                <outletCollection property="titleLabels" destination="5VW-Y5-vBx" collectionClass="NSMutableArray" id="Pdg-ho-t8W"/>
+                <outletCollection property="titleLabels" destination="qzy-PY-HuA" collectionClass="NSMutableArray" id="Xsi-EZ-of9"/>
+                <outletCollection property="titleLabels" destination="oWg-r2-bMG" collectionClass="NSMutableArray" id="IdH-hI-JwX"/>
+                <outletCollection property="inputTextFields" destination="Hvl-Mk-eYQ" collectionClass="NSMutableArray" id="a1a-fu-dK4"/>
+                <outletCollection property="inputTextFields" destination="bcd-n1-GWE" collectionClass="NSMutableArray" id="pcN-8Z-R5w"/>
+                <outletCollection property="inputTextFields" destination="xoJ-oO-cCe" collectionClass="NSMutableArray" id="rVc-qR-iJm"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -59,7 +56,7 @@
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="230" horizontalCompressionResistancePriority="740" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hvl-Mk-eYQ">
                                             <rect key="frame" x="50" y="0.0" width="249" height="44"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
@@ -87,7 +84,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="SAa-7o-cRz">
                                     <rect key="frame" x="0.0" y="0.0" width="299" height="44"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="완료날짜" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzy-PY-HuA">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설명" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzy-PY-HuA" userLabel="설명">
                                             <rect key="frame" x="0.0" y="0.0" width="30" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="fmc-08-vav"/>
@@ -96,9 +93,9 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="230" horizontalCompressionResistancePriority="740" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bcd-n1-GWE">
+                                        <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="230" horizontalCompressionResistancePriority="740" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bcd-n1-GWE">
                                             <rect key="frame" x="50" y="0.0" width="249" height="44"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
@@ -126,7 +123,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Vde-VY-G6L">
                                     <rect key="frame" x="0.0" y="0.0" width="299" height="44"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWg-r2-bMG">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="색상" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWg-r2-bMG">
                                             <rect key="frame" x="0.0" y="0.0" width="30" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="kme-6S-6RA"/>
@@ -135,9 +132,9 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoJ-oO-cCe">
+                                        <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoJ-oO-cCe">
                                             <rect key="frame" x="50" y="0.0" width="87" height="44"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Nn-eG-TQL">
@@ -215,10 +212,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qww-jE-dZB">
-                    <rect key="frame" x="255" y="310" width="64" height="38"/>
+                    <rect key="frame" x="247" y="310" width="72" height="38"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="64" id="YCu-Yk-a1V"/>
+                        <constraint firstAttribute="width" constant="72" id="YCu-Yk-a1V"/>
                         <constraint firstAttribute="height" constant="38" id="cej-UE-VfX"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>

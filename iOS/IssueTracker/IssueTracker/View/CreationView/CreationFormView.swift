@@ -23,41 +23,28 @@ final class CreationFormView: UIView {
 
     // MARK: - IBOutlets
     
-    @IBOutlet weak var firstLabel: UILabel!
-    @IBOutlet weak var secondLabel: UILabel!
-    @IBOutlet weak var thirdLabel: UILabel!
-    @IBOutlet weak var firstTextField: UITextField!
-    @IBOutlet weak var secondTextField: UITextField!
-    @IBOutlet weak var thirdTextField: UITextField!
+    @IBOutlet var titleLabels: [UILabel]! {
+        didSet { titleLabels.sort { $0.tag < $1.tag } }
+    }
+    
+    @IBOutlet var inputTextFields: [UITextField]! {
+        didSet { inputTextFields.sort { $0.tag < $1.tag } }
+    }
+    
     @IBOutlet weak var colorSettingView: UIView!
     @IBOutlet weak var colorSampleView: UIView!
-    
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
     
     // MARK: - Properties
     
     weak var delegate: CreationFormViewDelegate?
     
-    var creationFormType: CreationFormType = .label {
-        didSet { configureThirdView() }
-    }
+    var creationFormType: CreationFormType = .label
     
-    var firstLabelName: String? {
-        get { return firstLabel.text }
-        set { firstLabel.text = newValue }
-    }
+    var firstInputTextField: UITextField! { return inputTextFields[0] }
     
-    var secondLabelName: String? {
-        get { return secondLabel.text }
-        set { secondLabel.text = newValue }
-    }
+    var secondInputTextField: UITextField! { return inputTextFields[1] }
     
-    var thirdLabelName: String? {
-        get { return thirdLabel.text }
-        set { thirdLabel.text = newValue }
-    }
+    var thirdInputTextField: UITextField! { return inputTextFields[2] }
     
     // MARK: - Life Cycle
     
@@ -92,28 +79,25 @@ final class CreationFormView: UIView {
     // MARK: - Methods
     
     private func setup() {
-        let name = String(describing: CreationFormView.self)
-        guard let view = Bundle.main.loadNibNamed(name, owner: self, options: nil)?.first as? UIView  else { return }
         self.layer.cornerRadius = 15
         self.layer.masksToBounds = true
+        
+        let name = String(describing: CreationFormView.self)
+        guard let view = Bundle.main.loadNibNamed(name, owner: self, options: nil)?.first as? UIView  else { return }
         view.frame = self.bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.addSubview(view)
     }
     
-    private func configureThirdView() {
-        if creationFormType == .milestone {
-            colorSettingView.isHidden = true
-        }
+    public func configureViewStyle() {
+        colorSettingView.isHidden = creationFormType == .milestone
+        secondInputTextField.placeholder = creationFormType == .milestone ? "yyyy-dd-mm(선택)" : ""
+        configureFormTitles()
     }
     
-}
-
-extension CreationFormView {
-    
-    enum CreationFormType {
-        case label
-        case milestone
+    private func configureFormTitles() {
+        let titles = creationFormType.formTitles
+        zip(titleLabels, titles).forEach { $0.text = $1 }
     }
     
 }
