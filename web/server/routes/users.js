@@ -1,19 +1,13 @@
 import express from 'express';
+import userController from '../controllers/users.js';
+
 const usersRouter = express.Router();
 
 usersRouter
     .route('/')
-    .get((req, res) => {
-        res.status(200).send('GET OK');
-    })
-    .post((req, res) => {
-        res.status(200).send('POST OK');
-    })
-    .put((req, res) => {
-        res.status(200).send('PUT OK');
-    })
-    .delete((req, res) => {
-        res.status(200).send('DELETE OK');
-    });
+    .get(userController.get)
+    .post(userController.post)
+    .put(userController.put)
+    .delete(userController.delete);
 
 export default usersRouter;
