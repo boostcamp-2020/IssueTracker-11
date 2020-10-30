@@ -1,24 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QRS-xk-W1I">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Issue-->
+        <scene sceneID="RDd-3l-9NQ">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Issue" id="nRK-A9-ava" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="BBg-tD-zGd"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Iv-C2-lcI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1269" y="48"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Cbm-Ya-yth">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="QRS-xk-W1I" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="R9W-YD-dBO">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="nRK-A9-ava" kind="relationship" relationship="viewControllers" id="H75-eB-KuJ"/>
+                        <segue destination="5pW-YI-r2E" kind="relationship" relationship="viewControllers" id="r1X-6K-SYH"/>
+                        <segue destination="KGp-v8-A5b" kind="relationship" relationship="viewControllers" id="kri-0O-8Co"/>
+                        <segue destination="bkM-XJ-L2v" kind="relationship" relationship="viewControllers" id="SSF-U2-NqR"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6nD-Fz-Uq0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="120.53571428571428"/>
+        </scene>
+        <!--Milestone-->
+        <scene sceneID="Awl-q1-s3r">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Milestone" id="KGp-v8-A5b" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="hjO-ec-oyM"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eAU-AW-gL4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1290" y="195"/>
+        </scene>
+        <!--Lable-->
+        <scene sceneID="WwL-8W-tVM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Lable" id="5pW-YI-r2E" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="w5k-WL-rte"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K4f-wq-CmD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1269" y="121"/>
+        </scene>
+        <!--Setting-->
+        <scene sceneID="GBH-Gt-DMw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Setting" id="bkM-XJ-L2v" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="TlO-8c-0bJ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8oz-PA-4kF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1278" y="271"/>
         </scene>
     </scenes>
 </document>
