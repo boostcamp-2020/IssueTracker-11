@@ -1,44 +1,26 @@
-import pool from '../config/database.js';
-
-const GET_QUERY = `SELECT * FROM users`;
-const POST_QUERY = 'INSERT INTO users SET ?';
-const PUT_QUERY = ``;
-const DELETE_QUERY = ``;
-
-// TODO : set right status code!
+import userModel from '../models/users.js';
 
 class userController {
     static get = async (req, res) => {
-        const connection = await pool.getConnection(async (connection) => connection);
         try {
-            const [result] = await connection.query(GET_QUERY);
-            return res.status(200).send(result);
+            const [result] = await userModel.get();
+            return result.length === 0 ? res.status(204).send('No Content') : res.status(200).send(result);
         } catch (error) {
-            console.error(error);
-        } finally {
-            connection.release();
+            res.status(500).send({ result: error.message });
         }
     };
 
     static post = async (req, res) => {
         const { email, password, nickname } = req.body;
-        // TODO : title value check!
+        if (!email || !password || !nickname) {
+            return res.status(422).send('Unprocessable Entity');
+        }
 
-        const connection = await pool.getConnection(async (connection) => connection);
         try {
-            await connection.beginTransaction();
-            const results = await connection.query(POST_QUERY, {
-                email: email,
-                nickname: nickname,
-                password: password,
-            });
-            await connection.commit();
-            // TODO : results's status check!
-            res.status(200).send(results);
+            const results = await userModel.post(email, password, nickname);
+            return !results ? res.status(202).send('Accepted') : res.status(201).send('Created');
         } catch (error) {
-            console.error(error);
-        } finally {
-            connection.release();
+            res.status(500).send({ result: error.message });
         }
     };
 
