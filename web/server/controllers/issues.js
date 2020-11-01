@@ -1,49 +1,38 @@
-import pool from '../config/database.js';
+import issueModel from '../models/issues.js';
 
-const GET_QUERY = `SELECT * FROM issues`;
-const POST_QUERY = 'INSERT INTO issues SET ?';
-const PUT_QUERY = ``;
-const DELETE_QUERY = ``;
-
-// TODO : set right status code!
+const TITLE_LIMIT = 45;
+const CONTENT_LIMIT = 500;
 
 class issueController {
     static get = async (req, res) => {
-        const connection = await pool.getConnection(async (connection) => connection);
         try {
-            const [result] = await connection.query(GET_QUERY);
-            return res.status(200).send(result);
+            const [result] = await issueModel.get();
+            return result.length === 0 ? res.status(204).send('No Content') : res.status(200).send(result);
         } catch (error) {
-            console.error(error);
-        } finally {
-            connection.release();
+            res.status(500).send({ result: error.message });
         }
     };
 
     static post = async (req, res) => {
         const { title, contents, author, milestone_id } = req.body;
-        // TODO : title value check!
+        if (!title || !author || title.length > TITLE_LIMIT || (!!contents && contents.length > CONTENT_LIMIT)) {
+            return res.status(422).send('Unprocessable Entity');
+        }
+        // Is there really this author and milestone_id? plz write checking logic.
 
-        const connection = await pool.getConnection(async (connection) => connection);
         try {
-            await connection.beginTransaction();
-            const results = await connection.query(POST_QUERY, {
-                title: title,
-                contents: contents,
-                author: author,
-                milestone_id: milestone_id,
-            });
-            await connection.commit();
-            // TODO : results's status check!
-            res.status(200).send(results);
+            const results = await issueModel.post(title, contents, author, milestone_id);
+            return !results ? res.status(202).send('Accepted') : res.status(201).send('Created');
         } catch (error) {
-            console.error(error);
-        } finally {
-            connection.release();
+            res.status(500).send({ result: error.message });
         }
     };
 
-    static put = (req, res) => {};
+    static put = (req, res) => {
+        const { title, contents, milestone_id, status } = req.body;
+        // TODO : 이어서 작성할 것.
+    };
+
     static delete = (req, res) => {};
 }
 
