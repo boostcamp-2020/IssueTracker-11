@@ -21,13 +21,14 @@ class issueModel {
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
-            return await conn.query(POST_QUERY, {
+            const result = await conn.query(POST_QUERY, {
                 title,
                 contents,
                 author,
                 milestone_id,
             });
             await conn.commit();
+            return result;
         } catch (error) {
             console.error(error);
         } finally {
