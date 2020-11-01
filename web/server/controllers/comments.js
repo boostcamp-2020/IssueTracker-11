@@ -1,44 +1,28 @@
-import pool from '../config/database.js';
+import commentModel from '../models/comments.js';
 
-const GET_QUERY = `SELECT * FROM comments`;
-const POST_QUERY = 'INSERT INTO comments SET ?';
-const PUT_QUERY = ``;
-const DELETE_QUERY = ``;
-
-// TODO : set right status code!
+const CONTENT_LIMIT = 500;
 
 class commentController {
     static get = async (req, res) => {
-        const connection = await pool.getConnection(async (connection) => connection);
         try {
-            const [result] = await connection.query(GET_QUERY);
-            return res.status(200).send(result);
+            const [result] = await commentModel.get();
+            return result.length === 0 ? res.status(204).send('No Content') : res.status(200).send(result);
         } catch (error) {
-            console.error(error);
-        } finally {
-            connection.release();
+            res.status(500).send({ result: error.message });
         }
     };
 
     static post = async (req, res) => {
         const { issue_id, contents, author } = req.body;
-        // TODO : issue_id value check!
+        if (!issue_id || !author || (!!contents && contents.length > CONTENT_LIMIT)) {
+            return res.status(422).send('Unprocessable Entity');
+        }
 
-        const connection = await pool.getConnection(async (connection) => connection);
         try {
-            await connection.beginTransaction();
-            const results = await connection.query(POST_QUERY, {
-                issue_id: issue_id,
-                contents: contents,
-                author: author,
-            });
-            await connection.commit();
-            // TODO : results's status check!
-            res.status(200).send(results);
+            const results = await commentModel.post(issue_id, contents, author);
+            return !results ? res.status(202).send('Accepted') : res.status(201).send('Created');
         } catch (error) {
-            console.error(error);
-        } finally {
-            connection.release();
+            res.status(500).send({ result: error.message });
         }
     };
 
