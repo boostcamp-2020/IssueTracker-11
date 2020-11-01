@@ -7,10 +7,10 @@ const Query = {
     DELETE_QUERY: ``,
 };
 
-class milestoneModel extends Model {
+class MilestoneModel extends Model {
     constructor(Query) {
         super(Query);
     }
 }
 
-export default new milestoneModel(Query);
+export default new MilestoneModel(Query);

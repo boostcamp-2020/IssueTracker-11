@@ -7,10 +7,10 @@ const Query = {
     DELETE_QUERY: ``,
 };
 
-class issueModel extends Model {
+class IssueModel extends Model {
     constructor(Query) {
         super(Query);
     }
 }
 
-export default new issueModel(Query);
+export default new IssueModel(Query);

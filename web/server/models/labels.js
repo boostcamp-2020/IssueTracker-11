@@ -7,10 +7,10 @@ const Query = {
     DELETE_QUERY: ``,
 };
 
-class labelModel extends Model {
+class LabelModel extends Model {
     constructor(Query) {
         super(Query);
     }
 }
 
-export default new labelModel(Query);
+export default new LabelModel(Query);
