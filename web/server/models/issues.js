@@ -1,40 +1,16 @@
-import pool from '../config/database.js';
+import Model from './model.js';
 
-const GET_QUERY = `SELECT * FROM issues`;
-const POST_QUERY = 'INSERT INTO issues SET ?';
-const PUT_QUERY = ``;
-const DELETE_QUERY = ``;
+const Query = {
+    GET_QUERY: `SELECT * FROM issues`,
+    POST_QUERY: 'INSERT INTO issues SET ?',
+    PUT_QUERY: ``,
+    DELETE_QUERY: ``,
+};
 
-class issueModel {
-    static get = async () => {
-        const conn = await pool.getConnection(async (conn) => conn);
-        try {
-            return pool.query(GET_QUERY);
-        } catch (error) {
-            console.error(error);
-        } finally {
-            conn.release();
-        }
-    };
-
-    static post = async (title, contents, author, milestone_id) => {
-        const conn = await pool.getConnection(async (conn) => conn);
-        try {
-            await conn.beginTransaction();
-            const result = await conn.query(POST_QUERY, {
-                title,
-                contents,
-                author,
-                milestone_id,
-            });
-            await conn.commit();
-            return result;
-        } catch (error) {
-            console.error(error);
-        } finally {
-            conn.release();
-        }
-    };
+class issueModel extends Model {
+    constructor(Query) {
+        super(Query);
+    }
 }
 
-export default issueModel;
+export default new issueModel(Query);

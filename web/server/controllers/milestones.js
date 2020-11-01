@@ -19,7 +19,7 @@ class MilestoneController {
         }
 
         try {
-            const results = await milestoneModel.post(title, due_date, description);
+            const results = await milestoneModel.post({ title, due_date, description });
             return !results ? res.status(202).send('Accepted') : res.status(201).send('Created');
         } catch (error) {
             res.status(500).send({ result: error.message });

@@ -19,7 +19,7 @@ class labelController {
         }
 
         try {
-            const results = await labelModel.post(name, description, color);
+            const results = await labelModel.post({ name, description, color });
             return !results ? res.status(202).send('Accepted') : res.status(201).send('Created');
         } catch (error) {
             res.status(500).send({ result: error.message });

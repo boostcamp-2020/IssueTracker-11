@@ -19,7 +19,7 @@ class commentController {
         }
 
         try {
-            const results = await commentModel.post(issue_id, contents, author);
+            const results = await commentModel.post({ issue_id, contents, author });
             return !results ? res.status(202).send('Accepted') : res.status(201).send('Created');
         } catch (error) {
             res.status(500).send({ result: error.message });

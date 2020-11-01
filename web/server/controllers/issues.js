@@ -21,7 +21,7 @@ class issueController {
         // Is there really this author and milestone_id? plz write checking logic.
 
         try {
-            const results = await issueModel.post(title, contents, author, milestone_id);
+            const results = await issueModel.post({ title, contents, author, milestone_id });
             return !results ? res.status(202).send('Accepted') : res.status(201).send('Created');
         } catch (error) {
             res.status(500).send({ result: error.message });
