@@ -112,6 +112,7 @@
                                                 <constraint firstItem="UTa-8u-GJ3" firstAttribute="leading" secondItem="RdS-aP-WiM" secondAttribute="leading" constant="18" id="pHZ-m1-NDZ"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="customSize" width="414" height="79"/>
                                         <connections>
                                             <outlet property="closedLabel" destination="4b1-Ni-g2B" id="a1G-il-UiV"/>
@@ -172,7 +173,7 @@
                     <tabBarItem key="tabBarItem" title="마일스톤" image="3.circle.fill" catalog="system" id="Mlg-uo-OP4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="EI6-bP-XEz">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

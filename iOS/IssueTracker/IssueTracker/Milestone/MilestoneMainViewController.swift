@@ -27,12 +27,14 @@ class MilestoneMainViewController: UIViewController {
     let sections = Section.allCases
     private lazy var dataSource = makeDataSource()
     
-    let dummy = [Milestone(title: "스프린트1",
+    let dummy = [Milestone(id: 1,
+                           title: "스프린트1",
                            dueDate: "2020년 6월 19일 까지",
                            description: "이번 배포를 위한 스프린트",
                            openNumber: 13,
                            closedNumber: 23),
-                 Milestone(title: "스프린트2",
+                 Milestone(id: 2,
+                           title: "스프린트2",
                            dueDate: "2020년 6월 25일 까지",
                            description: "다음 배포를 위한 스프린트",
                            openNumber: 0,
@@ -99,7 +101,7 @@ extension MilestoneMainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 2
     }
     
 }
