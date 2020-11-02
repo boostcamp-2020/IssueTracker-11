@@ -22,6 +22,8 @@
 		9763DFF0254B361200BCBD6A /* CreationFormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9763DFEF254B361200BCBD6A /* CreationFormType.swift */; };
 		97664C66254A83CB005B98A7 /* CreationFormView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97664C65254A83CB005B98A7 /* CreationFormView.xib */; };
 		97664C68254A91CA005B98A7 /* CreationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97664C67254A91CA005B98A7 /* CreationFormView.swift */; };
+		977B9C54254FA7A500D00B28 /* MilestoneMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B9C53254FA7A500D00B28 /* MilestoneMainViewController.swift */; };
+		977B9C56254FA89900D00B28 /* MilestoneAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B9C55254FA89900D00B28 /* MilestoneAddViewController.swift */; };
 		AD03E99288CFBAF7CD0C632F /* Pods_IssueTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DDFD2F384F60488622CBA3 /* Pods_IssueTrackerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +58,8 @@
 		9763DFEF254B361200BCBD6A /* CreationFormType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationFormType.swift; sourceTree = "<group>"; };
 		97664C65254A83CB005B98A7 /* CreationFormView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreationFormView.xib; sourceTree = "<group>"; };
 		97664C67254A91CA005B98A7 /* CreationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationFormView.swift; sourceTree = "<group>"; };
+		977B9C53254FA7A500D00B28 /* MilestoneMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneMainViewController.swift; sourceTree = "<group>"; };
+		977B9C55254FA89900D00B28 /* MilestoneAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneAddViewController.swift; sourceTree = "<group>"; };
 		BEE1F894F9C40EEFD4B9E644 /* Pods-IssueTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.release.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.release.xcconfig"; sourceTree = "<group>"; };
 		CA535DA5AF5BF90B4980A30E /* Pods-IssueTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.debug.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		D7F620D4C0E1073F1AD8C102 /* Pods_IssueTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IssueTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +153,7 @@
 		97664C63254A81C4005B98A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				977B9C52254FA76700D00B28 /* Milestone */,
 				97664C64254A81D2005B98A7 /* CreationView */,
 			);
 			path = View;
@@ -162,6 +167,15 @@
 				9763DFEF254B361200BCBD6A /* CreationFormType.swift */,
 			);
 			path = CreationView;
+			sourceTree = "<group>";
+		};
+		977B9C52254FA76700D00B28 /* Milestone */ = {
+			isa = PBXGroup;
+			children = (
+				977B9C53254FA7A500D00B28 /* MilestoneMainViewController.swift */,
+				977B9C55254FA89900D00B28 /* MilestoneAddViewController.swift */,
+			);
+			path = Milestone;
 			sourceTree = "<group>";
 		};
 		CF482D6A08BAC56ABDC949F6 /* Pods */ = {
@@ -360,6 +374,8 @@
 			files = (
 				9763DFF0254B361200BCBD6A /* CreationFormType.swift in Sources */,
 				970CAD4F254A73B50076691E /* ViewController.swift in Sources */,
+				977B9C54254FA7A500D00B28 /* MilestoneMainViewController.swift in Sources */,
+				977B9C56254FA89900D00B28 /* MilestoneAddViewController.swift in Sources */,
 				97664C68254A91CA005B98A7 /* CreationFormView.swift in Sources */,
 				970CAD4B254A73B50076691E /* AppDelegate.swift in Sources */,
 				970CAD4D254A73B50076691E /* SceneDelegate.swift in Sources */,

@@ -11,7 +11,7 @@
         <!--마일스톤-->
         <scene sceneID="M0t-WR-wBj">
             <objects>
-                <viewController id="hRg-v2-fqj" sceneMemberID="viewController">
+                <viewController id="hRg-v2-fqj" customClass="MilestoneMainViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ObX-vz-o14">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,13 +47,44 @@
                         <viewLayoutGuide key="safeArea" id="qaK-Zf-cfd"/>
                     </view>
                     <navigationItem key="navigationItem" title="마일스톤" largeTitleDisplayMode="always" id="5ZI-We-rkq">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vNK-Xh-6Rx"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vNK-Xh-6Rx">
+                            <connections>
+                                <action selector="addButtonDidTap:" destination="hRg-v2-fqj" id="Htg-po-3YZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="gI8-wW-e67" id="d6q-gO-ze2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PhG-tY-MCd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="120.53571428571428"/>
+        </scene>
+        <!--Milestone Add View Controller-->
+        <scene sceneID="GNl-fx-IjK">
+            <objects>
+                <viewController id="ZvG-rf-PBT" customClass="MilestoneAddViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zt3-al-tp1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TTest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vc3-G1-8af">
+                                <rect key="frame" x="186" y="438" width="43" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="2cp-Z1-9x4"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EvN-K9-ug0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2896" y="121"/>
         </scene>
         <!--마일스톤-->
         <scene sceneID="FJU-gN-Yc2">
