@@ -88,6 +88,16 @@ extension MilestoneMainViewController {
 
 extension MilestoneMainViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedMilestone = dummy[indexPath.row]
+        let idendtifier = String(describing: MilestoneDetailViewController.self)
+        
+        guard let viewController = storyboard?.instantiateViewController(identifier: idendtifier)
+            as? MilestoneDetailViewController  else { return }
+        viewController.milestone = selectedMilestone
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
 }
 
 extension MilestoneMainViewController: UICollectionViewDelegateFlowLayout {
