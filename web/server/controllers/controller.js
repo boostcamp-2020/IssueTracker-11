@@ -1,3 +1,6 @@
+const SOFT_DELETE = 'SOFT_DELETE_QUERY';
+const OPEN_CLOSED = 'OPEN_CLOSED_QUERY';
+
 class Controller {
     constructor(Model) {
         this.Model = Model;
@@ -13,8 +16,34 @@ class Controller {
 
     post = async (req, res) => {};
     put = async (req, res) => {};
-    delete = async (req, res) => {};
-    patch = async (req, res) => {};
+
+    delete = async (req, res) => {
+        const id = req.params.id || req.body.ids;
+        const ids = [...id];
+        try {
+            await ids.forEach((id) => {
+                this.Model.delete(id);
+            });
+            return res.status(201).send('Created'); // TODO : To modify
+        } catch (error) {
+            res.status(500).send({ result: error.message });
+        }
+    };
+
+    patch = async (req, res) => {
+        const id = req.params.id || req.body.ids;
+        const ids = [...id];
+        try {
+            console.log(req.originalUrl);
+            const OPTION = req.originalUrl.includes('status') ? OPEN_CLOSED : SOFT_DELETE;
+            await ids.forEach((id) => {
+                this.Model.patch(id, OPTION);
+            });
+            return res.status(201).send('Created');
+        } catch (error) {
+            res.status(500).send({ result: error.message });
+        }
+    };
 }
 
 export default Controller;
