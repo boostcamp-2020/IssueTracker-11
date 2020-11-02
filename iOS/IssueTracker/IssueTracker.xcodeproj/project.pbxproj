@@ -19,11 +19,16 @@
 		970CAD54254A73B60076691E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 970CAD53254A73B60076691E /* Assets.xcassets */; };
 		970CAD57254A73B60076691E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 970CAD55254A73B60076691E /* LaunchScreen.storyboard */; };
 		970CAD62254A73B60076691E /* IssueTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970CAD61254A73B60076691E /* IssueTrackerTests.swift */; };
+		9724708A25501AF800285073 /* MilestoneDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9724708925501AF800285073 /* MilestoneDetailViewController.swift */; };
 		9763DFF0254B361200BCBD6A /* CreationFormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9763DFEF254B361200BCBD6A /* CreationFormType.swift */; };
 		97664C66254A83CB005B98A7 /* CreationFormView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97664C65254A83CB005B98A7 /* CreationFormView.xib */; };
 		97664C68254A91CA005B98A7 /* CreationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97664C67254A91CA005B98A7 /* CreationFormView.swift */; };
 		977B9C54254FA7A500D00B28 /* MilestoneMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B9C53254FA7A500D00B28 /* MilestoneMainViewController.swift */; };
 		977B9C56254FA89900D00B28 /* MilestoneAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B9C55254FA89900D00B28 /* MilestoneAddViewController.swift */; };
+		977B9C5E254FC59C00D00B28 /* MilestoneCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B9C5D254FC59C00D00B28 /* MilestoneCollectionViewCell.swift */; };
+		977B9C60254FC5B000D00B28 /* BorderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B9C5F254FC5B000D00B28 /* BorderLabel.swift */; };
+		97DAB2CB255034DE002C3E21 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DAB2CA255034DE002C3E21 /* String+.swift */; };
+		97E59489254FE1D10052C2C3 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E59488254FE1D10052C2C3 /* Milestone.swift */; };
 		AD03E99288CFBAF7CD0C632F /* Pods_IssueTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DDFD2F384F60488622CBA3 /* Pods_IssueTrackerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,11 +60,16 @@
 		970CAD5D254A73B60076691E /* IssueTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IssueTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		970CAD61254A73B60076691E /* IssueTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTrackerTests.swift; sourceTree = "<group>"; };
 		970CAD63254A73B60076691E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9724708925501AF800285073 /* MilestoneDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneDetailViewController.swift; sourceTree = "<group>"; };
 		9763DFEF254B361200BCBD6A /* CreationFormType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationFormType.swift; sourceTree = "<group>"; };
 		97664C65254A83CB005B98A7 /* CreationFormView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreationFormView.xib; sourceTree = "<group>"; };
 		97664C67254A91CA005B98A7 /* CreationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationFormView.swift; sourceTree = "<group>"; };
 		977B9C53254FA7A500D00B28 /* MilestoneMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneMainViewController.swift; sourceTree = "<group>"; };
 		977B9C55254FA89900D00B28 /* MilestoneAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneAddViewController.swift; sourceTree = "<group>"; };
+		977B9C5D254FC59C00D00B28 /* MilestoneCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneCollectionViewCell.swift; sourceTree = "<group>"; };
+		977B9C5F254FC5B000D00B28 /* BorderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderLabel.swift; sourceTree = "<group>"; };
+		97DAB2CA255034DE002C3E21 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		97E59488254FE1D10052C2C3 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
 		BEE1F894F9C40EEFD4B9E644 /* Pods-IssueTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.release.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.release.xcconfig"; sourceTree = "<group>"; };
 		CA535DA5AF5BF90B4980A30E /* Pods-IssueTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.debug.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		D7F620D4C0E1073F1AD8C102 /* Pods_IssueTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IssueTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +119,7 @@
 		970CAD49254A73B50076691E /* IssueTracker */ = {
 			isa = PBXGroup;
 			children = (
+				97E59487254FE1C70052C2C3 /* Model */,
 				977B9C52254FA76700D00B28 /* Milestone */,
 				97664C64254A81D2005B98A7 /* CreationView */,
 				970CAD4A254A73B50076691E /* AppDelegate.swift */,
@@ -166,8 +177,20 @@
 			children = (
 				977B9C53254FA7A500D00B28 /* MilestoneMainViewController.swift */,
 				977B9C55254FA89900D00B28 /* MilestoneAddViewController.swift */,
+				977B9C5D254FC59C00D00B28 /* MilestoneCollectionViewCell.swift */,
+				9724708925501AF800285073 /* MilestoneDetailViewController.swift */,
+				977B9C5F254FC5B000D00B28 /* BorderLabel.swift */,
+				97DAB2CA255034DE002C3E21 /* String+.swift */,
 			);
 			path = Milestone;
+			sourceTree = "<group>";
+		};
+		97E59487254FE1C70052C2C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				97E59488254FE1D10052C2C3 /* Milestone.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CF482D6A08BAC56ABDC949F6 /* Pods */ = {
@@ -368,8 +391,13 @@
 				970CAD4F254A73B50076691E /* ViewController.swift in Sources */,
 				977B9C54254FA7A500D00B28 /* MilestoneMainViewController.swift in Sources */,
 				977B9C56254FA89900D00B28 /* MilestoneAddViewController.swift in Sources */,
+				977B9C60254FC5B000D00B28 /* BorderLabel.swift in Sources */,
 				97664C68254A91CA005B98A7 /* CreationFormView.swift in Sources */,
 				970CAD4B254A73B50076691E /* AppDelegate.swift in Sources */,
+				977B9C5E254FC59C00D00B28 /* MilestoneCollectionViewCell.swift in Sources */,
+				97E59489254FE1D10052C2C3 /* Milestone.swift in Sources */,
+				9724708A25501AF800285073 /* MilestoneDetailViewController.swift in Sources */,
+				97DAB2CB255034DE002C3E21 /* String+.swift in Sources */,
 				970CAD4D254A73B50076691E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

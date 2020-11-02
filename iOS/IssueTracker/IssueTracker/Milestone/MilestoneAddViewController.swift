@@ -23,6 +23,10 @@ class MilestoneAddViewController: UIViewController {
         configureBackgroundView()
         configureCreationFormViewLayout()
         configureGestureRecognizer()
+        
+        creationFormView.secondInputTextField.addTarget(self,
+                                                        action: #selector(validateDateFormat),
+                                                        for: .editingChanged)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -73,6 +77,11 @@ class MilestoneAddViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @objc private func validateDateFormat() {
+        let targetString = creationFormView.secondInputTextField.text ?? ""
+        creationFormView.titleLabels[1].textColor = targetString.isValidDate ? .black : .red
+    }
+        
 }
 
 extension MilestoneAddViewController: CreationFormViewDelegate {
