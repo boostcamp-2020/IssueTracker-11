@@ -48,8 +48,14 @@ final class LabelMainViewController: UIViewController {
     
     // MARK: - IBActions
     
-    @IBAction func labelAddButtonDidTap(_ sender: UIButton) {
-
+    @IBAction private func labelAddButtonDidTap(_ sender: UIButton) {
+        let labelAddViewController: LabelAddViewController = {
+            let nextViewController = LabelAddViewController()
+            nextViewController.modalTransitionStyle = .crossDissolve
+            nextViewController.modalPresentationStyle = .overCurrentContext
+            return nextViewController
+        }()
+        self.present(labelAddViewController, animated: true)
     }
     
 }

@@ -10,8 +10,12 @@ import UIKit
 
 final class LabelCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - IBOutlet
+    
     @IBOutlet private weak var labelTypeLabel: UILabel!
     @IBOutlet private weak var labelTitleLabel: UILabel!
+    
+    // MARK: - Method
     
     func labelCollectionViewCellConfigure(content: Label) {
         labelTypeLabel.text = content.type
