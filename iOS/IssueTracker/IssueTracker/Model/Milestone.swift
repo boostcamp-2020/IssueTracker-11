@@ -14,4 +14,8 @@ struct Milestone {
     var description: String
     var openNumber: Int
     var closedNumber: Int
+    
+    var progressPercentage: Int {
+        return openNumber == 0 ? 0 : Int(closedNumber / openNumber)
+    }
 }
