@@ -19,6 +19,12 @@ final class LabelAddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        creationFormView.delegate = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Methods
@@ -38,6 +44,30 @@ final class LabelAddViewController: UIViewController {
         creationFormView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
         creationFormView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
       ])
+    }
+    
+}
+
+// MARK: - CreationFormViewDelegate
+
+extension LabelAddViewController: CreationFormViewDelegate {
+    
+    func cancelButtonDidTap() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func resetButtonDidTap() {
+        creationFormView.firstInputTextField.text = ""
+        creationFormView.secondInputTextField.text = ""
+        creationFormView.thirdInputTextField.text = ""
+    }
+    
+    func saveButtonDidTap() {
+        print("save")
+    }
+    
+    func colorChangeButtonDidTap() {
+        print("color~")
     }
     
 }

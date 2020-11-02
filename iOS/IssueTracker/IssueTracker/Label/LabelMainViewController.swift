@@ -90,6 +90,23 @@ extension LabelMainViewController {
     
 }
 
+// MARK: - CollectionViewDelegate
+extension LabelMainViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        
+        let identifier = String(describing: LabelDetailViewController.self)
+        guard let viewController = storyboard?.instantiateViewController(withIdentifier: identifier)
+            as? LabelDetailViewController else { return }
+    
+        viewController.label = labelList[indexPath.item]
+        navigationController?.pushViewController(viewController,
+                                                 animated: true)
+    }
+    
+}
+
 // MARK: - CollectionViewDelegateFlowLayout
 extension LabelMainViewController: UICollectionViewDelegateFlowLayout {
     

@@ -12,6 +12,7 @@
 		7C13043E254FC989003AE6A1 /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C13043D254FC989003AE6A1 /* LabelCollectionViewCell.swift */; };
 		7C130440254FD37D003AE6A1 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C13043F254FD37D003AE6A1 /* Label.swift */; };
 		7C130443254FEEB0003AE6A1 /* LabelAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C130442254FEEB0003AE6A1 /* LabelAddViewController.swift */; };
+		7C1304452550112A003AE6A1 /* LabelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1304442550112A003AE6A1 /* LabelDetailViewController.swift */; };
 		7C2A9052254BA60500AFC5C4 /* Issue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2A9051254BA60500AFC5C4 /* Issue.storyboard */; };
 		7C2A9054254BA61300AFC5C4 /* Label.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2A9053254BA61300AFC5C4 /* Label.storyboard */; };
 		7C2A9056254BA61F00AFC5C4 /* Milestone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2A9055254BA61F00AFC5C4 /* Milestone.storyboard */; };
@@ -47,6 +48,7 @@
 		7C13043D254FC989003AE6A1 /* LabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewCell.swift; sourceTree = "<group>"; };
 		7C13043F254FD37D003AE6A1 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		7C130442254FEEB0003AE6A1 /* LabelAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAddViewController.swift; sourceTree = "<group>"; };
+		7C1304442550112A003AE6A1 /* LabelDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDetailViewController.swift; sourceTree = "<group>"; };
 		7C2A9051254BA60500AFC5C4 /* Issue.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Issue.storyboard; sourceTree = "<group>"; };
 		7C2A9053254BA61300AFC5C4 /* Label.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Label.storyboard; sourceTree = "<group>"; };
 		7C2A9055254BA61F00AFC5C4 /* Milestone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Milestone.storyboard; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				7C13043B254FC521003AE6A1 /* LabelMainViewController.swift */,
 				7C13043D254FC989003AE6A1 /* LabelCollectionViewCell.swift */,
 				7C130442254FEEB0003AE6A1 /* LabelAddViewController.swift */,
+				7C1304442550112A003AE6A1 /* LabelDetailViewController.swift */,
 				7C13043F254FD37D003AE6A1 /* Label.swift */,
 			);
 			path = Label;
@@ -392,6 +395,7 @@
 				7C130440254FD37D003AE6A1 /* Label.swift in Sources */,
 				977B9C56254FA89900D00B28 /* MilestoneAddViewController.swift in Sources */,
 				7C13043C254FC521003AE6A1 /* LabelMainViewController.swift in Sources */,
+				7C1304452550112A003AE6A1 /* LabelDetailViewController.swift in Sources */,
 				97664C68254A91CA005B98A7 /* CreationFormView.swift in Sources */,
 				970CAD4B254A73B50076691E /* AppDelegate.swift in Sources */,
 				970CAD4D254A73B50076691E /* SceneDelegate.swift in Sources */,
