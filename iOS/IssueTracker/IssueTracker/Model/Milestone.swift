@@ -25,6 +25,6 @@ struct Milestone: Codable, Hashable {
     }
     
     var progressPercentage: Int {
-        return openNumber == 0 ? 0 : Int(closedNumber / (openNumber + closedNumber) )
+        return openNumber + closedNumber == 0 ? 0 : Int(Float(closedNumber) / Float(openNumber + closedNumber) * 100)
     }
 }
