@@ -9,10 +9,20 @@
 import UIKit
 
 class MilestoneCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet weak var titleLabel: BorderLabel!
     @IBOutlet weak var dueDateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var openLabel: UILabel!
     @IBOutlet weak var closedLabel: UILabel!
     @IBOutlet weak var percentLabel: UILabel!
+    
+    func configure(with item: Milestone) {
+        titleLabel.text = item.title
+        dueDateLabel.text = item.dueDate
+        descriptionLabel.text = item.description
+        openLabel.text = "\(item.openNumber) open"
+        closedLabel.text = "\(item.closedNumber) closed"
+        percentLabel.text = "\(item.progressPercentage)%"
+    }
 }
