@@ -8,14 +8,23 @@
 
 import Foundation
 
-struct Milestone {
-    var title: String
-    var dueDate: String?
-    var description: String
-    var openNumber: Int
-    var closedNumber: Int
+struct Milestone: Codable, Hashable {
+    let id: Int
+    let title: String
+    let dueDate: String?
+    let description: String
+    let openNumber: Int
+    let closedNumber: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case title, description
+        case id = "milestone_id"
+        case dueDate = "due_date"
+        case openNumber = "open_number"
+        case closedNumber = "closed_number"
+    }
     
     var progressPercentage: Int {
-        return openNumber == 0 ? 0 : Int(closedNumber / openNumber)
+        return openNumber == 0 ? 0 : Int(closedNumber / (openNumber + closedNumber) )
     }
 }
