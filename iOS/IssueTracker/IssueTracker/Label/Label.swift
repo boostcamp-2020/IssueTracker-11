@@ -9,14 +9,20 @@
 import Foundation
 
 struct Label: Codable, Hashable {
-    var id: Int
-    var type: String
-    var title: String
-    
+    let id: Int?
+    let name: String?
+    let description: String?
+    let color: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "label_id"
+        case name, description, color
+    }
+
     static func == (lhs: Label, rhs: Label) -> Bool {
         return lhs.id == rhs.id
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }

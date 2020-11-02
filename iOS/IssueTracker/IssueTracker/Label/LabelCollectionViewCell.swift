@@ -12,14 +12,14 @@ final class LabelCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBOutlet
     
-    @IBOutlet private weak var labelTypeLabel: UILabel!
-    @IBOutlet private weak var labelTitleLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
     
     // MARK: - Method
     
     func labelCollectionViewCellConfigure(content: Label) {
-        labelTypeLabel.text = content.type
-        labelTitleLabel.text = content.title
+        nameLabel.text = content.name
+        descriptionLabel.text = content.description
     }
     
 }

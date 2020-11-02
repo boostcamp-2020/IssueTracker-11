@@ -41,9 +41,7 @@ final class LabelMainViewController: UIViewController {
     
     /// 라벨 리스트 통신
     private func loadLabelList() {
-        labelList.append(Label(id: 1, type: "타입1", title: "히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히히"))
-        labelList.append(Label(id: 2, type: "타입2", title: "안녕하세욜"))
-        labelList.append(Label(id: 3, type: "타입3", title: "안녕하세욜"))
+        labelList.append(Label(id: 1, name: "1번째", description: "설명", color: "#000000"))
     }
     
     // MARK: - IBActions

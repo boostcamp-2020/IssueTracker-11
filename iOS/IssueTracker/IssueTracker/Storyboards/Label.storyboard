@@ -86,8 +86,8 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="customSize" width="414" height="60"/>
                                         <connections>
-                                            <outlet property="labelTitleLabel" destination="dKf-I1-FTS" id="uNx-8p-vqH"/>
-                                            <outlet property="labelTypeLabel" destination="OOa-g9-Q04" id="auZ-xk-aQq"/>
+                                            <outlet property="descriptionLabel" destination="dKf-I1-FTS" id="uNx-8p-vqH"/>
+                                            <outlet property="nameLabel" destination="OOa-g9-Q04" id="auZ-xk-aQq"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
