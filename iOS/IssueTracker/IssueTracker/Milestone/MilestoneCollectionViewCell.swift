@@ -17,6 +17,8 @@ class MilestoneCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var closedLabel: UILabel!
     @IBOutlet weak var percentLabel: UILabel!
     
+    public static let identifier = "MilestoneCollectionViewCell"
+    
     func configure(with item: Milestone) {
         titleLabel.text = item.title
         dueDateLabel.text = item.dueDate
@@ -25,4 +27,5 @@ class MilestoneCollectionViewCell: UICollectionViewCell {
         closedLabel.text = "\(item.closedNumber) closed"
         percentLabel.text = "\(item.progressPercentage)%"
     }
+    
 }
