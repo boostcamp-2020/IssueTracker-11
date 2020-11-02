@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C4DDDC0C4EBC2C2B41F8530 /* Pods_IssueTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F620D4C0E1073F1AD8C102 /* Pods_IssueTracker.framework */; };
 		7C2A9052254BA60500AFC5C4 /* Issue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2A9051254BA60500AFC5C4 /* Issue.storyboard */; };
-		7C2A9054254BA61300AFC5C4 /* Lable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2A9053254BA61300AFC5C4 /* Lable.storyboard */; };
+		7C2A9054254BA61300AFC5C4 /* Label.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2A9053254BA61300AFC5C4 /* Label.storyboard */; };
 		7C2A9056254BA61F00AFC5C4 /* Milestone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2A9055254BA61F00AFC5C4 /* Milestone.storyboard */; };
 		7C2A9058254BA62500AFC5C4 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2A9057254BA62500AFC5C4 /* Setting.storyboard */; };
 		970CAD4B254A73B50076691E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970CAD4A254A73B50076691E /* AppDelegate.swift */; };
@@ -40,7 +40,7 @@
 /* Begin PBXFileReference section */
 		28DDFD2F384F60488622CBA3 /* Pods_IssueTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IssueTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2A9051254BA60500AFC5C4 /* Issue.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Issue.storyboard; sourceTree = "<group>"; };
-		7C2A9053254BA61300AFC5C4 /* Lable.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lable.storyboard; sourceTree = "<group>"; };
+		7C2A9053254BA61300AFC5C4 /* Label.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Label.storyboard; sourceTree = "<group>"; };
 		7C2A9055254BA61F00AFC5C4 /* Milestone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Milestone.storyboard; sourceTree = "<group>"; };
 		7C2A9057254BA62500AFC5C4 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		8BE624B6F109F2148A472006 /* Pods-IssueTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTrackerTests.debug.xcconfig"; path = "Target Support Files/Pods-IssueTrackerTests/Pods-IssueTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -109,7 +109,8 @@
 		970CAD49254A73B50076691E /* IssueTracker */ = {
 			isa = PBXGroup;
 			children = (
-				97664C63254A81C4005B98A7 /* View */,
+				977B9C52254FA76700D00B28 /* Milestone */,
+				97664C64254A81D2005B98A7 /* CreationView */,
 				970CAD4A254A73B50076691E /* AppDelegate.swift */,
 				970CAD4C254A73B50076691E /* SceneDelegate.swift */,
 				970CAD4E254A73B50076691E /* ViewController.swift */,
@@ -142,21 +143,12 @@
 			children = (
 				970CAD50254A73B50076691E /* Main.storyboard */,
 				7C2A9051254BA60500AFC5C4 /* Issue.storyboard */,
-				7C2A9053254BA61300AFC5C4 /* Lable.storyboard */,
+				7C2A9053254BA61300AFC5C4 /* Label.storyboard */,
 				7C2A9055254BA61F00AFC5C4 /* Milestone.storyboard */,
 				7C2A9057254BA62500AFC5C4 /* Setting.storyboard */,
 				970CAD55254A73B60076691E /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		97664C63254A81C4005B98A7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				977B9C52254FA76700D00B28 /* Milestone */,
-				97664C64254A81D2005B98A7 /* CreationView */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		97664C64254A81D2005B98A7 /* CreationView */ = {
@@ -288,7 +280,7 @@
 				97664C66254A83CB005B98A7 /* CreationFormView.xib in Resources */,
 				970CAD54254A73B60076691E /* Assets.xcassets in Resources */,
 				970CAD52254A73B50076691E /* Main.storyboard in Resources */,
-				7C2A9054254BA61300AFC5C4 /* Lable.storyboard in Resources */,
+				7C2A9054254BA61300AFC5C4 /* Label.storyboard in Resources */,
 				7C2A9058254BA62500AFC5C4 /* Setting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
