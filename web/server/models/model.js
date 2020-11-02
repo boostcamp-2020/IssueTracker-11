@@ -1,8 +1,5 @@
 import pool from '../config/database.js';
 
-const SOFT_DELETE = 0;
-const OPEN_CLOSED = 1;
-
 class Model {
     constructor({ GET_QUERY, POST_QUERY, PUT_QUERY, DELETE_QUERY, ...PATCH_QUERY }) {
         this.GET_QUERY = GET_QUERY;
@@ -10,7 +7,6 @@ class Model {
         this.PUT_QUERY = PUT_QUERY;
         this.DELETE_QUERY = DELETE_QUERY;
         this.PATCH_QUERY = PATCH_QUERY;
-        console.log(this.PATCH_QUERY);
     }
 
     get = async () => {
@@ -53,14 +49,11 @@ class Model {
     };
 
     delete = async (ID) => {
-        console.log(1);
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
-            console.log(this.DELETE_QUERY + ID);
             const result = await conn.query(this.DELETE_QUERY + ID);
             await conn.commit();
-            console.log(2);
             return result;
         } catch (error) {
             console.error(error);
@@ -69,11 +62,11 @@ class Model {
         }
     };
 
-    patch = async (OPTION) => {
+    patch = async (ID, OPTION) => {
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
-            const result = await conn.query(this.PUT_QUERY[OPTION]);
+            const result = await conn.query(this.PATCH_QUERY[OPTION] + ID);
             await conn.commit();
             return result;
         } catch (error) {

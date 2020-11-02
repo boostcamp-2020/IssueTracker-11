@@ -3,6 +3,8 @@ import Controller from './controller.js';
 
 const TITLE_LIMIT = 45;
 const CONTENT_LIMIT = 500;
+const SOFT_DELETE = 'SOFT_DELETE_QUERY';
+const OPEN_CLOSED = 'OPEN_CLOSED_QUERY';
 
 class IssueController extends Controller {
     constructor(issueModel) {
@@ -48,11 +50,25 @@ class IssueController extends Controller {
     };
 
     delete = async (req, res) => {
-        const id = req.params.id;
+        const { ids } = req.body;
         try {
-            const results = await this.Model.delete(id);
-            console.log('반환 결과 : ', results);
-            return !results ? res.status(202).send('Accepted') : res.status(201).send('Created'); // TODO : To modify
+            await ids.forEach((id) => {
+                this.Model.delete(id);
+            });
+            return res.status(201).send('Created'); // TODO : To modify
+        } catch (error) {
+            res.status(500).send({ result: error.message });
+        }
+    };
+
+    patch = async (req, res) => {
+        const { ids } = req.body;
+        try {
+            const OPTION = req.originalUrl.includes('status') ? SOFT_DELETE : OPEN_CLOSED;
+            await ids.forEach((id) => {
+                this.Model.patch(id, OPTION);
+            });
+            return res.status(201).send('Created');
         } catch (error) {
             res.status(500).send({ result: error.message });
         }
