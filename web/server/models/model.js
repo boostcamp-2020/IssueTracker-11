@@ -64,7 +64,6 @@ class Model {
             console.error(error);
         } finally {
             conn.release();
-            conn.
         }
     };
 
