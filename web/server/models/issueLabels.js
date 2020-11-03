@@ -2,8 +2,10 @@ import Model from './model.js';
 import pool from '../config/database.js';
 
 const Query = {
+    GET_QUERY: `SELECT * FROM issues_labels `,
     POST_QUERY: 'INSERT INTO issues_labels SET ?',
-    DELETE_QUERY: `DELETE FROM issues_labels WHERE labels_id = `,
+    DELETE_QUERY: (label_id, issue_id) =>
+        `DELETE FROM issues_labels WHERE (label_id, issue_id) in ((${label_id}, ${issue_id}))`,
 };
 
 class issueLabelsModel extends Model {
@@ -12,8 +14,6 @@ class issueLabelsModel extends Model {
     }
 
     post = async (POST_DATA) => {
-        console.log(this.POST_QUERY);
-        console.log(POST_DATA);
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
@@ -28,7 +28,20 @@ class issueLabelsModel extends Model {
         }
     };
 
-    delete = async (issue_id, label_id) => {};
+    delete = async (label_id, issue_id) => {
+        const conn = await pool.getConnection(async (conn) => conn);
+        try {
+            await conn.beginTransaction();
+            const result = await conn.query(this.DELETE_QUERY(label_id, issue_id));
+            await conn.commit();
+            return result;
+        } catch (error) {
+            conn.rollback();
+            console.error(error);
+        } finally {
+            conn.release();
+        }
+    };
 }
 
 export default new issueLabelsModel(Query);

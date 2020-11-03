@@ -8,6 +8,8 @@ commentsRouter.route('/comments').get(commentController.get).post(commentControl
 
 const issuesRouter = express.Router();
 
+issuesRouter.use('/labels', issueLabelsRouter);
+
 issuesRouter
     .route('/')
     .get(issuesController.get)
@@ -18,9 +20,7 @@ issuesRouter.route('/:id').get(issuesController.get).put(issuesController.put);
 issuesRouter.route('/status').patch(issuesController.patch);
 
 issuesRouter.use('/:id', commentsRouter);
-
-issuesRouter.use('/labels', issueLabelsRouter);
-issuesRouter.use('/assignee', assigneesRouter);
+// issuesRouter.use('/assignee', assigneesRouter);
 // issuesRouter.route('/milestones').post(issuesController.post).delete(issuesController.delete);
 
 export default issuesRouter;
