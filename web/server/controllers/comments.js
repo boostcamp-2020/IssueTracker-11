@@ -23,7 +23,6 @@ class CommentController extends Controller {
     };
 
     put = async (req, res) => {};
-    delete = async (req, res) => {};
 }
 
 export default new CommentController(commentModel);

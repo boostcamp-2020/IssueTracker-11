@@ -12,7 +12,8 @@ class Model {
     get = async () => {
         const conn = await pool.getConnection(async (conn) => conn);
         try {
-            return pool.query(this.GET_QUERY);
+            await conn.beginTransaction();
+            return conn.query(this.GET_QUERY);
         } catch (error) {
             console.error(error);
         } finally {
