@@ -10,7 +10,8 @@ import UIKit
 
 protocol SwipeableCollectionViewCellDelegate: class {
     func visibleContainerViewTapped(inCell cell: UICollectionViewCell)
-    func hiddenContainerViewTapped(inCell cell: UICollectionViewCell)
+    func leftHiddenContainerViewTapped(inCell cell: UICollectionViewCell)
+    func rightHiddenContainerViewTapped(inCell cell: UICollectionViewCell)
 }
 
 class SwipeableCollectionViewCell: UICollectionViewCell {
@@ -22,11 +23,13 @@ class SwipeableCollectionViewCell: UICollectionViewCell {
         scrollView.isPagingEnabled = true
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
+        scrollView.bounces = scrollView.contentOffset.x > 0
         return scrollView
     }()
     
     let visibleContainerView = UIView()
-    let hiddenContainerView = UIView()
+    let leftHiddenContainerView = UIView()
+    let rightHiddenContainerView = UIView()
     
     weak var delegate: SwipeableCollectionViewCellDelegate?
     
@@ -45,61 +48,68 @@ class SwipeableCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupSubviews() {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.addArrangedSubview(visibleContainerView)
-        stackView.addArrangedSubview(hiddenContainerView)
+        let hiddenStackView: UIStackView = {
+            let stackView = UIStackView()
+            stackView.distribution = .fillEqually
+            stackView.addArrangedSubview(leftHiddenContainerView)
+            stackView.addArrangedSubview(rightHiddenContainerView)
+            return stackView
+        }()
+        
+        let stackView: UIStackView = {
+            let stackView = UIStackView()
+            stackView.addArrangedSubview(visibleContainerView)
+            stackView.addArrangedSubview(hiddenStackView)
+            return stackView
+        }()
         
         visibleContainerView.translatesAutoresizingMaskIntoConstraints = false
-        visibleContainerView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.width).isActive = true
+        visibleContainerView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
         
         addSubview(scrollView)
         scrollView.pinEdgesToSuperView()
+        
         scrollView.addSubview(stackView)
         stackView.pinEdgesToSuperView()
+        
         stackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor,
-                                         multiplier: 2).isActive = true
+                                         multiplier: 1.35).isActive = true
     }
     
     private func setupGestureRecognizer() {
-        let hiddenContainerTapGestureRecognizer = UITapGestureRecognizer(target: self,
-                                                                         action: #selector(hiddenContainerViewTapped))
-        hiddenContainerView.addGestureRecognizer(hiddenContainerTapGestureRecognizer)
+        let leftHiddenContainerRecognizer = UITapGestureRecognizer(target: self,
+                                                                   action: #selector(leftHiddenContainerViewTapped))
+        leftHiddenContainerView.addGestureRecognizer(leftHiddenContainerRecognizer)
         
-        let visibleContainerTapGestureRecognizer = UITapGestureRecognizer(target: self,
-                                                                          action: #selector(visibleContainerViewTapped))
-        visibleContainerView.addGestureRecognizer(visibleContainerTapGestureRecognizer)
+        let rightHiddenContainerRecognizer = UITapGestureRecognizer(target: self,
+                                                                    action: #selector(rightHiddenContainerViewTapped))
+        rightHiddenContainerView.addGestureRecognizer(rightHiddenContainerRecognizer)
+        
+        let visibleContainerRecognizer = UITapGestureRecognizer(target: self,
+                                                                action: #selector(visibleContainerViewTapped))
+        visibleContainerView.addGestureRecognizer(visibleContainerRecognizer)
     }
     
     @objc private func visibleContainerViewTapped() {
         delegate?.visibleContainerViewTapped(inCell: self)
     }
     
-    @objc private func hiddenContainerViewTapped() {
-        delegate?.hiddenContainerViewTapped(inCell: self)
+    @objc private func leftHiddenContainerViewTapped() {
+        delegate?.leftHiddenContainerViewTapped(inCell: self)
+    }
+    
+    @objc private func rightHiddenContainerViewTapped() {
+        delegate?.rightHiddenContainerViewTapped(inCell: self)
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        // when the orientation changes and the cell is open -> update the content offset for the new cell width
         if scrollView.contentOffset.x > 0 {
-            scrollView.contentOffset.x = scrollView.frame.width
+            UIView.animate(withDuration: 0.2) {
+                self.scrollView.contentOffset.x = 0
+            }
         }
-    }
-    
-}
-
-extension UIView {
-    
-    func pinEdgesToSuperView() {
-        guard let superView = superview else { return }
-        translatesAutoresizingMaskIntoConstraints = false
-        topAnchor.constraint(equalTo: superView.topAnchor).isActive = true
-        leftAnchor.constraint(equalTo: superView.leftAnchor).isActive = true
-        bottomAnchor.constraint(equalTo: superView.bottomAnchor).isActive = true
-        rightAnchor.constraint(equalTo: superView.rightAnchor).isActive = true
     }
     
 }

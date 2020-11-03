@@ -39,9 +39,19 @@ extension IssueMainViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueCollectionViewCell",
                                                             for: indexPath) as? IssueCollectionViewCell
             else { return UICollectionViewCell() }
-        cell.issueContentView.configure(text: "hihi")
+//        cell.issueContentView.configure(text: "hihi")
         return cell
     }
+}
+
+extension IssueMainViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 88)
+    }
+    
 }
 
 extension IssueMainViewController: UICollectionViewDelegate {
