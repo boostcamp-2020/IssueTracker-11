@@ -9,7 +9,7 @@ class Model {
         this.PATCH_QUERY = PATCH_QUERY;
     }
 
-    get = async () => {
+    get = async (URL) => {
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
@@ -64,7 +64,6 @@ class Model {
             console.error(error);
         } finally {
             conn.release();
-            conn.
         }
     };
 

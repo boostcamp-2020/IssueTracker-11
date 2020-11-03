@@ -8,8 +8,19 @@ class CommentController extends Controller {
         super(commentModel);
     }
 
+    get = async (req, res) => {
+        try {
+            const issue_id = Number(req.originalUrl.replace(/[^0-9]/g, ''));
+            const [result] = await this.Model.get(issue_id);
+            return result.length === 0 ? res.status(204).send('No Content') : res.status(200).send(result);
+        } catch (error) {
+            res.status(500).send({ result: error.message });
+        }
+    };
+
     post = async (req, res) => {
-        const { issue_id, contents, author } = req.body;
+        const issue_id = Number(req.originalUrl.replace(/[^0-9]/g, ''));
+        const { contents, author } = req.body;
         if (!issue_id || !author || (!!contents && contents.length > CONTENT_LIMIT)) {
             return res.status(422).send('Unprocessable Entity');
         }

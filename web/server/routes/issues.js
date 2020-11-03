@@ -1,5 +1,9 @@
 import express from 'express';
 import issuesController from '../controllers/issues.js';
+import commentsRouter from '../routes/comments.js';
+import commentController from '../controllers/comments.js';
+
+commentsRouter.route('/comments').get(commentController.get).post(commentController.post);
 
 const issuesRouter = express.Router();
 
@@ -11,5 +15,7 @@ issuesRouter
     .delete(issuesController.delete);
 issuesRouter.route('/:id').put(issuesController.put);
 issuesRouter.route('/status').patch(issuesController.patch);
+
+issuesRouter.use('/:id', commentsRouter);
 
 export default issuesRouter;
