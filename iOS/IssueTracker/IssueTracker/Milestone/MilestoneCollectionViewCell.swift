@@ -10,7 +10,7 @@ import UIKit
 
 class MilestoneCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var titleLabel: BorderLabel!
+    @IBOutlet weak var titleLabel: BadgeLabel!
     @IBOutlet weak var dueDateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var openLabel: UILabel!
