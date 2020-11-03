@@ -15,6 +15,7 @@ class Model {
             await conn.beginTransaction();
             return conn.query(this.GET_QUERY);
         } catch (error) {
+            conn.rollback();
             console.error(error);
         } finally {
             conn.release();
@@ -29,6 +30,7 @@ class Model {
             await conn.commit();
             return result;
         } catch (error) {
+            conn.rollback();
             console.error(error);
         } finally {
             conn.release();
@@ -36,7 +38,6 @@ class Model {
     };
 
     put = async (PUT_DATA, ID) => {
-        console;
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
@@ -44,6 +45,7 @@ class Model {
             await conn.commit();
             return result;
         } catch (error) {
+            conn.rollback();
             console.error(error);
         } finally {
             conn.release();
@@ -58,9 +60,11 @@ class Model {
             await conn.commit();
             return result;
         } catch (error) {
+            conn.rollback();
             console.error(error);
         } finally {
             conn.release();
+            conn.
         }
     };
 
@@ -72,6 +76,7 @@ class Model {
             await conn.commit();
             return result;
         } catch (error) {
+            conn.rollback();
             console.error(error);
         } finally {
             conn.release();

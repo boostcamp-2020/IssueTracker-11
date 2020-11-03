@@ -21,7 +21,7 @@ class Controller {
         const id = req.params.id || req.body.ids;
         const ids = [...id];
         try {
-            await ids.forEach((id) => {
+            ids.forEach((id) => {
                 this.Model.delete(id);
             });
             return res.status(201).send('Created'); // TODO : To modify
@@ -34,9 +34,8 @@ class Controller {
         const id = req.params.id || req.body.ids;
         const ids = [...id];
         try {
-            console.log(req.originalUrl);
             const OPTION = req.originalUrl.includes('status') ? OPEN_CLOSED : SOFT_DELETE;
-            await ids.forEach((id) => {
+            ids.forEach((id) => {
                 this.Model.patch(id, OPTION);
             });
             return res.status(201).send('Created');
