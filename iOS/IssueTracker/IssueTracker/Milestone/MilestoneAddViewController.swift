@@ -8,12 +8,12 @@
 
 import UIKit
 
-class MilestoneAddViewController: UIViewController {
+final class MilestoneAddViewController: UIViewController {
     
     // MARK: - Properties
     
-    let creationFormView = CreationFormView()
-    let backgroundView = UIView()
+    private let creationFormView = CreationFormView()
+    private let backgroundView = UIView()
 
     // MARK: - Life Cycle
     

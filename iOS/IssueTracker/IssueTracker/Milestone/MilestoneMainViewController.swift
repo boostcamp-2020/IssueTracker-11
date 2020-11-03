@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MilestoneMainViewController: UIViewController {
+final class MilestoneMainViewController: UIViewController {
     
     enum Section: CaseIterable {
         case main
@@ -21,10 +21,10 @@ class MilestoneMainViewController: UIViewController {
     
     // MARK: - IBOutlet
 
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     // MARK: - Properties
-    let sections = Section.allCases
+    private let sections = Section.allCases
     private lazy var dataSource = makeDataSource()
     
     let dummy = [Milestone(id: 1,

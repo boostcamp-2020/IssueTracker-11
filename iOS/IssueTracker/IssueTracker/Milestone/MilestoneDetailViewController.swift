@@ -8,13 +8,13 @@
 
 import UIKit
 
-class MilestoneDetailViewController: UIViewController {
+final class MilestoneDetailViewController: UIViewController {
     
     // MARK: - IBOutlet
     
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var dueDateTextField: UITextField!
-    @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet private weak var titleTextField: UITextField!
+    @IBOutlet private weak var dueDateTextField: UITextField!
+    @IBOutlet private weak var descriptionTextField: UITextField!
     
     // MARK: - Properties
     
