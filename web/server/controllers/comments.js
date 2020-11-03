@@ -11,7 +11,7 @@ class CommentController extends Controller {
     get = async (req, res) => {
         try {
             const issue_id = Number(req.originalUrl.replace(/[^0-9]/g, ''));
-            const [result] = await this.Model.get(issue_id);
+            const [result] = await this.Model.get(`WHERE issue_id = ${issue_id}`);
             return result.length === 0 ? res.status(204).send('No Content') : res.status(200).send(result);
         } catch (error) {
             res.status(500).send({ result: error.message });

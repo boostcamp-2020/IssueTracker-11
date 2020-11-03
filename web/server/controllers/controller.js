@@ -5,6 +5,7 @@ class Controller {
     constructor(Model) {
         this.Model = Model;
     }
+
     get = async (req, res) => {
         try {
             const [result] = await this.Model.get(req.originalUrl);

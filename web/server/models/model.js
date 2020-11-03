@@ -9,11 +9,11 @@ class Model {
         this.PATCH_QUERY = PATCH_QUERY;
     }
 
-    get = async (URL) => {
+    get = async (OPTION) => {
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
-            return conn.query(this.GET_QUERY);
+            return conn.query(this.GET_QUERY + OPTION);
         } catch (error) {
             conn.rollback();
             console.error(error);
