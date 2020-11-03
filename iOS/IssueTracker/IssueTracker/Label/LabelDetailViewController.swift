@@ -26,13 +26,14 @@ final class LabelDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configure()
+        configureEditMode()
+        configureTextField()
     }
     
     // MARK: - IBAction
     
     @IBAction private func colorRandomButtonDidTap(_ sender: UIButton) {
-        let color = randomColor()
+        let color = UIColor().random
         colorSampleView.backgroundColor = color
         colorTextField.text = color.toHexString()
     }
@@ -45,25 +46,19 @@ final class LabelDetailViewController: UIViewController {
     
     // MARK: - Methods
     
-    private func configure() {
+    private func configureEditMode() {
         self.navigationItem.title = "레이블 편집"
-        
         guard let label = label, let color = label.color else { return }
         titleTextField.text = label.name
         descriptionTextField.text = label.description
         colorTextField.text = label.color
         colorSampleView.backgroundColor = UIColor(hex: color)
-        
+    }
+    
+    private func configureTextField() {
         colorTextField.addTarget(self,
                                  action: #selector(textFieldDidChange(_:)),
                                  for: .editingChanged)
-    }
-    
-    private func randomColor() -> UIColor {
-        let randomRed = CGFloat(drand48())
-        let randomGreen = CGFloat(drand48())
-        let randomBlue = CGFloat(drand48())
-        return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
     }
     
     // MARK: - Objc

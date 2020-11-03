@@ -35,6 +35,7 @@ final class LabelAddViewController: UIViewController {
         creationFormView.creationFormType = .label
         creationFormView.configureViewStyle()
         configureConstraints()
+        configureRandomColor()
     }
     
     private func configureConstraints() {
@@ -44,6 +45,12 @@ final class LabelAddViewController: UIViewController {
         creationFormView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
         creationFormView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
       ])
+    }
+    
+    private func configureRandomColor() {
+        let color = UIColor().random
+        creationFormView.colorSampleView.backgroundColor = color
+        creationFormView.thirdInputTextField.text = color.toHexString()
     }
     
 }
@@ -57,17 +64,17 @@ extension LabelAddViewController: CreationFormViewDelegate {
     }
     
     func resetButtonDidTap() {
-        creationFormView.firstInputTextField.text = ""
-        creationFormView.secondInputTextField.text = ""
-        creationFormView.thirdInputTextField.text = ""
+        creationFormView.inputTextFields.forEach { $0.text = "" }
+        configureRandomColor()
     }
     
     func saveButtonDidTap() {
         print("save")
+        self.dismiss(animated: true, completion: nil)
     }
     
     func colorChangeButtonDidTap() {
-        print("color~")
+        configureRandomColor()
     }
     
 }

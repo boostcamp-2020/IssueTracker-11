@@ -33,12 +33,17 @@ extension UIColor {
         var green: CGFloat = 0
         var blue: CGFloat = 0
         var alpha: CGFloat = 0
-        
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        
         let rgb: Int = (Int)(red*255)<<16 | (Int)(green*255)<<8 | (Int)(blue*255)<<0
         
         return NSString(format: "#%06x", rgb).uppercased as String
+    }
+    
+    var random: UIColor {
+        let randomRed = CGFloat(drand48())
+        let randomGreen = CGFloat(drand48())
+        let randomBlue = CGFloat(drand48())
+        return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
     }
     
 }
