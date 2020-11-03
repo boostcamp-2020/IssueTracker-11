@@ -28,19 +28,19 @@ class IssueController extends Controller {
     };
 
     put = async (req, res) => {
-        const { title, contents, milestone_id, status } = req.body;
+        const { title, contents, milestone_id } = req.body;
         const id = req.params.id;
 
         if (!title || title.length > TITLE_LIMIT || (!!contents && contents.length > CONTENT_LIMIT)) {
             return res.status(422).send('Unprocessable Entity');
         }
-        if (!status || !id) {
+        if (!id) {
             return res.status(422).send('Unprocessable Entity');
         }
 
         // TODO : 검증 로직이 더 필요하다. 202가 뜨는 상황을 최대한 방지.
         try {
-            const results = await this.Model.put({ title, contents, milestone_id, status }, id);
+            const results = await this.Model.put({ title, contents, milestone_id }, id);
             return !results ? res.status(202).send('Accepted') : res.status(201).send('Created'); // TODO : To modify
         } catch (error) {
             res.status(500).send({ result: error.message });
