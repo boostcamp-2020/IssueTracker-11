@@ -2,7 +2,7 @@ import Model from './model.js';
 
 const Query = {
     GET_QUERY: `SELECT * FROM users`,
-    POST_QUERY: 'INSERT INTO users SET ?',
+    POST_QUERY: 'INSERT INTO users SET ? ',
     PUT_QUERY: ``,
     DELETE_QUERY: ``,
 };

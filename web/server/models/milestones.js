@@ -2,7 +2,7 @@ import Model from './model.js';
 
 const Query = {
     GET_QUERY: `SELECT * FROM milestones`,
-    POST_QUERY: 'INSERT INTO milestones SET ?',
+    POST_QUERY: 'INSERT INTO milestones SET ? ',
     PUT_QUERY: ({ title, description, due_date }) =>
         `UPDATE milestones SET title = '${title}', description = '${description}', due_date = '${due_date}', updated_at = now() WHERE milestone_id = `,
     DELETE_QUERY: `DELETE FROM milestones WHERE milestone_id = `,
