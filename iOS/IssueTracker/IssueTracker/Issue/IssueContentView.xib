@@ -20,11 +20,11 @@
             <rect key="frame" x="0.0" y="0.0" width="368" height="88"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="hfv-Lj-lRz">
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="yAq-8A-FCP">
                     <rect key="frame" x="16" y="10" width="336" height="68"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="2Tq-Aj-zZt">
-                            <rect key="frame" x="0.0" y="0.0" width="241.5" height="62.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="274.5" height="62.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5AW-fx-92D">
                                     <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
@@ -33,7 +33,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="레이블 전체 목록을 볼 수 있어야 한다 2줄까지 보입니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmH-HR-wJH">
-                                    <rect key="frame" x="0.0" y="26.5" width="231.5" height="36"/>
+                                    <rect key="frame" x="0.0" y="26.5" width="257.5" height="36"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -41,10 +41,10 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="GDt-QL-GV8">
-                            <rect key="frame" x="241.5" y="0.0" width="94.5" height="49"/>
+                            <rect key="frame" x="274.5" y="0.0" width="61.5" height="49"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스프린트2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soW-h2-QFf" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
-                                    <rect key="frame" x="27.5" y="0.0" width="67" height="21"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="61.5" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -58,7 +58,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxR-d1-neV" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
-                                    <rect key="frame" x="49" y="28" width="45.5" height="21"/>
+                                    <rect key="frame" x="16" y="28" width="45.5" height="21"/>
                                     <color key="backgroundColor" red="0.74509803919999995" green="0.85882352939999995" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="textColor"/>
@@ -76,17 +76,16 @@
                         </stackView>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="GDt-QL-GV8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2Tq-Aj-zZt" secondAttribute="trailing" id="HpO-hF-Mnu"/>
+                        <constraint firstItem="GDt-QL-GV8" firstAttribute="width" secondItem="yAq-8A-FCP" secondAttribute="width" multiplier="0.183036" id="dy6-S1-zog"/>
                     </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="hfv-Lj-lRz" secondAttribute="bottom" constant="10" id="6n5-pG-sZl"/>
-                <constraint firstItem="hfv-Lj-lRz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="A86-1x-AI8"/>
-                <constraint firstAttribute="trailing" secondItem="hfv-Lj-lRz" secondAttribute="trailing" constant="16" id="R4f-Tk-Lgp"/>
-                <constraint firstItem="hfv-Lj-lRz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="U9o-eC-wUF"/>
-                <constraint firstItem="GDt-QL-GV8" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.256793" id="oxs-mi-jN5"/>
+                <constraint firstItem="yAq-8A-FCP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="AwV-JJ-7HA"/>
+                <constraint firstItem="yAq-8A-FCP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="MEj-20-O11"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="yAq-8A-FCP" secondAttribute="bottom" constant="10" id="UyV-XS-avu"/>
+                <constraint firstAttribute="trailing" secondItem="yAq-8A-FCP" secondAttribute="trailing" constant="16" id="oad-lD-H3d"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
