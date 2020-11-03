@@ -11,6 +11,7 @@ class Model {
 
     get = async (OPTION) => {
         if (!OPTION) OPTION = '';
+        console.log(this.GET_QUERY + OPTION);
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();

@@ -12,9 +12,9 @@ class IssueController extends Controller {
     get = async (req, res) => {
         try {
             if (!req.originalUrl.includes('issues')) throw new Error('test');
-            const milestone_id = Number(req.originalUrl.replace(/[^0-9]/g, ''));
-
-            const [result] = await this.Model.get(`WHERE milestone_id = ${milestone_id}`);
+            const issue_id = Number(req.originalUrl.replace(/[^0-9]/g, ''));
+            const OPTION = !issue_id ? '' : `WHERE issue_id = ${issue_id}`;
+            const [result] = await this.Model.get(OPTION);
             return result.length === 0 ? res.status(204).send('No Content') : res.status(200).send(result);
         } catch (error) {
             res.status(500).send({ result: error.message });

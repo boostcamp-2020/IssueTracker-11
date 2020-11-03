@@ -1,5 +1,4 @@
 import Model from './model.js';
-import pool from '../config/database.js';
 
 const Query = {
     GET_QUERY: `SELECT * FROM comments `,
@@ -14,21 +13,6 @@ class CommentModel extends Model {
     constructor(Query) {
         super(Query);
     }
-
-    post = async (POST_DATA) => {
-        const conn = await pool.getConnection(async (conn) => conn);
-        try {
-            await conn.beginTransaction();
-            const result = await conn.query(this.POST_QUERY, POST_DATA);
-            await conn.commit();
-            return result;
-        } catch (error) {
-            conn.rollback();
-            console.error(error);
-        } finally {
-            conn.release();
-        }
-    };
 }
 
 export default new CommentModel(Query);
