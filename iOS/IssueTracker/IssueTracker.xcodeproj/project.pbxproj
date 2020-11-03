@@ -115,7 +115,6 @@
 				7C13043D254FC989003AE6A1 /* LabelCollectionViewCell.swift */,
 				7C130442254FEEB0003AE6A1 /* LabelAddViewController.swift */,
 				7C1304442550112A003AE6A1 /* LabelDetailViewController.swift */,
-				7C13043F254FD37D003AE6A1 /* Label.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -124,8 +123,17 @@
 			isa = PBXGroup;
 			children = (
 				7C13044725502AE2003AE6A1 /* UIColor+.swift */,
+				97DAB2CA255034DE002C3E21 /* String+.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7C13044925510FAA003AE6A1 /* SupportingView */ = {
+			isa = PBXGroup;
+			children = (
+				977B9C5F254FC5B000D00B28 /* BadgeLabel.swift */,
+			);
+			path = SupportingView;
 			sourceTree = "<group>";
 		};
 		970CAD3E254A73B50076691E = {
@@ -151,14 +159,12 @@
 		970CAD49254A73B50076691E /* IssueTracker */ = {
 			isa = PBXGroup;
 			children = (
-
 				97E59487254FE1C70052C2C3 /* Model */,
-
 				7C13044625502AD3003AE6A1 /* Extensions */,
 				7C13043A254FC419003AE6A1 /* Label */,
-
 				977B9C52254FA76700D00B28 /* Milestone */,
 				97664C64254A81D2005B98A7 /* CreationView */,
+				7C13044925510FAA003AE6A1 /* SupportingView */,
 				970CAD4A254A73B50076691E /* AppDelegate.swift */,
 				970CAD4C254A73B50076691E /* SceneDelegate.swift */,
 				970CAD4E254A73B50076691E /* ViewController.swift */,
@@ -216,8 +222,6 @@
 				977B9C55254FA89900D00B28 /* MilestoneAddViewController.swift */,
 				977B9C5D254FC59C00D00B28 /* MilestoneCollectionViewCell.swift */,
 				9724708925501AF800285073 /* MilestoneDetailViewController.swift */,
-				977B9C5F254FC5B000D00B28 /* BadgeLabel.swift */,
-				97DAB2CA255034DE002C3E21 /* String+.swift */,
 			);
 			path = Milestone;
 			sourceTree = "<group>";
@@ -226,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				97E59488254FE1D10052C2C3 /* Milestone.swift */,
+				7C13043F254FD37D003AE6A1 /* Label.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -431,12 +436,9 @@
 				7C13043E254FC989003AE6A1 /* LabelCollectionViewCell.swift in Sources */,
 				7C130440254FD37D003AE6A1 /* Label.swift in Sources */,
 				977B9C56254FA89900D00B28 /* MilestoneAddViewController.swift in Sources */,
-
 				977B9C60254FC5B000D00B28 /* BadgeLabel.swift in Sources */,
-
 				7C13043C254FC521003AE6A1 /* LabelMainViewController.swift in Sources */,
 				7C1304452550112A003AE6A1 /* LabelDetailViewController.swift in Sources */,
-
 				97664C68254A91CA005B98A7 /* CreationFormView.swift in Sources */,
 				7C13044825502AE2003AE6A1 /* UIColor+.swift in Sources */,
 				970CAD4B254A73B50076691E /* AppDelegate.swift in Sources */,
