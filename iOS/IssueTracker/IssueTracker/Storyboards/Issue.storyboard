@@ -4,30 +4,70 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--이슈-->
         <scene sceneID="ami-hS-4pf">
             <objects>
-                <viewController id="VwX-4o-FRG" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IssueMainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VwX-4o-FRG" customClass="IssueMainViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FlO-08-yMI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Issue!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkv-2e-gFw">
-                                <rect key="frame" x="220" y="413" width="45" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lIT-uy-szW">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xmx-f1-FlW">
+                                    <size key="itemSize" width="414" height="135"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="IssueCollectionViewCell" reuseIdentifier="IssueCollectionViewCell" id="XPN-ve-6s5" customClass="IssueCollectionViewCell" customModule="IssueTracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nKJ-Ip-ipc">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="customSize" width="414" height="88"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R40-va-VA2">
+                                <rect key="frame" x="352" y="748" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="R40-va-VA2" secondAttribute="height" multiplier="1:1" id="cWa-oC-ORg"/>
+                                    <constraint firstAttribute="width" constant="44" id="eFq-Rq-sGP"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="plus.circle.fill" catalog="system"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="lIT-uy-szW" firstAttribute="top" secondItem="yHw-iL-ycS" secondAttribute="top" id="Eel-6P-HCP"/>
+                            <constraint firstItem="lIT-uy-szW" firstAttribute="leading" secondItem="yHw-iL-ycS" secondAttribute="leading" id="U3s-JI-fUu"/>
+                            <constraint firstItem="yHw-iL-ycS" firstAttribute="trailing" secondItem="R40-va-VA2" secondAttribute="trailing" constant="18" id="Y7a-Q0-TG3"/>
+                            <constraint firstItem="yHw-iL-ycS" firstAttribute="bottom" secondItem="lIT-uy-szW" secondAttribute="bottom" id="b8g-V7-nq6"/>
+                            <constraint firstItem="yHw-iL-ycS" firstAttribute="trailing" secondItem="lIT-uy-szW" secondAttribute="trailing" id="ihf-DU-TWL"/>
+                            <constraint firstItem="yHw-iL-ycS" firstAttribute="bottom" secondItem="R40-va-VA2" secondAttribute="bottom" constant="21" id="nsj-1h-WQE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="yHw-iL-ycS"/>
                     </view>
-                    <navigationItem key="navigationItem" id="sWT-V4-Mp7"/>
+                    <navigationItem key="navigationItem" title="이슈" id="sWT-V4-Mp7">
+                        <barButtonItem key="leftBarButtonItem" title="Filter" id="KLD-h2-MTo"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="lJ0-qJ-ATn"/>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="issueCollectionView" destination="lIT-uy-szW" id="epL-Yd-J6k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ei7-hV-2wu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -39,8 +79,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XAM-Af-gGY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="이슈" image="1.circle.fill" catalog="system" id="w18-gd-ICJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9jn-nu-mX1">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="9jn-nu-mX1">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -55,5 +95,6 @@
     </scenes>
     <resources>
         <image name="1.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>
