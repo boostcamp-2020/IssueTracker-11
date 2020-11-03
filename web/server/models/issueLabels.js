@@ -13,21 +13,6 @@ class issueLabelsModel extends Model {
         super(Query);
     }
 
-    post = async (POST_DATA) => {
-        const conn = await pool.getConnection(async (conn) => conn);
-        try {
-            await conn.beginTransaction();
-            const result = await conn.query(this.POST_QUERY, POST_DATA);
-            await conn.commit();
-            return result;
-        } catch (error) {
-            conn.rollback();
-            console.error(error);
-        } finally {
-            conn.release();
-        }
-    };
-
     delete = async (label_id, issue_id) => {
         const conn = await pool.getConnection(async (conn) => conn);
         try {

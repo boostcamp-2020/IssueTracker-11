@@ -4,6 +4,7 @@ import commentsRouter from '../routes/comments.js';
 import commentController from '../controllers/comments.js';
 import issueLabelsRouter from '../routes/issueLabels.js';
 import assigneesRouter from '../routes/assignees.js';
+import issueMilestonesRouter from '../routes/issueMilestones.js';
 
 const issuesRouter = express.Router();
 
@@ -12,6 +13,7 @@ issuesRouter.use('/:id', commentsRouter);
 
 issuesRouter.use('/labels', issueLabelsRouter);
 issuesRouter.use('/assignees', assigneesRouter);
+issuesRouter.use('/milestones', issueMilestonesRouter);
 
 issuesRouter
     .route('/')
