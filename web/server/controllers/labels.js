@@ -25,7 +25,6 @@ class LabelController extends Controller {
     put = async (req, res) => {
         const { name, description, color } = req.body;
         const id = req.params.id;
-        console.log(id);
 
         if (!name || (!!description && description.length > DESCRIPTION_LIMIT)) {
             return res.status(422).send('Unprocessable Entity');
