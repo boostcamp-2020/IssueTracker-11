@@ -37,13 +37,9 @@ final class CreationFormView: UIView {
     // MARK: - Properties
     
     weak var delegate: CreationFormViewDelegate?
-    
     var creationFormType: CreationFormType = .label
-    
     var firstInputTextField: UITextField! { return inputTextFields[0] }
-    
     var secondInputTextField: UITextField! { return inputTextFields[1] }
-    
     var thirdInputTextField: UITextField! { return inputTextFields[2] }
     
     // MARK: - Life Cycle
@@ -89,15 +85,15 @@ final class CreationFormView: UIView {
         self.addSubview(view)
     }
     
+    private func configureFormTitles() {
+        let titles = creationFormType.formTitles
+        zip(titleLabels, titles).forEach { $0.text = $1 }
+    }
+    
     public func configureViewStyle() {
         colorSettingView.isHidden = creationFormType == .milestone
         secondInputTextField.placeholder = creationFormType == .milestone ? "yyyy-dd-mm(선택)" : ""
         configureFormTitles()
-    }
-    
-    private func configureFormTitles() {
-        let titles = creationFormType.formTitles
-        zip(titleLabels, titles).forEach { $0.text = $1 }
     }
     
 }
