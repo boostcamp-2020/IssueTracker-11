@@ -22,8 +22,25 @@ class LabelController extends Controller {
         }
     };
 
-    put = async (req, res) => {};
-    delete = async (req, res) => {};
+    put = async (req, res) => {
+        const { name, description, color } = req.body;
+        const id = req.params.id;
+        console.log(id);
+
+        if (!name || (!!description && description.length > DESCRIPTION_LIMIT)) {
+            return res.status(422).send('Unprocessable Entity');
+        }
+        if (!id) {
+            return res.status(422).send('Unprocessable Entity');
+        }
+
+        try {
+            const results = await this.Model.put({ name, description, color }, id);
+            return !results ? res.status(202).send('Accepted') : res.status(201).send('Created'); // TODO : To modify
+        } catch (error) {
+            res.status(500).send({ result: error.message });
+        }
+    };
 }
 
 export default new LabelController(labelModel);

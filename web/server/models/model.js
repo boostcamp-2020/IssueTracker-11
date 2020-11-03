@@ -39,8 +39,6 @@ class Model {
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
-            console.log(this.PUT_QUERY + ID);
-            console.log(PUT_DATA);
             const result = await conn.query(this.PUT_QUERY(PUT_DATA) + ID);
             await conn.commit();
             return result;
