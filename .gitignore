@@ -6,6 +6,9 @@
 #           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGNORE THE LOCK FILE
 Pods/
 
+### .vscode ###
+.vscode
+
 ### dotenv ###
 .env
 
