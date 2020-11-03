@@ -1,19 +1,9 @@
 import express from 'express';
+import labelController from '../controllers/labels.js';
+
 const labelsRouter = express.Router();
 
-labelsRouter
-    .route('/')
-    .get((req, res) => {
-        res.status(200).send('GET OK');
-    })
-    .post((req, res) => {
-        res.status(200).send('POST OK');
-    })
-    .put((req, res) => {
-        res.status(200).send('PUT OK');
-    })
-    .delete((req, res) => {
-        res.status(200).send('DELETE OK');
-    });
+labelsRouter.route('/').get(labelController.get).post(labelController.post).patch(labelController.patch);
+labelsRouter.route('/:id').put(labelController.put).delete(labelController.delete);
 
 export default labelsRouter;

@@ -1,19 +1,13 @@
 import express from 'express';
+import milestoneController from '../controllers/milestones.js';
+
 const milestonesRouter = express.Router();
 
 milestonesRouter
     .route('/')
-    .get((req, res) => {
-        res.status(200).send('GET OK');
-    })
-    .post((req, res) => {
-        res.status(200).send('POST OK');
-    })
-    .put((req, res) => {
-        res.status(200).send('PUT OK');
-    })
-    .delete((req, res) => {
-        res.status(200).send('DELETE OK');
-    });
+    .get(milestoneController.get)
+    .post(milestoneController.post)
+    .patch(milestoneController.patch);
+milestonesRouter.route('/:id').put(milestoneController.put).delete(milestoneController.delete);
 
 export default milestonesRouter;
