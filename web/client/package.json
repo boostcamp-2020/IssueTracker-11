@@ -4,10 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build": "webpack",
-        "start": "npm run build && webpack-dev-server --hot --host 0.0.0.0 --inline --progress",
-        "client": "pm2 kill && pm2 start 'npm start'",
-        "kill": "pm2 kill"
+        "build-dev": "webpack --mode development",
+        "start-dev": "webpack-dev-server --mode development --hot --inline --progress",
+        "build": "webpack --mode production"
     },
     "devDependencies": {
         "@babel/cli": "^7.11.6",
