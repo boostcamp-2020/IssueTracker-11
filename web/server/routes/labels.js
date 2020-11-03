@@ -3,7 +3,7 @@ import labelController from '../controllers/labels.js';
 
 const labelsRouter = express.Router();
 
-labelsRouter.route('/').get(labelController.get).post(labelController.post);
+labelsRouter.route('/').get(labelController.get).post(labelController.post).patch(labelController.patch);
 labelsRouter.route('/:id').put(labelController.put).delete(labelController.delete);
 
 export default labelsRouter;
