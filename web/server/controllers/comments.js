@@ -22,7 +22,21 @@ class CommentController extends Controller {
         }
     };
 
-    put = async (req, res) => {};
+    put = async (req, res) => {
+        const { issue_id, contents, author } = req.body;
+        const id = req.params.id;
+
+        if (!issue_id || !author || (!!contents && contents.length > CONTENT_LIMIT)) {
+            return res.status(422).send('Unprocessable Entity');
+        }
+
+        try {
+            const results = await this.Model.put({ issue_id, contents, author }, id);
+            return !results ? res.status(202).send('Accepted') : res.status(201).send('Created'); // TODO : To modify
+        } catch (error) {
+            res.status(500).send({ result: error.message });
+        }
+    };
 }
 
 export default new CommentController(commentModel);
