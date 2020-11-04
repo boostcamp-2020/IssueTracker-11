@@ -82,6 +82,12 @@ class ObjectStorage {
 
         return keySigning;
     }
+    _createAuthorizationHeaders(headers, signatureKey, stringToSign, credentialScope) {
+        const signedHeaders = this._createSignedHeaders(headers);
+        const signature = cryptoJs.HmacSHA256(stringToSign, signatureKey);
+
+        return `${this.hashingAlgorithm} Credential=${this.accessKey}/${credentialScope}, SignedHeaders=${signedHeaders}, Signature=${signature}`;
+    }
     getAuthorizationHeader(httpMethod, bucketName, objectName, requestParams) {
         const timeStamp = this.getUtcTime(new Date().toISOString());
         const dateStamp = timeStamp.split('T')[0];
