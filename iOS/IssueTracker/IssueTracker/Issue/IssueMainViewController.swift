@@ -12,6 +12,11 @@ final class IssueMainViewController: UIViewController {
 
     @IBOutlet weak var issueCollectionView: UICollectionView!
     
+    private var editButton: UIBarButtonItem?
+    private var cancelButton: UIBarButtonItem?
+    private var selectAllButton: UIBarButtonItem?
+    private var filterButton: UIBarButtonItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,9 +25,39 @@ final class IssueMainViewController: UIViewController {
         
         configure()
     }
-
+    
     private func configure() {
-        self.navigationItem.searchController = UISearchController()
+        initButtons()
+        navigationItem.searchController = UISearchController()
+        navigationItem.leftBarButtonItem = filterButton
+        navigationItem.rightBarButtonItem = editButton
+    }
+    
+    private func initButtons() {
+        editButton = UIBarButtonItem(barButtonSystemItem: .edit,
+                                     target: self,
+                                     action: #selector(toggleEditMode))
+        
+        cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel,
+                                                   target: self,
+                                                   action: #selector(toggleEditMode))
+        
+        selectAllButton = UIBarButtonItem(title: "Select All",
+                                          style: .plain,
+                                          target: self,
+                                          action: nil)
+        
+        filterButton = UIBarButtonItem(title: "filter",
+                                       style: .plain,
+                                       target: self,
+                                       action: nil)
+    }
+    
+    @objc func toggleEditMode(_ sender: UIBarButtonItem) {
+        setEditing(!isEditing, animated: true)
+        navigationItem.setLeftBarButton(isEditing ? selectAllButton : filterButton, animated: true)
+        navigationItem.rightBarButtonItem = isEditing ? cancelButton : editButton
+        navigationItem.searchController?.searchBar.isUserInteractionEnabled = !isEditing
     }
     
 }
@@ -39,7 +74,6 @@ extension IssueMainViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueCollectionViewCell",
                                                             for: indexPath) as? IssueCollectionViewCell
             else { return UICollectionViewCell() }
-//        cell.issueContentView.configure(text: "hihi")
         return cell
     }
 }
