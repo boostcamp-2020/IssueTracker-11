@@ -39,14 +39,15 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R40-va-VA2">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R40-va-VA2" customClass="CircleButton" customModule="IssueTracker" customModuleProvider="target">
                                 <rect key="frame" x="352" y="748" width="44" height="44"/>
+                                <color key="backgroundColor" red="0.28235294117647058" green="0.52156862745098043" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="R40-va-VA2" secondAttribute="height" multiplier="1:1" id="cWa-oC-ORg"/>
                                     <constraint firstAttribute="width" constant="44" id="eFq-Rq-sGP"/>
                                 </constraints>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="plus.circle.fill" catalog="system"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="plus" catalog="system"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -60,10 +61,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yHw-iL-ycS"/>
                     </view>
-                    <navigationItem key="navigationItem" title="이슈" id="sWT-V4-Mp7">
-                        <barButtonItem key="leftBarButtonItem" title="Filter" id="KLD-h2-MTo"/>
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="lJ0-qJ-ATn"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="이슈" id="sWT-V4-Mp7"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="issueCollectionView" destination="lIT-uy-szW" id="epL-Yd-J6k"/>
@@ -95,6 +93,6 @@
     </scenes>
     <resources>
         <image name="1.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
     </resources>
 </document>
