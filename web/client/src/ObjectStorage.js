@@ -9,11 +9,11 @@ class ObjectStorage {
         this.region = process.env.STORAGE_REGION;
         this.serviceName = 's3';
         this.requestType = 'aws4_requset';
-        this.hasedPayload = 'UNSIGNED-PAYLOAD';
+        this.hashedPayload = 'UNSIGNED-PAYLOAD';
         this.hashingAlgorithm = 'AWS4-HMAC-SHA256';
         this.headers = {
             'x-amz-date': null,
-            'x-amz-content-sha256': this.hasedPayload,
+            'x-amz-content-sha256': this.hashedPayload,
             host: this.hostUrl,
         };
     }
@@ -32,7 +32,13 @@ class ObjectStorage {
     _createCredentialScope(dateStamp) {
         return `${dateStamp}/${this.region}/${this.serviceName}/${this.requestType}`;
     }
+    _createCanonicalReq(httpMethod, requestPath, requestParams, headers) {
+        const canonicalQueryParams = this._createCanonicalQueryParams(requestParams);
+        const canonicalHeaders = this._createCanonicalHeaders(headers);
+        const signedHeaders = this._createSignedHeaders(headers);
 
+        return `${httpMethod}\n${requestPath}\n${canonicalQueryParams}\n${canonicalHeaders}\n${signedHeaders}\n${this.hashedPayload}`;
+    }
     getAuthorizationHeader(httpMethod, bucketName, objectName, requestParams) {
         const timeStamp = this.getUtcTime(new Date().toISOString());
         const dateStamp = timeStamp.split('T')[0];
