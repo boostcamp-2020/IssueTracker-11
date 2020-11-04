@@ -29,6 +29,9 @@ class ObjectStorage {
         dateString = dateString.split('.')[0] + 'Z';
         return dateString;
     }
+    _createCredentialScope(dateStamp) {
+        return `${dateStamp}/${this.region}/${this.serviceName}/${this.requestType}`;
+    }
 
     getAuthorizationHeader(httpMethod, bucketName, objectName, requestParams) {
         const timeStamp = this.getUtcTime(new Date().toISOString());
