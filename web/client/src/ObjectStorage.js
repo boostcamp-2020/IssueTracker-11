@@ -41,6 +41,15 @@ class ObjectStorage {
 
         return canonicalQueryParams.slice(0, -1);
     }
+    _createCanonicalHeaders(headers) {
+        const keys = Object.keys(headers);
+        keys.sort();
+
+        return keys.reduce((res, key) => {
+            res += `${key.toLowerCase()}:${headers[key].trim()}\n`;
+            return res;
+        }, '');
+    }
     _createCredentialScope(dateStamp) {
         return `${dateStamp}/${this.region}/${this.serviceName}/${this.requestType}`;
     }
