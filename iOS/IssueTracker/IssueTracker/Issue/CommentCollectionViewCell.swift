@@ -11,6 +11,7 @@ import UIKit
 final class CommentCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var optionButton: UIButton!
+    @IBOutlet private weak var likeButton: UIButton!
     @IBOutlet private weak var userImageView: UIImageView!
     @IBOutlet private weak var userNameLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!

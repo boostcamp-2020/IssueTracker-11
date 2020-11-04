@@ -14,6 +14,23 @@ final class CommentHeaderReusableView: UICollectionReusableView {
     @IBOutlet private weak var userNameLabel: UILabel!
     @IBOutlet private weak var issueNumberLabel: UILabel!
     @IBOutlet private weak var issueTitleLabel: UILabel!
-    @IBOutlet private weak var issueStateLabel: UILabel!
+    @IBOutlet private weak var issueStateLabel: BadgeLabel!
+    
+    func conigure(status: Bool) {
+        setStatusLabel(status ? .open : .closed)
+    }
+    
+    private func setStatusLabel(_ status: IssueStatus) {
+        let attributedString = NSMutableAttributedString(string: "")
+        
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = status.image
+        attributedString.append(NSAttributedString(attachment: imageAttachment))
+        attributedString.append(NSAttributedString(string: status.text))
+        
+        issueStateLabel.attributedText = attributedString
+        issueStateLabel.backgroundColor = status.backgroundColor
+        issueStateLabel.textColor = status.textColor
+    }
     
 }

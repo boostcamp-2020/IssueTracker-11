@@ -26,6 +26,7 @@
 		7C2A9054254BA61300AFC5C4 /* Label.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2A9053254BA61300AFC5C4 /* Label.storyboard */; };
 		7C2A9056254BA61F00AFC5C4 /* Milestone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2A9055254BA61F00AFC5C4 /* Milestone.storyboard */; };
 		7C2A9058254BA62500AFC5C4 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2A9057254BA62500AFC5C4 /* Setting.storyboard */; };
+		7C67D8D62552D4EE00533B03 /* IssueStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67D8D52552D4EE00533B03 /* IssueStatus.swift */; };
 		970CAD4B254A73B50076691E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970CAD4A254A73B50076691E /* AppDelegate.swift */; };
 		970CAD4D254A73B50076691E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970CAD4C254A73B50076691E /* SceneDelegate.swift */; };
 		970CAD4F254A73B50076691E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970CAD4E254A73B50076691E /* ViewController.swift */; };
@@ -78,6 +79,7 @@
 		7C2A9053254BA61300AFC5C4 /* Label.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Label.storyboard; sourceTree = "<group>"; };
 		7C2A9055254BA61F00AFC5C4 /* Milestone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Milestone.storyboard; sourceTree = "<group>"; };
 		7C2A9057254BA62500AFC5C4 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		7C67D8D52552D4EE00533B03 /* IssueStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueStatus.swift; sourceTree = "<group>"; };
 		8BE624B6F109F2148A472006 /* Pods-IssueTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTrackerTests.debug.xcconfig"; path = "Target Support Files/Pods-IssueTrackerTests/Pods-IssueTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		970CAD47254A73B50076691E /* IssueTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IssueTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		970CAD4A254A73B50076691E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			children = (
 				97E59488254FE1D10052C2C3 /* Milestone.swift */,
 				7C13043F254FD37D003AE6A1 /* Label.swift */,
+				7C67D8D52552D4EE00533B03 /* IssueStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				7C130440254FD37D003AE6A1 /* Label.swift in Sources */,
 				977B9C56254FA89900D00B28 /* MilestoneAddViewController.swift in Sources */,
 				977B9C60254FC5B000D00B28 /* BadgeLabel.swift in Sources */,
+				7C67D8D62552D4EE00533B03 /* IssueStatus.swift in Sources */,
 				7C13043C254FC521003AE6A1 /* LabelMainViewController.swift in Sources */,
 				7C1304562552829B003AE6A1 /* IssueDetailViewController.swift in Sources */,
 				7C1304452550112A003AE6A1 /* LabelDetailViewController.swift in Sources */,

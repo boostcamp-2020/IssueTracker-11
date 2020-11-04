@@ -27,7 +27,7 @@ final class IssueDetailViewController: UIViewController {
     
     private func setFlowLayout() {
         guard let flowLayout = commentCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-        flowLayout.estimatedItemSize = CGSize(width: commentCollectionView.frame.width, height: 200)
+        flowLayout.estimatedItemSize = CGSize(width: commentCollectionView.frame.width, height: 174)
     }
     
 }
@@ -41,6 +41,8 @@ extension IssueDetailViewController: UICollectionViewDelegate {
                                               withReuseIdentifier: "CommentHeaderReusableView",
                                               for: indexPath) as? CommentHeaderReusableView
             else { return UICollectionReusableView() }
+        
+        headerView.conigure(status: false)
         
         return headerView
     }
