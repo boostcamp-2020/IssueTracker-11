@@ -69,6 +69,11 @@ class ObjectStorage {
 
         return `${httpMethod}\n${requestPath}\n${canonicalQueryParams}\n${canonicalHeaders}\n${signedHeaders}\n${this.hashedPayload}`;
     }
+    _createStringToSign(timeStamp, credentialScope, canonicalReq) {
+        const hashedCanonicalReq = crypto.createHash('SHA256').update(canonicalReq).digest('hex');
+
+        return `${this.hashingAlgorithm}\n${timeStamp}\n${credentialScope}\n${hashedCanonicalReq}`;
+    }
     getAuthorizationHeader(httpMethod, bucketName, objectName, requestParams) {
         const timeStamp = this.getUtcTime(new Date().toISOString());
         const dateStamp = timeStamp.split('T')[0];
