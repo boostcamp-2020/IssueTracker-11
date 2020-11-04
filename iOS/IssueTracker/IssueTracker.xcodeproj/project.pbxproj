@@ -19,6 +19,9 @@
 		7C13045025512AB5003AE6A1 /* SwipeableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C13044F25512AB5003AE6A1 /* SwipeableCollectionViewCell.swift */; };
 		7C130452255132E7003AE6A1 /* IssueContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C130451255132E7003AE6A1 /* IssueContentView.xib */; };
 		7C1304542551335D003AE6A1 /* IssueContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1304532551335D003AE6A1 /* IssueContentView.swift */; };
+		7C1304562552829B003AE6A1 /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1304552552829B003AE6A1 /* IssueDetailViewController.swift */; };
+		7C13045825528A9E003AE6A1 /* CommentHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C13045725528A9E003AE6A1 /* CommentHeaderReusableView.swift */; };
+		7C13045A25528AE4003AE6A1 /* CommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C13045925528AE4003AE6A1 /* CommentCollectionViewCell.swift */; };
 		7C2A9052254BA60500AFC5C4 /* Issue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2A9051254BA60500AFC5C4 /* Issue.storyboard */; };
 		7C2A9054254BA61300AFC5C4 /* Label.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2A9053254BA61300AFC5C4 /* Label.storyboard */; };
 		7C2A9056254BA61F00AFC5C4 /* Milestone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2A9055254BA61F00AFC5C4 /* Milestone.storyboard */; };
@@ -68,6 +71,9 @@
 		7C13044F25512AB5003AE6A1 /* SwipeableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableCollectionViewCell.swift; sourceTree = "<group>"; };
 		7C130451255132E7003AE6A1 /* IssueContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueContentView.xib; sourceTree = "<group>"; };
 		7C1304532551335D003AE6A1 /* IssueContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueContentView.swift; sourceTree = "<group>"; };
+		7C1304552552829B003AE6A1 /* IssueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailViewController.swift; sourceTree = "<group>"; };
+		7C13045725528A9E003AE6A1 /* CommentHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentHeaderReusableView.swift; sourceTree = "<group>"; };
+		7C13045925528AE4003AE6A1 /* CommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCollectionViewCell.swift; sourceTree = "<group>"; };
 		7C2A9051254BA60500AFC5C4 /* Issue.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Issue.storyboard; sourceTree = "<group>"; };
 		7C2A9053254BA61300AFC5C4 /* Label.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Label.storyboard; sourceTree = "<group>"; };
 		7C2A9055254BA61F00AFC5C4 /* Milestone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Milestone.storyboard; sourceTree = "<group>"; };
@@ -160,6 +166,9 @@
 				7C13044F25512AB5003AE6A1 /* SwipeableCollectionViewCell.swift */,
 				7C130451255132E7003AE6A1 /* IssueContentView.xib */,
 				7C1304532551335D003AE6A1 /* IssueContentView.swift */,
+				7C1304552552829B003AE6A1 /* IssueDetailViewController.swift */,
+				7C13045925528AE4003AE6A1 /* CommentCollectionViewCell.swift */,
+				7C13045725528A9E003AE6A1 /* CommentHeaderReusableView.swift */,
 			);
 			path = Issue;
 			sourceTree = "<group>";
@@ -469,16 +478,19 @@
 				977B9C56254FA89900D00B28 /* MilestoneAddViewController.swift in Sources */,
 				977B9C60254FC5B000D00B28 /* BadgeLabel.swift in Sources */,
 				7C13043C254FC521003AE6A1 /* LabelMainViewController.swift in Sources */,
+				7C1304562552829B003AE6A1 /* IssueDetailViewController.swift in Sources */,
 				7C1304452550112A003AE6A1 /* LabelDetailViewController.swift in Sources */,
 				97664C68254A91CA005B98A7 /* CreationFormView.swift in Sources */,
 				7C13044825502AE2003AE6A1 /* UIColor+.swift in Sources */,
 				7C13045025512AB5003AE6A1 /* SwipeableCollectionViewCell.swift in Sources */,
 				7C13044E25511F9A003AE6A1 /* IssueCollectionViewCell.swift in Sources */,
+				7C13045A25528AE4003AE6A1 /* CommentCollectionViewCell.swift in Sources */,
 				970CAD4B254A73B50076691E /* AppDelegate.swift in Sources */,
 				7C13044C25511DC0003AE6A1 /* IssueMainViewController.swift in Sources */,
 				977B9C5E254FC59C00D00B28 /* MilestoneCollectionViewCell.swift in Sources */,
 				97E59489254FE1D10052C2C3 /* Milestone.swift in Sources */,
 				9724708A25501AF800285073 /* MilestoneDetailViewController.swift in Sources */,
+				7C13045825528A9E003AE6A1 /* CommentHeaderReusableView.swift in Sources */,
 				97DAB2CB255034DE002C3E21 /* String+.swift in Sources */,
 				7C1304542551335D003AE6A1 /* IssueContentView.swift in Sources */,
 				970CAD4D254A73B50076691E /* SceneDelegate.swift in Sources */,
