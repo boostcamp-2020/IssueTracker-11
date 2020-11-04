@@ -18,7 +18,7 @@ class SwipeableCollectionViewCell: UICollectionViewCell {
     
     // MARK: Properties
     
-    private let scrollView: UIScrollView = {
+    let scrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
         scrollView.isPagingEnabled = true
         scrollView.showsVerticalScrollIndicator = false

@@ -10,7 +10,25 @@ import UIKit
 
 final class IssueCollectionViewCell: SwipeableCollectionViewCell {
     
+    public static let identifier = String(describing: IssueCollectionViewCell.self)
+    
     var issueContentView = IssueContentView()
+    
+    var isEditing: Bool = false {
+        didSet {
+            UIView.animate(withDuration: 0.3) {
+                self.issueContentView.checkView.isHidden = !self.isEditing
+            }
+            scrollView.isScrollEnabled = !isEditing
+        }
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            issueContentView.checkImageView.image
+            = isSelected ? UIImage(systemName: "checkmark.circle.fill") : UIImage(systemName: "circle")
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,7 +40,12 @@ final class IssueCollectionViewCell: SwipeableCollectionViewCell {
         setupSubviews()
     }
     
+    func configure(isEditing: Bool) {
+        self.isEditing = isEditing
+    }
+    
     private func setupSubviews() {
+        
         visibleContainerView.backgroundColor = .white
         
         visibleContainerView.addSubview(issueContentView)

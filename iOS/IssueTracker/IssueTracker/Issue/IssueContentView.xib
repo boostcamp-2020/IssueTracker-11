@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IssueContentView" customModule="IssueTracker" customModuleProvider="target">
             <connections>
+                <outlet property="checkImageView" destination="ZL4-8L-Tma" id="xDl-m7-Tct"/>
+                <outlet property="checkView" destination="0r8-xG-Tl7" id="YZ2-pZ-c5t"/>
                 <outlet property="contentLabel" destination="vmH-HR-wJH" id="npm-1G-kBu"/>
                 <outlet property="issueLabelLabel" destination="RxR-d1-neV" id="8rS-an-NTs"/>
                 <outlet property="milestoneLabel" destination="soW-h2-QFf" id="fzl-pI-szk"/>
@@ -20,11 +22,29 @@
             <rect key="frame" x="0.0" y="0.0" width="409" height="88"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="yAq-8A-FCP">
-                    <rect key="frame" x="16" y="10" width="377" height="68"/>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yAq-8A-FCP">
+                    <rect key="frame" x="16" y="10" width="421" height="68"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0r8-xG-Tl7">
+                            <rect key="frame" x="0.0" y="0.0" width="36" height="68"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZL4-8L-Tma">
+                                    <rect key="frame" x="0.0" y="24.5" width="20" height="19"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="Cnu-y8-uWH"/>
+                                        <constraint firstAttribute="width" constant="20" id="pCk-j6-wXL"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="ZL4-8L-Tma" firstAttribute="leading" secondItem="0r8-xG-Tl7" secondAttribute="leading" id="k0y-xD-gwd"/>
+                                <constraint firstItem="ZL4-8L-Tma" firstAttribute="centerY" secondItem="0r8-xG-Tl7" secondAttribute="centerY" id="kDu-GC-fml"/>
+                                <constraint firstAttribute="trailing" secondItem="ZL4-8L-Tma" secondAttribute="trailing" constant="16" id="siR-e5-Buc"/>
+                            </constraints>
+                        </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="2Tq-Aj-zZt">
-                            <rect key="frame" x="0.0" y="0.0" width="308" height="62.5"/>
+                            <rect key="frame" x="41" y="0.0" width="308" height="62.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5AW-fx-92D">
                                     <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
@@ -40,11 +60,11 @@
                                 </label>
                             </subviews>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" axis="vertical" alignment="bottom" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="GDt-QL-GV8">
-                            <rect key="frame" x="308" y="0.0" width="69" height="41"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="GDt-QL-GV8">
+                            <rect key="frame" x="354" y="0.0" width="67" height="49"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스프린트2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soW-h2-QFf" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
-                                    <rect key="frame" x="12" y="0.0" width="57" height="17"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="67" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -58,7 +78,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxR-d1-neV" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
-                                    <rect key="frame" x="33.5" y="24" width="35.5" height="17"/>
+                                    <rect key="frame" x="21.5" y="28" width="45.5" height="21"/>
                                     <color key="backgroundColor" red="0.74509803919999995" green="0.85882352939999995" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="textColor"/>
@@ -76,7 +96,7 @@
                         </stackView>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="GDt-QL-GV8" firstAttribute="width" secondItem="yAq-8A-FCP" secondAttribute="width" multiplier="0.183036" id="dy6-S1-zog"/>
+                        <constraint firstItem="0r8-xG-Tl7" firstAttribute="height" secondItem="yAq-8A-FCP" secondAttribute="height" id="jVW-2t-7rP"/>
                     </constraints>
                 </stackView>
             </subviews>
@@ -85,11 +105,15 @@
                 <constraint firstItem="yAq-8A-FCP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="AwV-JJ-7HA"/>
                 <constraint firstItem="yAq-8A-FCP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="MEj-20-O11"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="yAq-8A-FCP" secondAttribute="bottom" constant="10" id="UyV-XS-avu"/>
-                <constraint firstAttribute="trailing" secondItem="yAq-8A-FCP" secondAttribute="trailing" constant="16" id="oad-lD-H3d"/>
+                <constraint firstItem="2Tq-Aj-zZt" firstAttribute="width" secondItem="vUN-kp-3ea" secondAttribute="width" multiplier="0.753056" id="dFg-WN-Biu"/>
+                <constraint firstAttribute="trailing" secondItem="yAq-8A-FCP" secondAttribute="trailing" priority="250" constant="16" id="oad-lD-H3d"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="128.2608695652174" y="-91.071428571428569"/>
         </view>
     </objects>
+    <resources>
+        <image name="circle" catalog="system" width="128" height="121"/>
+    </resources>
 </document>
