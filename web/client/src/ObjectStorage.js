@@ -11,6 +11,11 @@ class ObjectStorage {
         this.requestType = 'aws4_requset';
         this.hasedPayload = 'UNSIGNED-PAYLOAD';
         this.hashingAlgorithm = 'AWS4-HMAC-SHA256';
+        this.headers = {
+            'x-amz-date': null,
+            'x-amz-content-sha256': this.hasedPayload,
+            host: this.hostUrl,
+        };
     }
 
     getUtcTime(dateString) {
@@ -23,6 +28,26 @@ class ObjectStorage {
 
         dateString = dateString.split('.')[0] + 'Z';
         return dateString;
+    }
+
+    getAuthorizationHeader(httpMethod, bucketName, objectName, requestParams) {
+        const timeStamp = this.getUtcTime(new Date().toISOString());
+        const dateStamp = timeStamp.split('T')[0];
+        const requestPath = `/${bucketName}/${objectName}`;
+
+        const credentialScope = this._createCredentialScope(dateStamp);
+        const canonicalReq = this._createCanonicalReq(httpMethod, requestPath, requestParams, this.headers);
+        const stringToSign = this._createStringToSign(timeStamp, credentialScope, canonicalReq);
+        const signatureKey = this._createSignautreKey(dateStamp);
+
+        return this._createAuthorizationHeaders(this.headers, signatureKey, stringToSign, credentialScope);
+    }
+
+    setAuthorization(timeStamp, payload, host, authorization) {
+        this.headers['x-amz-date'] = timeStamp;
+        this.headers['x-content-sha256'] = payload;
+        this.headers['host'] = host;
+        this.headers['Authorization'] = authorization;
     }
 }
 
