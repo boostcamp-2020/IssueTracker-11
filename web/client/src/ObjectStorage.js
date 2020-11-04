@@ -12,6 +12,18 @@ class ObjectStorage {
         this.hasedPayload = 'UNSIGNED-PAYLOAD';
         this.hashingAlgorithm = 'AWS4-HMAC-SHA256';
     }
+
+    getUtcTime(dateString) {
+        const chars = [':', '-'];
+        chars.forEach((char) => {
+            while (dateString.indexOf(char) !== -1) {
+                dateString = dateString.replace(char, '');
+            }
+        });
+
+        dateString = dateString.split('.')[0] + 'Z';
+        return dateString;
+    }
 }
 
 export default ObjectStorage;
