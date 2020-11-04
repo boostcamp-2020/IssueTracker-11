@@ -122,6 +122,18 @@ class ObjectStorage {
             this.headers,
         );
         this.setAuthorization(authorizationHeader);
+
+        const fullUrl = `https://${this.hostUrl}/${bucketName}/${objectName}`;
+        fetch(fullUrl, {
+            method: httpMethod,
+            headers: this.headers,
+        })
+            .then((res) => {
+                console.log(res.status);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 }
 
