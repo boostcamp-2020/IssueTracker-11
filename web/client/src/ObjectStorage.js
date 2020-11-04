@@ -88,8 +88,8 @@ class ObjectStorage {
 
         return `${this.hashingAlgorithm} Credential=${this.accessKey}/${credentialScope}, SignedHeaders=${signedHeaders}, Signature=${signature}`;
     }
-    getAuthorizationHeader(httpMethod, bucketName, objectName, requestParams) {
-        const timeStamp = this.getUtcTime(new Date().toISOString());
+    getAuthorizationHeader(httpMethod, bucketName, objectName, requestParams, headers) {
+        const timeStamp = headers['x-amz-date'];
         const dateStamp = timeStamp.split('T')[0];
         const requestPath = `/${bucketName}/${objectName}`;
 
@@ -101,11 +101,27 @@ class ObjectStorage {
         return this._createAuthorizationHeaders(this.headers, signatureKey, stringToSign, credentialScope);
     }
 
-    setAuthorization(timeStamp, payload, host, authorization) {
-        this.headers['x-amz-date'] = timeStamp;
-        this.headers['x-content-sha256'] = payload;
-        this.headers['host'] = host;
+    setAuthorization(authorization) {
         this.headers['Authorization'] = authorization;
+    }
+    initHeaders(timeStamp, payload, host) {
+        this.headers['x-amz-date'] = timeStamp;
+        this.headers['x-amz-content-sha256'] = payload;
+        this.headers['host'] = host;
+    }
+    getObject(bucketName, objectName, requestParams = undefined) {
+        const time = this.getUtcTime(new Date().toISOString());
+        const httpMethod = 'GET';
+        this.initHeaders(time, this.hashedPayload, this.hostUrl);
+
+        const authorizationHeader = this.getAuthorizationHeader(
+            httpMethod,
+            bucketName,
+            objectName,
+            requestParams,
+            this.headers,
+        );
+        this.setAuthorization(authorizationHeader);
     }
 }
 
