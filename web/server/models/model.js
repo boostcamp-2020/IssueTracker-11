@@ -27,9 +27,8 @@ class Model {
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
-            const result = await conn.query(this.POST_QUERY, POST_DATA);
+            await conn.query(this.POST_QUERY, POST_DATA);
             await conn.commit();
-            return result;
         } catch (error) {
             conn.rollback();
             console.error(error);
@@ -42,9 +41,8 @@ class Model {
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
-            const result = await conn.query(this.PUT_QUERY(PUT_DATA) + ID);
+            await conn.query(this.PUT_QUERY(PUT_DATA) + ID);
             await conn.commit();
-            return result;
         } catch (error) {
             conn.rollback();
             console.error(error);
@@ -57,9 +55,8 @@ class Model {
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
-            const result = await conn.query(this.DELETE_QUERY + ID);
+            await conn.query(this.DELETE_QUERY + ID);
             await conn.commit();
-            return result;
         } catch (error) {
             conn.rollback();
             console.error(error);
@@ -72,9 +69,8 @@ class Model {
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
-            const result = await conn.query(this.PATCH_QUERY[OPTION] + ID);
+            await conn.query(this.PATCH_QUERY[OPTION] + ID);
             await conn.commit();
-            return result;
         } catch (error) {
             conn.rollback();
             console.error(error);

@@ -6,9 +6,10 @@ class IssueLabelController extends Controller {
         super(issueLabelsModel);
     }
 
+    getIssueLablesData = (req) => [req.params.id, req.body.ids];
+
     post = async (req, res) => {
-        const label_id = req.params.id;
-        const ids = req.body.ids;
+        const [label_id, ids] = this.getIssueLablesData(req);
 
         try {
             await ids.forEach((issue_id) => {
@@ -21,13 +22,13 @@ class IssueLabelController extends Controller {
     };
 
     delete = async (req, res) => {
-        const label_id = req.params.id;
-        const ids = req.body.ids;
+        const [label_id, ids] = this.getIssueLablesData(req);
+
         try {
             await ids.forEach((issue_id) => {
                 this.Model.delete(label_id, issue_id);
             });
-            return res.status(201).send('Created'); // TODO : To modify
+            return res.status(200).send('OK'); // TODO : To modify
         } catch (error) {
             res.status(500).send({ result: error.message });
         }

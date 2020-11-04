@@ -15,8 +15,8 @@ class LabelController extends Controller {
         }
 
         try {
-            const results = await this.Model.post({ name, description, color });
-            return !results ? res.status(202).send('Accepted') : res.status(201).send('Created');
+            await this.Model.post({ name, description, color });
+            res.status(201).send('Created');
         } catch (error) {
             res.status(500).send({ result: error.message });
         }
@@ -26,16 +26,13 @@ class LabelController extends Controller {
         const { name, description, color } = req.body;
         const id = req.params.id;
 
-        if (!name || (!!description && description.length > DESCRIPTION_LIMIT)) {
-            return res.status(422).send('Unprocessable Entity');
-        }
-        if (!id) {
+        if (!name || !id || (!!description && description.length > DESCRIPTION_LIMIT)) {
             return res.status(422).send('Unprocessable Entity');
         }
 
         try {
-            const results = await this.Model.put({ name, description, color }, id);
-            return !results ? res.status(202).send('Accepted') : res.status(201).send('Created'); // TODO : To modify
+            await this.Model.put({ name, description, color }, id);
+            res.status(200).send('OK'); // TODO : To modify
         } catch (error) {
             res.status(500).send({ result: error.message });
         }

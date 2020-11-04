@@ -14,7 +14,7 @@ class issueMilestonesController extends Controller {
             await ids.forEach((issue_id) => {
                 this.Model.post({ milestone_id }, issue_id);
             });
-            return res.status(201).send('Created'); // TODO : To modify
+            return res.status(201).send('Created');
         } catch (error) {
             res.status(500).send({ result: error.message });
         }
@@ -26,7 +26,7 @@ class issueMilestonesController extends Controller {
             await ids.forEach((issue_id) => {
                 this.Model.delete(issue_id);
             });
-            return res.status(201).send('Created'); // TODO : To modify
+            return res.status(200).send('OK');
         } catch (error) {
             res.status(500).send({ result: error.message });
         }

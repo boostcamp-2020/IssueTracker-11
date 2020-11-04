@@ -6,10 +6,10 @@ class AssigneeController extends Controller {
         super(assigneeModel);
     }
 
-    post = async (req, res) => {
-        const user_id = req.params.id;
-        const ids = req.body.ids;
+    getAssigneesData = (req) => [req.params.id, req.body.ids];
 
+    post = async (req, res) => {
+        const [user_id, ids] = this.getAssigneesData(req);
         try {
             await ids.forEach((issue_id) => {
                 this.Model.post({ issue_id, user_id });
@@ -21,13 +21,12 @@ class AssigneeController extends Controller {
     };
 
     delete = async (req, res) => {
-        const user_id = req.params.id;
-        const ids = req.body.ids;
+        const [user_id, ids] = this.getAssigneesData(req);
         try {
             await ids.forEach((issue_id) => {
                 this.Model.delete(user_id, issue_id);
             });
-            return res.status(201).send('Created'); // TODO : To modify
+            return res.status(200).send('OK');
         } catch (error) {
             res.status(500).send({ result: error.message });
         }

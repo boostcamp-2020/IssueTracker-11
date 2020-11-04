@@ -17,9 +17,8 @@ class issueLabelsModel extends Model {
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
-            const result = await conn.query(this.DELETE_QUERY(user_id, issue_id));
+            await conn.query(this.DELETE_QUERY(user_id, issue_id));
             await conn.commit();
-            return result;
         } catch (error) {
             conn.rollback();
             console.error(error);

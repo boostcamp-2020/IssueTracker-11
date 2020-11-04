@@ -28,8 +28,8 @@ class CommentController extends Controller {
         }
 
         try {
-            const results = await this.Model.post({ issue_id, contents, author });
-            return !results ? res.status(202).send('Accepted') : res.status(201).send('Created');
+            await this.Model.post({ issue_id, contents, author });
+            return res.status(201).send('Created');
         } catch (error) {
             res.status(500).send({ result: error.message });
         }
@@ -44,8 +44,8 @@ class CommentController extends Controller {
         }
 
         try {
-            const results = await this.Model.put({ issue_id, contents, author }, id);
-            return !results ? res.status(202).send('Accepted') : res.status(201).send('Created'); // TODO : To modify
+            await this.Model.put({ issue_id, contents, author }, id);
+            return res.status(200).send('OK');
         } catch (error) {
             res.status(500).send({ result: error.message });
         }

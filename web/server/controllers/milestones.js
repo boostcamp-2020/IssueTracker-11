@@ -15,8 +15,8 @@ class MilestoneController extends Controller {
         }
 
         try {
-            const results = await this.Model.post({ title, description, due_date });
-            return !results ? res.status(202).send('Accepted') : res.status(201).send('Created');
+            await this.Model.post({ title, description, due_date });
+            res.status(201).send('Created');
         } catch (error) {
             res.status(500).send({ result: error.message });
         }
@@ -26,16 +26,13 @@ class MilestoneController extends Controller {
         const { title, description, due_date } = req.body;
         const id = req.params.id;
 
-        if (!title || (!!description && description.length > DESCRIPTION_LIMIT)) {
-            return res.status(422).send('Unprocessable Entity');
-        }
-        if (!id) {
+        if (!title || !id || (!!description && description.length > DESCRIPTION_LIMIT)) {
             return res.status(422).send('Unprocessable Entity');
         }
 
         try {
-            const results = await this.Model.put({ title, description, due_date }, id);
-            return !results ? res.status(202).send('Accepted') : res.status(201).send('Created'); // TODO : To modify
+            await this.Model.put({ title, description, due_date }, id);
+            res.status(200).send('OK');
         } catch (error) {
             res.status(500).send({ result: error.message });
         }

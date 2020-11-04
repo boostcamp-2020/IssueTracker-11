@@ -16,9 +16,8 @@ class issueLabelsModel extends Model {
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
-            const result = await conn.query(this.POST_QUERY(PUT_DATA) + ID);
+            await conn.query(this.POST_QUERY(PUT_DATA) + ID);
             await conn.commit();
-            return result;
         } catch (error) {
             conn.rollback();
             console.error(error);
@@ -31,9 +30,8 @@ class issueLabelsModel extends Model {
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
-            const result = await conn.query(this.DELETE_QUERY + ID);
+            await conn.query(this.DELETE_QUERY + ID);
             await conn.commit();
-            return result;
         } catch (error) {
             conn.rollback();
             console.error(error);
