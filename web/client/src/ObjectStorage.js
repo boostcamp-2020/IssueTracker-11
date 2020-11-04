@@ -74,6 +74,14 @@ class ObjectStorage {
 
         return `${this.hashingAlgorithm}\n${timeStamp}\n${credentialScope}\n${hashedCanonicalReq}`;
     }
+    _createSignautreKey(dateStamp) {
+        const keyDate = cryptoJs.HmacSHA256(dateStamp, `AWS4${this.secretKey}`);
+        const keyRegion = cryptoJs.HmacSHA256(this.region, keyDate);
+        const keyService = cryptoJs.HmacSHA256(this.serviceName, keyRegion);
+        const keySigning = cryptoJs.HmacSHA256(this.requestType, keyService);
+
+        return keySigning;
+    }
     getAuthorizationHeader(httpMethod, bucketName, objectName, requestParams) {
         const timeStamp = this.getUtcTime(new Date().toISOString());
         const dateStamp = timeStamp.split('T')[0];
