@@ -35,6 +35,9 @@
 		970CAD57254A73B60076691E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 970CAD55254A73B60076691E /* LaunchScreen.storyboard */; };
 		970CAD62254A73B60076691E /* IssueTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970CAD61254A73B60076691E /* IssueTrackerTests.swift */; };
 		9724708A25501AF800285073 /* MilestoneDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9724708925501AF800285073 /* MilestoneDetailViewController.swift */; };
+		974574FA2552DDA8007E1F04 /* BottomMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 974574F92552DDA8007E1F04 /* BottomMenuView.xib */; };
+		974574FC2552DDB3007E1F04 /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974574FB2552DDB3007E1F04 /* BottomMenuView.swift */; };
+		974574FE2552DED7007E1F04 /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974574FD2552DED7007E1F04 /* UICollectionView+.swift */; };
 		9763DFF0254B361200BCBD6A /* CreationFormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9763DFEF254B361200BCBD6A /* CreationFormType.swift */; };
 		97664C66254A83CB005B98A7 /* CreationFormView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97664C65254A83CB005B98A7 /* CreationFormView.xib */; };
 		97664C68254A91CA005B98A7 /* CreationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97664C67254A91CA005B98A7 /* CreationFormView.swift */; };
@@ -93,6 +96,9 @@
 		970CAD61254A73B60076691E /* IssueTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTrackerTests.swift; sourceTree = "<group>"; };
 		970CAD63254A73B60076691E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9724708925501AF800285073 /* MilestoneDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneDetailViewController.swift; sourceTree = "<group>"; };
+		974574F92552DDA8007E1F04 /* BottomMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomMenuView.xib; sourceTree = "<group>"; };
+		974574FB2552DDB3007E1F04 /* BottomMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
+		974574FD2552DED7007E1F04 /* UICollectionView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
 		9763DFEF254B361200BCBD6A /* CreationFormType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationFormType.swift; sourceTree = "<group>"; };
 		97664C65254A83CB005B98A7 /* CreationFormView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreationFormView.xib; sourceTree = "<group>"; };
 		97664C67254A91CA005B98A7 /* CreationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationFormView.swift; sourceTree = "<group>"; };
@@ -147,6 +153,7 @@
 				7C13044725502AE2003AE6A1 /* UIColor+.swift */,
 				97DAB2CA255034DE002C3E21 /* String+.swift */,
 				9793CFB325516101006235B1 /* UIView+.swift */,
+				974574FD2552DED7007E1F04 /* UICollectionView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -164,6 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				7C13044B25511DC0003AE6A1 /* IssueMainViewController.swift */,
+				974574FB2552DDB3007E1F04 /* BottomMenuView.swift */,
+				974574F92552DDA8007E1F04 /* BottomMenuView.xib */,
 				7C13044D25511F9A003AE6A1 /* IssueCollectionViewCell.swift */,
 				7C13044F25512AB5003AE6A1 /* SwipeableCollectionViewCell.swift */,
 				7C130451255132E7003AE6A1 /* IssueContentView.xib */,
@@ -382,6 +391,7 @@
 			files = (
 				970CAD57254A73B60076691E /* LaunchScreen.storyboard in Resources */,
 				7C2A9052254BA60500AFC5C4 /* Issue.storyboard in Resources */,
+				974574FA2552DDA8007E1F04 /* BottomMenuView.xib in Resources */,
 				7C2A9056254BA61F00AFC5C4 /* Milestone.storyboard in Resources */,
 				97664C66254A83CB005B98A7 /* CreationFormView.xib in Resources */,
 				970CAD54254A73B60076691E /* Assets.xcassets in Resources */,
@@ -473,7 +483,9 @@
 			files = (
 				9763DFF0254B361200BCBD6A /* CreationFormType.swift in Sources */,
 				7C130443254FEEB0003AE6A1 /* LabelAddViewController.swift in Sources */,
+				974574FC2552DDB3007E1F04 /* BottomMenuView.swift in Sources */,
 				970CAD4F254A73B50076691E /* ViewController.swift in Sources */,
+				974574FE2552DED7007E1F04 /* UICollectionView+.swift in Sources */,
 				97A1930F255270FD00A4B9D7 /* CircleButton.swift in Sources */,
 				977B9C54254FA7A500D00B28 /* MilestoneMainViewController.swift in Sources */,
 				7C13043E254FC989003AE6A1 /* LabelCollectionViewCell.swift in Sources */,
