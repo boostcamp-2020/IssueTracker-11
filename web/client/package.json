@@ -37,6 +37,7 @@
         "webpack-dev-server": "^3.11.0"
     },
     "dependencies": {
+        "crypto-js": "^4.0.0",
         "react": "17.0.0",
         "react-dom": "17.0.0",
         "react-scripts": "3.4.3"
