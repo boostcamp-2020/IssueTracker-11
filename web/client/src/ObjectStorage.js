@@ -50,6 +50,15 @@ class ObjectStorage {
             return res;
         }, '');
     }
+    _createSignedHeaders(headers) {
+        const keys = Object.keys(headers);
+        keys.sort();
+
+        return keys.reduce((res, key) => {
+            res += `${key.toLowerCase()};`;
+            return res;
+        }, '');
+    }
     _createCredentialScope(dateStamp) {
         return `${dateStamp}/${this.region}/${this.serviceName}/${this.requestType}`;
     }
