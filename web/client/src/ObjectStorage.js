@@ -29,6 +29,18 @@ class ObjectStorage {
         dateString = dateString.split('.')[0] + 'Z';
         return dateString;
     }
+    _createCanonicalQueryParams(requsetParams) {
+        let canonicalQueryParams = '';
+        if (!requsetParams) return '';
+
+        const keys = Object.keys(requsetParams);
+        canonicalQueryParams = keys.reduce((res, key) => {
+            res += `${key}=${encodeURI(requsetParams[key])}&`;
+            return res;
+        }, '');
+
+        return canonicalQueryParams.slice(0, -1);
+    }
     _createCredentialScope(dateStamp) {
         return `${dateStamp}/${this.region}/${this.serviceName}/${this.requestType}`;
     }
