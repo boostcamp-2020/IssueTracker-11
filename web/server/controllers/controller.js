@@ -19,8 +19,9 @@ class Controller {
     put = async (req, res) => {};
 
     delete = async (req, res) => {
-        const id = req.params.id || req.body.ids;
-        const ids = [...id];
+        const id = Number(req.params.id || req.body.ids);
+        const ids = typeof id === 'object' ? [...id] : [id];
+
         try {
             ids.forEach((id) => {
                 this.Model.delete(id);
@@ -32,8 +33,8 @@ class Controller {
     };
 
     patch = async (req, res) => {
-        const id = req.params.id || req.body.ids;
-        const ids = [...id];
+        const id = Number(req.params.id || req.body.ids);
+        const ids = typeof id === 'object' ? [...id] : [id];
         try {
             const OPTION = req.originalUrl.includes('status') ? OPEN_CLOSED : SOFT_DELETE;
             ids.forEach((id) => {

@@ -22,10 +22,8 @@ class issueMilestonesController extends Controller {
 
     delete = async (req, res) => {
         const ids = req.body.ids;
-        console.log(ids);
         try {
             await ids.forEach((issue_id) => {
-                console.log(issue_id);
                 this.Model.delete(issue_id);
             });
             return res.status(201).send('Created'); // TODO : To modify
@@ -34,24 +32,5 @@ class issueMilestonesController extends Controller {
         }
     };
 }
-/**
- *
- * 
-	put = async (req, res) => {
-        const { issue_id, contents, author } = req.body;
-        const id = req.params.id;
-
-        if (!issue_id || !author || (!!contents && contents.length > CONTENT_LIMIT)) {
-            return res.status(422).send('Unprocessable Entity');
-        }
-
-        try {
-            const results = await this.Model.put({ issue_id, contents, author }, id);
-            return !results ? res.status(202).send('Accepted') : res.status(201).send('Created'); // TODO : To modify
-        } catch (error) {
-            res.status(500).send({ result: error.message });
-        }
-    };
- */
 
 export default new issueMilestonesController(issueMilestonesModel);
