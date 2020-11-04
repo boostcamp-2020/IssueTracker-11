@@ -6,4 +6,24 @@
 //  Copyright © 2020 김근수. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension UICollectionView {
+    
+    public func selectAll() {
+        for section in 0..<self.numberOfSections {
+            for item in 0..<self.numberOfItems(inSection: section) {
+                self.selectItem(at: IndexPath(item: item, section: section), animated: false, scrollPosition: [])
+            }
+        }
+    }
+    
+    public func deselectAll() {
+        for section in 0..<self.numberOfSections {
+            for item in 0..<self.numberOfItems(inSection: section) {
+                self.deselectItem(at: IndexPath(item: item, section: section), animated: false)
+            }
+        }
+    }
+    
+}
