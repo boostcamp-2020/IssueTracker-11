@@ -14,6 +14,8 @@ class IssueContentView: UIView {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var milestoneLabel: BadgeLabel!
     @IBOutlet weak var issueLabelLabel: BadgeLabel!
+    @IBOutlet weak var checkView: UIView!
+    @IBOutlet weak var checkImageView: UIImageView!
     
     // MARK: - Life Cycle
     
