@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FilterDataSource: NSObject, UITableViewDataSource {
+final class FilterDataSource: NSObject, UITableViewDataSource {
     
     enum Section {
         case plain
@@ -52,6 +52,7 @@ class FilterDataSource: NSObject, UITableViewDataSource {
         case .detail:
             cell.configure(title: detailFilterOptions?[indexPath.row].description)
             cell.accessoryType = .disclosureIndicator
+            cell.checkImageView?.alpha = 0
         }
         
         return cell
