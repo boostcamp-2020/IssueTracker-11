@@ -12,7 +12,7 @@ protocol InsertPhotoDelegate: class {
     func showPhotoPicker()
 }
 
-class ContentTextView: UITextView {
+final class ContentTextView: UITextView {
     
     private var placeholderText = "코멘트는 여기에 작성하세요"
     weak var photoDelegate: InsertPhotoDelegate?
@@ -36,7 +36,7 @@ class ContentTextView: UITextView {
             || action == #selector(insertPhotoDidTap)
     }
     
-    @objc func insertPhotoDidTap() {
+    @objc private func insertPhotoDidTap() {
         photoDelegate?.showPhotoPicker()
     }
     
