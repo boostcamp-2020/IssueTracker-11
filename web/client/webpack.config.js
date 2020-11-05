@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env, options) => {
     const config = {
@@ -28,7 +28,6 @@ module.exports = (env, options) => {
                 '@organisms': path.resolve(__dirname, 'src/components/organisms'),
                 '@pages': path.resolve(__dirname, 'src/components/pages'),
                 '@templates': path.resolve(__dirname, 'src/components/templates'),
-                '@themes': path.resolve(__dirname, 'src/components/themes'),
             },
         },
         module: {
@@ -74,11 +73,11 @@ module.exports = (env, options) => {
             new CleanWebpackPlugin(),
             new webpack.HotModuleReplacementPlugin(),
             new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, "./public/index.html"),
+                template: path.resolve(__dirname, './public/index.html'),
                 showErrors: true,
-                filename: path.join(__dirname, './dist/index.html')
+                filename: path.join(__dirname, './dist/index.html'),
             }),
-        ]
+        ],
     };
 
     if (options.mode === 'development') {
