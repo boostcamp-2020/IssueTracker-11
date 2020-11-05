@@ -8,30 +8,40 @@
 
 import UIKit
 
+protocol InsertPhotoDelegate: class {
+    func photoToURL()
+}
+
 class ContentTextView: UITextView {
     
     private var placeholderText = "코멘트는 여기에 작성하세요"
+    weak var photoDelegate: InsertPhotoDelegate?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        delegate = self
+        addMenuItem()
+    }
+    
+}
+
+extension ContentTextView {
+    
+    private func addMenuItem() {
+        let insertPhotoMenu = UIMenuItem(title: "Insert Photo",
+                                         action: #selector(insertPhotoDidTap))
+        UIMenuController.shared.menuItems = [insertPhotoMenu]
+    }
     
     override func canPerformAction(_ action: Selector,
                                    withSender sender: Any?) -> Bool {
-        
-        return action == #selector(insertPhotoDidTap)
-            || action == #selector(cut(_:))
-            || action == #selector(paste(_:))
+        return action == #selector(cut(_:))
+            || action == #selector(copy(_:))
+            || action == #selector(insertPhotoDidTap)
     }
     
     @objc func insertPhotoDidTap() {
-        print("didTap")
-    }
-    
-    private func setTextView() {
-        if self.text == placeholderText {
-            self.text = nil
-            self.textColor = .black
-        } else if self.text.isEmpty {
-            self.text = placeholderText
-            self.textColor =  .lightGray
-        }
+        photoDelegate?.photoToURL()
     }
     
 }
@@ -52,8 +62,16 @@ extension ContentTextView: UITextViewDelegate {
         if text == "\n" {
             textView.resignFirstResponder()
         }
-        
         return true
     }
     
+    private func setTextView() {
+        if self.text == placeholderText {
+            self.text = nil
+            self.textColor = .black
+        } else if self.text.isEmpty {
+            self.text = placeholderText
+            self.textColor = .lightGray
+        }
+    }
 }
