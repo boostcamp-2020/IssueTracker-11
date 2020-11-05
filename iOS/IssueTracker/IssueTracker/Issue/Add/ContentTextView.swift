@@ -9,7 +9,7 @@
 import UIKit
 
 protocol InsertPhotoDelegate: class {
-    func photoToURL()
+    func showPhotoPicker()
 }
 
 class ContentTextView: UITextView {
@@ -22,10 +22,6 @@ class ContentTextView: UITextView {
         delegate = self
         addMenuItem()
     }
-    
-}
-
-extension ContentTextView {
     
     private func addMenuItem() {
         let insertPhotoMenu = UIMenuItem(title: "Insert Photo",
@@ -41,7 +37,7 @@ extension ContentTextView {
     }
     
     @objc func insertPhotoDidTap() {
-        photoDelegate?.photoToURL()
+        photoDelegate?.showPhotoPicker()
     }
     
 }
@@ -74,4 +70,5 @@ extension ContentTextView: UITextViewDelegate {
             self.textColor = .lightGray
         }
     }
+    
 }
