@@ -12,9 +12,20 @@ class IssueFilterViewController: UIViewController {
 
     @IBOutlet weak var filterTableView: UITableView!
     
+    let filterDataSource = FilterDataSource()
+    let plainOptions = PlainFilterOption.allCases
+    let detailOptions = DetailFilterOption.allCases
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        filterTableView.dataSource = self
+        
+        configureDataSource()
+    }
+    
+    private func configureDataSource() {
+        filterDataSource.plainFilterOptions = plainOptions
+        filterDataSource.detailFilterOptions = detailOptions
+        filterTableView.dataSource = filterDataSource
     }
     
     @IBAction func cancelButtonDidTap(_ sender: UIBarButtonItem) {
@@ -22,60 +33,6 @@ class IssueFilterViewController: UIViewController {
     }
     
     @IBAction func doneButtonDidTap(_ sender: UIBarButtonItem) {
-    }
-    
-}
-
-extension IssueFilterViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let title: String
-        switch section {
-        case 0:
-            title = IssueFilterOption.sectionTitle
-        case 1:
-            title = IssueFilterDetailOption.sectionTitle
-        default:
-            return ""
-        }
-        
-        return title
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return IssueFilterOption.allCases.count
-        case 1:
-            return IssueFilterDetailOption.allCases.count
-        default:
-            return 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let section = indexPath.section
-        
-        switch section {
-        case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlainCell")
-                as? PlainFilterTableViewCell else { return UITableViewCell() }
-            cell.titleLabel.text = IssueFilterOption.allCases[indexPath.row].description
-            return cell
-        case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell") else {
-                return UITableViewCell()
-            }
-            cell.textLabel?.text = IssueFilterDetailOption.allCases[indexPath.row].description
-            return cell
-        default:
-            return UITableViewCell()
-        }
     }
     
 }
