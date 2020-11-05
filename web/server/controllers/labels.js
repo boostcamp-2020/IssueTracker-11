@@ -32,7 +32,7 @@ class LabelController extends Controller {
 
         try {
             await this.Model.put({ name, description, color }, id);
-            res.status(200).send('OK'); // TODO : To modify
+            res.status(200).send('OK');
         } catch (error) {
             res.status(500).send({ result: error.message });
         }

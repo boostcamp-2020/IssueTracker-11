@@ -1,6 +1,7 @@
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
 dotenv.config();
+console.log(process.env.DB_HOST);
 
 const option = {
     host: process.env.DB_HOST,

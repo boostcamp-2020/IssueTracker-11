@@ -26,7 +26,7 @@ class Controller {
             ids.forEach((id) => {
                 this.Model.delete(id);
             });
-            return res.status(201).send('Created'); // TODO : To modify
+            return res.status(200).send('OK');
         } catch (error) {
             res.status(500).send({ result: error.message });
         }
@@ -40,7 +40,7 @@ class Controller {
             ids.forEach((id) => {
                 this.Model.patch(id, OPTION);
             });
-            return res.status(201).send('Created');
+            return res.status(200).send('OK');
         } catch (error) {
             res.status(500).send({ result: error.message });
         }

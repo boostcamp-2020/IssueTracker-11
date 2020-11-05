@@ -28,7 +28,7 @@ class IssueLabelController extends Controller {
             await ids.forEach((issue_id) => {
                 this.Model.delete(label_id, issue_id);
             });
-            return res.status(200).send('OK'); // TODO : To modify
+            return res.status(200).send('OK');
         } catch (error) {
             res.status(500).send({ result: error.message });
         }
