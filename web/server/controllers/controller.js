@@ -5,6 +5,7 @@ class Controller {
     constructor(Model) {
         this.Model = Model;
     }
+
     get = async (req, res) => {
         try {
             const [result] = await this.Model.get();
@@ -18,27 +19,28 @@ class Controller {
     put = async (req, res) => {};
 
     delete = async (req, res) => {
-        const id = req.params.id || req.body.ids;
-        const ids = [...id];
+        const id = Number(req.params.id || req.body.ids);
+        const ids = typeof id === 'object' ? [...id] : [id];
+
         try {
             ids.forEach((id) => {
                 this.Model.delete(id);
             });
-            return res.status(201).send('Created'); // TODO : To modify
+            return res.status(200).send('OK');
         } catch (error) {
             res.status(500).send({ result: error.message });
         }
     };
 
     patch = async (req, res) => {
-        const id = req.params.id || req.body.ids;
-        const ids = [...id];
+        const id = Number(req.params.id || req.body.ids);
+        const ids = typeof id === 'object' ? [...id] : [id];
         try {
             const OPTION = req.originalUrl.includes('status') ? OPEN_CLOSED : SOFT_DELETE;
             ids.forEach((id) => {
                 this.Model.patch(id, OPTION);
             });
-            return res.status(201).send('Created');
+            return res.status(200).send('OK');
         } catch (error) {
             res.status(500).send({ result: error.message });
         }
