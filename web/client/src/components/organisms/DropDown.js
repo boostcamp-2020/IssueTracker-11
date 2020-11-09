@@ -1,12 +1,13 @@
 import React from 'react';
 import DropDownMenu from '../molecules/DropDownMenu';
 import styled from 'styled-components';
-import Button from '../atoms/Button';
+import { StyledButton } from '../atoms/Button';
+
 const StyledDropDown = styled.div`
     position: relative;
 `;
 
-const Padding = styled.div`
+const DropDownButton = styled(StyledButton)`
     padding: 0 16px;
 `;
 const DropDown = ({ subject, isClicked }) => {
@@ -14,10 +15,9 @@ const DropDown = ({ subject, isClicked }) => {
 
     return (
         <StyledDropDown>
-            <Padding>
-                <Button backgroundColor="transparent" text={subject} height="auto" width="auto" />
-            </Padding>
-
+            <DropDownButton backgroundColor="transparent" text={subject} height="auto" width="auto">
+                {subject}
+            </DropDownButton>
             {isClicked ? <DropDownMenu items={items} title={subject} /> : null}
         </StyledDropDown>
     );

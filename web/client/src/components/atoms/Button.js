@@ -39,6 +39,7 @@ Button.defaultProps = {
     height: '30px',
     border: 'none',
     fontColor: 'black',
+    backgroundColor: 'red',
 };
 
-export default Button;
+export { Button, StyledButton };
