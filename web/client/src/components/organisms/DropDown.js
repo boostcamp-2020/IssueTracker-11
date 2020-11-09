@@ -1,7 +1,7 @@
 import React from 'react';
-import DropDownMenu from '../molecules/DropDownMenu';
 import styled from 'styled-components';
-import { StyledButton } from '../atoms/Button';
+import { StyledButton } from '@atoms/Button';
+import DropDownMenu from '@molecules/DropDownMenu';
 
 const StyledDropDown = styled.div`
     position: relative;

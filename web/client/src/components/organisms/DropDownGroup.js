@@ -1,6 +1,6 @@
 import React from 'react';
-import DropDown from './DropDown';
 import styled from 'styled-components';
+import DropDown from '@organisms/DropDown';
 const StyledDropDownGroup = styled.ul`
     & {
         border: 1px solid red;

@@ -1,6 +1,6 @@
 import React from 'react';
-import ListItem from '../atoms/ListItem';
 import styled from 'styled-components';
+import ListItem from '@atoms/ListItem';
 
 const StyledTitle = styled.p`
     margin: 0;

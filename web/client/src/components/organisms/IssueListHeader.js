@@ -1,7 +1,7 @@
 import React from 'react';
-import CheckBox from '../atoms/CheckBox';
-import DropDownGroup from './DropDownGroup';
 import styled from 'styled-components';
+import CheckBox from '@atoms/CheckBox';
+import DropDownGroup from '@organisms/DropDownGroup';
 
 const StyledIssueListHeader = styled.div`
     border: 1px solid black;
