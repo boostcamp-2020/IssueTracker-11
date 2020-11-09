@@ -3,7 +3,13 @@
 //  IssueTracker
 //
 //  Created by 양어진 on 2020/11/09.
-//  Copyright © 2020 김근수. All rights reserved.
+//  Copyright © 2020 양어진. All rights reserved.
 //
 
 import Foundation
+import Alamofire
+
+struct ResponseObject<T: Codable>: Codable {
+    var status: String?
+    var data: T?
+}
