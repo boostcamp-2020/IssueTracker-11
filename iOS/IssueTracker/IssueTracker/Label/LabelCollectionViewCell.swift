@@ -12,14 +12,19 @@ final class LabelCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBOutlet
     
-    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var nameLabel: BadgeLabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     
     // MARK: - Method
     
-    func labelCollectionViewCellConfigure(content: Label) {
+    func configure(content: Label) {
         nameLabel.text = content.name
         descriptionLabel.text = content.description
+        
+        guard let colorString = content.color else { return }
+        let color = UIColor(hex: colorString)
+        nameLabel.backgroundColor = color
+        nameLabel.textColor = color.isDarkColor ? .white : .black
     }
     
 }

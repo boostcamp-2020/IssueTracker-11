@@ -39,6 +39,18 @@ final class LabelDetailViewController: UIViewController {
     }
     
     @IBAction private func saveButtonDidTap(_ sender: UIButton) {
+        let name = titleTextField.text
+        let description = descriptionTextField.text
+        let color = colorTextField.text
+        guard let labelID = label?.id else { return }
+        
+        LabelService.shared.putLabel(id: labelID,
+                                     name: name ?? "",
+                                     description: description ?? "",
+                                     color: color ?? "") { [weak self] in
+                                        
+            self?.navigationController?.popViewController(animated: true)
+        }
     }
     
     @IBAction private func deleteButtonDidTap(_ sender: UIButton) {
