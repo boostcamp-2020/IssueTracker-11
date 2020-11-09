@@ -1,7 +1,7 @@
 import Model from './model.js';
 
 const Query = {
-    GET_QUERY: `SELECT * FROM comments`,
+    GET_QUERY: `SELECT * FROM comments `,
     POST_QUERY: 'INSERT INTO comments SET ?',
     PUT_QUERY: ({ issue_id, contents, author }) =>
         `UPDATE comments SET issue_id = '${issue_id}', contents = '${contents}', author = '${author}', updated_at = now() WHERE comment_id = `,

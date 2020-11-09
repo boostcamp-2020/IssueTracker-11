@@ -2,8 +2,8 @@ import milestones from './milestones.js';
 import Model from './model.js';
 
 const Query = {
-    GET_QUERY: `SELECT * FROM issues`,
-    POST_QUERY: 'INSERT INTO issues SET ?',
+    GET_QUERY: `SELECT I.*, A.user_id, L.label_id FROM issues AS I LEFT OUTER JOIN assignees AS A ON I.issue_id = A.issue_id LEFT OUTER JOIN issues_labels AS L ON I.issue_id = L.issue_id`,
+    POST_QUERY: 'INSERT INTO issues SET ? ',
     PUT_QUERY: ({ title, contents, milestone_id }) =>
         `UPDATE issues SET title = '${title}', contents = '${contents}', milestone_id = ${milestone_id}, updated_at = now() WHERE issue_id = `,
     DELETE_QUERY: `DELETE FROM issues WHERE issue_id = `,

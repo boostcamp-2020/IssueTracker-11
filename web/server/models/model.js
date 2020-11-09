@@ -9,11 +9,12 @@ class Model {
         this.PATCH_QUERY = PATCH_QUERY;
     }
 
-    get = async () => {
+    get = async (OPTION) => {
+        if (!OPTION) OPTION = '';
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
-            return conn.query(this.GET_QUERY);
+            return conn.query(this.GET_QUERY + OPTION);
         } catch (error) {
             conn.rollback();
             console.error(error);
@@ -26,9 +27,8 @@ class Model {
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
-            const result = await conn.query(this.POST_QUERY, POST_DATA);
+            await conn.query(this.POST_QUERY, POST_DATA);
             await conn.commit();
-            return result;
         } catch (error) {
             conn.rollback();
             console.error(error);
@@ -41,9 +41,8 @@ class Model {
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
-            const result = await conn.query(this.PUT_QUERY(PUT_DATA) + ID);
+            await conn.query(this.PUT_QUERY(PUT_DATA) + ID);
             await conn.commit();
-            return result;
         } catch (error) {
             conn.rollback();
             console.error(error);
@@ -56,9 +55,8 @@ class Model {
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
-            const result = await conn.query(this.DELETE_QUERY + ID);
+            await conn.query(this.DELETE_QUERY + ID);
             await conn.commit();
-            return result;
         } catch (error) {
             conn.rollback();
             console.error(error);
@@ -71,9 +69,8 @@ class Model {
         const conn = await pool.getConnection(async (conn) => conn);
         try {
             await conn.beginTransaction();
-            const result = await conn.query(this.PATCH_QUERY[OPTION] + ID);
+            await conn.query(this.PATCH_QUERY[OPTION] + ID);
             await conn.commit();
-            return result;
         } catch (error) {
             conn.rollback();
             console.error(error);

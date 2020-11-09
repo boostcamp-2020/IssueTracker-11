@@ -13,8 +13,8 @@ class UserController extends Controller {
         }
 
         try {
-            const results = await this.Model.post({ email, password, nickname });
-            return !results ? res.status(202).send('Accepted') : res.status(201).send('Created');
+            await this.Model.post({ email, password, nickname });
+            res.status(201).send('Created');
         } catch (error) {
             res.status(500).send({ result: error.message });
         }

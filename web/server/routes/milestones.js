@@ -8,6 +8,8 @@ milestonesRouter
     .get(milestoneController.get)
     .post(milestoneController.post)
     .patch(milestoneController.patch);
+
 milestonesRouter.route('/:id').put(milestoneController.put).delete(milestoneController.delete);
+milestonesRouter.route('/:id/status').patch(milestoneController.patch);
 
 export default milestonesRouter;
