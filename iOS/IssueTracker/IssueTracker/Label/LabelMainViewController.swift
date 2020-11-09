@@ -31,17 +31,21 @@ final class LabelMainViewController: UIViewController {
     
     // MARK: - LifeCycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadLabelList()
         applyLabelSnapshot()
+        labelCollectionView.reloadData()
     }
     
     // MARK: - Methods
     
     /// 라벨 리스트 통신
     private func loadLabelList() {
-        labelList.append(Label(id: 1, name: "1번째", description: "설명", color: "#000000"))
+        LabelService.shared.getLables { [weak self] result in
+            self?.labelList = result
+            self?.applyLabelSnapshot()
+        }
     }
     
     // MARK: - IBActions
@@ -67,11 +71,10 @@ extension LabelMainViewController {
             cellProvider: { (collectionView, indexPath, label) ->
                 UICollectionViewCell? in
                 
-                let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: "LabelCollectionViewCell",
-                    for: indexPath) as? LabelCollectionViewCell
-                
-                cell?.labelCollectionViewCellConfigure(content: label)
+                let cell = collectionView
+                    .dequeueReusableCell(withReuseIdentifier: "LabelCollectionViewCell",
+                                         for: indexPath) as? LabelCollectionViewCell
+                cell?.configure(content: label)
                 return cell
         })
         

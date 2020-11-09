@@ -13,7 +13,7 @@ final class LabelAddViewController: UIViewController {
     // MARK: - Properties
     
     private let creationFormView = CreationFormView()
-
+    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
@@ -40,17 +40,29 @@ final class LabelAddViewController: UIViewController {
     
     private func configureConstraints() {
         creationFormView.translatesAutoresizingMaskIntoConstraints = false
-      NSLayoutConstraint.activate([
-        creationFormView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-        creationFormView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-        creationFormView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
-      ])
+        NSLayoutConstraint.activate([
+            creationFormView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            creationFormView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            creationFormView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
+        ])
     }
     
     private func configureRandomColor() {
         let color = UIColor().random
         creationFormView.colorSampleView.backgroundColor = color
         creationFormView.thirdInputTextField.text = color.toHexString()
+    }
+    
+    private func postLabel() {
+        let name = creationFormView.firstInputTextField.text
+        let description = creationFormView.secondInputTextField.text
+        let color = creationFormView.thirdInputTextField.text
+        
+        LabelService.shared.postLabel(name: name ?? "",
+                                      description: description ?? "",
+                                      color: color ?? "") { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+        }
     }
     
 }
@@ -69,8 +81,7 @@ extension LabelAddViewController: CreationFormViewDelegate {
     }
     
     func saveButtonDidTap() {
-        print("save")
-        self.dismiss(animated: true, completion: nil)
+        postLabel()
     }
     
     func colorChangeButtonDidTap() {
