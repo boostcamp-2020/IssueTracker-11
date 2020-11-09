@@ -9,9 +9,9 @@ class Controller {
     get = async (req, res) => {
         try {
             const [result] = await this.Model.get();
-            return result.length === 0 ? res.status(204).send('No Content') : res.status(200).send(result);
+            return result.length === 0 ? res.status(204).send({ status: 'No Content' }) : res.status(200).send(result);
         } catch (error) {
-            res.status(500).send({ result: error.message });
+            res.status(500).send({ status: error.message });
         }
     };
 
@@ -28,7 +28,7 @@ class Controller {
             });
             return res.status(200).send('OK');
         } catch (error) {
-            res.status(500).send({ result: error.message });
+            res.status(500).send({ status: error.message });
         }
     };
 
@@ -40,9 +40,9 @@ class Controller {
             ids.forEach((id) => {
                 this.Model.patch(id, OPTION);
             });
-            return res.status(200).send('OK');
+            return res.status(200).send({ status: 'OK' });
         } catch (error) {
-            res.status(500).send({ result: error.message });
+            res.status(500).send({ status: error.message });
         }
     };
 }

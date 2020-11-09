@@ -15,7 +15,7 @@ class issueCommentsController extends Controller {
             const result = { issue: issue, comments: [...comments] };
             res.status(200).send(result);
         } catch (error) {
-            res.status(500).send({ result: error.message });
+            res.status(500).send({ status: error.message });
         }
     };
 }
