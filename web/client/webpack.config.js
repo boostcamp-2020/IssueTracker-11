@@ -28,6 +28,7 @@ module.exports = (env, options) => {
                 '@organisms': path.resolve(__dirname, 'src/components/organisms'),
                 '@pages': path.resolve(__dirname, 'src/components/pages'),
                 '@templates': path.resolve(__dirname, 'src/components/templates'),
+                '@themes': path.resolve(__dirname, 'src/themes'),
             },
         },
         module: {

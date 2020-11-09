@@ -15,7 +15,6 @@ const globalStyle = createGlobalStyle`
         color:#666666;
         background-color:#fff;
         margin:0;
-        padding:100px;
     }
     br	{
         letter-spacing: 0;

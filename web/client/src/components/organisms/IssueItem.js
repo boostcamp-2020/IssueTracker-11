@@ -19,4 +19,9 @@ const IssueItem = (props) => {
     );
 };
 
+IssueItemDiv.defaultProps = {
+    width: '100%',
+    height: '60px',
+};
+
 export default IssueItem;

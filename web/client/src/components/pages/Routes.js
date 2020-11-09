@@ -7,9 +7,9 @@ import Navigation from '../organisms/Navigation';
 
 const Routes = () => {
     return (
-        <Router>
-            <Navigation />
-            <main style={{ paddingLeft: '10%' }}>
+        <Router style={{ width: '100%' }}>
+            <Navigation style={{ width: '100%' }}></Navigation>
+            <main style={{ paddingLeft: '10%', paddingRight: '10%', paddingTop: '30px' }}>
                 <Route exact path="/" component={Issue} />
                 <Route path="/label" component={Label} />
                 <Route path="/milestone" component={Milestone} />
