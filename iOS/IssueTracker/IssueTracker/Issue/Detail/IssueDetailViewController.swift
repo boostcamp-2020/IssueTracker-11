@@ -17,8 +17,10 @@ final class IssueDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tabBarController?.tabBar.isHidden = true
         loadComment()
         setFlowLayout()
+        addPullUpController(animated: true)
     }
     
     private func loadComment() {
@@ -28,6 +30,26 @@ final class IssueDetailViewController: UIViewController {
     private func setFlowLayout() {
         guard let flowLayout = commentCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         flowLayout.estimatedItemSize = CGSize(width: commentCollectionView.frame.width, height: 174)
+    }
+    
+}
+
+extension IssueDetailViewController {
+    
+    private func makeIssueInfoViewControllerIfNeeded() -> IssueInfoViewController {
+        let identifier = String(describing: IssueInfoViewController.self)
+        guard let issueInfoViewController = storyboard?.instantiateViewController(identifier: identifier)
+            as? IssueInfoViewController else { return IssueInfoViewController() }
+        
+        return issueInfoViewController
+    }
+    
+    private func addPullUpController(animated: Bool) {
+        let pullUpController = makeIssueInfoViewControllerIfNeeded()
+        _ = pullUpController.view
+        addPullUpController(pullUpController,
+                            initialStickyPointOffset: pullUpController.initialPointOffset,
+                            animated: animated)
     }
     
 }
@@ -70,6 +92,7 @@ extension IssueDetailViewController: UICollectionViewDataSource {
 }
 
 // MARK: - CollectionViewDelegateFlowLayout
+
 extension IssueDetailViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,
