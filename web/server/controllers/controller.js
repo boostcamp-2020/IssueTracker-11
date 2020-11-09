@@ -26,7 +26,7 @@ class Controller {
             ids.forEach((id) => {
                 this.Model.delete(id);
             });
-            return res.status(200).send('OK');
+            return res.status(200).send({ status: 'OK' });
         } catch (error) {
             res.status(500).send({ status: error.message });
         }
