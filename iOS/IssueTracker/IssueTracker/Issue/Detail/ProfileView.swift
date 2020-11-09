@@ -9,13 +9,26 @@
 import UIKit
 
 class ProfileView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
     }
-    */
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+    
+    func setup() {
+        let name = String(describing: ProfileView.self)
+        guard let view = Bundle.main.loadNibNamed(name, owner: self, options: nil)?.first as? UIView  else { return }
+        view.frame = self.bounds
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.addSubview(view)
+    }
 
 }
