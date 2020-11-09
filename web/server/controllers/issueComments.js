@@ -13,7 +13,7 @@ class issueCommentsController extends Controller {
             const [issue] = await this.Model.get(`WHERE issue_id = ${issue_id}`);
             const [comments] = await commentModel.get(`WHERE issue_id = ${issue_id}`);
             const result = { issue: issue, comments: [...comments] };
-            res.status(200).send({ data: result });
+            res.status(200).send({ status: 'OK', data: result });
         } catch (error) {
             res.status(500).send({ status: error.message });
         }

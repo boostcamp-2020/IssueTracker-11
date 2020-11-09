@@ -11,7 +11,7 @@ class Controller {
             const [result] = await this.Model.get();
             return result.length === 0
                 ? res.status(204).send({ status: 'No Content' })
-                : res.status(200).send({ data: result });
+                : res.status(200).send({ status: 'OK', data: result });
         } catch (error) {
             res.status(500).send({ status: error.message });
         }
