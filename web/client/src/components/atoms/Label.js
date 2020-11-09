@@ -10,8 +10,8 @@ const LabelDiv = styled.div`
     display: inline-block;
     text-align: center;
     text-shadow: 0px 1px rgba(1, 1, 1, 0.3);
-    border-radius: 5px;
-    padding: 2px 8px 2px 8px;
+    border-radius: 10px;
+    padding: 3px 10px 3px 10px;
     font-size: ${(props) => props.fontSize};
     color: ${(props) => getTextColor(props.background)};
     background: ${(props) => (props.background ? props.background : '#000000')};
