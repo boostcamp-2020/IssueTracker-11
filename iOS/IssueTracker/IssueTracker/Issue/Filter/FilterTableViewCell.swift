@@ -11,7 +11,7 @@ import UIKit
 final class FilterTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var checkImageView: UIImageView!
+    @IBOutlet weak var checkImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
