@@ -32,6 +32,10 @@
 		7CD54B1925590A25008629F3 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD54B1825590A25008629F3 /* NetworkResult.swift */; };
 		7CD54B1B25590A3D008629F3 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD54B1A25590A3D008629F3 /* Requestable.swift */; };
 		7CD54B1E25590E4C008629F3 /* LabelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD54B1D25590E4C008629F3 /* LabelService.swift */; };
+		7CDB1D8E255A2F3A005236C9 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB1D8D255A2F3A005236C9 /* Issue.swift */; };
+		7CDB1D90255A3069005236C9 /* IssueEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB1D8F255A3069005236C9 /* IssueEndpoint.swift */; };
+		7CDB1D92255A318F005236C9 /* IssueService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB1D91255A318F005236C9 /* IssueService.swift */; };
+		7CDB1D94255A53FD005236C9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB1D93255A53FD005236C9 /* User.swift */; };
 		7CE735482559428E00F8E029 /* LabelEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE735472559428E00F8E029 /* LabelEndpoint.swift */; };
 		7CF9BF06255975B80013E961 /* ResponseArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF9BF05255975B80013E961 /* ResponseArray.swift */; };
 		7CF9BF08255976AE0013E961 /* ResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF9BF07255976AE0013E961 /* ResponseObject.swift */; };
@@ -106,6 +110,10 @@
 		7CD54B1825590A25008629F3 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		7CD54B1A25590A3D008629F3 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		7CD54B1D25590E4C008629F3 /* LabelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelService.swift; sourceTree = "<group>"; };
+		7CDB1D8D255A2F3A005236C9 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
+		7CDB1D8F255A3069005236C9 /* IssueEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueEndpoint.swift; sourceTree = "<group>"; };
+		7CDB1D91255A318F005236C9 /* IssueService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueService.swift; sourceTree = "<group>"; };
+		7CDB1D93255A53FD005236C9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7CE735472559428E00F8E029 /* LabelEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelEndpoint.swift; sourceTree = "<group>"; };
 		7CF9BF05255975B80013E961 /* ResponseArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseArray.swift; sourceTree = "<group>"; };
 		7CF9BF07255976AE0013E961 /* ResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseObject.swift; sourceTree = "<group>"; };
@@ -242,6 +250,7 @@
 		7CD54B1C25590E40008629F3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				7CDB1D91255A318F005236C9 /* IssueService.swift */,
 				7CD54B1D25590E4C008629F3 /* LabelService.swift */,
 			);
 			path = Services;
@@ -321,6 +330,7 @@
 			children = (
 				97AB7368255A24E900644484 /* EndpointType.swift */,
 				7CE735472559428E00F8E029 /* LabelEndpoint.swift */,
+				7CDB1D8F255A3069005236C9 /* IssueEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -388,9 +398,11 @@
 			isa = PBXGroup;
 			children = (
 				974575002552E3D7007E1F04 /* IssueFilterOption.swift */,
+				7C67D8D52552D4EE00533B03 /* IssueStatus.swift */,
 				97E59488254FE1D10052C2C3 /* Milestone.swift */,
 				7C13043F254FD37D003AE6A1 /* Label.swift */,
-				7C67D8D52552D4EE00533B03 /* IssueStatus.swift */,
+				7CDB1D8D255A2F3A005236C9 /* Issue.swift */,
+				7CDB1D93255A53FD005236C9 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -427,7 +439,7 @@
 				970CAD44254A73B50076691E /* Frameworks */,
 				970CAD45254A73B50076691E /* Resources */,
 				97664C62254A7583005B98A7 /* SwiftLint Run Script */,
-				BC383C2D742A7ECA8AD3547E /* [CP] Embed Pods Frameworks */,
+				6826A769C5E1E5E746576F18 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -546,6 +558,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6826A769C5E1E5E746576F18 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IssueTracker/Pods-IssueTracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IssueTracker/Pods-IssueTracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IssueTracker/Pods-IssueTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		97664C62254A7583005B98A7 /* SwiftLint Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -563,23 +592,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
-		};
-		BC383C2D742A7ECA8AD3547E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IssueTracker/Pods-IssueTracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IssueTracker/Pods-IssueTracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IssueTracker/Pods-IssueTracker-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		F1F72EA4715CA4B5B0FD347E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -634,6 +646,7 @@
 				97664C68254A91CA005B98A7 /* CreationFormView.swift in Sources */,
 				974575042552E3D7007E1F04 /* FilterTableViewCell.swift in Sources */,
 				7C13044825502AE2003AE6A1 /* UIColor+.swift in Sources */,
+				7CDB1D90255A3069005236C9 /* IssueEndpoint.swift in Sources */,
 				7CD54B1B25590A3D008629F3 /* Requestable.swift in Sources */,
 				7C13045025512AB5003AE6A1 /* SwipeableCollectionViewCell.swift in Sources */,
 				7CF9BF06255975B80013E961 /* ResponseArray.swift in Sources */,
@@ -650,13 +663,16 @@
 				7C13045825528A9E003AE6A1 /* CommentHeaderReusableView.swift in Sources */,
 				7CE735482559428E00F8E029 /* LabelEndpoint.swift in Sources */,
 				97DAB2CB255034DE002C3E21 /* String+.swift in Sources */,
+				7CDB1D94255A53FD005236C9 /* User.swift in Sources */,
 				9753D70125596B2E00677C53 /* ProfileView.swift in Sources */,
 				7C67D8DB2553AF7500533B03 /* IssueAddViewController.swift in Sources */,
 				7C1304542551335D003AE6A1 /* IssueContentView.swift in Sources */,
 				97D5B7AD2553A4920060A7F7 /* FilterDetailViewController.swift in Sources */,
 				970CAD4D254A73B50076691E /* SceneDelegate.swift in Sources */,
 				974575022552E3D7007E1F04 /* IssueFilterViewController.swift in Sources */,
+				7CDB1D92255A318F005236C9 /* IssueService.swift in Sources */,
 				9793CFB425516101006235B1 /* UIView+.swift in Sources */,
+				7CDB1D8E255A2F3A005236C9 /* Issue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -819,7 +835,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EKU567YQE4;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = "IssueTracker/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -840,7 +856,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EKU567YQE4;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = "IssueTracker/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
