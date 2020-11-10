@@ -15,7 +15,7 @@ const Input = ({ placeholder, width, height, border }) => {
 };
 
 Input.defaultProps = {
-    height: '26px',
+    height: '30px',
     border: 'true',
 };
 
