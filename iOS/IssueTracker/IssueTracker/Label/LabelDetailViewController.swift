@@ -44,16 +44,17 @@ final class LabelDetailViewController: UIViewController {
         let color = colorTextField.text
         guard let labelID = label?.id else { return }
         
-        LabelService.shared.putLabel(id: labelID,
-                                     name: name ?? "",
-                                     description: description ?? "",
-                                     color: color ?? "") { [weak self] in
-                                        
+        let label = Label(id: labelID, name: name, description: description, color: color)
+        LabelService.shared.updateLabel(label: label) { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
     }
     
     @IBAction private func deleteButtonDidTap(_ sender: UIButton) {
+        guard let labelID = label?.id else { return }
+        LabelService.shared.deleteLabel(id: labelID) { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
     }
     
     // MARK: - Methods

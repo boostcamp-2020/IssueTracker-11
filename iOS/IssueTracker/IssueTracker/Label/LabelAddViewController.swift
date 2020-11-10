@@ -58,9 +58,8 @@ final class LabelAddViewController: UIViewController {
         let description = creationFormView.secondInputTextField.text
         let color = creationFormView.thirdInputTextField.text
         
-        LabelService.shared.postLabel(name: name ?? "",
-                                      description: description ?? "",
-                                      color: color ?? "") { [weak self] in
+        let label = Label(id: nil, name: name, description: description, color: color)
+        LabelService.shared.createLabel(label: label) { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
         }
     }
