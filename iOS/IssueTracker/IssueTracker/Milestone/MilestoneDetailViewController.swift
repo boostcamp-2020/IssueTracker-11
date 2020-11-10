@@ -56,18 +56,22 @@ final class MilestoneDetailViewController: UIViewController {
                                   title: title,
                                   dueDate: dueDate,
                                   description: description,
-                                  openNumber: nil,
-                                  closedNumber: nil)
+                                  openNumber: self.milestone?.openNumber,
+                                  closedNumber: self.milestone?.closedNumber)
         MilestoneService.shared.update(milestone: milestone) { [weak self] in
+            NotificationCenter.default.post(Notification(name: .milestoneDidUpdate,
+                                                         object: milestone,
+                                                         userInfo: nil))
             self?.navigationController?.popViewController(animated: true)
         }
     }
     
     private func deleteMilestone() {
-        guard let id = milestone?.id else {
-            print("no..")
-            return }
+        guard let id = milestone?.id else { return }
         MilestoneService.shared.delete(id: id) { [weak self] in
+            NotificationCenter.default.post(Notification(name: .milestoneDidDelete,
+                                                         object: nil,
+                                                         userInfo: ["id": id]))
             self?.navigationController?.popViewController(animated: true)
         }
     }

@@ -63,6 +63,7 @@
 		97AB7369255A24E900644484 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AB7368255A24E900644484 /* EndpointType.swift */; };
 		97AB736D255A2D9A00644484 /* MilestoneEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AB736C255A2D9A00644484 /* MilestoneEndpoint.swift */; };
 		97AB736F255A31FF00644484 /* MilestoneService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AB736E255A31FF00644484 /* MilestoneService.swift */; };
+		97AB7371255A75F300644484 /* NSNotification.Name+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AB7370255A75F300644484 /* NSNotification.Name+.swift */; };
 		97D1CC2F25538A4200C4A0C1 /* FilterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D1CC2E25538A4200C4A0C1 /* FilterDataSource.swift */; };
 		97D5B7AD2553A4920060A7F7 /* FilterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D5B7AC2553A4920060A7F7 /* FilterDetailViewController.swift */; };
 		97D5B7B42553E7160060A7F7 /* IssueInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D5B7B32553E7160060A7F7 /* IssueInfoViewController.swift */; };
@@ -144,6 +145,7 @@
 		97AB7368255A24E900644484 /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
 		97AB736C255A2D9A00644484 /* MilestoneEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneEndpoint.swift; sourceTree = "<group>"; };
 		97AB736E255A31FF00644484 /* MilestoneService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneService.swift; sourceTree = "<group>"; };
+		97AB7370255A75F300644484 /* NSNotification.Name+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification.Name+.swift"; sourceTree = "<group>"; };
 		97D1CC2E25538A4200C4A0C1 /* FilterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDataSource.swift; sourceTree = "<group>"; };
 		97D5B7AC2553A4920060A7F7 /* FilterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailViewController.swift; sourceTree = "<group>"; };
 		97D5B7B32553E7160060A7F7 /* IssueInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueInfoViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				97DAB2CA255034DE002C3E21 /* String+.swift */,
 				9793CFB325516101006235B1 /* UIView+.swift */,
 				974574FD2552DED7007E1F04 /* UICollectionView+.swift */,
+				97AB7370255A75F300644484 /* NSNotification.Name+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				974574FC2552DDB3007E1F04 /* BottomMenuView.swift in Sources */,
 				974574FE2552DED7007E1F04 /* UICollectionView+.swift in Sources */,
 				97A1930F255270FD00A4B9D7 /* CircleButton.swift in Sources */,
+				97AB7371255A75F300644484 /* NSNotification.Name+.swift in Sources */,
 				977B9C54254FA7A500D00B28 /* MilestoneMainViewController.swift in Sources */,
 				7C13043E254FC989003AE6A1 /* LabelCollectionViewCell.swift in Sources */,
 				7C67D8DD2553B7B600533B03 /* ContentTextView.swift in Sources */,

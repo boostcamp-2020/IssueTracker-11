@@ -35,34 +35,72 @@ final class MilestoneMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        registerNotifications()
         loadMilestones()
-//        applySnapshot()
     }
     
-    // MARK: - Methods
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//    }
     
-    private func loadMilestones() {
-        MilestoneService.shared.getAll { [weak self] milestones in
-            self?.milestoneList = milestones
-//            self?.applySnapshot()
-        }
-    }
     // MARK: - IBAction
     
     @IBAction func addButtonDidTap(_ sender: UIBarButtonItem) {
         let mileStoneAddViewController: MilestoneAddViewController = {
             let nextVC = MilestoneAddViewController()
-            nextVC.delegate = self
             nextVC.modalTransitionStyle = .crossDissolve
             nextVC.modalPresentationStyle = .overCurrentContext
             return nextVC
         }()
         self.present(mileStoneAddViewController, animated: true)
     }
+    
+    // MARK: - Methods
+    
+    private func registerNotifications() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self,
+                                       selector: #selector(milestoneDidCreate),
+                                       name: .milestoneDidCreate,
+                                       object: nil)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(milestoneDidUpdate),
+                                       name: .milestoneDidUpdate,
+                                       object: nil)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(milestoneDidDelete),
+                                       name: .milestoneDidDelete,
+                                       object: nil)
+    }
+    
+    private func loadMilestones() {
+        MilestoneService.shared.getAll { [weak self] milestones in
+            self?.milestoneList = milestones
+        }
+    }
+    
+    // MARK: - Objc
+    
+    @objc private func milestoneDidCreate(_ notification: Notification) {
+        guard let milestone = notification.object as? Milestone else { return }
+        milestoneList.append(milestone)
+    }
+    
+    @objc private func milestoneDidUpdate(_ notification: Notification) {
+        guard
+            let milestone = notification.object as? Milestone,
+            let id = milestone.id,
+            let idx = milestoneList.firstIndex(where: { $0.id == id })
+        else { return }
+        milestoneList[idx] = milestone
+    }
+    
+    @objc private func milestoneDidDelete(_ notification: Notification) {
+        guard let id = notification.userInfo?["id"] as? Int else { return }
+        milestoneList.removeAll { $0.id == id }
+    }
+    
 }
 
 extension MilestoneMainViewController {
@@ -114,14 +152,6 @@ extension MilestoneMainViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 2
-    }
-    
-}
-
-extension MilestoneMainViewController: MilestoneAddViewDelegate {
-    
-    func milestoneDidAdd(milestone: Milestone) {
-        self.milestoneList.append(milestone)
     }
     
 }

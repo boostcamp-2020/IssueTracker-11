@@ -18,7 +18,7 @@ final class MilestoneAddViewController: UIViewController {
     
     private let creationFormView = CreationFormView()
     private let backgroundView = UIView()
-    weak var delegate: MilestoneAddViewDelegate?
+
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -93,7 +93,9 @@ final class MilestoneAddViewController: UIViewController {
                                   openNumber: nil,
                                   closedNumber: nil)
         MilestoneService.shared.create(milestone: milestone) { [weak self] in
-            self?.delegate?.milestoneDidAdd(milestone: milestone)
+            NotificationCenter.default.post(Notification(name: .milestoneDidCreate,
+                                                         object: milestone,
+                                                         userInfo: nil))
             self?.dismiss(animated: true, completion: nil)
         }
     }
