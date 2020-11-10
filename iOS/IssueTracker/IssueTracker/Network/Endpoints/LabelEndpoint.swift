@@ -44,9 +44,9 @@ extension LabelEndpoint: EndpointType {
         }
     }
     
-    var params: [String : Any]? {
+    var params: [String: Any]? {
         switch self {
-        case .get, .delete(_):
+        case .get, .delete:
             return nil
         case .create(let name, let description, let color),
              .update(_, let name, let description, let color):

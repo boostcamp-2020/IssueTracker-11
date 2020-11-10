@@ -10,7 +10,6 @@ import UIKit
 
 class IssueInfoViewController: PullUpController {
     
-    
     @IBOutlet weak var buttonContainerView: UIView!
     @IBOutlet weak var infoContainerView: UIView!
     @IBOutlet weak var labelContainerView: UIView!

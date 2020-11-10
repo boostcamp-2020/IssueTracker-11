@@ -24,3 +24,4 @@ excluded:
 - IssueTracker/AppDelegate.swift
 - IssueTracker/SceneDelegate.swift
 - Pods
+- IssueTracker/SupportingView/PullUpController.swift

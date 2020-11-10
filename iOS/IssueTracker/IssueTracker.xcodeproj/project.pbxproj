@@ -65,7 +65,6 @@
 		97D5B7AD2553A4920060A7F7 /* FilterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D5B7AC2553A4920060A7F7 /* FilterDetailViewController.swift */; };
 		97D5B7B42553E7160060A7F7 /* IssueInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D5B7B32553E7160060A7F7 /* IssueInfoViewController.swift */; };
 		97D5B7B62553E7410060A7F7 /* PullUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D5B7B52553E7410060A7F7 /* PullUpController.swift */; };
-		97D5B7B82553ECCE0060A7F7 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D5B7B72553ECCE0060A7F7 /* UIViewController+.swift */; };
 		97DAB2CB255034DE002C3E21 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DAB2CA255034DE002C3E21 /* String+.swift */; };
 		97E59489254FE1D10052C2C3 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E59488254FE1D10052C2C3 /* Milestone.swift */; };
 		AD03E99288CFBAF7CD0C632F /* Pods_IssueTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DDFD2F384F60488622CBA3 /* Pods_IssueTrackerTests.framework */; };
@@ -145,7 +144,6 @@
 		97D5B7AC2553A4920060A7F7 /* FilterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailViewController.swift; sourceTree = "<group>"; };
 		97D5B7B32553E7160060A7F7 /* IssueInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueInfoViewController.swift; sourceTree = "<group>"; };
 		97D5B7B52553E7410060A7F7 /* PullUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullUpController.swift; sourceTree = "<group>"; };
-		97D5B7B72553ECCE0060A7F7 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		97DAB2CA255034DE002C3E21 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		97E59488254FE1D10052C2C3 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
 		BEE1F894F9C40EEFD4B9E644 /* Pods-IssueTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.release.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.release.xcconfig"; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 				97DAB2CA255034DE002C3E21 /* String+.swift */,
 				9793CFB325516101006235B1 /* UIView+.swift */,
 				974574FD2552DED7007E1F04 /* UICollectionView+.swift */,
-				97D5B7B72553ECCE0060A7F7 /* UIViewController+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -657,7 +654,6 @@
 				7C67D8DB2553AF7500533B03 /* IssueAddViewController.swift in Sources */,
 				7C1304542551335D003AE6A1 /* IssueContentView.swift in Sources */,
 				97D5B7AD2553A4920060A7F7 /* FilterDetailViewController.swift in Sources */,
-				97D5B7B82553ECCE0060A7F7 /* UIViewController+.swift in Sources */,
 				970CAD4D254A73B50076691E /* SceneDelegate.swift in Sources */,
 				974575022552E3D7007E1F04 /* IssueFilterViewController.swift in Sources */,
 				9793CFB425516101006235B1 /* UIView+.swift in Sources */,
