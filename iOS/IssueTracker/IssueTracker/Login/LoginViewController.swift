@@ -9,12 +9,12 @@
 import UIKit
 import AuthenticationServices
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
 
     // MARK: - IBOutlet
     
-    @IBOutlet weak var githubLoginButton: UIButton!
-    @IBOutlet weak var appleLoginButtonContainer: UIView!
+    @IBOutlet private weak var githubLoginButton: UIButton!
+    @IBOutlet private weak var appleLoginButtonContainer: UIView!
     
     // MARK: - Properties
     
