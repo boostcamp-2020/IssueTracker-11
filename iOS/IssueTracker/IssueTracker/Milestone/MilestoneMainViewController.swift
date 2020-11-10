@@ -39,10 +39,6 @@ final class MilestoneMainViewController: UIViewController {
         loadMilestones()
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     // MARK: - IBAction
     
     @IBAction func addButtonDidTap(_ sender: UIBarButtonItem) {
