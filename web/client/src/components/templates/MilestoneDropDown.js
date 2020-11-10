@@ -19,10 +19,11 @@ const MilestoneDropDown = () => {
         };
         getMilestones();
     }, []);
+    if (!milestones) return <div></div>;
 
     return (
         <div style={{ border: '1px solid black' }}>
-            <DropDown subject="Assignee" isClicked={true} style={{ float: 'right' }}></DropDown>
+            <DropDown items={milestones} subject="Assignee" isClicked={true} style={{ float: 'right' }}></DropDown>
             <Span>Milestones</Span>
             <Span>No milestones </Span>
         </div>

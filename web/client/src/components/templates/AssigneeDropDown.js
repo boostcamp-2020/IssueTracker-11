@@ -19,10 +19,11 @@ const LabelDropDown = () => {
         };
         getusers();
     }, []);
+    if (!users) return <div></div>;
 
     return (
         <div style={{ border: '1px solid black' }}>
-            <DropDown subject="Label" isClicked={true} style={{ float: 'right' }}></DropDown>
+            <DropDown items={users} subject="Label" isClicked={true} style={{ float: 'right' }}></DropDown>
             <Span>Assignees</Span>
             <Span>No one assign yourself </Span>
         </div>

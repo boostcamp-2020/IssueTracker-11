@@ -19,10 +19,11 @@ const LabelDropDown = () => {
         };
         getLabels();
     }, []);
+    if (!labels) return <div></div>;
 
     return (
         <div style={{ border: '1px solid black' }}>
-            <DropDown subject="Milestones" isClicked={true} style={{ float: 'right' }}></DropDown>
+            <DropDown items={labels} subject="Milestones" isClicked={true} style={{ float: 'right' }}></DropDown>
             <Span>Labels</Span>
             <Span>None yet </Span>
         </div>
