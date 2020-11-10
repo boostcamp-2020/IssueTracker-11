@@ -10,6 +10,7 @@ const IssueNote = () => {
     const createIssue = async () => {
         const issueTitle = document.getElementById('issueTitle')?.value;
         const issueContent = document.getElementById('issueContent')?.value;
+        console.log('버튼 클릭됨.');
         const data = {
             title: issueTitle,
             contents: issueContent,
@@ -23,6 +24,7 @@ const IssueNote = () => {
             },
             body: JSON.stringify(data),
         });
+        console.log(response);
     };
 
     const dropDowns = [

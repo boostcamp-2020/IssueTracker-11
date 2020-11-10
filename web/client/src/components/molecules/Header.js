@@ -40,7 +40,9 @@ const Header = ({ sendDataToParent }) => {
                             borderRadius: '50%',
                             fontWeight: '700',
                         }}
-                    ></div>
+                    >
+                        5
+                    </div>
                 </Button>
             </Link>
             <Link to="/milestone">
