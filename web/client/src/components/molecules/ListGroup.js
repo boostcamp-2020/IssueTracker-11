@@ -11,7 +11,7 @@ const StyledTitle = styled.p`
 const StyledListGroup = styled.ul`
     border: 1px solid gray;
     border-radius: 4px;
-    width: 100%;
+    width: 300px;
     text-align: left;
     overflow-y: scroll;
     background-color: #eeeeee;
