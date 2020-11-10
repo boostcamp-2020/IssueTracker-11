@@ -8,79 +8,81 @@
 
 import Foundation
 
-struct LabelService: Requestable {
+class LabelService: Requestable {
     
     typealias NetworkData = ResponseArray<Label>
     static let shared = LabelService()
-    let endpoint = APIEndpoints.label
+    private init() {}
+    
+    var labelEndpoint: LabelEndpoint = .get
     
     func getLables(completion: @escaping ([Label]) -> Void) {
-        request(endpoint.url,
-                method: .get,
-                params: nil) { result in
-                    
-                    switch result {
-                    case .networkSuccess(let data):
-                        guard let labels = data.resResult.data else { return }
-                        completion(labels)
-                    case .networkError(let error):
-                        print(error)
-                    case .networkFail:
-                        print("Network Fail!!!!")
-                    }
+        labelEndpoint = .get
+        request(labelEndpoint) { result in
+            switch result {
+            case .networkSuccess(let data):
+                guard let labels = data.resResult.data else { return }
+                completion(labels)
+            case .networkError(let error):
+                print(error)
+            case .networkFail:
+                print("Network Fail!!!!")
+            }
         }
     }
     
-    func postLabel(name: String,
-                   description: String,
-                   color: String,
-                   completion: @escaping () -> Void) {
+    func createLabel(label: Label, completion: @escaping () -> Void) {
+        guard
+            let name = label.name,
+            let description = label.description,
+            let color = label.color
+            else { return }
         
-        let body: [String: Any] = [
-            "name": name,
-            "description": description,
-            "color": color
-        ]
-        request(endpoint.url,
-                method: .post,
-                params: body) { result in
-                    
-                    switch result {
-                    case .networkSuccess( _):
-                        completion()
-                    case .networkError(let error):
-                        print(error)
-                    case .networkFail:
-                        print("Network Fail!!!!")
-                    }
+        labelEndpoint = .create(name: name, description: description, color: color)
+        request(labelEndpoint) { result in
+            switch result {
+            case .networkSuccess:
+                completion()
+            case .networkError(let error):
+                print(error)
+            case .networkFail:
+                print("Network Fail!!!!")
+            }
         }
     }
     
-    func putLabel(id: Int,
-                  name: String,
-                  description: String,
-                  color: String,
-                  completion: @escaping () -> Void) {
+    func updateLabel(label: Label, completion: @escaping () -> Void) {
+        guard
+            let id = label.id,
+            let name = label.name,
+            let description = label.description,
+            let color = label.color
+            else { return }
         
-        let body: [String: Any] = [
-            "id": id,
-            "name": name,
-            "description": description,
-            "color": color
-        ]
-        
-        request(endpoint.url + "/\(id)",
-                method: .put,
-                params: body) { result in
-                    
-                    switch result {
-                    case .networkSuccess( _):
-                        completion()
-                    case .networkError(let error):
-                        print(error)
-                    case .networkFail:
-                        print("Network Fail!!!!")
-                    }
+        labelEndpoint = .update(id: id, name: name, description: description, color: color)
+        request(labelEndpoint) { result in
+            switch result {
+            case .networkSuccess:
+                completion()
+            case .networkError(let error):
+                print(error)
+            case .networkFail:
+                print("Network Fail!!!!")
+            }
+        }
+    }
+    
+    func deleteLabel(id: Int, completion: @escaping () -> Void) {
+        labelEndpoint = .delete(id: id)
+        request(labelEndpoint) { result in
+            switch result {
+            case .networkSuccess:
+                completion()
+            case .networkError(let error):
+                print(error)
+            case .networkFail:
+                print("Network Fail!!!!")
+            }
         }
     }
     

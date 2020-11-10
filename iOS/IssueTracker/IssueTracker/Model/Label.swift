@@ -25,6 +25,9 @@ struct Label: Codable, Hashable {
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+        hasher.combine(name)
+        hasher.combine(description)
+        hasher.combine(color)
     }
     
 }

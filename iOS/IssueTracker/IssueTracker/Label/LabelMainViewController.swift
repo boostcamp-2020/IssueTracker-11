@@ -35,7 +35,6 @@ final class LabelMainViewController: UIViewController {
         super.viewWillAppear(animated)
         loadLabelList()
         applyLabelSnapshot()
-        labelCollectionView.reloadData()
     }
     
     // MARK: - Methods
