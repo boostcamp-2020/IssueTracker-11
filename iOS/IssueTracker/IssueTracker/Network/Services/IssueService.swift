@@ -58,7 +58,7 @@ class IssueService: Requestable {
         }
     }
     
-    func deleteIssue(id: Int, completion: @escaping () -> Void) {
+    func delete(id: Int, completion: @escaping () -> Void) {
         issueEndpoint = .delete(id: id)
         
         request(issueEndpoint) { result in

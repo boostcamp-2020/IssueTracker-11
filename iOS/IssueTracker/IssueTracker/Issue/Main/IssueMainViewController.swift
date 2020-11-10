@@ -75,7 +75,7 @@ final class IssueMainViewController: UIViewController {
     }
     
     private func deleteIssue(id: Int) {
-        IssueService.shared.deleteIssue(id: id) { [weak self] in
+        IssueService.shared.delete(id: id) { [weak self] in
             self?.issueList.removeAll { $0.id == id }
         }
     }
@@ -212,17 +212,6 @@ extension IssueMainViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
-// MARK: - UICollectionViewDelegate
-
-extension IssueMainViewController: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        didSelectItemAt indexPath: IndexPath) {
-        print("Self!!")
-    }
-    
-}
-
 // MARK: - SwipeableCollectionViewCellDelegate
 
 extension IssueMainViewController: SwipeableCollectionViewCellDelegate {
@@ -237,6 +226,14 @@ extension IssueMainViewController: SwipeableCollectionViewCellDelegate {
             cell.isSelected ? issueCollectionView.deselectItem(at: indexPath, animated: true) :
                 issueCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
         }
+        
+        let identifier = String(describing: IssueDetailViewController.self)
+        guard let viewController = storyboard?.instantiateViewController(withIdentifier: identifier)
+            as? IssueDetailViewController else { return }
+        
+        viewController.issueID = issueList[indexPath.item].id
+        navigationController?.pushViewController(viewController,
+                                                 animated: true)
     }
     
     func leftHiddenContainerViewTapped(inCell cell: UICollectionViewCell) {
@@ -244,8 +241,8 @@ extension IssueMainViewController: SwipeableCollectionViewCellDelegate {
             let cell = cell as? IssueCollectionViewCell,
             let indexPath = issueCollectionView.indexPath(for: cell),
             let id = issueList[indexPath.item].id
-        else { return }
-
+            else { return }
+        
         closeIssue(id: id)
     }
     
@@ -254,8 +251,8 @@ extension IssueMainViewController: SwipeableCollectionViewCellDelegate {
             let cell = cell as? IssueCollectionViewCell,
             let indexPath = issueCollectionView.indexPath(for: cell),
             let id = issueList[indexPath.item].id
-        else { return }
-
+            else { return }
+        
         deleteIssue(id: id)
     }
     

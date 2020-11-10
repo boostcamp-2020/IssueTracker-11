@@ -36,6 +36,8 @@
 		7CDB1D90255A3069005236C9 /* IssueEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB1D8F255A3069005236C9 /* IssueEndpoint.swift */; };
 		7CDB1D92255A318F005236C9 /* IssueService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB1D91255A318F005236C9 /* IssueService.swift */; };
 		7CDB1D94255A53FD005236C9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB1D93255A53FD005236C9 /* User.swift */; };
+		7CDB1D96255AABD3005236C9 /* IssueDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB1D95255AABD3005236C9 /* IssueDetailService.swift */; };
+		7CDB1D98255AB3D9005236C9 /* IssueDetailEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB1D97255AB3D9005236C9 /* IssueDetailEndpoint.swift */; };
 		7CE735482559428E00F8E029 /* LabelEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE735472559428E00F8E029 /* LabelEndpoint.swift */; };
 		7CF9BF06255975B80013E961 /* ResponseArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF9BF05255975B80013E961 /* ResponseArray.swift */; };
 		7CF9BF08255976AE0013E961 /* ResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF9BF07255976AE0013E961 /* ResponseObject.swift */; };
@@ -117,6 +119,8 @@
 		7CDB1D8F255A3069005236C9 /* IssueEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueEndpoint.swift; sourceTree = "<group>"; };
 		7CDB1D91255A318F005236C9 /* IssueService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueService.swift; sourceTree = "<group>"; };
 		7CDB1D93255A53FD005236C9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7CDB1D95255AABD3005236C9 /* IssueDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailService.swift; sourceTree = "<group>"; };
+		7CDB1D97255AB3D9005236C9 /* IssueDetailEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailEndpoint.swift; sourceTree = "<group>"; };
 		7CE735472559428E00F8E029 /* LabelEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelEndpoint.swift; sourceTree = "<group>"; };
 		7CF9BF05255975B80013E961 /* ResponseArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseArray.swift; sourceTree = "<group>"; };
 		7CF9BF07255976AE0013E961 /* ResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseObject.swift; sourceTree = "<group>"; };
@@ -258,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				7CDB1D91255A318F005236C9 /* IssueService.swift */,
+				7CDB1D95255AABD3005236C9 /* IssueDetailService.swift */,
 				7CD54B1D25590E4C008629F3 /* LabelService.swift */,
 				97AB736E255A31FF00644484 /* MilestoneService.swift */,
 			);
@@ -339,6 +344,7 @@
 				97AB7368255A24E900644484 /* EndpointType.swift */,
 				7CE735472559428E00F8E029 /* LabelEndpoint.swift */,
 				7CDB1D8F255A3069005236C9 /* IssueEndpoint.swift */,
+				7CDB1D97255AB3D9005236C9 /* IssueDetailEndpoint.swift */,
 				97AB736C255A2D9A00644484 /* MilestoneEndpoint.swift */,
 			);
 			path = Endpoints;
@@ -632,6 +638,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CD54B1E25590E4C008629F3 /* LabelService.swift in Sources */,
+				7CDB1D98255AB3D9005236C9 /* IssueDetailEndpoint.swift in Sources */,
 				9763DFF0254B361200BCBD6A /* CreationFormType.swift in Sources */,
 				7C130443254FEEB0003AE6A1 /* LabelAddViewController.swift in Sources */,
 				7CF9BF08255976AE0013E961 /* ResponseObject.swift in Sources */,
@@ -675,6 +682,7 @@
 				7CE735482559428E00F8E029 /* LabelEndpoint.swift in Sources */,
 				97AB736F255A31FF00644484 /* MilestoneService.swift in Sources */,
 				97DAB2CB255034DE002C3E21 /* String+.swift in Sources */,
+				7CDB1D96255AABD3005236C9 /* IssueDetailService.swift in Sources */,
 				7CDB1D94255A53FD005236C9 /* User.swift in Sources */,
 				9753D70125596B2E00677C53 /* ProfileView.swift in Sources */,
 				7C67D8DB2553AF7500533B03 /* IssueAddViewController.swift in Sources */,

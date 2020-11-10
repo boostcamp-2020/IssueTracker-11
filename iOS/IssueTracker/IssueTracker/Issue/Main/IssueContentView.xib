@@ -22,8 +22,8 @@
             <rect key="frame" x="0.0" y="0.0" width="409" height="104"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yAq-8A-FCP">
-                    <rect key="frame" x="16" y="16" width="430.5" height="78"/>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yAq-8A-FCP">
+                    <rect key="frame" x="16" y="16" width="417" height="78"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0r8-xG-Tl7">
                             <rect key="frame" x="0.0" y="0.0" width="36" height="78"/>
@@ -43,70 +43,77 @@
                                 <constraint firstAttribute="trailing" secondItem="ZL4-8L-Tma" secondAttribute="trailing" constant="16" id="siR-e5-Buc"/>
                             </constraints>
                         </view>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="2Tq-Aj-zZt">
-                            <rect key="frame" x="41" y="0.0" width="298.5" height="62.5"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="7OD-NB-dWb">
+                            <rect key="frame" x="41" y="8" width="376" height="62.5"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5AW-fx-92D">
-                                    <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="레이블 전체 목록을 볼 수 있어야 한다 2줄까지 보입니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmH-HR-wJH">
-                                    <rect key="frame" x="0.0" y="26.5" width="274.5" height="36"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="2Tq-Aj-zZt">
+                                    <rect key="frame" x="0.0" y="0.0" width="300.5" height="62.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5AW-fx-92D">
+                                            <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="레이블 전체 목록을 볼 수 있어야 한다 2줄까지 보입니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmH-HR-wJH">
+                                            <rect key="frame" x="0.0" y="26.5" width="300.5" height="36"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="bottom" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="GDt-QL-GV8">
+                                    <rect key="frame" x="304.5" y="6.5" width="71.5" height="49"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soW-h2-QFf" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
+                                            <rect key="frame" x="26" y="0.0" width="45.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxR-d1-neV" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
+                                            <rect key="frame" x="26" y="28" width="45.5" height="21"/>
+                                            <color key="backgroundColor" red="0.74509803919999995" green="0.85882352939999995" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                </stackView>
                             </subviews>
-                        </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="GDt-QL-GV8">
-                            <rect key="frame" x="344.5" y="0.0" width="86" height="49"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soW-h2-QFf" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
-                                    <rect key="frame" x="40.5" y="0.0" width="45.5" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                            <real key="value" value="1"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <real key="value" value="5"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxR-d1-neV" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
-                                    <rect key="frame" x="40.5" y="28" width="45.5" height="21"/>
-                                    <color key="backgroundColor" red="0.74509803919999995" green="0.85882352939999995" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                            <real key="value" value="0.0"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <real key="value" value="5"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </label>
-                            </subviews>
+                            <constraints>
+                                <constraint firstItem="2Tq-Aj-zZt" firstAttribute="width" secondItem="7OD-NB-dWb" secondAttribute="width" multiplier="0.799202" priority="250" id="RKM-Tt-Tli"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="GDt-QL-GV8" firstAttribute="width" secondItem="yAq-8A-FCP" secondAttribute="width" multiplier="0.2" id="gIk-KR-AHU"/>
                         <constraint firstItem="0r8-xG-Tl7" firstAttribute="height" secondItem="yAq-8A-FCP" secondAttribute="height" id="jVW-2t-7rP"/>
                     </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="7OD-NB-dWb" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.919315" id="Ak4-FA-tHv"/>
                 <constraint firstItem="yAq-8A-FCP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="AwV-JJ-7HA"/>
                 <constraint firstItem="yAq-8A-FCP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="MEj-20-O11"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="yAq-8A-FCP" secondAttribute="bottom" constant="10" id="UyV-XS-avu"/>
-                <constraint firstItem="2Tq-Aj-zZt" firstAttribute="width" secondItem="vUN-kp-3ea" secondAttribute="width" multiplier="0.73" id="dFg-WN-Biu"/>
                 <constraint firstAttribute="trailing" secondItem="yAq-8A-FCP" secondAttribute="trailing" priority="250" constant="16" id="oad-lD-H3d"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
