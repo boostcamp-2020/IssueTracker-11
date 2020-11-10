@@ -7,8 +7,18 @@ opt_in_rules:
 included:
 
 line_length:
-warning: 99
-error: 120
+  warning: 120
+  ignores_function_declarations: true
+  ignores_comments: true
+  ignores_interpolated_strings: true
+  ignores_urls: true
+
+variable_name:
+  max_length:
+    warning: 45
+    error: 60
+  min_length:
+    warning: 1
 
 excluded:
 - IssueTracker/AppDelegate.swift
