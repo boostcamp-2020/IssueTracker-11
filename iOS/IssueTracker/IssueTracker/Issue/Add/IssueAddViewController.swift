@@ -22,6 +22,40 @@ final class IssueAddViewController: UIViewController {
         imagePicker.delegate = self
     }
     
+    @IBAction func cancelButtonDidTap(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func uploadButtonDidTap(_ sender: UIBarButtonItem) {
+        createIssue()
+    }
+    
+    private func createIssue() {
+        guard
+            let title = titleTextField.text,
+            let contents = contentTextView.text
+            else { return }
+        
+        let issue = Issue(id: nil,
+                          title: title,
+                          contents: contents,
+                          status: nil,
+                          author: nil,
+                          authorID: 1,
+                          milestone: nil,
+                          milestoneID: nil,
+                          assignees: [],
+                          labels: [])
+        
+        let issueeDidCreate = Notification.Name("IssueeDidCreate")
+        IssueService.shared.create(issue: issue) { [weak self] in
+            NotificationCenter.default.post(name: issueeDidCreate,
+                                            object: issue,
+                                            userInfo: nil)
+            self?.dismiss(animated: true, completion: nil)
+        }
+    }
+    
 }
 
 extension IssueAddViewController: InsertPhotoDelegate {

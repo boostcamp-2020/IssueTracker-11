@@ -46,7 +46,14 @@ final class IssueMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerNotifications()
         configure()
+    }
+    
+    @IBAction func addButtonDidTap(_ sender: UIButton) {
+        guard let addIssueViewController =
+            storyboard?.instantiateViewController(withIdentifier: "addIssueNavigationController") else { return }
+        self.present(addIssueViewController, animated: true)
     }
     
     // MARK: - Methods
@@ -59,6 +66,14 @@ final class IssueMainViewController: UIViewController {
                 self?.applySnapshot()
             }
         }
+    }
+    
+    private func closeIssue(id: Int) {
+        
+    }
+    
+    private func deleteIssue(id: Int) {
+        
     }
     
     private func configure() {
@@ -96,7 +111,20 @@ final class IssueMainViewController: UIViewController {
                                        action: #selector(segueToFilterViewController))
     }
     
+    private func registerNotifications() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self,
+                                       selector: #selector(issueDidCreate),
+                                       name: Notification.Name(rawValue: "IssueDidCreate"),
+                                       object: nil)
+    }
+    
     // MARK: - Objc
+    
+    @objc private func issueDidCreate(_ notification: Notification) {
+        guard let issue = notification.object as? Issue else { return }
+        issueList.append(issue)
+    }
     
     @objc func toggleEditMode() {
         setEditing(!isEditing, animated: true)
@@ -208,9 +236,23 @@ extension IssueMainViewController: SwipeableCollectionViewCellDelegate {
     }
     
     func leftHiddenContainerViewTapped(inCell cell: UICollectionViewCell) {
+        guard
+            let cell = cell as? IssueCollectionViewCell,
+            let indexPath = issueCollectionView.indexPath(for: cell),
+            let id = issueList[indexPath.item].id
+        else { return }
+
+        closeIssue(id: id)
     }
     
     func rightHiddenContainerViewTapped(inCell cell: UICollectionViewCell) {
+        guard
+            let cell = cell as? IssueCollectionViewCell,
+            let indexPath = issueCollectionView.indexPath(for: cell),
+            let id = issueList[indexPath.item].id
+        else { return }
+
+        deleteIssue(id: id)
     }
     
 }

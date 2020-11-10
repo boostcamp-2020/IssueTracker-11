@@ -43,15 +43,18 @@
                                     <outlet property="delegate" destination="VwX-4o-FRG" id="cWg-Ua-J1G"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R40-va-VA2" customClass="CircleButton" customModule="IssueTracker" customModuleProvider="target">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R40-va-VA2" customClass="CircleButton" customModule="IssueTracker" customModuleProvider="target">
                                 <rect key="frame" x="352" y="748" width="44" height="44"/>
-                                <color key="backgroundColor" red="0.28235294117647058" green="0.52156862745098043" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="R40-va-VA2" secondAttribute="height" multiplier="1:1" id="cWa-oC-ORg"/>
                                     <constraint firstAttribute="width" constant="44" id="eFq-Rq-sGP"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="addButtonDidTap:" destination="VwX-4o-FRG" eventType="touchUpInside" id="8Th-Le-a3j"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -330,13 +333,13 @@
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이슈 생성 기능이이슈 생성 기능이슈 생성 기능이슈 생성 기능이슈 생성 기능이슈 생성 기능이슈 생성 기능슈 생성 기능" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ot8-sp-rYJ">
-                                                    <rect key="frame" x="0.0" y="46" width="355" height="21.5"/>
+                                                    <rect key="frame" x="0.0" y="46" width="355" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pk3-bN-Dxo" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="83.5" width="45.5" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="87" width="35.5" height="17"/>
                                                     <color key="backgroundColor" red="0.93333333333333335" green="0.97254901960784312" blue="0.94117647058823528" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="250" constant="20.5" id="o1N-CD-FiK"/>
@@ -694,6 +697,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="9jn-nu-mX1">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -713,6 +717,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -792,7 +797,16 @@
                         <viewLayoutGuide key="safeArea" id="DO1-rr-dh6"/>
                     </view>
                     <navigationItem key="navigationItem" title="새 이슈" id="eu6-ZU-HbL">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="fzO-qA-APS"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="fzO-qA-APS">
+                            <connections>
+                                <action selector="cancelButtonDidTap:" destination="JuO-2g-Psz" id="97Q-kw-X8u"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="arrow.up" catalog="system" id="MAg-QK-8ZO">
+                            <connections>
+                                <action selector="uploadButtonDidTap:" destination="JuO-2g-Psz" id="xdW-2c-Bne"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="contentTextView" destination="zkI-dd-MDs" id="f0o-54-v0B"/>
@@ -802,16 +816,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gdN-kx-MgB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1900" y="-663"/>
+            <point key="canvasLocation" x="1851" y="-664"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Ao-FD-yay">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AGF-Qc-xMp" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="addIssueNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="AGF-Qc-xMp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="S00-3r-qNJ">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -825,6 +840,7 @@
     </scenes>
     <resources>
         <image name="1.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="arrow.up" catalog="system" width="120" height="128"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="chevron.up" catalog="system" width="128" height="72"/>

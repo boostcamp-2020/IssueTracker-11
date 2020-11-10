@@ -31,4 +31,30 @@ class IssueService: Requestable {
         }
     }
     
+    func create(issue: Issue, completion: @escaping () -> Void) {
+        guard
+            let title = issue.title,
+            let author = issue.authorID,
+            let assignees = issue.assignees,
+            let labels = issue.labels
+            else { return }
+        
+        issueEndpoint = .create(title: title,
+                                contents: issue.contents,
+                                author: author,
+                                milestoneID: issue.milestoneID,
+                                assignees: assignees,
+                                labels: labels)
+        
+        request(issueEndpoint) { result in
+            switch result {
+            case .networkSuccess:
+                completion()
+            case .networkError(let error):
+                print(error)
+            case .networkFail:
+                print("Network Fail!!!!")
+            }
+        }
+    }
 }
