@@ -10,7 +10,7 @@ const IssueItemLeftDiv = styled.div`
     flex: 1;
 `;
 
-const IssueItemLeft = (props) => {
+const IssueItemLeft = ({ issue }) => {
     return (
         <IssueItemLeftDiv>
             {/* Check Box */}
@@ -20,11 +20,15 @@ const IssueItemLeft = (props) => {
 
             {/* Issue-Opened SVG */}
             <Padding padding="8px 5px 0px 2px">
-                <SVG name="issue-opened" height="20px" color="#ff2200" fillRule="evenodd"></SVG>
+                {issue.status ? (
+                    <SVG name="issue-opened" height="20px" fillRule="evenodd" color="green"></SVG>
+                ) : (
+                    <SVG name="issue-closed" height="20px" color="#ff2200" fillRule="evenodd"></SVG>
+                )}
             </Padding>
 
             {/* Issue */}
-            <IssueItemInfo issue_id={props.issue_id} author={props.author} />
+            <IssueItemInfo issue={issue} />
         </IssueItemLeftDiv>
     );
 };
