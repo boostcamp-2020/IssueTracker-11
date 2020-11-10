@@ -39,10 +39,9 @@ final class MilestoneMainViewController: UIViewController {
         loadMilestones()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     // MARK: - IBAction
     
