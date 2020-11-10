@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IssueContentView: UIView {
+final class IssueContentView: UIView {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
@@ -29,7 +29,9 @@ class IssueContentView: UIView {
         setup()
     }
     
-    func setup() {
+    // MARK: - Methods
+    
+    private func setup() {
         let name = String(describing: IssueContentView.self)
         guard let view = Bundle.main.loadNibNamed(name, owner: self, options: nil)?.first as? UIView  else { return }
         view.frame = self.bounds

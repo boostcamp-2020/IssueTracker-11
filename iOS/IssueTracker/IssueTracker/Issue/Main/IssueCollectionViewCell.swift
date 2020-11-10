@@ -10,9 +10,10 @@ import UIKit
 
 final class IssueCollectionViewCell: SwipeableCollectionViewCell {
     
-    public static let identifier = String(describing: IssueCollectionViewCell.self)
+    // MARK: - Properties
     
-    var issueContentView = IssueContentView()
+    public static let identifier = String(describing: IssueCollectionViewCell.self)
+    private var issueContentView = IssueContentView()
     
     var isEditing: Bool = false {
         didSet {
@@ -26,9 +27,11 @@ final class IssueCollectionViewCell: SwipeableCollectionViewCell {
     override var isSelected: Bool {
         didSet {
             issueContentView.checkImageView.image
-            = isSelected ? UIImage(systemName: "checkmark.circle.fill") : UIImage(systemName: "circle")
+                = isSelected ? UIImage(systemName: "checkmark.circle.fill") : UIImage(systemName: "circle")
         }
     }
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,27 +43,41 @@ final class IssueCollectionViewCell: SwipeableCollectionViewCell {
         setupSubviews()
     }
     
-    func configure(isEditing: Bool) {
+    // MARK: - Methods
+    
+    func configure(issue: Issue, isEditing: Bool) {
         self.isEditing = isEditing
+        issueContentView.titleLabel.text = issue.title
+        issueContentView.contentLabel.text = issue.contents
+        issueContentView.milestoneLabel.text = issue.milestone?.title
+        issueContentView.issueLabelLabel.text = issue.labels?.first?.name
+        
+        issueContentView.milestoneLabel.isHidden = ((issue.milestone?.title?.isEmpty) == nil)
+        issueContentView.issueLabelLabel.isHidden = ((issue.labels?.first?.name?.isEmpty) == nil)
     }
     
     private func setupSubviews() {
-        
         visibleContainerView.backgroundColor = .white
+        let deleteView = createLabelView(text: "Delete",
+                                         textColor: .white,
+                                         backgroundColor: .systemRed)
+        let closeView = createLabelView(text: "Close",
+                                        textColor: .white,
+                                        backgroundColor: .systemGreen)
         
         visibleContainerView.addSubview(issueContentView)
-        issueContentView.pinEdgesToSuperView()
-        
-        let deleteView = createLabelView(text: "Delete", textColor: .white, backgroundColor: .systemRed)
         rightHiddenContainerView.addSubview(deleteView)
-        deleteView.pinEdgesToSuperView()
-        
-        let closeView = createLabelView(text: "Close", textColor: .white, backgroundColor: .systemGreen)
         leftHiddenContainerView.addSubview(closeView)
+        
+        issueContentView.pinEdgesToSuperView()
+        deleteView.pinEdgesToSuperView()
         closeView.pinEdgesToSuperView()
     }
     
-    private func createLabelView(text: String, textColor: UIColor, backgroundColor: UIColor) -> UIView {
+    private func createLabelView(text: String,
+                                 textColor: UIColor,
+                                 backgroundColor: UIColor) -> UIView {
+        
         let contentLabel: UILabel = {
             let label = UILabel()
             label.text = text

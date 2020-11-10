@@ -27,14 +27,16 @@ final class LabelMainViewController: UIViewController {
     
     private lazy var dataSource = makeDataSource()
     private let sections = Section.allCases
-    private var labelList: [Label] = []
+    private var labelList: [Label] = [] {
+        didSet { applySnapshot() }
+    }
     
     // MARK: - LifeCycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadLabelList()
-        applyLabelSnapshot()
+        applySnapshot()
     }
     
     // MARK: - Methods
@@ -43,7 +45,9 @@ final class LabelMainViewController: UIViewController {
     private func loadLabelList() {
         LabelService.shared.getLables { [weak self] result in
             self?.labelList = result
-            self?.applyLabelSnapshot()
+            DispatchQueue.main.async {
+                self?.applySnapshot()
+            }
         }
     }
     
@@ -69,18 +73,16 @@ extension LabelMainViewController {
             collectionView: labelCollectionView,
             cellProvider: { (collectionView, indexPath, label) ->
                 UICollectionViewCell? in
-                
                 let cell = collectionView
                     .dequeueReusableCell(withReuseIdentifier: "LabelCollectionViewCell",
                                          for: indexPath) as? LabelCollectionViewCell
                 cell?.configure(content: label)
                 return cell
         })
-        
         return dataSource
     }
     
-    func applyLabelSnapshot(animatingDifferences: Bool = true) {
+    func applySnapshot(animatingDifferences: Bool = true) {
         var snapshot = Snapshot()
         snapshot.appendSections(sections)
         snapshot.appendItems(labelList)
@@ -115,7 +117,7 @@ extension LabelMainViewController: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: self.view.bounds.width,
-                      height: 60)
+                      height: 76)
     }
     
 }

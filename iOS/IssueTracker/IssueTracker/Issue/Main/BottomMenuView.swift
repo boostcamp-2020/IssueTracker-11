@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BottomMenuView: UIView {
+final class BottomMenuView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

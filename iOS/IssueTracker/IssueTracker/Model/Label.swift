@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Label: Codable, Hashable {
+struct Label: Codable {
     let id: Int?
     let name: String?
     let description: String?
@@ -18,7 +18,10 @@ struct Label: Codable, Hashable {
         case id = "label_id"
         case name, description, color
     }
+}
 
+extension Label: Hashable {
+    
     static func == (lhs: Label, rhs: Label) -> Bool {
         return lhs.id == rhs.id
     }
