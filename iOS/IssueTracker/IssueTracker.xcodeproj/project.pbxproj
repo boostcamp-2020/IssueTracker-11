@@ -61,6 +61,9 @@
 		9793CFB425516101006235B1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9793CFB325516101006235B1 /* UIView+.swift */; };
 		97A1930F255270FD00A4B9D7 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A1930E255270FD00A4B9D7 /* CircleButton.swift */; };
 		97AB7369255A24E900644484 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AB7368255A24E900644484 /* EndpointType.swift */; };
+		97AB736D255A2D9A00644484 /* MilestoneEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AB736C255A2D9A00644484 /* MilestoneEndpoint.swift */; };
+		97AB736F255A31FF00644484 /* MilestoneService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AB736E255A31FF00644484 /* MilestoneService.swift */; };
+		97AB7371255A75F300644484 /* NSNotification.Name+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AB7370255A75F300644484 /* NSNotification.Name+.swift */; };
 		97D1CC2F25538A4200C4A0C1 /* FilterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D1CC2E25538A4200C4A0C1 /* FilterDataSource.swift */; };
 		97D5B7AD2553A4920060A7F7 /* FilterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D5B7AC2553A4920060A7F7 /* FilterDetailViewController.swift */; };
 		97D5B7B42553E7160060A7F7 /* IssueInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D5B7B32553E7160060A7F7 /* IssueInfoViewController.swift */; };
@@ -140,6 +143,9 @@
 		9793CFB325516101006235B1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		97A1930E255270FD00A4B9D7 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		97AB7368255A24E900644484 /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
+		97AB736C255A2D9A00644484 /* MilestoneEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneEndpoint.swift; sourceTree = "<group>"; };
+		97AB736E255A31FF00644484 /* MilestoneService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneService.swift; sourceTree = "<group>"; };
+		97AB7370255A75F300644484 /* NSNotification.Name+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification.Name+.swift"; sourceTree = "<group>"; };
 		97D1CC2E25538A4200C4A0C1 /* FilterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDataSource.swift; sourceTree = "<group>"; };
 		97D5B7AC2553A4920060A7F7 /* FilterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailViewController.swift; sourceTree = "<group>"; };
 		97D5B7B32553E7160060A7F7 /* IssueInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueInfoViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +196,7 @@
 				97DAB2CA255034DE002C3E21 /* String+.swift */,
 				9793CFB325516101006235B1 /* UIView+.swift */,
 				974574FD2552DED7007E1F04 /* UICollectionView+.swift */,
+				97AB7370255A75F300644484 /* NSNotification.Name+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -243,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				7CD54B1D25590E4C008629F3 /* LabelService.swift */,
+				97AB736E255A31FF00644484 /* MilestoneService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -321,6 +329,7 @@
 			children = (
 				97AB7368255A24E900644484 /* EndpointType.swift */,
 				7CE735472559428E00F8E029 /* LabelEndpoint.swift */,
+				97AB736C255A2D9A00644484 /* MilestoneEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -617,6 +626,7 @@
 				974574FC2552DDB3007E1F04 /* BottomMenuView.swift in Sources */,
 				974574FE2552DED7007E1F04 /* UICollectionView+.swift in Sources */,
 				97A1930F255270FD00A4B9D7 /* CircleButton.swift in Sources */,
+				97AB7371255A75F300644484 /* NSNotification.Name+.swift in Sources */,
 				977B9C54254FA7A500D00B28 /* MilestoneMainViewController.swift in Sources */,
 				7C13043E254FC989003AE6A1 /* LabelCollectionViewCell.swift in Sources */,
 				7C67D8DD2553B7B600533B03 /* ContentTextView.swift in Sources */,
@@ -629,6 +639,7 @@
 				7C13043C254FC521003AE6A1 /* LabelMainViewController.swift in Sources */,
 				7C1304562552829B003AE6A1 /* IssueDetailViewController.swift in Sources */,
 				974575032552E3D7007E1F04 /* IssueFilterOption.swift in Sources */,
+				97AB736D255A2D9A00644484 /* MilestoneEndpoint.swift in Sources */,
 				97D5B7B42553E7160060A7F7 /* IssueInfoViewController.swift in Sources */,
 				7C1304452550112A003AE6A1 /* LabelDetailViewController.swift in Sources */,
 				97664C68254A91CA005B98A7 /* CreationFormView.swift in Sources */,
@@ -649,6 +660,7 @@
 				9724708A25501AF800285073 /* MilestoneDetailViewController.swift in Sources */,
 				7C13045825528A9E003AE6A1 /* CommentHeaderReusableView.swift in Sources */,
 				7CE735482559428E00F8E029 /* LabelEndpoint.swift in Sources */,
+				97AB736F255A31FF00644484 /* MilestoneService.swift in Sources */,
 				97DAB2CB255034DE002C3E21 /* String+.swift in Sources */,
 				9753D70125596B2E00677C53 /* ProfileView.swift in Sources */,
 				7C67D8DB2553AF7500533B03 /* IssueAddViewController.swift in Sources */,
