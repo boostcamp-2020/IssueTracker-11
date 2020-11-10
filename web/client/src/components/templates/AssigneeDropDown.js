@@ -23,7 +23,7 @@ const LabelDropDown = () => {
 
     return (
         <div style={{ border: '1px solid black', height: '100%' }}>
-            <DropDown items={users} subject="Assignees" isClicked={false} style={{ float: 'right' }}>
+            <DropDown items={users} subject="Assignees" style={{ float: 'right' }}>
                 <Span>Assignees</Span>
                 <Span>No one assign yourself </Span>
             </DropDown>

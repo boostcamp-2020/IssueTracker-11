@@ -23,7 +23,7 @@ const MilestoneDropDown = () => {
 
     return (
         <div style={{ border: '1px solid black', height: '100%' }}>
-            <DropDown items={milestones} subject="Milestones" isClicked={false} style={{ float: 'right' }}>
+            <DropDown items={milestones} subject="Milestones" style={{ float: 'right' }}>
                 <Span>Milestones</Span>
                 <Span>No milestones </Span>
             </DropDown>
