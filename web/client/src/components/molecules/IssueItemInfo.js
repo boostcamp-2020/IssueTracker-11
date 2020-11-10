@@ -6,10 +6,10 @@ import Label from '@atoms/Label';
 import SVG from '@atoms/SVG';
 
 const getTimeDiff = (time) => {
-    const timeDiff = new Date() - new Date(time.slice(0, -5).split('T').join(' '));
+    const timeDiff = new Date() - new Date(time);
     const elapsedSec = Math.floor(timeDiff / 1000);
-    const elapsedMin = Math.floor(timeDiff / 1000 / 60);
-    const elapsedHour = Math.floor(timeDiff / 1000 / 60 / 60);
+    const elapsedMin = Math.floor(timeDiff / (1000 * 60));
+    const elapsedHour = Math.floor(timeDiff / (1000 * 60 * 60));
 
     if (elapsedSec < 60) return `${elapsedSec} seconds`;
     if (elapsedMin < 60) return `${elapsedMin} minutes`;
@@ -46,7 +46,7 @@ const IssueItemInfo = ({ issue }) => {
 
                 {/* Label */}
                 {issue.labels.map((label) => (
-                    <Label name={label.name} fontSize="12px" background="#ffff00" />
+                    <Label key={label.label_id} name={label.name} fontSize="12px" background="#ffff00" />
                 ))}
             </TitleAndLabel>
             <AuthorAndMilestone>
