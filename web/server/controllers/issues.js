@@ -13,25 +13,39 @@ class IssueController extends Controller {
 
     get = async (req, res) => {
         try {
-            const getResponse = new GETResponse();
             const [result] = await this.Model.get();
-            let previousItem = undefined;
-            result.forEach((item,index) => {
-                if(index === 0){
-                    const currentItem = new Issue(item);
-                    previousItem = currentItem;
-                }else{
-                    if(previousItem.issue_id === item.issue_id){
-                        previousItem.setLabel(item);
-                        previousItem.setAssignee(item);
-                    }else{
-                        getResponse.data.push(previousItem);
-                        previousItem = new Issue(item);
+            if(req.params.id){
+                const filteredResult = result.filter( item => item.issue_id == req.params.id);
+                let responseItem = {};
+                filteredResult.forEach( (item,index) => {
+                    if(index === 0) responseItem = new Issue(item);
+                    else{
+                        responseItem.setLabel(item);
+                        responseItem.setAssignee(item);
                     }
-                }
-            });
-            getResponse.data.forEach( item => item.status ?getResponse.open_number++ :getResponse.closed_number++);
-            return result.length === 0 ? res.status(204).send([]) : res.status(200).send(getResponse);
+                })
+                res.status(200).send(responseItem);
+            }else{
+                const getResponse = new GETResponse();
+                let previousItem = undefined;
+                result.forEach((item,index) => {
+                    if(index === 0){
+                        const currentItem = new Issue(item);
+                        previousItem = currentItem;
+                    }else{
+                        if(previousItem.issue_id === item.issue_id){
+                            previousItem.setLabel(item);
+                            previousItem.setAssignee(item);
+                        }else{
+                            getResponse.data.push(previousItem);
+                            previousItem = new Issue(item);
+                        }
+                    }
+                });
+                getResponse.data.push(previousItem);
+                getResponse.data.forEach( item => item.status ?getResponse.open_number++ :getResponse.closed_number++);
+                res.status(200).send(getResponse);
+            }
         } catch (error) {
             res.status(500).send({ result: error.message });
         }
