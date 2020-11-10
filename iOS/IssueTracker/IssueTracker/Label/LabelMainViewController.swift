@@ -27,7 +27,9 @@ final class LabelMainViewController: UIViewController {
     
     private lazy var dataSource = makeDataSource()
     private let sections = Section.allCases
-    private var labelList: [Label] = []
+    private var labelList: [Label] = [] {
+        didSet { applySnapshot() }
+    }
     
     // MARK: - LifeCycle
     

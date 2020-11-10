@@ -27,7 +27,9 @@ final class IssueMainViewController: UIViewController {
     private lazy var dataSource = makeDataSource()
     private let sections = Section.allCases
     private var bottomMenuView: BottomMenuView?
-    private var issueList: [Issue] = []
+    private var issueList: [Issue] = [] {
+        didSet { applySnapshot() }
+    }
     
     private var editButton: UIBarButtonItem?
     private var cancelButton: UIBarButtonItem?

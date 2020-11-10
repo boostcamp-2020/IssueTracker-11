@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Issue: Codable, Hashable {
+struct Issue: Codable {
     let id: Int?
     let title: String?
     let contents: String?
@@ -22,6 +22,9 @@ struct Issue: Codable, Hashable {
         case title, contents, status, author, labels, assignees, milestone
         case id = "issue_id"
     }
+}
+
+extension Issue: Hashable {
     
     static func == (lhs: Issue, rhs: Issue) -> Bool {
         return lhs.id == rhs.id
@@ -37,4 +40,5 @@ struct Issue: Codable, Hashable {
         hasher.combine(assignees)
         hasher.combine(milestone)
     }
+    
 }
