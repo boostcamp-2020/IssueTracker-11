@@ -7,7 +7,9 @@ const IssueItemDiv = styled.div`
     display: flex;
     width: ${(props) => props.width};
     height: ${(props) => props.height};
-    border: 1px solid black;
+    border-right: 1px solid #aaaaaa;
+    border-bottom: 1px solid #aaaaaa;
+    border-left: 1px solid #aaaaaa;
 `;
 
 const IssueItem = (props) => {

@@ -16,10 +16,8 @@ const StyledNavigation = styled.div`
 const Navigation = () => {
     const [display, setDisplay] = useState('flex');
     const sendDatatoParent = (value) => {
-        console.log(value);
         setDisplay(value);
     };
-    console.log(display);
 
     return (
         <StyledNavigation>
