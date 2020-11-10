@@ -13,9 +13,11 @@ const IssueItemDiv = styled.div`
 `;
 
 const IssueItem = (props) => {
+    console.log(props.issue);
+    if (!props.issue) return null;
     return (
         <IssueItemDiv width={props.width} height={props.height}>
-            <IssueItemLeft issue_id={props.issue_id} author={props.author} />
+            <IssueItemLeft issue={props.issue} />
             <IssueItemRight />
         </IssueItemDiv>
     );
