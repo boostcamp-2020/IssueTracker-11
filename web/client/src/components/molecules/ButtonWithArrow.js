@@ -5,11 +5,13 @@ import { StyledButton } from '@atoms/Button';
 
 const StyledButtonWithArrow = styled(StyledButton)`
     padding: 0 16px;
+    height: 36px;
+    backgroundcolor: ${({ backgroundColor }) => backgroundColor};
 `;
 
-const ButtonWithArrow = ({ text }) => {
+const ButtonWithArrow = ({ backgroundColor, text }) => {
     return (
-        <StyledButtonWithArrow>
+        <StyledButtonWithArrow backgroundColor={backgroundColor}>
             {text}
             <DownArrow />
         </StyledButtonWithArrow>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from '@atoms/Button.js';
 import SearchBar from '@molecules/SearchBar.js';
@@ -14,10 +14,15 @@ const StyledNavigation = styled.div`
 `;
 
 const Navigation = () => {
+    const [display, setDisplay] = useState('flex');
+    const sendDatatoParent = (value) => {
+        setDisplay(value);
+    };
+
     return (
         <StyledNavigation>
-            <SearchBar style={{ width: '80%' }}></SearchBar>
-            <Header style={{ width: '20%' }}></Header>
+            <SearchBar display={{ display }} width="85%"></SearchBar>
+            <Header sendDataToParent={sendDatatoParent}></Header>
         </StyledNavigation>
     );
 };

@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 const StyledButton = styled.button``;
 
-const Button = ({ onClick, text }) => {
+const SubmitButton = ({ onClick, text }) => {
     return <StyledButton onClick={onClick}>{text}</StyledButton>;
 };
 
-Button.defaultProps = {};
+SubmitButton.defaultProps = {};
 
-export default Button;
+export default SubmitButton;
