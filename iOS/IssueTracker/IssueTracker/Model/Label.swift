@@ -29,5 +29,4 @@ struct Label: Codable, Hashable {
         hasher.combine(description)
         hasher.combine(color)
     }
-    
 }
