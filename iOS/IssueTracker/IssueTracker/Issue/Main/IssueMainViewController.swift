@@ -69,11 +69,15 @@ final class IssueMainViewController: UIViewController {
     }
     
     private func closeIssue(id: Int) {
-        
+//        IssueService.shared.closeIssue(id: id) { [weak self] in
+//            self?.issueList.removeAll { $0.id == id }
+//        }
     }
     
     private func deleteIssue(id: Int) {
-        
+        IssueService.shared.deleteIssue(id: id) { [weak self] in
+            self?.issueList.removeAll { $0.id == id }
+        }
     }
     
     private func configure() {

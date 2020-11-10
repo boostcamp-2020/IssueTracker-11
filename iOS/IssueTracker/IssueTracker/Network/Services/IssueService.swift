@@ -57,4 +57,20 @@ class IssueService: Requestable {
             }
         }
     }
+    
+    func deleteIssue(id: Int, completion: @escaping () -> Void) {
+        issueEndpoint = .delete(id: id)
+        
+        request(issueEndpoint) { result in
+            switch result {
+            case .networkSuccess:
+                completion()
+            case .networkError(let error):
+                print(error)
+            case .networkFail:
+                print("Network Fail!!!!")
+            }
+        }
+    }
+    
 }

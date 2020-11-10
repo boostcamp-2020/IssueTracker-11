@@ -17,6 +17,7 @@ enum IssueEndpoint {
                 milestoneID: Int?,
                 assignees: [User],
                 labels: [Label])
+    case delete(id: Int)
 }
 
 extension IssueEndpoint: EndpointType {
@@ -29,6 +30,8 @@ extension IssueEndpoint: EndpointType {
             return basePath
         case .create:
             return basePath
+        case .delete(let id):
+            return basePath + "/\(id)"
         }
     }
     
@@ -38,12 +41,14 @@ extension IssueEndpoint: EndpointType {
             return .get
         case .create:
             return .post
+        case .delete:
+            return .delete
         }
     }
     
     var params: [String: Any]? {
         switch self {
-        case .get:
+        case .get, .delete:
             return nil
         case .create(let title, let contents, let author, let milestoneID, let assignees, let label):
             var param = ["title": title,
