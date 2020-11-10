@@ -14,7 +14,7 @@ const IssueItemLeft = ({ issue }) => {
     return (
         <IssueItemLeftDiv>
             {/* Check Box */}
-            <Padding padding="5px 5px 0px 2px">
+            <Padding padding="5px 5px 0px 16px">
                 <CheckBox />
             </Padding>
 

@@ -46,7 +46,7 @@ const IssueItemInfo = ({ issue }) => {
 
                 {/* Label */}
                 {issue.labels.map((label) => (
-                    <Label key={label.label_id} name={label.name} fontSize="12px" background="#ffff00" />
+                    <Label key={label.label_id} name={label.name} fontSize="12px" background={label.color} />
                 ))}
             </TitleAndLabel>
             <AuthorAndMilestone>
