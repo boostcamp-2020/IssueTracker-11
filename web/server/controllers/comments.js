@@ -14,7 +14,7 @@ class CommentController extends Controller {
                 const issue_id = Number(req.originalUrl.replace(/[^0-9]/g, ''));
                 const [result] = await this.Model.get(`WHERE issue_id = ${issue_id}`);
                 return result.length === 0
-                    ? res.status(204).send('No Content')
+                    ? res.status(204).send({ status: 'No Content' })
                     : res.status(200).send({ status: 'OK', data: result });
             }
         } catch (error) {
@@ -26,7 +26,7 @@ class CommentController extends Controller {
         const issue_id = Number(req.originalUrl.replace(/[^0-9]/g, ''));
         const { contents, author } = req.body;
         if (!issue_id || !author || (!!contents && contents.length > CONTENT_LIMIT)) {
-            return res.status(422).send('Unprocessable Entity');
+            return res.status(422).send({ status: 'Unprocessable Entity' });
         }
 
         try {
@@ -42,12 +42,12 @@ class CommentController extends Controller {
         const id = req.params.id;
 
         if (!issue_id || !author || (!!contents && contents.length > CONTENT_LIMIT)) {
-            return res.status(422).send('Unprocessable Entity');
+            return res.status(422).send({ status: 'Unprocessable Entity' });
         }
 
         try {
             await this.Model.put({ issue_id, contents, author }, id);
-            return res.status(200).send('OK');
+            return res.status(200).send({ status: 'OK' });
         } catch (error) {
             res.status(500).send({ result: error.message });
         }
