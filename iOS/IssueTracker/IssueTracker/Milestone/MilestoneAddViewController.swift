@@ -8,13 +8,17 @@
 
 import UIKit
 
+protocol MilestoneAddViewDelegate: class {
+    func milestoneDidAdd(milestone: Milestone)
+}
+
 final class MilestoneAddViewController: UIViewController {
     
     // MARK: - Properties
     
     private let creationFormView = CreationFormView()
     private let backgroundView = UIView()
-
+    weak var delegate: MilestoneAddViewDelegate?
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -73,6 +77,27 @@ final class MilestoneAddViewController: UIViewController {
         backgroundView.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    private func createMilestone() {
+        guard
+            let title = creationFormView.firstInputTextField.text,
+            let description = creationFormView.thirdInputTextField.text
+            else { return }
+        
+        let dueDate = creationFormView.secondInputTextField.text
+        if dueDate != nil && !(dueDate?.isValidDate ?? false) { return }
+        
+        let milestone = Milestone(id: nil,
+                                  title: title,
+                                  dueDate: dueDate,
+                                  description: description,
+                                  openNumber: nil,
+                                  closedNumber: nil)
+        MilestoneService.shared.create(milestone: milestone) { [weak self] in
+            self?.delegate?.milestoneDidAdd(milestone: milestone)
+            self?.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     @objc private func dismissView() {
         self.dismiss(animated: true, completion: nil)
     }
@@ -95,7 +120,7 @@ extension MilestoneAddViewController: CreationFormViewDelegate {
     }
     
     func saveButtonDidTap() {
-        
+        createMilestone()
     }
     
 }
