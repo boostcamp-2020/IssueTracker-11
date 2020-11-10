@@ -5,6 +5,17 @@ import Span from '@atoms/Span';
 import Label from '@atoms/Label';
 import SVG from '@atoms/SVG';
 
+const getTimeDiff = (time) => {
+    const timeDiff = new Date() - new Date(time.slice(0, -5).split('T').join(' '));
+    const elapsedSec = Math.floor(timeDiff / 1000);
+    const elapsedMin = Math.floor(timeDiff / 1000 / 60);
+    const elapsedHour = Math.floor(timeDiff / 1000 / 60 / 60);
+
+    if (elapsedSec < 60) return `${elapsedSec} seconds`;
+    if (elapsedMin < 60) return `${elapsedMin} minutes`;
+    if (elapsedHour < 24) return `${elapsedHour} hours`;
+    return `${Math.floor(elapsedHour / 24)} days`;
+};
 const generateAuthorText = (issue_id, author, status, createdAt) => {
     return `#${issue_id} ${status ? 'opend' : 'closed'} ${getTimeDiff(createdAt)} ago by ${author}`;
 };
