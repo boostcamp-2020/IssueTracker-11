@@ -22,10 +22,11 @@ const LabelDropDown = () => {
     if (!labels) return <div></div>;
 
     return (
-        <div style={{ border: '1px solid black' }}>
-            <DropDown items={labels} subject="Milestones" isClicked={true} style={{ float: 'right' }}></DropDown>
-            <Span>Labels</Span>
-            <Span>None yet </Span>
+        <div style={{ border: '1px solid black', height: '100%' }}>
+            <DropDown items={labels} subject="Labels" isClicked={true} style={{ float: 'right' }}>
+                <Span>Labels</Span>
+                <Span>None yet </Span>
+            </DropDown>
         </div>
     );
 };

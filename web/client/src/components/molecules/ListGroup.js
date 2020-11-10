@@ -9,10 +9,12 @@ const StyledTitle = styled.p`
     background-color: #eeeeee;
 `;
 const StyledListGroup = styled.ul`
-    border: 1px solid #eeeeee;
+    border: 1px solid gray;
     border-radius: 4px;
-    width: 200px;
+    width: 100%;
     text-align: left;
+    overflow-y: scroll;
+    background-color: #eeeeee;
 `;
 
 const ListGroup = ({ items }) => {
