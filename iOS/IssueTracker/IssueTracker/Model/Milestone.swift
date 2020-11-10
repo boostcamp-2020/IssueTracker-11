@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Milestone: Codable, Hashable {
+struct Milestone: Codable {
     let id: Int?
     let title: String?
     let dueDate: String?
@@ -32,4 +32,19 @@ struct Milestone: Codable, Hashable {
         
         return openNum + closedNum == 0 ? 0 : Int(Float(closedNum) / Float(openNum + closedNum) * 100)
     }
+}
+
+extension Milestone: Hashable {
+    
+    static func == (lhs: Milestone, rhs: Milestone) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(title)
+        hasher.combine(dueDate)
+        hasher.combine(description)
+    }
+    
 }
