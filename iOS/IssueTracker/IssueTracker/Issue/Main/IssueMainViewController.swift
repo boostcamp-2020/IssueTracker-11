@@ -8,21 +8,55 @@
 import UIKit
 
 final class IssueMainViewController: UIViewController {
-
+    
+    enum Section: CaseIterable {
+        case main
+    }
+    
+    // MARK: - Typealias
+    
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, Issue>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Issue>
+    
+    // MARK: - IBOutlets
+    
     @IBOutlet weak var issueCollectionView: UICollectionView!
     
+    // MARK: - Properties
+    
+    private lazy var dataSource = makeDataSource()
+    private let sections = Section.allCases
     private var bottomMenuView: BottomMenuView?
+    private var issueList: [Issue] = []
+    
     private var editButton: UIBarButtonItem?
     private var cancelButton: UIBarButtonItem?
     private var selectAllButton: UIBarButtonItem?
     private var filterButton: UIBarButtonItem?
     
+    // MARK: - Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadIssueList()
+        applySnapshot()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        issueCollectionView.delegate = self
-        issueCollectionView.dataSource = self
-        
         configure()
+    }
+    
+    // MARK: - Methods
+    
+    /// 이슈 리스트 통신
+    private func loadIssueList() {
+        IssueService.shared.getAll { [weak self] result in
+            self?.issueList = result
+            DispatchQueue.main.async {
+                self?.applySnapshot()
+            }
+        }
     }
     
     private func configure() {
@@ -32,7 +66,10 @@ final class IssueMainViewController: UIViewController {
         navigationItem.rightBarButtonItem = editButton
         
         let tabbarHeight = tabBarController?.tabBar.frame.height ?? 0
-        let rect = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: tabbarHeight)
+        let rect = CGRect(x: 0,
+                          y: view.frame.height,
+                          width: view.frame.width,
+                          height: tabbarHeight)
         bottomMenuView = BottomMenuView(frame: rect)
         self.view.addSubview(bottomMenuView ?? UIView())
     }
@@ -43,8 +80,8 @@ final class IssueMainViewController: UIViewController {
                                      action: #selector(toggleEditMode))
         
         cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel,
-                                                   target: self,
-                                                   action: #selector(toggleEditMode))
+                                       target: self,
+                                       action: #selector(toggleEditMode))
         
         selectAllButton = UIBarButtonItem(title: "Select All",
                                           style: .plain,
@@ -56,6 +93,8 @@ final class IssueMainViewController: UIViewController {
                                        target: self,
                                        action: #selector(segueToFilterViewController))
     }
+    
+    // MARK: - Objc
     
     @objc func toggleEditMode() {
         setEditing(!isEditing, animated: true)
@@ -92,40 +131,65 @@ final class IssueMainViewController: UIViewController {
     
 }
 
-extension IssueMainViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        return 10
+// MARK: - DiffableDataSource
+
+extension IssueMainViewController {
+    
+    private func makeDataSource() -> DataSource {
+        let dataSource = DataSource(
+            collectionView: issueCollectionView,
+            cellProvider: {  [weak self] (collectionView, indexPath, issue)
+                -> UICollectionViewCell? in
+                let cell = collectionView
+                    .dequeueReusableCell(withReuseIdentifier: IssueCollectionViewCell.identifier,
+                                         for: indexPath) as? IssueCollectionViewCell
+                guard let isEditing = self?.isEditing else {
+                    return UICollectionViewCell()
+                }
+                
+                cell?.configure(issue: issue,
+                                isEditing: isEditing)
+                cell?.delegate = self
+                return cell
+        })
+        
+        return dataSource
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IssueCollectionViewCell.identifier,
-                                                            for: indexPath) as? IssueCollectionViewCell
-            else { return UICollectionViewCell() }
-        cell.configure(isEditing: isEditing)
-        cell.delegate = self
-        return cell
+    private func applySnapshot(animatingDifferences: Bool = true) {
+        var snapshot = Snapshot()
+        snapshot.appendSections(sections)
+        snapshot.appendItems(issueList)
+        dataSource.apply(snapshot,
+                         animatingDifferences: animatingDifferences)
     }
+    
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension IssueMainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 88)
+        return CGSize(width: collectionView.frame.width, height: 104)
     }
     
 }
 
+// MARK: - UICollectionViewDelegate
+
 extension IssueMainViewController: UICollectionViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
         print("Self!!")
     }
     
 }
+
+// MARK: - SwipeableCollectionViewCellDelegate
 
 extension IssueMainViewController: SwipeableCollectionViewCellDelegate {
     
@@ -133,7 +197,7 @@ extension IssueMainViewController: SwipeableCollectionViewCellDelegate {
         guard
             let cell = cell as? IssueCollectionViewCell,
             let indexPath = issueCollectionView.indexPath(for: cell)
-        else { return }
+            else { return }
         
         if isEditing {
             cell.isSelected ? issueCollectionView.deselectItem(at: indexPath, animated: true) :
