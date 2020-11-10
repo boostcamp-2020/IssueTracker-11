@@ -10,7 +10,7 @@ const StyledInput = styled.input`
     width: ${({ width }) => width};
     height: ${({ height }) => height};
     border: ${({ border }) => (border === 'true' ? PRESENSE : NONE)}px solid #cccccc;
-    border-radius: 4px;
+    border-radius: 0px 4px 4px 0px;
 `;
 
 const Input = ({ id, placeholder, width, height, border }) => {
@@ -18,7 +18,7 @@ const Input = ({ id, placeholder, width, height, border }) => {
 };
 
 Input.defaultProps = {
-    height: '26px',
+    height: '30px',
     border: 'true',
 };
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Button } from '@atoms/Button.js';
+import { StyledButton } from '@atoms/Button.js';
+import DownArrow from '@atoms/DownArrow';
 import Input from '@atoms/Input.js';
-import SVG from '@atoms/SVG.js';
 import SubmitButton from '@atoms/SubmitButton.js';
 import DropDown from '../organisms/DropDown';
 
@@ -25,19 +25,21 @@ const SearchBar = ({ display, width }) => {
 
     return (
         <StyledSearchBar display={display.display} width={width}>
-            <DropDown
-                subject="filter"
-                isClicked="true"
-                items={[
-                    'Open issues and pull requests',
-                    'Your issues',
-                    'Your pull requests',
-                    'Everything assigned to you',
-                    'Everything mentioning you',
-                    'View advanced search syntax',
-                ]}
-            ></DropDown>
-            <Input id="searchBox" placeholder="Search all issues" width="90%" height="36px" border="true"></Input>
+            <div style={{ border: '1px solid #aaaaaa', height: '100%' }}>
+                <DropDown
+                    subject="filter"
+                    isClicked={false}
+                    items={[
+                        'Open issues and pull requests',
+                        'Your issues',
+                        'Your pull requests',
+                        'Everything assigned to you',
+                        'Everything mentioning you',
+                        'View advanced search syntax',
+                    ]}
+                ></DropDown>
+            </div>
+            <Input id="searchBox" placeholder="Search all issues" width="90%" height="38px" border="true"></Input>
             <SubmitButton onClick={submit} text=""></SubmitButton>
         </StyledSearchBar>
     );
