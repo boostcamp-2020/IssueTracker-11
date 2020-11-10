@@ -14,6 +14,11 @@ extension NSNotification.Name {
     
     public static let milestoneDidCreate = Notification.Name("MilestoneDidCreate")
     public static let milestoneDidDelete = Notification.Name("MilestoneDidDelete")
-    public static let milestoneDidUpdate = Notification.Name("milestoneDidUpdate")
+    public static let milestoneDidUpdate = Notification.Name("MilestoneDidUpdate")
     
+    // MARK: - Label
+    
+    public static let labelDidCreate = Notification.Name("LabelDidCreate")
+    public static let labelDidDelete = Notification.Name("LabelDidDelete")
+    public static let labelDidUpdate = Notification.Name("LabelDidUpdate")
 }

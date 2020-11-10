@@ -11,10 +11,17 @@ import UIKit
 @IBDesignable
 class BadgeLabel: UILabel {
     
-    public var topInset: CGFloat = 2.0
-    public var bottomInset: CGFloat = 2.0
-    public var leftInset: CGFloat = 5.0
-    public var rightInset: CGFloat = 5.0
+    @IBInspectable
+    public var topInset: CGFloat = 3.0
+    
+    @IBInspectable
+    public var bottomInset: CGFloat = 3.0
+    
+    @IBInspectable
+    public var leftInset: CGFloat = 7.0
+    
+    @IBInspectable
+    public var rightInset: CGFloat = 7.0
     
     @IBInspectable
     public var borderColor: UIColor? {

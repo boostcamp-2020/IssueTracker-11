@@ -33,22 +33,36 @@ final class LabelMainViewController: UIViewController {
     
     // MARK: - LifeCycle
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        labelCollectionView.delegate = self
+        registerNotifications()
         loadLabelList()
-        applySnapshot()
     }
     
     // MARK: - Methods
     
     /// 라벨 리스트 통신
     private func loadLabelList() {
-        LabelService.shared.getLables { [weak self] result in
-            self?.labelList = result
-            DispatchQueue.main.async {
-                self?.applySnapshot()
-            }
+        LabelService.shared.getLables { [weak self] labels in
+            self?.labelList = labels
         }
+    }
+    
+    private func registerNotifications() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self,
+                                       selector: #selector(labelDidCreate),
+                                       name: .labelDidCreate,
+                                       object: nil)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(labelDidUpdate),
+                                       name: .labelDidUpdate,
+                                       object: nil)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(labelDidDelete),
+                                       name: .labelDidDelete,
+                                       object: nil)
     }
     
     // MARK: - IBActions
@@ -61,6 +75,27 @@ final class LabelMainViewController: UIViewController {
             return nextViewController
         }()
         self.present(labelAddViewController, animated: true)
+    }
+    
+    // MARK: - Objc
+    
+    @objc private func labelDidCreate(_ notification: Notification) {
+        guard let label = notification.object as? Label else { return }
+        labelList.append(label)
+    }
+    
+    @objc private func labelDidUpdate(_ notification: Notification) {
+        guard
+            let label = notification.object as? Label,
+            let id = label.id,
+            let idx = labelList.firstIndex(where: { $0.id == id })
+        else { return }
+        labelList[idx] = label
+    }
+    
+    @objc private func labelDidDelete(_ notification: Notification) {
+        guard let id = notification.userInfo?["id"] as? Int else { return }
+        labelList.removeAll { $0.id == id }
     }
     
 }
