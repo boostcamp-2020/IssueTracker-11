@@ -64,6 +64,8 @@
 		977B9C60254FC5B000D00B28 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B9C5F254FC5B000D00B28 /* BadgeLabel.swift */; };
 		9793CFB425516101006235B1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9793CFB325516101006235B1 /* UIView+.swift */; };
 		97A1930F255270FD00A4B9D7 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A1930E255270FD00A4B9D7 /* CircleButton.swift */; };
+		97A47D25255AB3100048CBB8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A47D24255AB30F0048CBB8 /* LoginViewController.swift */; };
+		97A47D27255AB3390048CBB8 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97A47D26255AB3380048CBB8 /* Login.storyboard */; };
 		97AB7369255A24E900644484 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AB7368255A24E900644484 /* EndpointType.swift */; };
 		97AB736D255A2D9A00644484 /* MilestoneEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AB736C255A2D9A00644484 /* MilestoneEndpoint.swift */; };
 		97AB736F255A31FF00644484 /* MilestoneService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AB736E255A31FF00644484 /* MilestoneService.swift */; };
@@ -150,6 +152,8 @@
 		977B9C5F254FC5B000D00B28 /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
 		9793CFB325516101006235B1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		97A1930E255270FD00A4B9D7 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		97A47D24255AB30F0048CBB8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		97A47D26255AB3380048CBB8 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		97AB7368255A24E900644484 /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
 		97AB736C255A2D9A00644484 /* MilestoneEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneEndpoint.swift; sourceTree = "<group>"; };
 		97AB736E255A31FF00644484 /* MilestoneService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneService.swift; sourceTree = "<group>"; };
@@ -254,9 +258,6 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-    
-    
-    
 		7CD54B1C25590E40008629F3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +295,7 @@
 				970CAD4C254A73B50076691E /* SceneDelegate.swift */,
 				7C13044A25511DB1003AE6A1 /* Issue */,
 				7C13043A254FC419003AE6A1 /* Label */,
+				97A47D23255AB30F0048CBB8 /* Login */,
 				977B9C52254FA76700D00B28 /* Milestone */,
 				7CD54B1725590A0F008629F3 /* Network */,
 				97E59487254FE1C70052C2C3 /* Model */,
@@ -329,6 +331,7 @@
 				970CAD50254A73B50076691E /* Main.storyboard */,
 				7C2A9051254BA60500AFC5C4 /* Issue.storyboard */,
 				7C2A9053254BA61300AFC5C4 /* Label.storyboard */,
+				97A47D26255AB3380048CBB8 /* Login.storyboard */,
 				7C2A9055254BA61F00AFC5C4 /* Milestone.storyboard */,
 				7C2A9057254BA62500AFC5C4 /* Setting.storyboard */,
 				970CAD55254A73B60076691E /* LaunchScreen.storyboard */,
@@ -367,6 +370,15 @@
 			);
 			path = Milestone;
 			sourceTree = "<group>";
+		};
+		97A47D23255AB30F0048CBB8 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				97A47D24255AB30F0048CBB8 /* LoginViewController.swift */,
+			);
+			name = Login;
+			path = IssueTracker/Login;
+			sourceTree = SOURCE_ROOT;
 		};
 		97D5B7AE2553A8890060A7F7 /* Filter */ = {
 			isa = PBXGroup;
@@ -532,6 +544,7 @@
 				97664C66254A83CB005B98A7 /* CreationFormView.xib in Resources */,
 				970CAD54254A73B60076691E /* Assets.xcassets in Resources */,
 				7C130452255132E7003AE6A1 /* IssueContentView.xib in Resources */,
+				97A47D27255AB3390048CBB8 /* Login.storyboard in Resources */,
 				970CAD52254A73B50076691E /* Main.storyboard in Resources */,
 				7C2A9054254BA61300AFC5C4 /* Label.storyboard in Resources */,
 				7C2A9058254BA62500AFC5C4 /* Setting.storyboard in Resources */,
@@ -677,6 +690,7 @@
 				7C13045825528A9E003AE6A1 /* CommentHeaderReusableView.swift in Sources */,
 				7CE735482559428E00F8E029 /* LabelEndpoint.swift in Sources */,
 				97AB736F255A31FF00644484 /* MilestoneService.swift in Sources */,
+				97A47D25255AB3100048CBB8 /* LoginViewController.swift in Sources */,
 				97DAB2CB255034DE002C3E21 /* String+.swift in Sources */,
 				7CDB1D94255A53FD005236C9 /* User.swift in Sources */,
 				9753D70125596B2E00677C53 /* ProfileView.swift in Sources */,
