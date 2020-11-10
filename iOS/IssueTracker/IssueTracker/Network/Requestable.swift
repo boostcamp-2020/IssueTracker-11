@@ -15,19 +15,12 @@ protocol Requestable {
 
 extension Requestable {
     
-    func request(_ URL: String,
-                 method: HTTPMethod,
-                 params: Parameters?,
+    func request(_ endpoint: EndpointType,
                  completion: @escaping (NetworkResult<NetworkSuccessResult>) -> Void) {
         
-        guard let encodedUrl = URL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            print("networking - invalid url")
-            return
-        }
-        
-        AF.request(encodedUrl,
-                   method: method,
-                   parameters: params).responseData { (res) in
+        AF.request(endpoint.path,
+                   method: endpoint.method,
+                   parameters: endpoint.params).responseData { (res) in
                     guard let resCode = res.response?.statusCode else { return }
                     switch res.result {
                     case .success:
