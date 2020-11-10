@@ -1,35 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Button } from '@atoms/Button.js';
 import Input from '@atoms/Input.js';
 import SVG from '@atoms/SVG.js';
 import SubmitButton from '@atoms/SubmitButton.js';
+import DropDown from '../organisms/DropDown';
 
 const StyledSearchBar = styled.div`
-    display: flex;
+    display: ${({ display }) => display};
+    width: ${({ width }) => width};
 `;
 
-const SearchBar = () => {
-    const submit = async () => {
-        let context = document.getElementById('searchBox')?.value;
+const SearchBar = ({ display, width }) => {
+    const IssueDispatch = React.createContext(null);
 
-        let res = await fetch('http://127.0.0.1:4000/issues')
+    const submit = async () => {
+        const context = document.getElementById('searchBox')?.value;
+        const data = await fetch('http://49.50.160.103:3000/issues')
             .then((res) => res.json())
-            .then((res) => console.log(res));
-        console.log(res);
+            .then((res) => res);
+
+        return data;
     };
 
     return (
-        <StyledSearchBar>
-            <Button border="true" text="filters">
-                <SVG height="18px" fillRule="evenodd" name="search"></SVG>
-            </Button>
-            <Input id="searchBox" placeholder="Search all issues" width="500px"></Input>
-            <SubmitButton onClick={() => submit()} text="enter"></SubmitButton>
+        <StyledSearchBar display={display.display} width={width}>
+            <DropDown
+                subject="filter"
+                isClicked="true"
+                items={[
+                    'Open issues and pull requests',
+                    'Your issues',
+                    'Your pull requests',
+                    'Everything assigned to you',
+                    'Everything mentioning you',
+                    'View advanced search syntax',
+                ]}
+            ></DropDown>
+            <Input id="searchBox" placeholder="Search all issues" width="90%" height="36px" border="true"></Input>
+            <SubmitButton onClick={submit} text=""></SubmitButton>
         </StyledSearchBar>
     );
 };
 
-SearchBar.defaultProps = {};
+SearchBar.defaultProps = {
+    border: '1px solid red',
+};
 
 export default SearchBar;
