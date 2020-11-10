@@ -12,14 +12,14 @@ class IssueController extends Controller {
     post = async (req, res) => {
         const { title, contents, author, milestone_id } = req.body;
         if (!title || !author || title.length > TITLE_LIMIT || (!!contents && contents.length > CONTENT_LIMIT)) {
-            return res.status(422).send('Unprocessable Entity');
+            return res.status(422).send({ status: 'Unprocessable Entity' });
         }
 
         try {
             await this.Model.post({ title, contents, author, milestone_id });
-            res.status(201).send('Created');
+            res.status(201).send({ status: 'Created' });
         } catch (error) {
-            res.status(500).send({ result: error.message });
+            res.status(500).send({ status: error.message });
         }
     };
 
@@ -28,14 +28,14 @@ class IssueController extends Controller {
         const id = req.params.id;
 
         if (!title || !id || title.length > TITLE_LIMIT || (!!contents && contents.length > CONTENT_LIMIT)) {
-            return res.status(422).send('Unprocessable Entity');
+            return res.status(422).send({ status: 'Unprocessable Entity' });
         }
 
         try {
             await this.Model.put({ title, contents, milestone_id }, id);
-            return res.status(200).send('OK');
+            return res.status(200).send({ status: 'OK' });
         } catch (error) {
-            res.status(500).send({ result: error.message });
+            res.status(500).send({ status: error.message });
         }
     };
 }

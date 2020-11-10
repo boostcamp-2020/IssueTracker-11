@@ -15,9 +15,9 @@ class IssueLabelController extends Controller {
             await ids.forEach((issue_id) => {
                 this.Model.post({ issue_id, label_id });
             });
-            return res.status(201).send('Created');
+            return res.status(201).send({ status: 'Created' });
         } catch (error) {
-            res.status(500).send({ result: error.message });
+            res.status(500).send({ status: error.message });
         }
     };
 
@@ -28,9 +28,9 @@ class IssueLabelController extends Controller {
             await ids.forEach((issue_id) => {
                 this.Model.delete(label_id, issue_id);
             });
-            return res.status(200).send('OK');
+            return res.status(200).send({ status: 'OK' });
         } catch (error) {
-            res.status(500).send({ result: error.message });
+            res.status(500).send({ status: error.message });
         }
     };
 }
