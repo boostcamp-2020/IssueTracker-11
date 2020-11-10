@@ -53,14 +53,17 @@ final class LabelAddViewController: UIViewController {
         creationFormView.thirdInputTextField.text = color.toHexString()
     }
     
-    private func postLabel() {
+    private func createLabel() {
         let name = creationFormView.firstInputTextField.text
         let description = creationFormView.secondInputTextField.text
         let color = creationFormView.thirdInputTextField.text
         
         let label = Label(id: nil, name: name, description: description, color: color)
         LabelService.shared.createLabel(label: label) { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
+            NotificationCenter.default.post(Notification(name: .labelDidCreate,
+                                                         object: label,
+                                                         userInfo: nil))
+            self?.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -80,7 +83,7 @@ extension LabelAddViewController: CreationFormViewDelegate {
     }
     
     func saveButtonDidTap() {
-        postLabel()
+        createLabel()
     }
     
     func colorChangeButtonDidTap() {

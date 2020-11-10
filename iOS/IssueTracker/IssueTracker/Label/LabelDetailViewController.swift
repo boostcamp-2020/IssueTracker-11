@@ -46,6 +46,9 @@ final class LabelDetailViewController: UIViewController {
         
         let label = Label(id: labelID, name: name, description: description, color: color)
         LabelService.shared.updateLabel(label: label) { [weak self] in
+            NotificationCenter.default.post(Notification(name: .labelDidUpdate,
+                                                         object: label,
+                                                         userInfo: nil))
             self?.navigationController?.popViewController(animated: true)
         }
     }
@@ -53,6 +56,9 @@ final class LabelDetailViewController: UIViewController {
     @IBAction private func deleteButtonDidTap(_ sender: UIButton) {
         guard let labelID = label?.id else { return }
         LabelService.shared.deleteLabel(id: labelID) { [weak self] in
+            NotificationCenter.default.post(Notification(name: .labelDidDelete,
+                                                         object: nil,
+                                                         userInfo: ["id": labelID]))
             self?.navigationController?.popViewController(animated: true)
         }
     }
