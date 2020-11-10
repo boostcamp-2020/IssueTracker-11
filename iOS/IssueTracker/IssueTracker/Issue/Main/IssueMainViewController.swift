@@ -46,7 +46,14 @@ final class IssueMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerNotifications()
         configure()
+    }
+    
+    @IBAction func addButtonDidTap(_ sender: UIButton) {
+        guard let addIssueViewController =
+            storyboard?.instantiateViewController(withIdentifier: "addIssueNavigationController") else { return }
+        self.present(addIssueViewController, animated: true)
     }
     
     // MARK: - Methods
@@ -58,6 +65,18 @@ final class IssueMainViewController: UIViewController {
             DispatchQueue.main.async {
                 self?.applySnapshot()
             }
+        }
+    }
+    
+    private func closeIssue(id: Int) {
+//        IssueService.shared.closeIssue(id: id) { [weak self] in
+//            self?.issueList.removeAll { $0.id == id }
+//        }
+    }
+    
+    private func deleteIssue(id: Int) {
+        IssueService.shared.delete(id: id) { [weak self] in
+            self?.issueList.removeAll { $0.id == id }
         }
     }
     
@@ -96,7 +115,20 @@ final class IssueMainViewController: UIViewController {
                                        action: #selector(segueToFilterViewController))
     }
     
+    private func registerNotifications() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self,
+                                       selector: #selector(issueDidCreate),
+                                       name: Notification.Name(rawValue: "IssueDidCreate"),
+                                       object: nil)
+    }
+    
     // MARK: - Objc
+    
+    @objc private func issueDidCreate(_ notification: Notification) {
+        guard let issue = notification.object as? Issue else { return }
+        issueList.append(issue)
+    }
     
     @objc func toggleEditMode() {
         setEditing(!isEditing, animated: true)
@@ -180,17 +212,6 @@ extension IssueMainViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
-// MARK: - UICollectionViewDelegate
-
-extension IssueMainViewController: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        didSelectItemAt indexPath: IndexPath) {
-        print("Self!!")
-    }
-    
-}
-
 // MARK: - SwipeableCollectionViewCellDelegate
 
 extension IssueMainViewController: SwipeableCollectionViewCellDelegate {
@@ -205,12 +226,34 @@ extension IssueMainViewController: SwipeableCollectionViewCellDelegate {
             cell.isSelected ? issueCollectionView.deselectItem(at: indexPath, animated: true) :
                 issueCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
         }
+        
+        let identifier = String(describing: IssueDetailViewController.self)
+        guard let viewController = storyboard?.instantiateViewController(withIdentifier: identifier)
+            as? IssueDetailViewController else { return }
+        
+        viewController.issueID = issueList[indexPath.item].id
+        navigationController?.pushViewController(viewController,
+                                                 animated: true)
     }
     
     func leftHiddenContainerViewTapped(inCell cell: UICollectionViewCell) {
+        guard
+            let cell = cell as? IssueCollectionViewCell,
+            let indexPath = issueCollectionView.indexPath(for: cell),
+            let id = issueList[indexPath.item].id
+            else { return }
+        
+        closeIssue(id: id)
     }
     
     func rightHiddenContainerViewTapped(inCell cell: UICollectionViewCell) {
+        guard
+            let cell = cell as? IssueCollectionViewCell,
+            let indexPath = issueCollectionView.indexPath(for: cell),
+            let id = issueList[indexPath.item].id
+            else { return }
+        
+        deleteIssue(id: id)
     }
     
 }

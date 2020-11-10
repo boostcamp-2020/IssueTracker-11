@@ -12,11 +12,12 @@ final class IssueDetailViewController: UIViewController {
     
     @IBOutlet private weak var commentCollectionView: UICollectionView!
     
+    var issueID: Int?
     private var commentList: [String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        navigationController?.navigationBar.prefersLargeTitles = false
         tabBarController?.tabBar.isHidden = true
         loadComment()
         setFlowLayout()
@@ -24,7 +25,9 @@ final class IssueDetailViewController: UIViewController {
     }
     
     private func loadComment() {
-        commentList = [ "ㅋㅋㅋㅋㅋ", "댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글", "잘하네요"]
+        commentList = [ "ㅋㅋㅋㅋㅋ", "댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글", "잘하네요",
+         "ㅋㅋㅋㅋㅋ", "댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글", "잘하네요",
+         "ㅋㅋㅋㅋㅋ", "댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글", "잘하네요"]
     }
     
     private func setFlowLayout() {

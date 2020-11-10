@@ -14,12 +14,14 @@ struct Issue: Codable {
     let contents: String?
     let status: Int?
     let author: User?
+    let authorID: Int?
+    let milestone: Milestone?
+    let milestoneID: Int?
     let assignees: [User]?
     let labels: [Label]?
-    let milestone: Milestone?
 
     enum CodingKeys: String, CodingKey {
-        case title, contents, status, author, labels, assignees, milestone
+        case title, contents, status, author, labels, assignees, milestone, authorID, milestoneID
         case id = "issue_id"
     }
 }
@@ -32,6 +34,7 @@ extension Issue: Hashable {
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+        hasher.combine(authorID)
         hasher.combine(title)
         hasher.combine(contents)
         hasher.combine(status)
@@ -39,6 +42,7 @@ extension Issue: Hashable {
         hasher.combine(author)
         hasher.combine(assignees)
         hasher.combine(milestone)
+        hasher.combine(milestoneID)
     }
     
 }
