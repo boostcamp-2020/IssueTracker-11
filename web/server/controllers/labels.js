@@ -11,14 +11,14 @@ class LabelController extends Controller {
     post = async (req, res) => {
         const { name, description, color } = req.body;
         if (!name || (!!description && description.length > DESCRIPTION_LIMIT)) {
-            return res.status(422).send('Unprocessable Entity');
+            return res.status(422).send({ status: 'Unprocessable Entity' });
         }
 
         try {
             await this.Model.post({ name, description, color });
-            res.status(201).send('Created');
+            res.status(201).send({ status: 'Created' });
         } catch (error) {
-            res.status(500).send({ result: error.message });
+            res.status(500).send({ status: error.message });
         }
     };
 
@@ -27,14 +27,14 @@ class LabelController extends Controller {
         const id = req.params.id;
 
         if (!name || !id || (!!description && description.length > DESCRIPTION_LIMIT)) {
-            return res.status(422).send('Unprocessable Entity');
+            return res.status(422).send({ status: 'Unprocessable Entity' });
         }
 
         try {
             await this.Model.put({ name, description, color }, id);
-            res.status(200).send('OK');
+            res.status(200).send({ status: 'OK' });
         } catch (error) {
-            res.status(500).send({ result: error.message });
+            res.status(500).send({ status: error.message });
         }
     };
 }
