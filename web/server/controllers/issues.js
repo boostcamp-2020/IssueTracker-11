@@ -1,5 +1,7 @@
 import issueModel from '../models/issues.js';
 import Controller from './controller.js';
+import Issue from '../objects/issue.js';
+import GETResponse from '../objects/getResponse.js';
 
 const TITLE_LIMIT = 45;
 const CONTENT_LIMIT = 500;
@@ -8,6 +10,32 @@ class IssueController extends Controller {
     constructor(issueModel) {
         super(issueModel);
     }
+
+    get = async (req, res) => {
+        try {
+            const getResponse = new GETResponse();
+            const [result] = await this.Model.get();
+            let previousItem = undefined;
+            result.forEach((item,index) => {
+                if(index === 0){
+                    const currentItem = new Issue(item);
+                    previousItem = currentItem;
+                }else{
+                    if(previousItem.issue_id === item.issue_id){
+                        previousItem.setLabel(item);
+                        previousItem.setAssignee(item);
+                    }else{
+                        getResponse.data.push(previousItem);
+                        previousItem = new Issue(item);
+                    }
+                }
+            });
+            getResponse.data.forEach( item => item.status ?getResponse.open_number++ :getResponse.closed_number++);
+            return result.length === 0 ? res.status(204).send([]) : res.status(200).send(getResponse);
+        } catch (error) {
+            res.status(500).send({ result: error.message });
+        }
+    };
 
     post = async (req, res) => {
         const { title, contents, author, milestone_id } = req.body;
