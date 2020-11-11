@@ -15,7 +15,7 @@ const IssueItemLeft = ({ issue }) => {
         <IssueItemLeftDiv>
             {/* Check Box */}
             <Padding padding="5px 5px 0px 16px">
-                <CheckBox />
+                <CheckBox issueId={issue.issue_id} />
             </Padding>
 
             {/* Issue-Opened SVG */}
