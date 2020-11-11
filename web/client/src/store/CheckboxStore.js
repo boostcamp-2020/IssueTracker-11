@@ -13,9 +13,13 @@ const checkboxReducer = (checkState, { type, issueId }) => {
             if (idx > -1) newState.ids.splice(idx, 1);
             return newState;
         case 'CHECK_ALL':
-            checkState.allChecked = true;
-            console.log(checkState);
-            return checkState;
+            newState.allChecked = true;
+            // 모든 이슈의 아이디 다 풋풋풋
+            return newState;
+        case 'CHECK_ALL_FALSE':
+            newState.ids = [];
+            newState.allChecked = false;
+            return newState;
         default:
             console.log('default ??');
             return checkState;

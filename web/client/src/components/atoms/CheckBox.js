@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { CheckboxContext } from '../../store/checkbox';
+import { CheckboxContext } from '../../store/CheckboxStore';
 console.log('CheckBox component');
 export default function CheckBox({ name, issueId }) {
     const { checkState, dispatch } = useContext(CheckboxContext);

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import CheckBoxInfo from '@molecules/CheckBoxInfo';
 import DropDownGroup from '@organisms/DropDownGroup';
-import { CheckboxContext } from '../../store/checkbox';
+import { CheckboxContext } from '../../store/CheckboxStore';
 import DropDown from '@organisms/DropDown';
 const StyledIssueListHeader = styled.div`
     border: 1px solid #aaaaaa;

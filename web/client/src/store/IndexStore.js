@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckboxStore } from './checkbox';
+import { CheckboxStore } from './CheckboxStore';
 
 const IndexStore = ({ children }) => {
     return <CheckboxStore>{children}</CheckboxStore>;
