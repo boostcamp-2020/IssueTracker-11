@@ -10,8 +10,8 @@ class issueCommentsController extends Controller {
     get = async (req, res) => {
         const issue_id = req.params.id;
         try {
-            const [issue] = await this.Model.get(`WHERE issue_id = ${issue_id}`);
-            const [comments] = await commentModel.get(`WHERE issue_id = ${issue_id}`);
+            const [issue] = await this.Model.get(`WHERE issue_id = ${issue_id} AND deleted_at IS NULL`);
+            const [comments] = await commentModel.get(`WHERE issue_id = ${issue_id} AND deleted_at IS NULL`);
             const result = { issue: issue, comments: [...comments] };
             res.status(200).send({ status: 'OK', data: result });
         } catch (error) {

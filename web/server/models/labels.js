@@ -1,7 +1,7 @@
 import Model from './model.js';
 
 const Query = {
-    GET_QUERY: `SELECT * FROM labels`,
+    GET_QUERY: `SELECT * FROM labels WHERE deleted_at IS NULL`,
     POST_QUERY: 'INSERT INTO labels SET ? ',
     PUT_QUERY: ({ name, description, color }) =>
         `UPDATE labels SET name = '${name}', description = '${description}', color = '${color}', updated_at = now() WHERE label_id = `,

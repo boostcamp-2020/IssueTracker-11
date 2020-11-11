@@ -12,9 +12,9 @@ class CommentController extends Controller {
         try {
             if (req.originalUrl.includes('comments')) {
                 const issue_id = Number(req.originalUrl.replace(/[^0-9]/g, ''));
-                const [result] = await this.Model.get(`WHERE issue_id = ${issue_id}`);
+                const [result] = await this.Model.get(`WHERE issue_id = ${issue_id} AND deleted_at IS NULL`);
                 return result.length === 0
-                    ? res.status(204).send({ status: 'No Content' })
+                    ? res.status(200).send([])
                     : res.status(200).send({ status: 'OK', data: result });
             }
         } catch (error) {
