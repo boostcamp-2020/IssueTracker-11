@@ -71,11 +71,13 @@ final class IssueAddViewController: UIViewController {
                           milestone: nil,
                           milestoneID: nil,
                           assignees: [],
-                          labels: [])
+                          labels: [],
+                          comments: nil,
+                          createdAt: nil,
+                          updatedAt: nil)
         
-        let issueeDidCreate = Notification.Name("IssueeDidCreate")
         IssueService.shared.create(issue: issue) { [weak self] in
-            NotificationCenter.default.post(name: issueeDidCreate,
+            NotificationCenter.default.post(name: .issueeDidCreate,
                                             object: issue,
                                             userInfo: nil)
             self?.dismiss(animated: true, completion: nil)

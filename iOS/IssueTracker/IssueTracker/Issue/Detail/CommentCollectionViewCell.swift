@@ -17,8 +17,11 @@ final class CommentCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var contentLabel: UILabel!
     
-    func conigure(text: String) {
-        contentLabel.text = text
+    func conigure(_ comment: Comment) {
+        guard let author = comment.authorID else { return }
+        userNameLabel.text = "\(author)"
+        timeLabel.text = comment.createdAt?.toFormattedDate
+        contentLabel.text = comment.contents
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {

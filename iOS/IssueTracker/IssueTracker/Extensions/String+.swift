@@ -23,7 +23,8 @@ extension String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         guard let date = dateFormatter.date(from: splited) else { return "" }
-        dateFormatter.dateFormat = "yyyy년 MM월 dd일까지"
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
         return dateFormatter.string(from: date)
     }
+    
 }

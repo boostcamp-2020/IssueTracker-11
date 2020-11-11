@@ -29,6 +29,7 @@
 		7C67D8D62552D4EE00533B03 /* IssueStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67D8D52552D4EE00533B03 /* IssueStatus.swift */; };
 		7C67D8DB2553AF7500533B03 /* IssueAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67D8DA2553AF7500533B03 /* IssueAddViewController.swift */; };
 		7C67D8DD2553B7B600533B03 /* ContentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67D8DC2553B7B600533B03 /* ContentTextView.swift */; };
+		7CA9556A255BE09C00610629 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA95569255BE09C00610629 /* Comment.swift */; };
 		7CD54B1925590A25008629F3 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD54B1825590A25008629F3 /* NetworkResult.swift */; };
 		7CD54B1B25590A3D008629F3 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD54B1A25590A3D008629F3 /* Requestable.swift */; };
 		7CD54B1E25590E4C008629F3 /* LabelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD54B1D25590E4C008629F3 /* LabelService.swift */; };
@@ -114,6 +115,7 @@
 		7C67D8D52552D4EE00533B03 /* IssueStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueStatus.swift; sourceTree = "<group>"; };
 		7C67D8DA2553AF7500533B03 /* IssueAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueAddViewController.swift; sourceTree = "<group>"; };
 		7C67D8DC2553B7B600533B03 /* ContentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTextView.swift; sourceTree = "<group>"; };
+		7CA95569255BE09C00610629 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		7CD54B1825590A25008629F3 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		7CD54B1A25590A3D008629F3 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		7CD54B1D25590E4C008629F3 /* LabelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelService.swift; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 				7C13043F254FD37D003AE6A1 /* Label.swift */,
 				7CDB1D8D255A2F3A005236C9 /* Issue.swift */,
 				7CDB1D93255A53FD005236C9 /* User.swift */,
+				7CA95569255BE09C00610629 /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 				97AB7371255A75F300644484 /* NSNotification.Name+.swift in Sources */,
 				977B9C54254FA7A500D00B28 /* MilestoneMainViewController.swift in Sources */,
 				7C13043E254FC989003AE6A1 /* LabelCollectionViewCell.swift in Sources */,
+				7CA9556A255BE09C00610629 /* Comment.swift in Sources */,
 				7C67D8DD2553B7B600533B03 /* ContentTextView.swift in Sources */,
 				7C130440254FD37D003AE6A1 /* Label.swift in Sources */,
 				97D5B7B62553E7410060A7F7 /* PullUpController.swift in Sources */,

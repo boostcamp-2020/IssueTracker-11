@@ -16,8 +16,13 @@ final class CommentHeaderReusableView: UICollectionReusableView {
     @IBOutlet private weak var issueTitleLabel: UILabel!
     @IBOutlet private weak var issueStateLabel: BadgeLabel!
     
-    func conigure(status: Bool) {
-        setStatusLabel(status ? .open : .closed)
+    func conigure(_ issue: Issue) {
+        // image!!!
+        guard let issueID = issue.id else { return }
+        issueNumberLabel.text = "#\(issueID)"
+        userNameLabel.text = issue.author?.nickname
+        issueTitleLabel.text = issue.title
+        setStatusLabel(issue.status == 1 ? .open : .closed)
     }
     
     private func setStatusLabel(_ status: IssueStatus) {

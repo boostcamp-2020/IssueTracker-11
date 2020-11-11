@@ -21,11 +21,13 @@ final class MilestoneCollectionViewCell: UICollectionViewCell {
     
     func configure(with item: Milestone) {
         titleLabel.text = item.title
-        dueDateLabel.text = item.dueDate?.toFormattedDate
         descriptionLabel.text = item.description
         openLabel.text = "\(item.openNumber ?? 0) open"
         closedLabel.text = "\(item.closedNumber ?? 0) closed"
         percentLabel.text = "\(item.progressPercentage)%"
+        
+        guard let dateString = item.dueDate?.toFormattedDate else { return }
+        dueDateLabel.text = dateString + "까지"
     }
     
 }
