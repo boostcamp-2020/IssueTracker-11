@@ -7,26 +7,17 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--설정-->
         <scene sceneID="cYv-YU-yc0">
             <objects>
                 <viewController id="JiQ-S5-8ui" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HjX-gC-iT0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgM-1c-J4o">
-                                <rect key="frame" x="204" y="352" width="53" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="rZX-Wy-AVb"/>
                     </view>
-                    <navigationItem key="navigationItem" id="doI-FS-DCM"/>
+                    <navigationItem key="navigationItem" title="설정" id="doI-FS-DCM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37c-2V-fhY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -39,8 +30,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7ys-ch-4J3" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="설정" image="4.circle.fill" catalog="system" id="LDt-3h-Snd"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JJE-X9-8Q3">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="JJE-X9-8Q3">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

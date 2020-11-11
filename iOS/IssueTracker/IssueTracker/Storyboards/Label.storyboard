@@ -33,7 +33,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wY5-nO-K8H">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wY5-nO-K8H">
                                                     <rect key="frame" x="18" y="15" width="349" height="46"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XUA-Hy-ThZ">
@@ -59,7 +59,10 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKf-I1-FTS">
-                                                            <rect key="frame" x="0.0" y="28" width="349" height="18"/>
+                                                            <rect key="frame" x="0.0" y="28" width="37.5" height="18"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="18" id="jjU-p0-jU0"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -105,7 +108,11 @@
                         <viewLayoutGuide key="safeArea" id="gbE-CN-eNL"/>
                     </view>
                     <navigationItem key="navigationItem" title="레이블" id="PBr-bp-8Lk">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="RF3-Sr-kIr"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="RF3-Sr-kIr">
+                            <connections>
+                                <action selector="labelAddButtonDidTap:" destination="4K3-eH-FqV" id="kOS-EN-ege"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -344,7 +351,7 @@
                     <tabBarItem key="tabBarItem" title="레이블" image="2.circle.fill" catalog="system" id="clE-9h-R8E"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="RQ1-q1-lgQ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
