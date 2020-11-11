@@ -67,21 +67,21 @@ final class LabelMainViewController: UIViewController {
     
     // MARK: - IBActions
     
-    @IBAction private func labelAddButtonDidTap(_ sender: UIButton) {
+    @IBAction private func labelAddButtonDidTap(_ sender: UIBarButtonItem) {
         let labelAddViewController: LabelAddViewController = {
             let nextViewController = LabelAddViewController()
             nextViewController.modalTransitionStyle = .crossDissolve
             nextViewController.modalPresentationStyle = .overCurrentContext
             return nextViewController
         }()
-        self.present(labelAddViewController, animated: true)
+        self.present(labelAddViewController,
+                     animated: true)
     }
     
     // MARK: - Objc
     
     @objc private func labelDidCreate(_ notification: Notification) {
-        guard let label = notification.object as? Label else { return }
-        labelList.append(label)
+        loadLabelList()
     }
     
     @objc private func labelDidUpdate(_ notification: Notification) {
