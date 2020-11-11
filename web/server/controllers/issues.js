@@ -1,4 +1,5 @@
 import issueModel from '../models/issues.js';
+import commentModel from '../models/comments.js';
 import Controller from './controller.js';
 import Issue from '../objects/issue.js';
 import GETResponse from '../objects/getResponse.js';
@@ -15,6 +16,7 @@ class IssueController extends Controller {
         try {
             const [result] = await this.Model.get();
             if(req.params.id){
+                const [comments] = await commentModel.get(`WHERE issue_id = ${req.params.id} AND deleted_at IS NULL`);
                 const filteredResult = result.filter( item => item.issue_id == req.params.id);
                 let responseItem = {};
                 filteredResult.forEach( (item,index) => {
@@ -24,6 +26,7 @@ class IssueController extends Controller {
                         responseItem.setAssignee(item);
                     }
                 })
+                if(responseItem.hasOwnProperty('issue_id')) responseItem.comments = comments;
                 res.status(200).send(responseItem);
             }else{
                 const getResponse = new GETResponse();
