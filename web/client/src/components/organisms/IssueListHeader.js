@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import CheckBoxInfo from '@molecules/CheckBoxInfo';
 import DropDownGroup from '@organisms/DropDownGroup';
 import { CheckboxContext } from '../../store/checkbox';
-
+import DropDown from '@organisms/DropDown';
 const StyledIssueListHeader = styled.div`
     border: 1px solid #aaaaaa;
     display: flex;
@@ -24,7 +24,13 @@ const IssuListHeader = () => {
     return (
         <StyledIssueListHeader>
             <CheckBoxInfo children={children} />
-            <DropDownGroup />
+            {checked ? (
+                <div style={{ height: 21 }}>
+                    <DropDown subject="Mark as" items={['open', 'closed']} backgroundColor="inherit" />
+                </div>
+            ) : (
+                <DropDownGroup />
+            )}
         </StyledIssueListHeader>
     );
 };
