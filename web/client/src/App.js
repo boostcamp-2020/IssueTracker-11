@@ -1,6 +1,4 @@
 import React from 'react';
-import ImageUpload from './imageUpload';
-
 import Title from '@atoms/Title.js';
 import GlobalStyle from '@themes/GlobalStyle.js';
 import Routes from '@pages/Routes.js';
