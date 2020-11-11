@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Button } from '../atoms/Button';
+import { Button } from '@atoms/Button';
 import SubmitButton from '@atoms/SubmitButton';
-import Input from '../atoms/Input';
-import Span from '../atoms/Span';
-import DropDown from '../organisms/DropDown';
+import Input from '@atoms/Input';
+import Span from '@atoms/Span';
+import DropDown from '@organisms/DropDown';
+import Markdown from '@atoms/Markdown';
 
 const IssueNote = () => {
+    const [issueContent, setIssueContent] = useState(null);
     const createIssue = async () => {
         const issueTitle = document.getElementById('issueTitle')?.value;
-        const issueContent = document.getElementById('issueContent')?.value;
         console.log('버튼 클릭됨.');
         const data = {
             title: issueTitle,
@@ -40,7 +41,7 @@ const IssueNote = () => {
                     <Input id="issueTitle" placeholder="Title" width="100%"></Input>
                 </div>
                 <div style={{ border: '1px solid black', height: '80%' }}>
-                    <Input id="issueContent" placeholder="Leave a comments" width="100%" height="100%"></Input>
+                    <Markdown setIssueContent={setIssueContent} />
                 </div>
                 <div style={{ border: '1px solid black', width: '100%', height: '5%' }}>
                     <Span style={{ float: 'left' }}>Attach files by selecting here</Span>
