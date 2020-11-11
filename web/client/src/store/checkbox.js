@@ -22,3 +22,11 @@ const checkboxReducer = (checkState, { type, issueId }) => {
             return checkState;
     }
 };
+
+export const CheckboxStore = ({ children }) => {
+    const [checkState, dispatch] = useReducer(checkboxReducer, {
+        allChecked: false,
+        ids: [],
+    });
+    return <CheckboxContext.Provider value={{ checkState, dispatch }}>{children}</CheckboxContext.Provider>;
+};
