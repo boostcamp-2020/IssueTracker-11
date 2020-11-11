@@ -3,12 +3,12 @@ import Input from '@atoms/input.js';
 import SubmitButton from '@atoms/SubmitButton.js';
 import Span from '@atoms/Span.js';
 import { Button } from '@atoms/Button.js';
-import styled from 'styled-components';
+import Markdown from '@atoms/Markdown';
 
 const IssueSection = () => {
+    const [issueContent, setIssueContent] = useState(null);
     const createIssue = async () => {
         const issueTitle = document.getElementById('issueTitle')?.value;
-        const issueContent = document.getElementById('issueContent')?.value;
 
         const data = {
             title: issueTitle,
@@ -31,7 +31,7 @@ const IssueSection = () => {
                 <Input id="issueTitle" placeholder="Title" width="100%"></Input>
             </div>
             <div style={{ border: '1px solid black', height: '80%' }}>
-                <Input id="issueContent" placeholder="Leave a comments" width="100%" height="100%"></Input>
+                <Markdown setIssueContent={setIssueContent} />
             </div>
             <div style={{ border: '1px solid black', width: '100%', height: '5%' }}>
                 <Span style={{ float: 'left' }}>Attach files by selecting here</Span>
