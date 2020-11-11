@@ -12,7 +12,7 @@ extension NSNotification.Name {
     
     // MARK: - Issue
     
-    public static let issueeDidCreate = Notification.Name("IssueeDidCreate")
+    public static let issueDidCreate = Notification.Name("IssueDidCreate")
     
     // MARK: - Milestone
     

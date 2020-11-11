@@ -42,7 +42,6 @@ final class IssueMainViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
         loadIssueList()
-        applySnapshot()
     }
     
     override func viewDidLoad() {
@@ -63,9 +62,6 @@ final class IssueMainViewController: UIViewController {
     private func loadIssueList() {
         IssueService.shared.getAll { [weak self] result in
             self?.issueList = result
-            DispatchQueue.main.async {
-                self?.applySnapshot()
-            }
         }
     }
     
@@ -120,15 +116,14 @@ final class IssueMainViewController: UIViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self,
                                        selector: #selector(issueDidCreate),
-                                       name: Notification.Name(rawValue: "IssueDidCreate"),
+                                       name: .issueDidCreate,
                                        object: nil)
     }
     
     // MARK: - Objc
     
     @objc private func issueDidCreate(_ notification: Notification) {
-        guard let issue = notification.object as? Issue else { return }
-        issueList.append(issue)
+        loadIssueList()
     }
     
     @objc func toggleEditMode() {
