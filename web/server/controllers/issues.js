@@ -7,6 +7,15 @@ import GETResponse from '../objects/getResponse.js';
 const TITLE_LIMIT = 45;
 const CONTENT_LIMIT = 500;
 
+const clean = (obj) => {
+    for (let propName in obj) {
+        if (obj[propName] === null || obj[propName] === undefined) {
+            delete obj[propName];
+        }
+    }
+    return obj;
+};
+
 class IssueController extends Controller {
     constructor(issueModel) {
         super(issueModel);
@@ -15,9 +24,9 @@ class IssueController extends Controller {
     get = async (req, res) => {
         try {
             const [result] = await this.Model.get();
-            if(req.params.id){
+            if (req.params.id) {
                 const [comments] = await commentModel.get(`WHERE issue_id = ${req.params.id} AND deleted_at IS NULL`);
-                const filteredResult = result.filter( item => item.issue_id == req.params.id);
+                const filteredResult = result.filter((item) => item.issue_id == req.params.id);
                 let responseItem = {};
                 filteredResult.forEach((item, index) => {
                     if (index === 0) responseItem = new Issue(item);
@@ -25,8 +34,8 @@ class IssueController extends Controller {
                         responseItem.setLabel(item);
                         responseItem.setAssignee(item);
                     }
-                })
-                if(responseItem.hasOwnProperty('issue_id')) responseItem.comments = comments;
+                });
+                if (responseItem.hasOwnProperty('issue_id')) responseItem.comments = comments;
                 res.status(200).send(responseItem);
             } else {
                 const getResponse = new GETResponse();
@@ -58,12 +67,15 @@ class IssueController extends Controller {
 
     post = async (req, res) => {
         const { title, contents, author, milestone_id, assignees, labels } = req.body;
+        const POST_DATA = clean({ title, contents, author, milestone_id, assignees, labels });
+        console.log(POST_DATA);
+
         if (!title || !author || title.length > TITLE_LIMIT || (!!contents && contents.length > CONTENT_LIMIT)) {
             return res.status(422).send({ status: 'Unprocessable Entity' });
         }
 
         try {
-            await this.Model.post({ title, contents, author, milestone_id, assignees, labels });
+            await this.Model.post(POST_DATA);
             res.status(201).send({ status: 'Created' });
         } catch (error) {
             res.status(500).send({ status: error.message });

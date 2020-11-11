@@ -32,6 +32,7 @@ class Model {
         } catch (error) {
             conn.rollback();
             console.error(error);
+            throw new Error('POST METHOD ERROR');
         } finally {
             conn.release();
         }
@@ -46,6 +47,7 @@ class Model {
         } catch (error) {
             conn.rollback();
             console.error(error);
+            throw new Error('PUT METHOD ERROR');
         } finally {
             conn.release();
         }
