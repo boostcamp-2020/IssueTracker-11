@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ProfileCell: UICollectionViewCell {
+final class ProfileCell: UICollectionViewCell {
     
     static let reuseIdentifier = "ProfileCell"
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
     
     func configure(image: UIImage, name: String) {
         imageView.image = image

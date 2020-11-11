@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShadowConlectionViewCell: UICollectionViewCell {
+class ShadowCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()

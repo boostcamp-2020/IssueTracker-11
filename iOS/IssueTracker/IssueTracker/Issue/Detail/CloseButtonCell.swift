@@ -8,10 +8,11 @@
 
 import UIKit
 
-class CloseButtonCell: ShadowConlectionViewCell {
+final class CloseButtonCell: ShadowCollectionViewCell {
     
     static let reuseIdentifier = "CloseButtonCell"
-    @IBOutlet weak var closeButton: UIButton!
+    
+    @IBOutlet private weak var closeButton: UIButton!
     
     func configure(selector: Selector) {
         closeButton.addTarget(self,

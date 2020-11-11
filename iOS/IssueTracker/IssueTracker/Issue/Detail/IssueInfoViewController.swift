@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IssueInfoViewController: PullUpController {
+final class IssueInfoViewController: PullUpController {
     
     enum Section: CaseIterable {
         case asignee

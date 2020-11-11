@@ -8,9 +8,11 @@
 
 import UIKit
 
-class LabelCell: UICollectionViewCell {
+final class LabelCell: UICollectionViewCell {
+    
     static let reuseIdentifier = "LabelCell"
-    @IBOutlet weak var label: BadgeLabel!
+    
+    @IBOutlet private weak var label: BadgeLabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -8,10 +8,12 @@
 
 import UIKit
 
-class InfoHeaderView: UICollectionReusableView {
+final class InfoHeaderView: UICollectionReusableView {
+    
     static let reuseIdentifier = "header-reuse-identifier"
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var editButton: UIButton!
+    
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var editButton: UIButton!
     
     func configure(title: String, selector: Selector) {
         titleLabel.text = title

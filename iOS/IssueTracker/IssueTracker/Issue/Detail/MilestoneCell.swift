@@ -8,12 +8,12 @@
 
 import UIKit
 
-class MilestoneCell: ShadowConlectionViewCell {
+final class MilestoneCell: ShadowCollectionViewCell {
     
     static let reuseIdentifier = "MilestoneCell"
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var progressView: UIProgressView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
