@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import CheckBoxInfo from '@molecules/CheckBoxInfo';
 import DropDownGroup from '@organisms/DropDownGroup';
+import { CheckboxContext } from '../../store/checkbox';
 
 const StyledIssueListHeader = styled.div`
     border: 1px solid #aaaaaa;
@@ -17,9 +18,12 @@ const StyledIssueListHeader = styled.div`
 `;
 
 const IssuListHeader = () => {
+    const { checkState } = useContext(CheckboxContext);
+    const checked = checkState.ids.length;
+    const children = checked ? ` ${Math.ceil(checked / 2)} selected` : null;
     return (
         <StyledIssueListHeader>
-            <CheckBoxInfo />
+            <CheckBoxInfo children={children} />
             <DropDownGroup />
         </StyledIssueListHeader>
     );
