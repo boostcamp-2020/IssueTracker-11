@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import CheckBox from '@atoms/CheckBox';
+import CheckBoxInfo from '@molecules/CheckBoxInfo';
 import DropDownGroup from '@organisms/DropDownGroup';
 
 const StyledIssueListHeader = styled.div`
@@ -19,7 +19,7 @@ const StyledIssueListHeader = styled.div`
 const IssuListHeader = () => {
     return (
         <StyledIssueListHeader>
-            <CheckBox />
+            <CheckBoxInfo />
             <DropDownGroup />
         </StyledIssueListHeader>
     );
