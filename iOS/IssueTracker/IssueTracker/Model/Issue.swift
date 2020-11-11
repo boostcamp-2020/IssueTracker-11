@@ -19,10 +19,15 @@ struct Issue: Codable {
     let milestoneID: Int?
     let assignees: [User]?
     let labels: [Label]?
+    let comments: [Comment]?
+    let createdAt: String?
+    let updatedAt: String?
 
     enum CodingKeys: String, CodingKey {
-        case title, contents, status, author, labels, assignees, milestone, authorID, milestoneID
+        case title, contents, status, author, labels, assignees, milestone, authorID, milestoneID, comments
         case id = "issue_id"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
     }
 }
 
@@ -43,6 +48,7 @@ extension Issue: Hashable {
         hasher.combine(assignees)
         hasher.combine(milestone)
         hasher.combine(milestoneID)
+        hasher.combine(comments)
     }
     
 }

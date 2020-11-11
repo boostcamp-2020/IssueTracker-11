@@ -10,6 +10,10 @@ import Foundation
 
 extension NSNotification.Name {
     
+    // MARK: - Issue
+    
+    public static let issueeDidCreate = Notification.Name("IssueeDidCreate")
+    
     // MARK: - Milestone
     
     public static let milestoneDidCreate = Notification.Name("MilestoneDidCreate")

@@ -9,12 +9,11 @@
 import Foundation
 import Alamofire
 
-// 조회
 // 수정
 // 댓글추가
 // 담당자, 마일스톤, 레이블 추가
 enum IssueDetailEndpoint {
-    case get
+    case get(id: Int)
 }
 
 extension IssueDetailEndpoint: EndpointType {
@@ -23,8 +22,8 @@ extension IssueDetailEndpoint: EndpointType {
         let basePath = baseUrl + "/issues"
         
         switch self {
-        case .get:
-            return basePath
+        case .get(let id):
+            return basePath + "/\(id)"
         }
     }
     

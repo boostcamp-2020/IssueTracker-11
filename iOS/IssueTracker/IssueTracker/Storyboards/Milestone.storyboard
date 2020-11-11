@@ -62,10 +62,10 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="UTa-8u-GJ3">
-                                                    <rect key="frame" x="18" y="11.5" width="217" height="56"/>
+                                                    <rect key="frame" x="18" y="11.5" width="145" height="56"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="wDZ-xS-fkq">
-                                                            <rect key="frame" x="0.0" y="0.0" width="217" height="21"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="106" height="21"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스프린트365" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9M-Z4-UFD" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="84.5" height="21"/>
@@ -96,8 +96,8 @@
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="2020년 6월 30일 까지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qt3-LK-hm1">
-                                                                    <rect key="frame" x="102.5" y="0.0" width="114.5" height="21"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qt3-LK-hm1">
+                                                                    <rect key="frame" x="102.5" y="0.0" width="3.5" height="21"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
