@@ -14,7 +14,7 @@ protocol InsertPhotoDelegate: class {
 
 final class ContentTextView: UITextView {
     
-    private var placeholderText = "코멘트는 여기에 작성하세요"
+    var placeholderText = "코멘트는 여기에 작성하세요"
     weak var photoDelegate: InsertPhotoDelegate?
     
     override func awakeFromNib() {
@@ -33,6 +33,7 @@ final class ContentTextView: UITextView {
                                    withSender sender: Any?) -> Bool {
         return action == #selector(cut(_:))
             || action == #selector(copy(_:))
+            || action == #selector(paste(_:))
             || action == #selector(insertPhotoDidTap)
     }
     

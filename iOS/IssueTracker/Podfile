@@ -8,6 +8,7 @@ target 'IssueTracker' do
   # Swift Lint
   pod 'SwiftLint'
   pod 'Alamofire'
+  pod 'MarkdownView'
 
   target 'IssueTrackerTests' do
     inherit! :search_paths
