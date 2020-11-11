@@ -57,7 +57,9 @@ extension MilestoneEndpoint: EndpointType {
              .update(_, let title, let dueDate, let description):
             var param = ["title": title,
                          "description": description]
-            if dueDate != nil && !(dueDate?.isEmpty ?? false) { param["due_date"] = dueDate }
+            if dueDate != nil && !(dueDate?.isEmpty ?? false) {
+                param["due_date"] = dueDate
+            }
             return param
         }
     }
