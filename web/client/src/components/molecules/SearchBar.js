@@ -30,12 +30,12 @@ const SearchBar = ({ display, width }) => {
                     subject="filter"
                     isClicked={false}
                     items={[
-                        'Open issues and pull requests',
-                        'Your issues',
-                        'Your pull requests',
-                        'Everything assigned to you',
-                        'Everything mentioning you',
-                        'View advanced search syntax',
+                        { title: 'Open issues and pull requests' },
+                        { title: 'Your issues' },
+                        { title: 'Your pull requests' },
+                        { title: 'Everything assigned to you' },
+                        { title: 'Everything mentioning you' },
+                        { title: 'View advanced search syntax' },
                     ]}
                     lineHeight="36px"
                 ></DropDown>
