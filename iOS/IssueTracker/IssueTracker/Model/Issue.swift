@@ -35,6 +35,13 @@ extension Issue: Hashable {
     
     static func == (lhs: Issue, rhs: Issue) -> Bool {
         return lhs.id == rhs.id
+            && lhs.title == rhs.title
+            && lhs.contents == rhs.contents
+            && lhs.status == rhs.status
+            && lhs.author == rhs.author
+            && lhs.assignees == rhs.assignees
+            && lhs.milestone == rhs.milestone
+            && lhs.comments == rhs.comments
     }
 
     func hash(into hasher: inout Hasher) {
