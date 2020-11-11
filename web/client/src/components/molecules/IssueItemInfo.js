@@ -45,9 +45,11 @@ const IssueItemInfo = ({ issue }) => {
                 </Padding>
 
                 {/* Label */}
-                {issue.labels.map((label) => (
-                    <Label key={label.label_id} name={label.name} fontSize="12px" background={label.color} />
-                ))}
+                {issue.labels
+                    .filter((label) => label.name || label.color)
+                    .map((label) => (
+                        <Label key={label.label_id} name={label.name} fontSize="12px" background={label.color} />
+                    ))}
             </TitleAndLabel>
             <AuthorAndMilestone>
                 {/* Author */}
@@ -63,7 +65,7 @@ const IssueItemInfo = ({ issue }) => {
                         fontSize="12px"
                     ></Span>
                 </Padding>
-                {issue.milestone ? (
+                {issue.milestone.milestone_id ? (
                     <div style={{ display: 'flex' }}>
                         <Padding padding="0px 5px 0px 10px">
                             <SVG name="milestone" height="13px" color="#808080" fillRule="evenodd"></SVG>

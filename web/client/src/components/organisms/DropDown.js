@@ -7,12 +7,12 @@ const StyledDropDown = styled.div`
     position: relative;
     justify-content: center;
     border-radius: 4px 0px 0px 4px;
-    height: 100%;
+    height: inherit;
 `;
 
 export const DropDownContext = React.createContext();
 
-const DropDown = ({ children, backgroundColor, subject, items = ['아이템1', '아이템2', '아이템3'] }) => {
+const DropDown = ({ children, backgroundColor, subject, items = ['아이템1', '아이템2', '아이템3'], lineHeight }) => {
     const [IsClicked, setIsClicked] = useState(false);
     const [Selected, setSelected] = useState([]);
 
@@ -32,6 +32,7 @@ const DropDown = ({ children, backgroundColor, subject, items = ['아이템1', '
                     backgroundColor={backgroundColor}
                     text={subject}
                     onClick={buttonEvent}
+                    lineHeight={lineHeight}
                 ></ButtonWithArrow>
                 {IsClicked ? <DropDownMenu items={items} title={subject} /> : null}
                 {children}

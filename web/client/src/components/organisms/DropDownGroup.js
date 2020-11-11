@@ -6,13 +6,11 @@ import MilestoneDropDown from '@organisms/MilestoneDropDown.js';
 import AuthorDropDown from '@organisms/AssigneeDropDown.js';
 
 const StyledDropDownGroup = styled.ul`
-    height: 100%;
-    & {
-        display: flex;
-        justify-content: space-evenly;
-        margin: 0;
-        padding: 0;
-    }
+    height: 21px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
 `;
 
 const DropDownGroup = () => {

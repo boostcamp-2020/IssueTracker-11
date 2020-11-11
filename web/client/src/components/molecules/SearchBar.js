@@ -37,6 +37,7 @@ const SearchBar = ({ display, width }) => {
                         { title: 'Everything mentioning you' },
                         { title: 'View advanced search syntax' },
                     ]}
+                    lineHeight="36px"
                 ></DropDown>
             </div>
             <Input id="searchBox" placeholder="Search all issues" width="90%" height="38px" border="true"></Input>
