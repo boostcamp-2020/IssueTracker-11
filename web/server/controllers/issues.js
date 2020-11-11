@@ -19,34 +19,36 @@ class IssueController extends Controller {
                 const [comments] = await commentModel.get(`WHERE issue_id = ${req.params.id} AND deleted_at IS NULL`);
                 const filteredResult = result.filter( item => item.issue_id == req.params.id);
                 let responseItem = {};
-                filteredResult.forEach( (item,index) => {
-                    if(index === 0) responseItem = new Issue(item);
-                    else{
+                filteredResult.forEach((item, index) => {
+                    if (index === 0) responseItem = new Issue(item);
+                    else {
                         responseItem.setLabel(item);
                         responseItem.setAssignee(item);
                     }
                 })
                 if(responseItem.hasOwnProperty('issue_id')) responseItem.comments = comments;
                 res.status(200).send(responseItem);
-            }else{
+            } else {
                 const getResponse = new GETResponse();
                 let previousItem = undefined;
-                result.forEach((item,index) => {
-                    if(index === 0){
+                result.forEach((item, index) => {
+                    if (index === 0) {
                         const currentItem = new Issue(item);
                         previousItem = currentItem;
-                    }else{
-                        if(previousItem.issue_id === item.issue_id){
+                    } else {
+                        if (previousItem.issue_id === item.issue_id) {
                             previousItem.setLabel(item);
                             previousItem.setAssignee(item);
-                        }else{
+                        } else {
                             getResponse.data.push(previousItem);
                             previousItem = new Issue(item);
                         }
                     }
                 });
                 getResponse.data.push(previousItem);
-                getResponse.data.forEach( item => item.status ?getResponse.open_number++ :getResponse.closed_number++);
+                getResponse.data.forEach((item) =>
+                    item.status ? getResponse.open_number++ : getResponse.closed_number++,
+                );
                 res.status(200).send(getResponse);
             }
         } catch (error) {
@@ -55,13 +57,13 @@ class IssueController extends Controller {
     };
 
     post = async (req, res) => {
-        const { title, contents, author, milestone_id } = req.body;
+        const { title, contents, author, milestone_id, assignees, labels } = req.body;
         if (!title || !author || title.length > TITLE_LIMIT || (!!contents && contents.length > CONTENT_LIMIT)) {
             return res.status(422).send({ status: 'Unprocessable Entity' });
         }
 
         try {
-            await this.Model.post({ title, contents, author, milestone_id });
+            await this.Model.post({ title, contents, author, milestone_id, assignees, labels });
             res.status(201).send({ status: 'Created' });
         } catch (error) {
             res.status(500).send({ status: error.message });

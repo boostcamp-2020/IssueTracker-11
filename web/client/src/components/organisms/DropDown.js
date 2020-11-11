@@ -14,7 +14,6 @@ const DropDown = ({ children, backgroundColor, subject, items = ['아이템1', '
     const title = items.map((el) => el.title || el.name || el.email);
     const [IsClicked, setIsClicked] = useState(false);
     const buttonEvent = () => {
-        console.log('클릭됨!');
         setIsClicked(!IsClicked);
     };
     return (

@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import DropDown from '@organisms/DropDown';
+import AssigneeDropDown from '@organisms/AssigneeDropDown.js';
+import LabelDropDown from '@organisms/LabelDropDown.js';
+import MilestoneDropDown from '@organisms/MilestoneDropDown.js';
+import AuthorDropDown from '@organisms/AssigneeDropDown.js';
+
 const StyledDropDownGroup = styled.ul`
     height: 100%;
     & {
@@ -11,21 +15,13 @@ const StyledDropDownGroup = styled.ul`
     }
 `;
 
-const dropDowns = [
-    { subject: 'Author', isClicked: false },
-    { subject: 'Label', isClicked: false },
-    { subject: 'Milestones', isClicked: false },
-    { subject: 'Assignee', isClicked: false },
-];
-
 const DropDownGroup = () => {
     return (
         <StyledDropDownGroup>
-            {dropDowns.map((dropDown) => (
-                <div style={{ height: '100%' }}>
-                    <DropDown backgroundColor="#eeeeee" subject={dropDown.subject} isClicked={dropDown.isClicked} />
-                </div>
-            ))}
+            <AuthorDropDown></AuthorDropDown>
+            <LabelDropDown></LabelDropDown>
+            <MilestoneDropDown></MilestoneDropDown>
+            <AssigneeDropDown></AssigneeDropDown>
         </StyledDropDownGroup>
     );
 };
