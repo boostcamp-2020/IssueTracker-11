@@ -38,6 +38,9 @@ extension Milestone: Hashable {
     
     static func == (lhs: Milestone, rhs: Milestone) -> Bool {
         return lhs.id == rhs.id
+            && lhs.title == rhs.title
+            && lhs.dueDate == rhs.dueDate
+            && lhs.description == rhs.description
     }
     
     func hash(into hasher: inout Hasher) {

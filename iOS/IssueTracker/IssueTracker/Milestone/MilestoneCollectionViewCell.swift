@@ -25,9 +25,11 @@ final class MilestoneCollectionViewCell: UICollectionViewCell {
         openLabel.text = "\(item.openNumber ?? 0) open"
         closedLabel.text = "\(item.closedNumber ?? 0) closed"
         percentLabel.text = "\(item.progressPercentage)%"
-        
-        guard let dateString = item.dueDate?.toFormattedDate else { return }
-        dueDateLabel.text = dateString + "까지"
+        if let date = item.dueDate?.toFormattedDate {
+            dueDateLabel.text = !date.isEmpty ? date + "까지" : ""
+        } else {
+            dueDateLabel.text = ""
+        }
     }
     
 }

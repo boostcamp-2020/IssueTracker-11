@@ -37,7 +37,10 @@ class MilestoneService: Requestable {
             let description = milestone.description
             else { return }
         
-        milestoneEndpoint = .create(title: title, dueDate: milestone.dueDate, description: description)
+        milestoneEndpoint = .create(title: title,
+                                    dueDate: milestone.dueDate,
+                                    description: description)
+        
         request(milestoneEndpoint) { result in
             switch result {
             case .networkSuccess:
@@ -57,7 +60,11 @@ class MilestoneService: Requestable {
             let description = milestone.description
             else { return }
         
-        milestoneEndpoint = .update(id: id, title: title, dueDate: milestone.dueDate, description: description)
+        milestoneEndpoint = .update(id: id,
+                                    title: title,
+                                    dueDate: milestone.dueDate,
+                                    description: description)
+        
         request(milestoneEndpoint) { result in
             switch result {
             case .networkSuccess:

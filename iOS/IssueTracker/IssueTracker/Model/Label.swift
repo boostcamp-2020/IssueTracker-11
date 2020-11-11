@@ -24,6 +24,9 @@ extension Label: Hashable {
     
     static func == (lhs: Label, rhs: Label) -> Bool {
         return lhs.id == rhs.id
+            && lhs.name == rhs.name
+            && lhs.description == rhs.description
+            && lhs.color == rhs.color
     }
 
     func hash(into hasher: inout Hasher) {
