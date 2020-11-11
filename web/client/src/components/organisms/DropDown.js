@@ -10,18 +10,33 @@ const StyledDropDown = styled.div`
     height: 100%;
 `;
 
+export const DropDownContext = React.createContext();
+
 const DropDown = ({ children, backgroundColor, subject, items = ['아이템1', '아이템2', '아이템3'] }) => {
-    const title = items.map((el) => el.title || el.name || el.email);
     const [IsClicked, setIsClicked] = useState(false);
+    const [Selected, setSelected] = useState([]);
+
+    const onSelect = (newThing) => {
+        setSelected([...Selected, newThing]);
+        console.log(Selected);
+    };
+
     const buttonEvent = () => {
         setIsClicked(!IsClicked);
     };
+
     return (
-        <StyledDropDown>
-            <ButtonWithArrow backgroundColor={backgroundColor} text={subject} onClick={buttonEvent}></ButtonWithArrow>
-            {IsClicked ? <DropDownMenu items={title} title={subject} /> : null}
-            {children}
-        </StyledDropDown>
+        <DropDownContext.Provider value={onSelect}>
+            <StyledDropDown>
+                <ButtonWithArrow
+                    backgroundColor={backgroundColor}
+                    text={subject}
+                    onClick={buttonEvent}
+                ></ButtonWithArrow>
+                {IsClicked ? <DropDownMenu items={items} title={subject} /> : null}
+                {children}
+            </StyledDropDown>
+        </DropDownContext.Provider>
     );
 };
 

@@ -13,7 +13,6 @@ const IssueItemDiv = styled.div`
 `;
 
 const IssueItem = (props) => {
-    console.log(props.issue);
     if (!props.issue) return null;
     return (
         <IssueItemDiv width={props.width} height={props.height}>

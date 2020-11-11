@@ -9,7 +9,6 @@ const LabelDropDown = () => {
             fetch('http://49.50.160.103:3000/labels')
                 .then((res) => res.json())
                 .then((res) => {
-                    console.log(res);
                     setLabels(res.data);
                 });
         };
