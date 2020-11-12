@@ -29,9 +29,9 @@ class IssueController extends Controller {
             const [result] = await this.Model.get();
             if (req.params.id) {
                 const [comments] = await commentModel.get(`WHERE issue_id = ${req.params.id} AND deleted_at IS NULL`);
-                const filteredResult = result.filter((item) => item.issue_id == req.params.id);
+                const filteredResult = await result.filter((item) => item.issue_id == req.params.id);
                 let responseItem = {};
-                filteredResult.forEach((item, index) => {
+                await filteredResult.forEach((item, index) => {
                     if (index === 0) responseItem = new Issue(item);
                     else {
                         responseItem.setLabel(item);
@@ -41,7 +41,7 @@ class IssueController extends Controller {
                 if (responseItem.hasOwnProperty('issue_id')) responseItem.comments = comments;
                 res.status(200).send(responseItem);
             } else {
-                result.forEach((item, index) => {
+                await result.forEach((item, index) => {
                     if (index === 0) {
                         const currentItem = new Issue(item);
                         previousItem = currentItem;
@@ -59,12 +59,8 @@ class IssueController extends Controller {
                 getResponse.data.forEach((item) =>
                     item.status ? getResponse.open_number++ : getResponse.closed_number++,
                 );
-                console.log('get Response : ', getResponse);
                 res.status(200).send(getResponse);
             }
-            getResponse.data.push(previousItem);
-            getResponse.data.forEach((item) => (item.status ? getResponse.open_number++ : getResponse.closed_number++));
-            res.status(200).send(getResponse);
         } catch (error) {
             console.error(error);
             res.status(500).send({ result: error.message });
@@ -81,7 +77,6 @@ class IssueController extends Controller {
             assignees,
             labels,
         });
-        console.log(POST_DATA);
 
         if (!title || !author || title.length > TITLE_LIMIT || (!!contents && contents.length > CONTENT_LIMIT)) {
             return res.status(422).send({ status: 'Unprocessable Entity' });
