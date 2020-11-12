@@ -45,7 +45,12 @@ class Controller {
         console.log('req.body.ids type : ', typeof req.body.ids);
         console.log("req.body['ids'] type : ", typeof req.body['ids[]']);
 
-        const id = Number(req.params.id) || [...req.body.ids]?.map(Number) || [...req.body['ids[]']]?.map(Number);
+        const id =
+            Number(req.params.id) || typeof req.body.ids === 'object'
+                ? [...req.body.ids]?.map(Number)
+                : [req.body.ids] || typeof req.body['ids[]'] === 'object'
+                ? [...req.body['ids[]']]?.map(Number)
+                : [req.body['ids[]']];
         const ids = typeof id === 'object' ? [...id] : [id];
 
         console.log(id);
