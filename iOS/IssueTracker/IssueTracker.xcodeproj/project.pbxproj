@@ -60,6 +60,7 @@
 		9763DFF0254B361200BCBD6A /* CreationFormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9763DFEF254B361200BCBD6A /* CreationFormType.swift */; };
 		97664C66254A83CB005B98A7 /* CreationFormView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97664C65254A83CB005B98A7 /* CreationFormView.xib */; };
 		97664C68254A91CA005B98A7 /* CreationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97664C67254A91CA005B98A7 /* CreationFormView.swift */; };
+		9770DB13255CF86D00DBDF0E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9770DB12255CF86D00DBDF0E /* SettingViewController.swift */; };
 		977B9C54254FA7A500D00B28 /* MilestoneMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B9C53254FA7A500D00B28 /* MilestoneMainViewController.swift */; };
 		977B9C56254FA89900D00B28 /* MilestoneAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B9C55254FA89900D00B28 /* MilestoneAddViewController.swift */; };
 		977B9C5E254FC59C00D00B28 /* MilestoneCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B9C5D254FC59C00D00B28 /* MilestoneCollectionViewCell.swift */; };
@@ -154,6 +155,8 @@
 		9763DFEF254B361200BCBD6A /* CreationFormType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationFormType.swift; sourceTree = "<group>"; };
 		97664C65254A83CB005B98A7 /* CreationFormView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreationFormView.xib; sourceTree = "<group>"; };
 		97664C67254A91CA005B98A7 /* CreationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationFormView.swift; sourceTree = "<group>"; };
+		9770DB10255CE29400DBDF0E /* IssueTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IssueTracker.entitlements; sourceTree = "<group>"; };
+		9770DB12255CF86D00DBDF0E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		977B9C53254FA7A500D00B28 /* MilestoneMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneMainViewController.swift; sourceTree = "<group>"; };
 		977B9C55254FA89900D00B28 /* MilestoneAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneAddViewController.swift; sourceTree = "<group>"; };
 		977B9C5D254FC59C00D00B28 /* MilestoneCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -305,12 +308,14 @@
 		970CAD49254A73B50076691E /* IssueTracker */ = {
 			isa = PBXGroup;
 			children = (
+				9770DB10255CE29400DBDF0E /* IssueTracker.entitlements */,
 				970CAD4A254A73B50076691E /* AppDelegate.swift */,
 				970CAD4C254A73B50076691E /* SceneDelegate.swift */,
 				7C13044A25511DB1003AE6A1 /* Issue */,
 				7C13043A254FC419003AE6A1 /* Label */,
 				97A47D23255AB30F0048CBB8 /* Login */,
 				977B9C52254FA76700D00B28 /* Milestone */,
+				9770DB11255CF84D00DBDF0E /* Settings */,
 				7CD54B1725590A0F008629F3 /* Network */,
 				97E59487254FE1C70052C2C3 /* Model */,
 				970CAD6D254A73DA0076691E /* Storyboards */,
@@ -373,6 +378,14 @@
 				9763DFEF254B361200BCBD6A /* CreationFormType.swift */,
 			);
 			path = CreationView;
+			sourceTree = "<group>";
+		};
+		9770DB11255CF84D00DBDF0E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9770DB12255CF86D00DBDF0E /* SettingViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		977B9C52254FA76700D00B28 /* Milestone */ = {
@@ -669,6 +682,7 @@
 				97E69D34255BD8650031755D /* CloseButtonCell.swift in Sources */,
 				9763DFF0254B361200BCBD6A /* CreationFormType.swift in Sources */,
 				7C130443254FEEB0003AE6A1 /* LabelAddViewController.swift in Sources */,
+				9770DB13255CF86D00DBDF0E /* SettingViewController.swift in Sources */,
 				7CF9BF08255976AE0013E961 /* ResponseObject.swift in Sources */,
 				974574FC2552DDB3007E1F04 /* BottomMenuView.swift in Sources */,
 				974574FE2552DED7007E1F04 /* UICollectionView+.swift in Sources */,
@@ -886,9 +900,10 @@
 			baseConfigurationReference = CA535DA5AF5BF90B4980A30E /* Pods-IssueTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = IssueTracker/IssueTracker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				DEVELOPMENT_TEAM = EKU567YQE4;
 				INFOPLIST_FILE = "IssueTracker/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -907,9 +922,10 @@
 			baseConfigurationReference = BEE1F894F9C40EEFD4B9E644 /* Pods-IssueTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = IssueTracker/IssueTracker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				DEVELOPMENT_TEAM = EKU567YQE4;
 				INFOPLIST_FILE = "IssueTracker/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

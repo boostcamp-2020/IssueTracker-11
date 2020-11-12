@@ -1,21 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7ys-ch-4J3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7ys-ch-4J3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--설정-->
         <scene sceneID="cYv-YU-yc0">
             <objects>
-                <viewController id="JiQ-S5-8ui" sceneMemberID="viewController">
+                <viewController id="JiQ-S5-8ui" customClass="SettingViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HjX-gC-iT0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="dXT-NK-6rq">
+                                <rect key="frame" x="40" y="291" width="334" height="180"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eFN-kw-Hcz">
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github_logo" translatesAutoresizingMaskIntoConstraints="NO" id="u5e-Uc-HVB">
+                                                <rect key="frame" x="0.0" y="0.0" width="94" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="bRZ-7h-BeO"/>
+                                                    <constraint firstAttribute="width" secondItem="u5e-Uc-HVB" secondAttribute="height" multiplier="15:8" id="jVE-9p-FuP"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="페이지 준비중입니다 🔥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBd-Pg-79H">
+                                                <rect key="frame" x="102" y="15" width="232" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SC8-rl-dUR">
+                                        <rect key="frame" x="10" y="130" width="314" height="50"/>
+                                        <color key="backgroundColor" systemColor="darkTextColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="OVc-Cm-jV6"/>
+                                        </constraints>
+                                        <state key="normal" title="로그아웃">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="logoutButtonDidTap:" destination="JiQ-S5-8ui" eventType="touchUpInside" id="bQ8-mO-U4Q"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="eFN-kw-Hcz" secondAttribute="trailing" id="Zaf-YZ-ryT"/>
+                                    <constraint firstItem="SC8-rl-dUR" firstAttribute="leading" secondItem="dXT-NK-6rq" secondAttribute="leading" constant="10" id="hds-k4-sTS"/>
+                                    <constraint firstAttribute="trailing" secondItem="SC8-rl-dUR" secondAttribute="trailing" constant="10" id="lQK-JZ-MEK"/>
+                                    <constraint firstItem="eFN-kw-Hcz" firstAttribute="leading" secondItem="dXT-NK-6rq" secondAttribute="leading" id="mg0-Na-Tev"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="rZX-Wy-AVb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dXT-NK-6rq" firstAttribute="centerY" secondItem="rZX-Wy-AVb" secondAttribute="centerY" multiplier="0.8" id="QRO-or-C6L"/>
+                            <constraint firstItem="dXT-NK-6rq" firstAttribute="leading" secondItem="rZX-Wy-AVb" secondAttribute="leading" constant="40" id="srI-HJ-SWW"/>
+                            <constraint firstItem="rZX-Wy-AVb" firstAttribute="trailing" secondItem="dXT-NK-6rq" secondAttribute="trailing" constant="40" id="wbI-qj-axT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="설정" id="doI-FS-DCM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -46,5 +102,12 @@
     </scenes>
     <resources>
         <image name="4.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="github_logo" width="32" height="32"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
