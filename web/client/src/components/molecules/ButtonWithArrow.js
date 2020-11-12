@@ -10,9 +10,9 @@ const StyledButtonWithArrow = styled(StyledButton)`
     backgroundcolor: ${({ backgroundColor }) => backgroundColor};
 `;
 
-const ButtonWithArrow = ({ backgroundColor, text, lineHeight }) => {
+const ButtonWithArrow = ({ backgroundColor, text, lineHeight, onClick }) => {
     return (
-        <StyledButtonWithArrow backgroundColor={backgroundColor} lineHeight={lineHeight}>
+        <StyledButtonWithArrow backgroundColor={backgroundColor} lineHeight={lineHeight} onClick={onClick}>
             {text}
             <DownArrow />
         </StyledButtonWithArrow>

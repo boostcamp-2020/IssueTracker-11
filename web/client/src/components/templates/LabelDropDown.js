@@ -1,9 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Input from '@atoms/Input.js';
-import SubmitButton from '@atoms/SubmitButton.js';
-import Span from '@atoms/Span.js';
-import { Button } from '@atoms/Button.js';
-import styled from 'styled-components';
 import DropDown from '../organisms/DropDown';
 
 const LabelDropDown = ({ children }) => {

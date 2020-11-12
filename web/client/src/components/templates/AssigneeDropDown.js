@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Span from '@atoms/Span.js';
 import DropDown from '../organisms/DropDown';
 
-const LabelDropDown = ({ children }) => {
+const AssigneeDropDown = ({ children }) => {
     const [users, setUsers] = useState(null);
 
     useEffect(() => {
@@ -24,4 +23,4 @@ const LabelDropDown = ({ children }) => {
     );
 };
 
-export default LabelDropDown;
+export default AssigneeDropDown;

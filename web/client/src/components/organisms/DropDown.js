@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import DropDownMenu from '@molecules/DropDownMenu';
 import ButtonWithArrow from '@molecules/ButtonWithArrow';
+import { AppContext } from '../../App.js';
 
 const StyledDropDown = styled.div`
     position: relative;
@@ -16,9 +17,11 @@ const DropDown = ({ children, backgroundColor, subject, items = ['아이템1', '
     const [IsClicked, setIsClicked] = useState(false);
     const [Selected, setSelected] = useState([]);
 
+    const onSelectData = useContext(AppContext);
+
     const onSelect = (newThing) => {
         setSelected([...Selected, newThing]);
-        console.log(Selected);
+        onSelectData(newThing);
     };
 
     const buttonEvent = () => {
