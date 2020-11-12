@@ -25,6 +25,7 @@ final class MilestoneDetailViewController: UIViewController {
         super.viewDidLoad()
         configure()
         configureActions()
+        configureGestureRecognizer()
     }
     
     // MARK: - Methods
@@ -40,6 +41,11 @@ final class MilestoneDetailViewController: UIViewController {
         dueDateTextField.addTarget(self,
         action: #selector(validateDateFormat),
         for: .editingChanged)
+    }
+    
+    private func configureGestureRecognizer() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     private func updateMilestone() {
@@ -79,6 +85,10 @@ final class MilestoneDetailViewController: UIViewController {
     @objc private func validateDateFormat() {
         let targetString = dueDateTextField.text ?? ""
         dueDateLabel.textColor = targetString.isValidDate ? .black : .red
+    }
+    
+    @objc private func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     // MARK: - IBAction
