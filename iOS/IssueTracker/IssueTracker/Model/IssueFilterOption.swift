@@ -37,6 +37,20 @@ extension PlainFilterOption: FilterOption {
         }
     }
     
+    func filter(with issues: [Issue]) -> [Issue] {
+        switch self {
+        case .open:
+            return issues.filter { $0.status == 1 }
+        case .created:
+            return issues
+        case .assigned:
+            return issues
+        case .commented:
+            return issues
+        case .closed:
+            return issues.filter { $0.status == 0 }
+        }
+    }
 }
 
 enum DetailFilterOption: CaseIterable {
