@@ -73,8 +73,9 @@ final class MilestoneAddViewController: UIViewController {
     }
     
     private func configureGestureRecognizer() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissView))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         backgroundView.addGestureRecognizer(tapGestureRecognizer)
+        creationFormView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     private func createMilestone() {
@@ -100,8 +101,8 @@ final class MilestoneAddViewController: UIViewController {
         }
     }
     
-    @objc private func dismissView() {
-        self.dismiss(animated: true, completion: nil)
+    @objc private func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     @objc private func validateDateFormat() {

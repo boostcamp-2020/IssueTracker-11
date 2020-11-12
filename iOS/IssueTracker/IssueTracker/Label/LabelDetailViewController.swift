@@ -28,6 +28,7 @@ final class LabelDetailViewController: UIViewController {
         
         configureEditMode()
         configureTextField()
+        configureGestureRecognizer()
     }
     
     // MARK: - IBAction
@@ -80,11 +81,20 @@ final class LabelDetailViewController: UIViewController {
                                  for: .editingChanged)
     }
     
+    private func configureGestureRecognizer() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
     // MARK: - Objc
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
         guard let color = colorTextField.text else { return }
         colorSampleView.backgroundColor = UIColor(hex: color)
+    }
+    
+    @objc private func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
 }

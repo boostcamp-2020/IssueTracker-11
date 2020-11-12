@@ -13,13 +13,16 @@ final class LabelAddViewController: UIViewController {
     // MARK: - Properties
     
     private let creationFormView = CreationFormView()
+    private let backgroundView = UIView()
     
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
         creationFormView.delegate = self
+        configureBackgroundView()
+        configure()
+        configureGestureRecognizer()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -34,17 +37,29 @@ final class LabelAddViewController: UIViewController {
         self.view.backgroundColor = UIColor(white: 0, alpha: 0.3)
         creationFormView.creationFormType = .label
         creationFormView.configureViewStyle()
-        configureConstraints()
+        configureCreationFormViewConstraints()
         configureRandomColor()
     }
     
-    private func configureConstraints() {
+    private func configureCreationFormViewConstraints() {
         creationFormView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             creationFormView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             creationFormView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
             creationFormView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
         ])
+    }
+    
+    private func configureBackgroundView() {
+        self.view.addSubview(backgroundView)
+        backgroundView.backgroundColor = .clear
+        backgroundView.pinEdgesToSuperView()
+    }
+    
+    private func configureGestureRecognizer() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        backgroundView.addGestureRecognizer(tapGestureRecognizer)
+        creationFormView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     private func configureRandomColor() {
@@ -65,6 +80,10 @@ final class LabelAddViewController: UIViewController {
                                                          userInfo: nil))
             self?.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    @objc private func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
 }
