@@ -17,9 +17,7 @@ final class IssueCollectionViewCell: SwipeableCollectionViewCell {
     
     var isEditing: Bool = false {
         didSet {
-            UIView.animate(withDuration: 0.3) {
-                self.issueContentView.checkView.isHidden = !self.isEditing
-            }
+            self.issueContentView.checkView.isHidden = !self.isEditing
             scrollView.isScrollEnabled = !isEditing
         }
     }

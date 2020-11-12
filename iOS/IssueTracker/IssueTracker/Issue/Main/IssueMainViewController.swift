@@ -145,6 +145,10 @@ final class IssueMainViewController: UIViewController {
                 as? IssueCollectionViewCell else { return }
             cell.isEditing = isEditing
         }
+        issueCollectionView.excuteAll(handler: { cell in
+            guard let cell = cell as? IssueCollectionViewCell else { return }
+            cell.isEditing = self.isEditing
+        })
         
         // 3. Toggle Bottom Menu View
         UIView.animate(withDuration: 0.2) {
