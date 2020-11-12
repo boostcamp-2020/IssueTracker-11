@@ -19,7 +19,7 @@ final class CommentCollectionViewCell: UICollectionViewCell {
     
     func conigure(_ comment: Comment) {
         guard let author = comment.authorID else { return }
-        userNameLabel.text = "\(author)"
+        userNameLabel.text = "\(author == 1 ? "Admin" : "guest")"
         timeLabel.text = comment.createdAt?.toFormattedDate
         contentLabel.text = comment.contents
     }

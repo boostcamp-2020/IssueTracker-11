@@ -33,15 +33,16 @@ class IssueService: Requestable {
     
     func create(issue: Issue, completion: @escaping () -> Void) {
         guard
+            let user = SceneDelegate.user,
             let title = issue.title,
-            let author = issue.authorID,
+            let author = user.id,
             let assignees = issue.assignees,
             let labels = issue.labels
             else { return }
         
         issueEndpoint = .create(title: title,
                                 contents: issue.contents,
-                                author: author,
+                                author: 2,
                                 milestoneID: issue.milestoneID,
                                 assignees: assignees,
                                 labels: labels)

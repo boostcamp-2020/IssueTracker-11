@@ -31,8 +31,10 @@ class IssueDetailService: Requestable {
     
     func commentCreate(contents: String, authorID: Int, issueID: Int,
                        completion: @escaping () -> Void) {
+        
+        guard let user = SceneDelegate.user?.id else { return }
         let issueDetailEndpoint: IssueDetailEndpoint = .commentPost(contents: contents,
-                                                                    author: authorID,
+                                                                    author: 2,
                                                                     issueID: issueID)
         
         request(issueDetailEndpoint) { result in
