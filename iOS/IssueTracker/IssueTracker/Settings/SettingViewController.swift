@@ -12,19 +12,14 @@ class SettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func logoutButtonDidTap(_ sender: UIButton) {
+        UserDefaults.standard.removeObject(forKey: "user")
+        
+        let id = String(describing: LoginViewController.self)
+        let rootViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: id)
+        self.view.window?.rootViewController = rootViewController
     }
-    */
-
+    
 }
