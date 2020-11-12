@@ -30,7 +30,6 @@ final class IssueMainViewController: UIViewController {
     private var issueList: [Issue] = [] {
         didSet { applySnapshot() }
     }
-    
     private var editButton: UIBarButtonItem?
     private var cancelButton: UIBarButtonItem?
     private var selectAllButton: UIBarButtonItem?
@@ -73,10 +72,24 @@ final class IssueMainViewController: UIViewController {
         }
     }
     
-    private func closeIssue(id: Int) {
-        //        IssueService.shared.closeIssue(id: id) { [weak self] in
-        //            self?.issueList.removeAll { $0.id == id }
-        //        }
+    private func closeIssue(ids: [Int], status: Int) {
+        if status == 0 {
+            showOKAlert(title: "Closed", message: "이슈가 이미 닫혀있습니다!")
+            return
+        }
+        
+        IssueService.shared.closeIssue(ids: ids) { [weak self] in
+            self?.showOKAlert(title: "Closed", message: "이슈가 닫혔습니다!")
+        }
+    }
+    
+    private func showOKAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "네", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     private func deleteIssue(id: Int) {
@@ -96,6 +109,7 @@ final class IssueMainViewController: UIViewController {
                           height: tabbarHeight)
         bottomMenuView = BottomMenuView(frame: rect)
         self.view.addSubview(bottomMenuView ?? UIView())
+        bottomMenuView?.delegate = self
     }
     
     private func initButtons() {
@@ -260,33 +274,36 @@ extension IssueMainViewController: SwipeableCollectionViewCellDelegate {
         if isEditing {
             cell.isSelected ? issueCollectionView.deselectItem(at: indexPath, animated: true) :
                 issueCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
+        } else {
+            let identifier = String(describing: IssueDetailViewController.self)
+            guard let viewController = storyboard?.instantiateViewController(withIdentifier: identifier)
+                    as? IssueDetailViewController else { return }
+            
+            viewController.issueID = issueList[indexPath.item].id
+            navigationController?.pushViewController(viewController,
+                                                     animated: true)
         }
         
-        let identifier = String(describing: IssueDetailViewController.self)
-        guard let viewController = storyboard?.instantiateViewController(withIdentifier: identifier)
-                as? IssueDetailViewController else { return }
-        
-        viewController.issueID = issueList[indexPath.item].id
-        navigationController?.pushViewController(viewController,
-                                                 animated: true)
     }
     
     func leftHiddenContainerViewTapped(inCell cell: UICollectionViewCell) {
         guard
             let cell = cell as? IssueCollectionViewCell,
             let indexPath = issueCollectionView.indexPath(for: cell),
-            let id = issueList[indexPath.item].id
+            let id = issueList[indexPath.item].id,
+            let status = issueList[indexPath.item].status
         else { return }
         
-        closeIssue(id: id)
+        closeIssue(ids: [id], status: status)
     }
     
     func rightHiddenContainerViewTapped(inCell cell: UICollectionViewCell) {
         guard
             let cell = cell as? IssueCollectionViewCell,
             let indexPath = issueCollectionView.indexPath(for: cell),
-            let id = issueList[indexPath.item].id
-        else { return }
+            let id = issueList[indexPath.item].id,
+                let status = issueList[indexPath.item].status
+            else { return }
         
         deleteIssue(id: id)
     }
@@ -327,6 +344,21 @@ extension IssueMainViewController: IssueFilterControllerDelegate {
     
     func filterControllerWillAppear() {
         applySnapshot()
+    }
+    
+}
+
+extension IssueMainViewController: IssuesCloseDelegate {
+    
+    func issuesClose() {
+        guard let indexPaths = issueCollectionView.indexPathsForSelectedItems else { return }
+        var issueIDs: [Int] = []
+        indexPaths.forEach {
+            guard let id = issueList[$0.row].id else { return }
+            issueIDs.append(id)
+        }
+        closeIssue(ids: issueIDs, status: 1)
+        toggleEditMode()
     }
     
 }

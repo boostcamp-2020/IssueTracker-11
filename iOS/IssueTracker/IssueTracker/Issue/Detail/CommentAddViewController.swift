@@ -58,14 +58,12 @@ final class CommentAddViewController: UIViewController {
                               updatedAt: nil)
         
         CommentService.shared.commentCreate(comment: comment) { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
+            NotificationCenter.default.post(name: .commentDidCreate,
+                                            object: comment,
+                                            userInfo: nil)
+            self?.dismiss(animated: true, completion: nil)
         }
-//        IssueService.shared.create(issue: issue) { [weak self] in
-//            NotificationCenter.default.post(name: .issueDidCreate,
-//                                            object: issue,
-//                                            userInfo: nil)
-//            self?.dismiss(animated: true, completion: nil)
-//        }
+        
     }
     
     private func setSegmentedControl() {

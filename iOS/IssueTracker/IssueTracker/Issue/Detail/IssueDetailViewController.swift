@@ -33,13 +33,14 @@ final class IssueDetailViewController: UIViewController {
         
         tabBarController?.tabBar.isHidden = true
         loadIssueDetail()
+        registerNotifications()
     }
-
+    
     // MARK: - Methods
     
     private func openAddView() {
         guard let addCommentViewController = storyboard?
-                .instantiateViewController(withIdentifier: "addCommentViewController"),
+            .instantiateViewController(withIdentifier: "addCommentViewController"),
             let firstViewController = addCommentViewController.children.first as? CommentAddViewController
             else { return }
         firstViewController.issueID = issueID
@@ -70,6 +71,18 @@ final class IssueDetailViewController: UIViewController {
                        authorID: issue.author?.id,
                        createdAt: issue.createdAt,
                        updatedAt: issue.updatedAt)
+    }
+    
+    private func registerNotifications() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self,
+                                       selector: #selector(commentDidCreate),
+                                       name: .commentDidCreate,
+                                       object: nil)
+    }
+    
+    @objc private func commentDidCreate(_ notification: Notification) {
+        loadIssueDetail()
     }
     
 }

@@ -25,4 +25,9 @@ extension NSNotification.Name {
     public static let labelDidCreate = Notification.Name("LabelDidCreate")
     public static let labelDidDelete = Notification.Name("LabelDidDelete")
     public static let labelDidUpdate = Notification.Name("LabelDidUpdate")
+    
+    // MARK: - Comment
+    
+    public static let commentDidCreate = Notification.Name("CommmentDidCreate")
+    
 }

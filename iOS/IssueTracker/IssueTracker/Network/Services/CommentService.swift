@@ -18,12 +18,12 @@ class CommentService: Requestable {
                        completion: @escaping () -> Void) {
         
         guard let contents = comment.contents,
-            let authorID = comment.authorID,
+            let authorID = SceneDelegate.user?.id,
             let issueID = comment.issueID
         else { return }
         
         let issueDetailEndpoint: IssueDetailEndpoint = .commentPost(contents: contents,
-                                                                    author: authorID,
+                                                                    author: 2,
                                                                     issueID: issueID)
 
         request(issueDetailEndpoint) { result in
