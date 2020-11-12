@@ -21,11 +21,12 @@ class Controller {
     put = async (req, res) => {};
 
     delete = async (req, res) => {
-        console.log('req.body : ', req.body);
-        console.log('req.body.ids : ', req.body.ids);
-        console.log('req.body.ids type : ', typeof req.body.ids);
-
-        const id = Number(req.params.id) || req.body.ids.map(Number) || req.body['ids[]'].map(Number);
+        const id =
+            Number(req.params.id) ||
+            req.body.ids ||
+            (req.body.ids && [...req.body.ids]?.map(Number)) ||
+            Number(req.body['ids[]']) ||
+            (req.body['ids[]'] && [...req.body['ids[]']]?.map(Number));
         const ids = typeof id === 'object' ? [...id] : [id];
 
         try {
@@ -39,19 +40,6 @@ class Controller {
     };
 
     patch = async (req, res) => {
-        // req.body.ids : [ 16 ]
-        // req.body['ids[]'] : 16
-        // req.body['ids[]'] : [ 16, 17 ]
-        // req.params.id : 16
-
-        console.log('req.body : ', req.body);
-        console.log('req.body.ids : ', req.body.ids);
-        console.log("req.body['ids'] : ", req.body['ids[]']);
-        console.log('req.body.ids type : ', typeof req.body.ids);
-        console.log("req.body['ids'] type : ", typeof req.body['ids[]']);
-
-        console.log(req.body.ids);
-
         const id =
             Number(req.params.id) ||
             req.body.ids ||
@@ -59,9 +47,6 @@ class Controller {
             Number(req.body['ids[]']) ||
             (req.body['ids[]'] && [...req.body['ids[]']]?.map(Number));
         const ids = typeof id === 'object' ? [...id] : [id];
-
-        console.log(id);
-        console.log(ids);
 
         try {
             const OPTION = req.originalUrl.includes('status') ? OPEN_CLOSED : SOFT_DELETE;
