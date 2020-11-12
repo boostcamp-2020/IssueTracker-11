@@ -19,8 +19,8 @@ const StyledIssueListHeader = styled.div`
 
 const IssuListHeader = () => {
     const { checkState } = useContext(CheckboxContext);
-    const checked = checkState.ids.length;
-    const children = checked ? ` ${Math.ceil(checked / 2)} selected` : null;
+    const checked = checkState.ids.size;
+    const children = checked ? ` ${checked} selected` : null;
     return (
         <StyledIssueListHeader>
             <CheckBoxInfo children={children} />
