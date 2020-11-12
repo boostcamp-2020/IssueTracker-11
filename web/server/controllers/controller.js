@@ -21,7 +21,11 @@ class Controller {
     put = async (req, res) => {};
 
     delete = async (req, res) => {
-        const id = Number(req.params.id || req.body.ids);
+        console.log('req.body : ', req.body);
+        console.log('req.body.ids : ', req.body.ids);
+        console.log('req.body.ids type : ', typeof req.body.ids);
+
+        const id = Number(req.params.id) || req.body.ids.map(Number) || req.body['ids[]'].map(Number);
         const ids = typeof id === 'object' ? [...id] : [id];
 
         try {
@@ -35,10 +39,11 @@ class Controller {
     };
 
     patch = async (req, res) => {
+        console.log('req.body : ', req.body);
         console.log('req.body.ids : ', req.body.ids);
         console.log('req.body.ids type : ', typeof req.body.ids);
 
-        const id = Number(req.params.id) || req.body.ids.map(Number);
+        const id = Number(req.params.id) || req.body.ids.map(Number) || req.body['ids[]'].map(Number);
         const ids = typeof id === 'object' ? [...id] : [id];
 
         try {
