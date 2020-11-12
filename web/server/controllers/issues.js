@@ -24,6 +24,7 @@ class IssueController extends Controller {
     get = async (req, res) => {
         try {
             const getResponse = new GETResponse();
+            let previousItem = undefined;
 
             const [result] = await this.Model.get();
             if (req.params.id) {
@@ -40,7 +41,6 @@ class IssueController extends Controller {
                 if (responseItem.hasOwnProperty('issue_id')) responseItem.comments = comments;
                 res.status(200).send(responseItem);
             } else {
-                let previousItem = undefined;
                 result.forEach((item, index) => {
                     if (index === 0) {
                         const currentItem = new Issue(item);
