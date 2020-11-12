@@ -1,25 +1,37 @@
 import React, { useReducer } from 'react';
 
 export const CheckboxContext = React.createContext();
-const checkboxReducer = (checkState, { type, issueId }) => {
+const checkboxReducer = (checkState, { type, data }) => {
     const newState = { ...checkState };
-    let idx = -1;
     switch (type) {
+        case 'INIT':
+            if (data.name === 'checkAll') newState.checkAllBox = data;
+            else newState.checkboxies.add(data);
+            return newState;
         case 'CHECK_ONE_TRUE':
-            newState.ids.push(parseInt(issueId));
+            newState.ids.add(parseInt(data));
+            if (newState.ids.size === newState.checkboxies.size) {
+                newState.checkAllBox.checked = true;
+                newState.allChecked = true;
+            }
             return newState;
         case 'CHECK_ONE_FALSE':
-            idx = newState.ids.indexOf(parseInt(issueId));
-            if (idx > -1) newState.ids.splice(idx, 1);
+            if (newState.allChecked) newState.checkAllBox.checked = false;
+            newState.ids.delete(data);
             return newState;
-        // checked= true || false 로직 필요 ... 체크박스 자체를 가지고 있어야하나....
         case 'CHECK_ALL_TRUE':
             newState.allChecked = true;
-            newState.ids.push(...issueId);
+            newState.checkboxies.forEach((checkbox) => {
+                checkbox.checked = true;
+                newState.ids.add(checkbox.value);
+            });
             return newState;
         case 'CHECK_ALL_FALSE':
-            newState.ids = [];
             newState.allChecked = false;
+            newState.checkboxies.forEach((checkbox) => {
+                checkbox.checked = false;
+            });
+            newState.ids.clear();
             return newState;
         default:
             console.log('default ??');
@@ -30,7 +42,9 @@ const checkboxReducer = (checkState, { type, issueId }) => {
 export const CheckboxStore = ({ children }) => {
     const [checkState, dispatch] = useReducer(checkboxReducer, {
         allChecked: false,
-        ids: [],
+        ids: new Set(),
+        checkboxies: new Set(),
+        checkAllBox: null,
     });
     return <CheckboxContext.Provider value={{ checkState, dispatch }}>{children}</CheckboxContext.Provider>;
 };
