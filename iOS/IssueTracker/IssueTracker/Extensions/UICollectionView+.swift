@@ -26,4 +26,13 @@ extension UICollectionView {
         }
     }
     
+    public func excuteAll(handler: (UICollectionViewCell) -> Void) {
+        for section in 0..<self.numberOfSections {
+            for item in 0..<self.numberOfItems(inSection: section) {
+                guard let cell = self.cellForItem(at: IndexPath(item: item, section: section)) else { return }
+                handler(cell)
+            }
+        }
+    }
+    
 }
