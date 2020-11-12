@@ -30,6 +30,8 @@
 		7C67D8DB2553AF7500533B03 /* IssueAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67D8DA2553AF7500533B03 /* IssueAddViewController.swift */; };
 		7C67D8DD2553B7B600533B03 /* ContentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67D8DC2553B7B600533B03 /* ContentTextView.swift */; };
 		7CA9556A255BE09C00610629 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA95569255BE09C00610629 /* Comment.swift */; };
+		7CA9556C255D17DF00610629 /* CommentAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA9556B255D17DF00610629 /* CommentAddViewController.swift */; };
+		7CA9556E255D203100610629 /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA9556D255D203100610629 /* CommentService.swift */; };
 		7CD54B1925590A25008629F3 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD54B1825590A25008629F3 /* NetworkResult.swift */; };
 		7CD54B1B25590A3D008629F3 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD54B1A25590A3D008629F3 /* Requestable.swift */; };
 		7CD54B1E25590E4C008629F3 /* LabelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD54B1D25590E4C008629F3 /* LabelService.swift */; };
@@ -120,6 +122,8 @@
 		7C67D8DA2553AF7500533B03 /* IssueAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueAddViewController.swift; sourceTree = "<group>"; };
 		7C67D8DC2553B7B600533B03 /* ContentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTextView.swift; sourceTree = "<group>"; };
 		7CA95569255BE09C00610629 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		7CA9556B255D17DF00610629 /* CommentAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAddViewController.swift; sourceTree = "<group>"; };
+		7CA9556D255D203100610629 /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
 		7CD54B1825590A25008629F3 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		7CD54B1A25590A3D008629F3 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		7CD54B1D25590E4C008629F3 /* LabelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelService.swift; sourceTree = "<group>"; };
@@ -281,6 +285,7 @@
 				7CDB1D95255AABD3005236C9 /* IssueDetailService.swift */,
 				7CD54B1D25590E4C008629F3 /* LabelService.swift */,
 				97AB736E255A31FF00644484 /* MilestoneService.swift */,
+				7CA9556D255D203100610629 /* CommentService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -425,6 +430,7 @@
 				7C1304552552829B003AE6A1 /* IssueDetailViewController.swift */,
 				7C13045925528AE4003AE6A1 /* CommentCollectionViewCell.swift */,
 				7C13045725528A9E003AE6A1 /* CommentHeaderReusableView.swift */,
+				7CA9556B255D17DF00610629 /* CommentAddViewController.swift */,
 				97D5B7B32553E7160060A7F7 /* IssueInfoViewController.swift */,
 				9753D70025596B2E00677C53 /* ProfileCell.swift */,
 				97E69D2F255BC5AC0031755D /* LabelCell.swift */,
@@ -697,6 +703,7 @@
 				977B9C56254FA89900D00B28 /* MilestoneAddViewController.swift in Sources */,
 				9753D7052559727800677C53 /* MilestoneCell.swift in Sources */,
 				977B9C60254FC5B000D00B28 /* BadgeLabel.swift in Sources */,
+				7CA9556E255D203100610629 /* CommentService.swift in Sources */,
 				7C67D8D62552D4EE00533B03 /* IssueStatus.swift in Sources */,
 				7C13043C254FC521003AE6A1 /* LabelMainViewController.swift in Sources */,
 				97965DF5255BE378007090C8 /* ShadowConlectionViewCell.swift in Sources */,
@@ -727,6 +734,7 @@
 				7C13045825528A9E003AE6A1 /* CommentHeaderReusableView.swift in Sources */,
 				7CE735482559428E00F8E029 /* LabelEndpoint.swift in Sources */,
 				97AB736F255A31FF00644484 /* MilestoneService.swift in Sources */,
+				7CA9556C255D17DF00610629 /* CommentAddViewController.swift in Sources */,
 				97A47D25255AB3100048CBB8 /* LoginViewController.swift in Sources */,
 				97DAB2CB255034DE002C3E21 /* String+.swift in Sources */,
 				7CDB1D96255AABD3005236C9 /* IssueDetailService.swift in Sources */,

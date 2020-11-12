@@ -15,8 +15,8 @@ final class ProfileCell: UICollectionViewCell {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
     
-    func configure(image: UIImage, name: String) {
-        imageView.image = image
-        nameLabel.text = name
+    func configure(user: User?) {
+//        imageView.image = image
+        nameLabel.text = user?.nickname
     }
 }

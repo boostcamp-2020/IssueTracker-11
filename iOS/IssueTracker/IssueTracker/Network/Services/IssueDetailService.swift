@@ -29,4 +29,22 @@ class IssueDetailService: Requestable {
         }
     }
     
+    func commentCreate(contents: String, authorID: Int, issueID: Int,
+                       completion: @escaping () -> Void) {
+        let issueDetailEndpoint: IssueDetailEndpoint = .commentPost(contents: contents,
+                                                                    author: authorID,
+                                                                    issueID: issueID)
+        
+        request(issueDetailEndpoint) { result in
+            switch result {
+            case .networkSuccess:
+                completion()
+            case .networkError(let error):
+                print(error)
+            case .networkFail:
+                print("Network Fail!!!!")
+            }
+        }
+    }
+    
 }

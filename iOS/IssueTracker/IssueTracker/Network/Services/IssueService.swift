@@ -73,4 +73,19 @@ class IssueService: Requestable {
         }
     }
     
+    func closeIssue(ids: [Int], completion: @escaping () -> Void) {
+        issueEndpoint = .closeIssue(ids: ids)
+        
+        request(issueEndpoint) { result in
+            switch result {
+            case .networkSuccess:
+                completion()
+            case .networkError(let error):
+                print(error)
+            case .networkFail:
+                print("Network Fail!!!!")
+            }
+        }
+    }
+    
 }

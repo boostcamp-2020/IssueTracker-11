@@ -14,8 +14,8 @@ final class CloseButtonCell: ShadowCollectionViewCell {
     
     @IBOutlet private weak var closeButton: UIButton!
     
-    func configure(selector: Selector) {
-        closeButton.addTarget(self,
+    func configure(selector: Selector, target: Any?) {
+        closeButton.addTarget(target,
                               action: selector,
                               for: .touchUpInside)
     }

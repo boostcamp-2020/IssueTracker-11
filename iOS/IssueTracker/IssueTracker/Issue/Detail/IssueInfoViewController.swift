@@ -8,17 +8,23 @@
 
 import UIKit
 
+protocol CommentDelegate: class {
+    func addCommentButtonDidTap()
+}
+
 final class IssueInfoViewController: PullUpController {
     
+    // MARK: - Enum
+    
     enum Section: CaseIterable {
-        case asignee
+        case assignee
         case label
         case milestone
         case close
         
         var title: String {
             switch self {
-            case .asignee:
+            case .assignee:
                 return "담당자"
             case .label:
                 return "레이블"
@@ -30,32 +36,80 @@ final class IssueInfoViewController: PullUpController {
         }
     }
     
+    enum DataItem: Hashable {
+        case assignee(User)
+        case label(Label)
+        case milestone(Milestone?)
+        case close
+    }
+    
+    // MARK: - IBOutlet
+    
     @IBOutlet weak var buttonContainerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var buttonContainerViewHeight: NSLayoutConstraint!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
-
-    var dataSource: UICollectionViewDiffableDataSource<Section, Int>! = nil
     
-    var initialPointOffset: CGFloat {
-       return (buttonContainerView?.frame.height ?? 0) + safeAreaAdditionalOffset
+    // MARK: - Properties
+    
+    weak var delegate: CommentDelegate?
+    private var assigneeList: [User] = []
+    private var labelList: [Label] = []
+    private var milestone: Milestone?
+    private var portraitSize: CGSize = .zero
+    private var landscapeFrame: CGRect = .zero
+    private var safeAreaAdditionalOffset: CGFloat { 20 }
+    private var dataSource: UICollectionViewDiffableDataSource<Section, DataItem>! = nil
+    var initialPointOffset: CGFloat { (buttonContainerView?.frame.height ?? 0) + safeAreaAdditionalOffset }
+    var issue: Issue?
+    
+    // MARK: - Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureDatas(issue)
     }
     
-    public var portraitSize: CGSize = .zero
-    public var landscapeFrame: CGRect = .zero
-    
-    private var safeAreaAdditionalOffset: CGFloat {
-        return 20
-    }
- 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureContainerLayout()
         configureCollectionView()
         configureDataSource()
     }
     
-    func configureContainerLayout() {
+    @IBAction func addCommentButtonDidTap(_ sender: UIButton) {
+        delegate?.addCommentButtonDidTap()
+    }
+    
+    // MARK: - Methods
+    
+    private func closeIssue() {
+        if issue?.status == 0 {
+            showOKAlert(title: "Closed", message: "이슈가 이미 닫혀있습니다!")
+            return
+        }
+        
+        guard let issueID = issue?.id else { return }
+        print(issueID)
+        IssueService.shared.closeIssue(ids: [issueID]) { [weak self] in
+            self?.showOKAlert(title: "Closed", message: "이슈가 닫혔습니다!")
+        }
+    }
+    
+    private func configureDatas(_ issue: Issue?) {
+        guard let assignees = issue?.assignees,
+            let labels = issue?.labels,
+            let milestone = issue?.milestone
+            else { return }
+        
+        self.assigneeList = assignees
+        self.labelList = labels
+        self.milestone = milestone
+        applySnapshot()
+    }
+    
+    private func configureContainerLayout() {
         portraitSize = CGSize(width: view.frame.width,
                               height: view.frame.height * 0.85)
         buttonContainerViewHeight.constant = view.frame.height * 0.1
@@ -63,19 +117,22 @@ final class IssueInfoViewController: PullUpController {
         collectionView.attach(to: self)
     }
     
-    @objc func testFunc() {}
-    
-    override var pullUpControllerPreferredSize: CGSize {
-        return portraitSize
+    private func configureCollectionView() {
+        collectionView.collectionViewLayout = generateLayout()
     }
     
-    override var pullUpControllerPreferredLandscapeFrame: CGRect {
-        return landscapeFrame
+    private func showOKAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "네", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
-    override var pullUpControllerBounceOffset: CGFloat {
-        return 20
-    }
+    override var pullUpControllerPreferredSize: CGSize { portraitSize }
+    override var pullUpControllerPreferredLandscapeFrame: CGRect { landscapeFrame }
+    override var pullUpControllerBounceOffset: CGFloat { 20 }
     
     override func pullUpControllerAnimate(action: PullUpController.Action,
                                           withDuration duration: TimeInterval,
@@ -96,57 +153,74 @@ final class IssueInfoViewController: PullUpController {
                            completion: completion)
         }
     }
- 
+    
+    // MARK: - Objc
+    
+    @objc private func closeButtonDidTap() {
+        closeIssue()
+        applySnapshot()
+    }
+    
+    @objc private func editButtonDidTap() {
+        showOKAlert(title: "준비중", message: "서비스 준비중입니다")
+    }
+    
 }
+
+// MARK: - UICollectionViewDiffableDataSource
 
 extension IssueInfoViewController {
     
-    func configureCollectionView() {
-        collectionView.collectionViewLayout = generateLayout()
-    }
-    
     func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource
-            <Section, Int>(collectionView: collectionView) {
-                (collectionView: UICollectionView, indexPath: IndexPath, item: Int) -> UICollectionViewCell? in
+            <Section, DataItem>(collectionView: collectionView) { [weak self] (collectionView: UICollectionView, indexPath: IndexPath, item: DataItem)
+                -> UICollectionViewCell? in
+                
                 let sectionKind = Section.allCases[indexPath.section]
                 switch sectionKind {
-                case .asignee:
-                    guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: ProfileCell.reuseIdentifier,
-                        for: indexPath) as? ProfileCell else { fatalError("Could not create new cell") }
-                    _ = item
+                case .assignee:
+                    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCell.reuseIdentifier,
+                                                                        for: indexPath) as? ProfileCell,
+                        let user = self?.assigneeList[indexPath.row]
+                        else { return UICollectionViewCell() }
+                    cell.configure(user: user)
                     return cell
                 case .label:
                     guard let cell = collectionView.dequeueReusableCell(
                         withReuseIdentifier: LabelCell.reuseIdentifier,
-                        for: indexPath) as? LabelCell else { fatalError("Could not create new cell") }
+                        for: indexPath) as? LabelCell else { return UICollectionViewCell() }
                     _ = item
+                    let label = self?.labelList[indexPath.row]
+                    cell.configure(content: label)
                     return cell
                 case .milestone:
                     guard let cell = collectionView.dequeueReusableCell(
                         withReuseIdentifier: MilestoneCell.reuseIdentifier,
-                        for: indexPath) as? MilestoneCell else { fatalError("Could not create new cell") }
-                    _ = item
+                        for: indexPath) as? MilestoneCell
+                        else { return UICollectionViewCell() }
+                    cell.configure(milestone: self?.milestone)
                     return cell
                 case .close:
                     guard let cell = collectionView.dequeueReusableCell(
                         withReuseIdentifier: CloseButtonCell.reuseIdentifier,
-                        for: indexPath) as? CloseButtonCell else { fatalError("Could not create new cell") }
-                    _ = item
+                        for: indexPath) as? CloseButtonCell else { return UICollectionViewCell() }
+                    cell.configure(selector: #selector(self?.closeButtonDidTap),
+                                   target: self)
                     return cell
                 }
         }
         
-        dataSource.supplementaryViewProvider = {
-            (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
+        dataSource.supplementaryViewProvider = { [weak self] (collectionView: UICollectionView, kind: String, indexPath: IndexPath)
+            -> UICollectionReusableView? in
             let sectionKind = Section.allCases[indexPath.section]
             if kind == UICollectionView.elementKindSectionHeader {
                 guard let headerView = collectionView.dequeueReusableSupplementaryView(
                     ofKind: kind,
                     withReuseIdentifier: InfoHeaderView.reuseIdentifier,
                     for: indexPath) as? InfoHeaderView else { return UICollectionReusableView() }
-                headerView.configure(title: sectionKind.title, selector: #selector(self.testFunc))
+                headerView.configure(title: sectionKind.title,
+                                     selector: #selector(self?.editButtonDidTap),
+                                     target: self)
                 return headerView
             }
             
@@ -155,47 +229,49 @@ extension IssueInfoViewController {
                     ofKind: kind,
                     withReuseIdentifier: "sectionFooter",
                     for: indexPath)
+                
                 return footerView
             }
             
             return UICollectionReusableView()
         }
         
-        let snapshot = snapshotForCurrentState()
-        dataSource.apply(snapshot, animatingDifferences: false)
+        applySnapshot()
     }
     
-    func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<Section, Int> {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Int>()
-        let fItems = Array(1...5)
-        let sItems = Array(7...10)
-        let tItems = [11]
-        let foItems = [12]
-        snapshot.appendSections([Section.asignee])
-        snapshot.appendItems(fItems)
+    func applySnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, DataItem>()
+        snapshot.appendSections(Section.allCases)
         
-        snapshot.appendSections([Section.label])
-        snapshot.appendItems(sItems)
+        let assigneeItem = assigneeList.map { DataItem.assignee($0) }
+        snapshot.appendItems(assigneeItem, toSection: .assignee)
         
-        snapshot.appendSections([Section.milestone])
-        snapshot.appendItems(tItems)
+        let labelItem = labelList.map { DataItem.label($0) }
+        snapshot.appendItems(labelItem, toSection: .label)
         
-        snapshot.appendSections([Section.close])
-        snapshot.appendItems(foItems)
+        snapshot.appendItems([DataItem.milestone(milestone)], toSection: .milestone)
+        snapshot.appendItems([DataItem.close], toSection: .close)
         
-        return snapshot
+        dataSource.apply(snapshot,
+                         animatingDifferences: false)
     }
+    
+}
+
+// MARK: - UICollectionViewLayout
+
+extension IssueInfoViewController {
     
     func generateLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout {
-            (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+        let layout = UICollectionViewCompositionalLayout { [weak self] (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment)
+            -> NSCollectionLayoutSection? in
             
             let sectionLayoutKind = Section.allCases[sectionIndex]
             switch sectionLayoutKind {
-            case .asignee: return self.generateAssigneeLayout()
-            case .label: return self.generateLabelLayout()
-            case .milestone: return self.generateMilestoneLayout()
-            case .close: return self.generateCloseLayout()
+            case .assignee: return self?.generateAssigneeLayout()
+            case .label: return self?.generateLabelLayout()
+            case .milestone: return self?.generateMilestoneLayout()
+            case .close: return self?.generateCloseLayout()
             }
         }
         
@@ -268,27 +344,26 @@ extension IssueInfoViewController {
     
     func generateSectionFooter() -> NSCollectionLayoutBoundarySupplementaryItem {
         let footerSize = NSCollectionLayoutSize(
-          widthDimension: .fractionalWidth(1.0),
-          heightDimension: .absolute(1))
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(1))
         let sectionFooter = NSCollectionLayoutBoundarySupplementaryItem(
-          layoutSize: footerSize,
-          elementKind: UICollectionView.elementKindSectionFooter,
-          alignment: .bottomLeading)
+            layoutSize: footerSize,
+            elementKind: UICollectionView.elementKindSectionFooter,
+            alignment: .bottomLeading)
         
         return sectionFooter
     }
     
     func generateSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         let headerSize = NSCollectionLayoutSize(
-          widthDimension: .fractionalWidth(1.0),
-          heightDimension: .estimated(40))
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(40))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-          layoutSize: headerSize,
-          elementKind: UICollectionView.elementKindSectionHeader,
-          alignment: .top)
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top)
         
         return sectionHeader
     }
-
+    
 }
-

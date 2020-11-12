@@ -26,17 +26,25 @@ final class IssueDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setFlowLayout()
-        addPullUpController(animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarController?.tabBar.isHidden = true
         
+        tabBarController?.tabBar.isHidden = true
         loadIssueDetail()
     }
-    
+
     // MARK: - Methods
+    
+    private func openAddView() {
+        guard let addCommentViewController = storyboard?
+                .instantiateViewController(withIdentifier: "addCommentViewController"),
+            let firstViewController = addCommentViewController.children.first as? CommentAddViewController
+            else { return }
+        firstViewController.issueID = issueID
+        self.present(addCommentViewController, animated: true)
+    }
     
     private func loadIssueDetail() {
         guard let id = issueID else { return }
@@ -46,6 +54,7 @@ final class IssueDetailViewController: UIViewController {
             self?.commentList.append(firstComment)
             self?.commentList.append(contentsOf: result.comments ?? [])
             self?.commentCollectionView.reloadData()
+            self?.addPullUpController(animated: true)
         }
     }
     
@@ -71,13 +80,14 @@ extension IssueDetailViewController {
         let identifier = String(describing: IssueInfoViewController.self)
         guard let issueInfoViewController = storyboard?.instantiateViewController(identifier: identifier)
             as? IssueInfoViewController else { return IssueInfoViewController() }
-        
+        issueInfoViewController.issue = issue
         return issueInfoViewController
     }
     
     private func addPullUpController(animated: Bool) {
         let pullUpController = makeIssueInfoViewControllerIfNeeded()
         _ = pullUpController.view
+        pullUpController.delegate = self
         addPullUpController(pullUpController,
                             initialStickyPointOffset: pullUpController.initialPointOffset,
                             animated: animated)
@@ -137,6 +147,14 @@ extension IssueDetailViewController: UICollectionViewDelegateFlowLayout {
                                                          height: UIView.layoutFittingExpandedSize.height),
                                                   withHorizontalFittingPriority: .required,
                                                   verticalFittingPriority: .fittingSizeLevel)
+    }
+    
+}
+
+extension IssueDetailViewController: CommentDelegate {
+    
+    func addCommentButtonDidTap() {
+        openAddView()
     }
     
 }
