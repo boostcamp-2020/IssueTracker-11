@@ -19,7 +19,6 @@ export const IssueStore = ({ children }) => {
     const setInitState = async () => {
         const response = await fetch('http://49.50.160.103:3000/issues');
         const data = await response.json();
-        console.log(data, ';;;;');
         issueDispatch({ type: 'GET', data });
     };
     useEffect(() => {
