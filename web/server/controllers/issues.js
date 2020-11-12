@@ -4,11 +4,6 @@ import Controller from "./controller.js";
 import Issue from "../objects/issue.js";
 import GETResponse from "../objects/getResponse.js";
 
-// import issueModel from "../models/issues.js";
-// import Controller from "./controller.js";
-// import Issue from "../objects/issue.js";
-// import GETResponse from "../objects/getResponse.js";
-
 const TITLE_LIMIT = 45;
 const CONTENT_LIMIT = 500;
 
@@ -70,7 +65,6 @@ class IssueController extends Controller {
         );
         res.status(200).send(getResponse);
       }
-
       getResponse.data.push(previousItem);
       getResponse.data.forEach((item) =>
         item.status ? getResponse.open_number++ : getResponse.closed_number++
