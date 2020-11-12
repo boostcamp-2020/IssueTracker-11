@@ -35,8 +35,9 @@ class Controller {
     };
 
     patch = async (req, res) => {
-        const id = Number(req.params.id || req.body.ids);
+        const id = Number(req.params.id) || req.body.ids.map(Number);
         const ids = typeof id === 'object' ? [...id] : [id];
+
         try {
             const OPTION = req.originalUrl.includes('status') ? OPEN_CLOSED : SOFT_DELETE;
             ids.forEach((id) => {

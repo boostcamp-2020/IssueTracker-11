@@ -18,6 +18,7 @@ class Model {
         } catch (error) {
             conn.rollback();
             console.error(error);
+            throw new Error('GET METHOD ERROR');
         } finally {
             conn.release();
         }
@@ -62,6 +63,7 @@ class Model {
         } catch (error) {
             conn.rollback();
             console.error(error);
+            throw new Error('DELETE METHOD ERROR');
         } finally {
             conn.release();
         }
@@ -76,6 +78,7 @@ class Model {
         } catch (error) {
             conn.rollback();
             console.error(error);
+            throw new Error('PATCH METHOD ERROR');
         } finally {
             conn.release();
         }
