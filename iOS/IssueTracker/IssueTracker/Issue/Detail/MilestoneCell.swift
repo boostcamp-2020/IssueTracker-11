@@ -19,8 +19,8 @@ final class MilestoneCell: ShadowCollectionViewCell {
         super.awakeFromNib()
     }
 
-    func configure(title: String, progress: Float) {
-        titleLabel.text = title
-        progressView.progress = progress
+    func configure(milestone: Milestone?) {
+        titleLabel.text = milestone?.title
+        progressView.progress = Float(milestone?.progressPercentage ?? 0)
     }
 }

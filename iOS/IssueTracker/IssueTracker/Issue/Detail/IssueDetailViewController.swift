@@ -26,7 +26,6 @@ final class IssueDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setFlowLayout()
-        addPullUpController(animated: true)
     }
     
     override func viewDidLoad() {
@@ -46,6 +45,7 @@ final class IssueDetailViewController: UIViewController {
             self?.commentList.append(firstComment)
             self?.commentList.append(contentsOf: result.comments ?? [])
             self?.commentCollectionView.reloadData()
+            self?.addPullUpController(animated: true)
         }
     }
     
@@ -71,7 +71,7 @@ extension IssueDetailViewController {
         let identifier = String(describing: IssueInfoViewController.self)
         guard let issueInfoViewController = storyboard?.instantiateViewController(identifier: identifier)
             as? IssueInfoViewController else { return IssueInfoViewController() }
-        
+        issueInfoViewController.issue = issue
         return issueInfoViewController
     }
     

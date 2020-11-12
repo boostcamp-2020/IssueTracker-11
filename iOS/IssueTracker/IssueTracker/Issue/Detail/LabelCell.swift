@@ -19,7 +19,13 @@ final class LabelCell: UICollectionViewCell {
         label.layer.masksToBounds = true
     }
     
-    func configure(title: String) {
-        label.text = title
+    func configure(content: Label?) {
+        label.text = content?.name
+        
+        guard let colorString = content?.color else { return }
+        let color = UIColor(hex: colorString)
+        label.backgroundColor = color
+        label.textColor = color.isDarkColor ? .white : .black
     }
+    
 }

@@ -15,9 +15,9 @@ final class InfoHeaderView: UICollectionReusableView {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var editButton: UIButton!
     
-    func configure(title: String, selector: Selector) {
+    func configure(title: String, selector: Selector, target: Any?) {
         titleLabel.text = title
-        editButton.addTarget(self,
+        editButton.addTarget(target,
                              action: selector,
                              for: .touchUpInside)
     }
