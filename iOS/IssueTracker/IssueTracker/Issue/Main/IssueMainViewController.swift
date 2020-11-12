@@ -52,7 +52,6 @@ final class IssueMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        definesPresentationContext = true
         registerNotifications()
         configure()
     }
@@ -183,9 +182,12 @@ final class IssueMainViewController: UIViewController {
     }
     
     @objc func segueToFilterViewController() {
-        guard let filterViewController =
-                storyboard?.instantiateViewController(withIdentifier: "IssueFilterNavigationController") else { return }
-        self.present(filterViewController, animated: true)
+        guard let filterNavigationViewController =
+                storyboard?.instantiateViewController(withIdentifier: "IssueFilterNavigationController"),
+              let filterViewController = filterNavigationViewController.children.first as? IssueFilterViewController
+         else { return }
+        filterViewController.delegate = self
+        self.present(filterNavigationViewController, animated: true)
     }
     
 }
@@ -311,6 +313,20 @@ extension IssueMainViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         filterDataSource(with: searchBar.text ?? "")
+    }
+    
+}
+
+extension IssueMainViewController: IssueFilterControllerDelegate {
+    
+    func filterOptionDidChange(options: [PlainFilterOption]) {
+        var filtered = issueList
+        options.forEach { filtered = $0.filter(with: filtered) }
+        applyDynamicSnapshot(with: filtered)
+    }
+    
+    func filterControllerWillAppear() {
+        applySnapshot()
     }
     
 }
