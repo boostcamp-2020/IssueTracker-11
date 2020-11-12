@@ -332,13 +332,13 @@
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이슈 생성 기능이이슈 생성 기능이슈 생성 기능이슈 생성 기능이슈 생성 기능이슈 생성 기능이슈 생성 기능슈 생성 기능" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ot8-sp-rYJ">
-                                                    <rect key="frame" x="0.0" y="46" width="355" height="21.5"/>
+                                                    <rect key="frame" x="0.0" y="46" width="355" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pk3-bN-Dxo" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="83.5" width="49.5" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="87" width="35.5" height="17"/>
                                                     <color key="backgroundColor" red="0.93333333333333335" green="0.97254901960784312" blue="0.94117647058823528" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="250" constant="20.5" id="o1N-CD-FiK"/>
@@ -404,6 +404,79 @@
             </objects>
             <point key="canvasLocation" x="2726.0869565217395" y="99.776785714285708"/>
         </scene>
+        <!--새 댓글-->
+        <scene sceneID="gut-Xk-R31">
+            <objects>
+                <viewController storyboardIdentifier="CommentAddViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ole-uM-h31" customClass="CommentAddViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A5g-v3-DgZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="jFh-zW-3Kp">
+                                <rect key="frame" x="24" y="172.5" width="366" height="665.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cKH-Zj-m0o">
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="665.5"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PxH-r2-vLR">
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="33"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="OGU-Oc-Rh2"/>
+                                                </constraints>
+                                                <segments>
+                                                    <segment title="마크다운"/>
+                                                    <segment title="미리보기"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="코멘트는 여기에 작성하세요" translatesAutoresizingMaskIntoConstraints="NO" id="5dX-8U-ASw" customClass="ContentTextView" customModule="IssueTracker" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="47" width="366" height="618.5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="JuO-2g-Psz" id="BXW-w6-rYK"/>
+                                                </connections>
+                                            </textView>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gAQ-Bj-654" customClass="MarkdownView" customModule="IssueTracker" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="665.5" width="366" height="0.0"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="1Gp-2j-FcH" firstAttribute="bottom" secondItem="jFh-zW-3Kp" secondAttribute="bottom" constant="24" id="XjY-gZ-gxc"/>
+                            <constraint firstAttribute="trailing" secondItem="jFh-zW-3Kp" secondAttribute="trailing" constant="24" id="sII-oW-TzL"/>
+                            <constraint firstItem="jFh-zW-3Kp" firstAttribute="leading" secondItem="1Gp-2j-FcH" secondAttribute="leading" constant="24" id="vPZ-Xt-cTU"/>
+                            <constraint firstItem="jFh-zW-3Kp" firstAttribute="top" secondItem="1Gp-2j-FcH" secondAttribute="top" constant="24" id="y6N-Nr-cao"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1Gp-2j-FcH"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="새 댓글" id="WZb-12-fjG">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1ty-QX-PBw">
+                            <connections>
+                                <action selector="cancelButtonDidTap:" destination="ole-uM-h31" id="jUG-hE-w7d"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="arrow.up" catalog="system" id="eRE-xo-ADx">
+                            <connections>
+                                <action selector="uploadButtonDidTap:" destination="ole-uM-h31" id="n3V-Vg-LXH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="commentTextView" destination="5dX-8U-ASw" id="OcO-kM-P6Z"/>
+                        <outlet property="segmentedControl" destination="PxH-r2-vLR" id="GRI-bS-QRS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f0G-an-Ppb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3536" y="-664"/>
+        </scene>
         <!--Issue Info View Controller-->
         <scene sceneID="q61-dN-w3H">
             <objects>
@@ -445,6 +518,9 @@
                                                         <size key="value" width="0.0" height="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="addCommentButtonDidTap:" destination="Xi0-v4-PvD" eventType="touchUpInside" id="dPk-zZ-Mij"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q4b-L3-E6H">
                                                 <rect key="frame" x="286" y="0.0" width="88" height="44"/>
@@ -507,11 +583,16 @@
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M6c-5e-VGc">
                                         <rect key="frame" x="187" y="9" width="40" height="5"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="43v-6R-Q6d"/>
                                             <constraint firstAttribute="height" constant="5" id="Lrt-ls-r6C"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <real key="value" value="2.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -899,7 +980,7 @@
                 <navigationController storyboardIdentifier="addIssueNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="AGF-Qc-xMp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="S00-3r-qNJ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                     </navigationBar>
@@ -911,6 +992,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cnS-kH-KZG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="990" y="-663"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yYJ-SM-b8v">
+            <objects>
+                <navigationController storyboardIdentifier="addCommentViewController" automaticallyAdjustsScrollViewInsets="NO" id="bhr-oR-M0P" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="z0y-tt-DNZ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ole-uM-h31" kind="relationship" relationship="rootViewController" id="GPp-MA-3dc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U5b-id-rDy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2726" y="-664"/>
         </scene>
     </scenes>
     <resources>

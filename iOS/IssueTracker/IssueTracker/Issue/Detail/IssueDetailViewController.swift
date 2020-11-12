@@ -30,12 +30,21 @@ final class IssueDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarController?.tabBar.isHidden = true
         
+        tabBarController?.tabBar.isHidden = true
         loadIssueDetail()
     }
-    
+
     // MARK: - Methods
+    
+    private func openAddView() {
+        guard let addCommentViewController = storyboard?
+                .instantiateViewController(withIdentifier: "addCommentViewController"),
+            let firstViewController = addCommentViewController.children.first as? CommentAddViewController
+            else { return }
+        firstViewController.issueID = issueID
+        self.present(addCommentViewController, animated: true)
+    }
     
     private func loadIssueDetail() {
         guard let id = issueID else { return }
@@ -78,6 +87,7 @@ extension IssueDetailViewController {
     private func addPullUpController(animated: Bool) {
         let pullUpController = makeIssueInfoViewControllerIfNeeded()
         _ = pullUpController.view
+        pullUpController.delegate = self
         addPullUpController(pullUpController,
                             initialStickyPointOffset: pullUpController.initialPointOffset,
                             animated: animated)
@@ -137,6 +147,14 @@ extension IssueDetailViewController: UICollectionViewDelegateFlowLayout {
                                                          height: UIView.layoutFittingExpandedSize.height),
                                                   withHorizontalFittingPriority: .required,
                                                   verticalFittingPriority: .fittingSizeLevel)
+    }
+    
+}
+
+extension IssueDetailViewController: CommentDelegate {
+    
+    func addCommentButtonDidTap() {
+        openAddView()
     }
     
 }

@@ -18,6 +18,7 @@ enum IssueEndpoint {
                 assignees: [User],
                 labels: [Label])
     case delete(id: Int)
+    case closeIssue(ids: [Int])
 }
 
 extension IssueEndpoint: EndpointType {
@@ -32,6 +33,8 @@ extension IssueEndpoint: EndpointType {
             return basePath
         case .delete(let id):
             return basePath + "/\(id)"
+        case .closeIssue:
+            return basePath + "/status"
         }
     }
     
@@ -43,6 +46,8 @@ extension IssueEndpoint: EndpointType {
             return .post
         case .delete:
             return .delete
+        case .closeIssue:
+            return .patch
         }
     }
     
@@ -58,6 +63,8 @@ extension IssueEndpoint: EndpointType {
             if milestoneID != nil { param["milestone"] = milestoneID }
             if contents != nil { param["contents"] = contents }
             return param
+        case .closeIssue(let ids):
+            return ["ids": ids]
         }
     }
     

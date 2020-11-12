@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol CommentDelegate: class {
+    func addCommentButtonDidTap()
+}
+
 final class IssueInfoViewController: PullUpController {
     
     // MARK: - Enum
@@ -48,6 +52,7 @@ final class IssueInfoViewController: PullUpController {
     
     // MARK: - Properties
     
+    weak var delegate: CommentDelegate?
     private var assigneeList: [User] = []
     private var labelList: [Label] = []
     private var milestone: Milestone?
@@ -73,7 +78,24 @@ final class IssueInfoViewController: PullUpController {
         configureDataSource()
     }
     
+    @IBAction func addCommentButtonDidTap(_ sender: UIButton) {
+        delegate?.addCommentButtonDidTap()
+    }
+    
     // MARK: - Methods
+    
+    private func closeIssue() {
+        if issue?.status == 0 {
+            showOKAlert(title: "Closed", message: "이슈가 이미 닫혀있습니다!")
+            return
+        }
+        
+        guard let issueID = issue?.id else { return }
+        print(issueID)
+        IssueService.shared.closeIssue(ids: [issueID]) { [weak self] in
+            self?.showOKAlert(title: "Closed", message: "이슈가 닫혔습니다!")
+        }
+    }
     
     private func configureDatas(_ issue: Issue?) {
         guard let assignees = issue?.assignees,
@@ -135,7 +157,8 @@ final class IssueInfoViewController: PullUpController {
     // MARK: - Objc
     
     @objc private func closeButtonDidTap() {
-        showOKAlert(title: "닫기버튼", message: "입니다")
+        closeIssue()
+        applySnapshot()
     }
     
     @objc private func editButtonDidTap() {
