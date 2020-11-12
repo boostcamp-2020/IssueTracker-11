@@ -23,6 +23,8 @@ class IssueController extends Controller {
 
     get = async (req, res) => {
         try {
+            const getResponse = new GETResponse();
+
             const [result] = await this.Model.get();
             if (req.params.id) {
                 const [comments] = await commentModel.get(`WHERE issue_id = ${req.params.id} AND deleted_at IS NULL`);
@@ -38,7 +40,6 @@ class IssueController extends Controller {
                 if (responseItem.hasOwnProperty('issue_id')) responseItem.comments = comments;
                 res.status(200).send(responseItem);
             } else {
-                const getResponse = new GETResponse();
                 let previousItem = undefined;
                 result.forEach((item, index) => {
                     if (index === 0) {
