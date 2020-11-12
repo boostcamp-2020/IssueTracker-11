@@ -14,7 +14,7 @@ class CommentController extends Controller {
                 const issue_id = Number(req.originalUrl.replace(/[^0-9]/g, ''));
                 const [result] = await this.Model.get(`WHERE issue_id = ${issue_id} AND deleted_at IS NULL`);
                 return result.length === 0
-                    ? res.status(200).send([])
+                    ? res.status(200).send({ data: [] })
                     : res.status(200).send({ status: 'OK', data: result });
             }
         } catch (error) {
@@ -31,7 +31,7 @@ class CommentController extends Controller {
 
         try {
             await this.Model.post({ issue_id, contents, author });
-            return res.status(201).send('Created');
+            return res.status(201).send({ status: 'Created' });
         } catch (error) {
             res.status(500).send({ result: error.message });
         }
