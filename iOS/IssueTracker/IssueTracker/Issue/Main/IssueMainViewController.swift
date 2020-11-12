@@ -36,6 +36,12 @@ final class IssueMainViewController: UIViewController {
     private var selectAllButton: UIBarButtonItem?
     private var filterButton: UIBarButtonItem?
     
+    private var searchController: UISearchController = {
+        let controller = UISearchController()
+        controller.obscuresBackgroundDuringPresentation = false
+        return controller
+    }()
+    
     // MARK: - Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,13 +52,16 @@ final class IssueMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        definesPresentationContext = true
         registerNotifications()
         configure()
     }
     
+    // MARK: - IBAction
+    
     @IBAction func addButtonDidTap(_ sender: UIButton) {
         guard let addIssueViewController =
-            storyboard?.instantiateViewController(withIdentifier: "addIssueNavigationController") else { return }
+                storyboard?.instantiateViewController(withIdentifier: "addIssueNavigationController") else { return }
         self.present(addIssueViewController, animated: true)
     }
     
@@ -66,9 +75,9 @@ final class IssueMainViewController: UIViewController {
     }
     
     private func closeIssue(id: Int) {
-//        IssueService.shared.closeIssue(id: id) { [weak self] in
-//            self?.issueList.removeAll { $0.id == id }
-//        }
+        //        IssueService.shared.closeIssue(id: id) { [weak self] in
+        //            self?.issueList.removeAll { $0.id == id }
+        //        }
     }
     
     private func deleteIssue(id: Int) {
@@ -79,9 +88,7 @@ final class IssueMainViewController: UIViewController {
     
     private func configure() {
         initButtons()
-        navigationItem.searchController = UISearchController()
-        navigationItem.leftBarButtonItem = filterButton
-        navigationItem.rightBarButtonItem = editButton
+        configureNavigationItems()
         
         let tabbarHeight = tabBarController?.tabBar.frame.height ?? 0
         let rect = CGRect(x: 0,
@@ -112,12 +119,30 @@ final class IssueMainViewController: UIViewController {
                                        action: #selector(segueToFilterViewController))
     }
     
+    private func configureNavigationItems() {
+        searchController.searchResultsUpdater = self
+        searchController.delegate = self
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
+        navigationItem.leftBarButtonItem = filterButton
+        navigationItem.rightBarButtonItem = editButton
+    }
+    
     private func registerNotifications() {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self,
                                        selector: #selector(issueDidCreate),
                                        name: .issueDidCreate,
                                        object: nil)
+    }
+    
+    private func filterDataSource(with str: String) {
+        let filtered = issueList.filter {
+            guard let title = $0.title else { return false }
+            return title.contains(str)
+        }
+        
+        applyDynamicSnapshot(with: filtered)
     }
     
     // MARK: - Objc
@@ -138,7 +163,7 @@ final class IssueMainViewController: UIViewController {
         issueCollectionView.allowsMultipleSelection = isEditing
         issueCollectionView.indexPathsForVisibleItems.forEach { indexPath in
             guard let cell = issueCollectionView.cellForItem(at: indexPath)
-                as? IssueCollectionViewCell else { return }
+                    as? IssueCollectionViewCell else { return }
             cell.isEditing = isEditing
         }
         issueCollectionView.excuteAll(handler: { cell in
@@ -159,7 +184,7 @@ final class IssueMainViewController: UIViewController {
     
     @objc func segueToFilterViewController() {
         guard let filterViewController =
-            storyboard?.instantiateViewController(withIdentifier: "IssueFilterNavigationController") else { return }
+                storyboard?.instantiateViewController(withIdentifier: "IssueFilterNavigationController") else { return }
         self.present(filterViewController, animated: true)
     }
     
@@ -185,7 +210,7 @@ extension IssueMainViewController {
                                 isEditing: isEditing)
                 cell?.delegate = self
                 return cell
-        })
+            })
         
         return dataSource
     }
@@ -194,6 +219,14 @@ extension IssueMainViewController {
         var snapshot = Snapshot()
         snapshot.appendSections(sections)
         snapshot.appendItems(issueList)
+        dataSource.apply(snapshot,
+                         animatingDifferences: animatingDifferences)
+    }
+    
+    private func applyDynamicSnapshot(with issues: [Issue], animatingDifferences: Bool = true) {
+        var snapshot = Snapshot()
+        snapshot.appendSections(sections)
+        snapshot.appendItems(issues)
         dataSource.apply(snapshot,
                          animatingDifferences: animatingDifferences)
     }
@@ -220,7 +253,7 @@ extension IssueMainViewController: SwipeableCollectionViewCellDelegate {
         guard
             let cell = cell as? IssueCollectionViewCell,
             let indexPath = issueCollectionView.indexPath(for: cell)
-            else { return }
+        else { return }
         
         if isEditing {
             cell.isSelected ? issueCollectionView.deselectItem(at: indexPath, animated: true) :
@@ -229,7 +262,7 @@ extension IssueMainViewController: SwipeableCollectionViewCellDelegate {
         
         let identifier = String(describing: IssueDetailViewController.self)
         guard let viewController = storyboard?.instantiateViewController(withIdentifier: identifier)
-            as? IssueDetailViewController else { return }
+                as? IssueDetailViewController else { return }
         
         viewController.issueID = issueList[indexPath.item].id
         navigationController?.pushViewController(viewController,
@@ -241,7 +274,7 @@ extension IssueMainViewController: SwipeableCollectionViewCellDelegate {
             let cell = cell as? IssueCollectionViewCell,
             let indexPath = issueCollectionView.indexPath(for: cell),
             let id = issueList[indexPath.item].id
-            else { return }
+        else { return }
         
         closeIssue(id: id)
     }
@@ -251,9 +284,33 @@ extension IssueMainViewController: SwipeableCollectionViewCellDelegate {
             let cell = cell as? IssueCollectionViewCell,
             let indexPath = issueCollectionView.indexPath(for: cell),
             let id = issueList[indexPath.item].id
-            else { return }
+        else { return }
         
         deleteIssue(id: id)
+    }
+    
+}
+
+extension IssueMainViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterDataSource(with: searchController.searchBar.text ?? "")
+    }
+    
+}
+
+extension IssueMainViewController: UISearchControllerDelegate {
+    
+    func didDismissSearchController(_ searchController: UISearchController) {
+        applySnapshot()
+    }
+    
+}
+
+extension IssueMainViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        filterDataSource(with: searchBar.text ?? "")
     }
     
 }
