@@ -12,9 +12,10 @@ const checkboxReducer = (checkState, { type, issueId }) => {
             idx = newState.ids.indexOf(parseInt(issueId));
             if (idx > -1) newState.ids.splice(idx, 1);
             return newState;
-        case 'CHECK_ALL':
+        // checked= true || false 로직 필요 ... 체크박스 자체를 가지고 있어야하나....
+        case 'CHECK_ALL_TRUE':
             newState.allChecked = true;
-            // 모든 이슈의 아이디 다 풋풋풋
+            newState.ids.push(...issueId);
             return newState;
         case 'CHECK_ALL_FALSE':
             newState.ids = [];
