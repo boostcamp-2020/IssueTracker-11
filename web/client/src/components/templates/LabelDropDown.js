@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Input from '@atoms/input.js';
+import Input from '@atoms/Input.js';
 import SubmitButton from '@atoms/SubmitButton.js';
 import Span from '@atoms/Span.js';
 import { Button } from '@atoms/Button.js';

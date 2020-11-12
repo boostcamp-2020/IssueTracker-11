@@ -1,5 +1,5 @@
 import React from 'react';
-import Span from '@atoms/span';
+import Span from '@atoms/Span';
 import LabelDropDown from './LabelDropDown';
 import MilestoneDropDown from './MilestoneDropDown';
 import AssigneeDropDown from './AssigneeDropDown';
