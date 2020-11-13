@@ -3,7 +3,8 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Issue from '@pages/Issue.js';
 import Label from '@pages/Label.js';
 import Milestone from '@pages/Milestone.js';
-import Navigation from '../organisms/Navigation';
+import Navigation from '../organisms/Navigation.js';
+import IssueNote from '@pages/IssueNote.js';
 
 const Routes = () => {
     return (
@@ -13,6 +14,7 @@ const Routes = () => {
                 <Route exact path="/" component={Issue} />
                 <Route path="/label" component={Label} />
                 <Route path="/milestone" component={Milestone} />
+                <Route path="/issuenote" component={IssueNote} />
             </main>
         </Router>
     );

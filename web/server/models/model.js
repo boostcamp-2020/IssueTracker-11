@@ -1,13 +1,19 @@
-import pool from '../config/database.js';
+import pool from "../config/database.js";
 
 class Model {
-    constructor({ GET_QUERY, POST_QUERY, PUT_QUERY, DELETE_QUERY, ...PATCH_QUERY }) {
-        this.GET_QUERY = GET_QUERY;
-        this.POST_QUERY = POST_QUERY;
-        this.PUT_QUERY = PUT_QUERY;
-        this.DELETE_QUERY = DELETE_QUERY;
-        this.PATCH_QUERY = PATCH_QUERY;
-    }
+  constructor({
+    GET_QUERY,
+    POST_QUERY,
+    PUT_QUERY,
+    DELETE_QUERY,
+    ...PATCH_QUERY
+  }) {
+    this.GET_QUERY = GET_QUERY;
+    this.POST_QUERY = POST_QUERY;
+    this.PUT_QUERY = PUT_QUERY;
+    this.DELETE_QUERY = DELETE_QUERY;
+    this.PATCH_QUERY = PATCH_QUERY;
+  }
 
     get = async (OPTION) => {
         if (!OPTION) OPTION = '';
@@ -18,6 +24,7 @@ class Model {
         } catch (error) {
             conn.rollback();
             console.error(error);
+            throw new Error('GET METHOD ERROR');
         } finally {
             conn.release();
         }
@@ -32,6 +39,7 @@ class Model {
         } catch (error) {
             conn.rollback();
             console.error(error);
+            throw new Error('POST METHOD ERROR');
         } finally {
             conn.release();
         }
@@ -46,6 +54,7 @@ class Model {
         } catch (error) {
             conn.rollback();
             console.error(error);
+            throw new Error('PUT METHOD ERROR');
         } finally {
             conn.release();
         }
@@ -60,6 +69,7 @@ class Model {
         } catch (error) {
             conn.rollback();
             console.error(error);
+            throw new Error('DELETE METHOD ERROR');
         } finally {
             conn.release();
         }
@@ -74,6 +84,7 @@ class Model {
         } catch (error) {
             conn.rollback();
             console.error(error);
+            throw new Error('PATCH METHOD ERROR');
         } finally {
             conn.release();
         }

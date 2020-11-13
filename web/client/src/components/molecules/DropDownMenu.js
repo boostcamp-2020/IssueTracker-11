@@ -5,6 +5,8 @@ import DropDownList from '@molecules/ListGroup';
 
 const StyledDropDownMenu = styled.div`
     position: absolute;
+    z-index: 1000;
+    width: 300px;
 `;
 const DropDownMenu = ({ title, items }) => {
     return (

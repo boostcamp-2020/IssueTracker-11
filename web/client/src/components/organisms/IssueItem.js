@@ -7,13 +7,16 @@ const IssueItemDiv = styled.div`
     display: flex;
     width: ${(props) => props.width};
     height: ${(props) => props.height};
-    border: 1px solid black;
+    border-right: 1px solid #aaaaaa;
+    border-bottom: 1px solid #aaaaaa;
+    border-left: 1px solid #aaaaaa;
 `;
 
 const IssueItem = (props) => {
+    if (!props.issue) return null;
     return (
         <IssueItemDiv width={props.width} height={props.height}>
-            <IssueItemLeft issue_id={props.issue_id} author={props.author} />
+            <IssueItemLeft issue={props.issue} />
             <IssueItemRight />
         </IssueItemDiv>
     );

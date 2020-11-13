@@ -68,6 +68,10 @@ module.exports = (env, options) => {
                     exclude: /node_modules/,
                     use: ['file-loader?name=[name].[ext]'],
                 },
+                {
+                    test: /\.css$/,
+                    use: ['style-loader', 'css-loader'],
+                },
             ],
         },
         plugins: [

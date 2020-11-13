@@ -1,42 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { StyledButton } from '@atoms/Button.js';
 import DownArrow from '@atoms/DownArrow';
 import Input from '@atoms/Input.js';
 import SubmitButton from '@atoms/SubmitButton.js';
+import DropDown from '../organisms/DropDown';
 
 const StyledSearchBar = styled.div`
-    display: flex;
-    justify-content: flex-start;
-    width: 60%;
+    display: ${({ display }) => display};
+    width: ${({ width }) => width};
 `;
-const StyledFilterButton = styled(StyledButton)`
-    border: 1px solid #eeeeee;
-    background-color: #eeeeee;
-    padding: 5px 16px;
-`;
-const SearchBar = () => {
-    const submit = async () => {
-        let context = document.getElementById('searchBox')?.value;
 
-        let res = await fetch('http://49.50.160.103:3000/issues')
+const SearchBar = ({ display, width }) => {
+    const IssueDispatch = React.createContext(null);
+
+    const submit = async () => {
+        const context = document.getElementById('searchBox')?.value;
+        const data = await fetch('http://49.50.160.103:3000/issues')
             .then((res) => res.json())
-            .then((res) => console.log(res));
-        console.log(res);
+            .then((res) => res);
+
+        return data;
     };
 
     return (
-        <StyledSearchBar>
-            <StyledFilterButton>
-                filters
-                <DownArrow />
-            </StyledFilterButton>
-            <Input id="searchBox" placeholder="Search all issues" width="90%"></Input>
-            <SubmitButton onClick={() => submit()} text="enter"></SubmitButton>
+        <StyledSearchBar display={display.display} width={width}>
+            <div style={{ border: '1px solid #aaaaaa', height: '100%' }}>
+                <DropDown
+                    subject="filter"
+                    isClicked={false}
+                    items={[
+                        { title: 'Open issues and pull requests' },
+                        { title: 'Your issues' },
+                        { title: 'Your pull requests' },
+                        { title: 'Everything assigned to you' },
+                        { title: 'Everything mentioning you' },
+                        { title: 'View advanced search syntax' },
+                    ]}
+                    lineHeight="36px"
+                ></DropDown>
+            </div>
+            <Input id="searchBox" placeholder="Search all issues" width="90%" height="38px" border="true"></Input>
+            <SubmitButton onClick={submit} text=""></SubmitButton>
         </StyledSearchBar>
     );
 };
 
-SearchBar.defaultProps = {};
+SearchBar.defaultProps = {
+    border: '1px solid red',
+};
 
 export default SearchBar;

@@ -18,7 +18,7 @@ const StyledButton = styled.h1`
     border-radius: ${({ radius }) => (radius ? ROUND : NONE)}px;
 `;
 
-const Title = ({ backgroundColor, fontColor, border, width, height, radius, onClick, text }) => {
+const Title = ({ backgroundColor, fontColor, border, width, height, radius, text }) => {
     return (
         <StyledButton
             backgroundColor={backgroundColor}
@@ -27,7 +27,6 @@ const Title = ({ backgroundColor, fontColor, border, width, height, radius, onCl
             width={width}
             height={height}
             radius={radius}
-            onClick={onClick}
         >
             {text}
         </StyledButton>

@@ -8,6 +8,12 @@
 
 <br><br>
 
+## 📔 프로젝트 배포
+- **WEB**: http://boostcamp.ga/
+- **iOS**: https://kr.object.ncloudstorage.com/issuetracker11/issueTracker11.html
+
+<br><br>
+
 ## 📒 프로젝트 스택
 
 ![Swift](https://img.shields.io/badge/swift-v5.0-orange?logo=swift) ![Xcode](https://img.shields.io/badge/xcode-v11.7-blue?logo=xcode) ![Javascript](https://img.shields.io/badge/javascript-ES6+-yellow?logo=javascript) ![React](https://img.shields.io/badge/react-17.0.0-1cf?logo=react) ![NodeJS](https://img.shields.io/badge/node.js-v14.15.0-green?logo=node.js) ![MySQL](https://img.shields.io/badge/mysql-v5.7.32-blue?logo=mysql)
