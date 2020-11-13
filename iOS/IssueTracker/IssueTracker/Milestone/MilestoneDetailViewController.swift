@@ -33,7 +33,7 @@ final class MilestoneDetailViewController: UIViewController {
     private func configure() {
         self.navigationItem.title = "마일스톤 편집"
         titleTextField.text = milestone?.title
-        dueDateTextField.text = milestone?.dueDate?.toFormattedDate
+        dueDateTextField.text = milestone?.shortDate
         descriptionTextField.text = milestone?.description
     }
     
