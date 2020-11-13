@@ -27,6 +27,7 @@ final class LabelMainViewController: UIViewController {
     
     private lazy var dataSource = makeDataSource()
     private let sections = Section.allCases
+    private let refreshControl = UIRefreshControl()
     private var labelList: [Label] = [] {
         didSet { applySnapshot() }
     }
@@ -37,6 +38,9 @@ final class LabelMainViewController: UIViewController {
         super.viewDidLoad()
         labelCollectionView.delegate = self
         registerNotifications()
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        labelCollectionView.refreshControl = refreshControl
+        labelCollectionView.alwaysBounceVertical = true
         loadLabelList()
     }
     
@@ -96,6 +100,11 @@ final class LabelMainViewController: UIViewController {
     @objc private func labelDidDelete(_ notification: Notification) {
         guard let id = notification.userInfo?["id"] as? Int else { return }
         labelList.removeAll { $0.id == id }
+    }
+    
+    @objc func didPullToRefresh(_ sender: Any) {
+        loadLabelList()
+        refreshControl.endRefreshing()
     }
     
 }
