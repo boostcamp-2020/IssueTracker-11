@@ -17,7 +17,7 @@ const checkboxReducer = (checkState, { type, data }) => {
             return newState;
         case 'CHECK_ONE_FALSE':
             if (newState.allChecked) newState.checkAllBox.checked = false;
-            newState.ids.delete(data);
+            newState.ids.delete(parseInt(data));
             return newState;
         case 'CHECK_ALL_TRUE':
             newState.allChecked = true;
