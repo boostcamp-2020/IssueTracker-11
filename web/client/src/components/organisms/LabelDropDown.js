@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import DropDown from '../organisms/DropDown';
+import Span from '@atoms/Span.js';
+import DropDown from '@organisms/DropDown';
 
-const LabelDropDown = ({ children }) => {
+const LabelDropDown = () => {
     const [labels, setLabels] = useState(null);
-
     useEffect(() => {
         const getLabels = () => {
             fetch('http://49.50.160.103:3000/labels')
@@ -17,9 +17,9 @@ const LabelDropDown = ({ children }) => {
     if (!labels) return <div></div>;
 
     return (
-        <DropDown items={labels} subject="Labels" style={{ float: 'right' }}>
-            {children}
-        </DropDown>
+        <div style={{ border: '1px solid black', height: '100%' }}>
+            <DropDown items={labels} subject="Labels" style={{ float: 'right' }}></DropDown>
+        </div>
     );
 };
 

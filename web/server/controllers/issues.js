@@ -3,17 +3,30 @@ import Controller from "./controller.js";
 import Issue from "../objects/issue.js";
 import GETResponse from "../objects/getResponse.js";
 import issueMileStonesModel from "../models/issueMilestones.js";
+
 const TITLE_LIMIT = 45;
 const CONTENT_LIMIT = 500;
+
+const clean = (obj) => {
+    for (let propName in obj) {
+        if (obj[propName] === null || obj[propName] === undefined) {
+            delete obj[propName];
+        }
+    }
+    return obj;
+};
 
 class IssueController extends Controller {
   constructor(issueModel) {
     super(issueModel);
   }
 
-  get = async (req, res) => {
+get = async (req, res) => {
     try {
       const [result] = await this.Model.get();
+      const getResponse = new GETResponse();
+      let previousItem = undefined;
+
       if (req.params.id) {
         const filteredResult = result.filter(
           (item) => item.issue_id == req.params.id
@@ -32,8 +45,6 @@ class IssueController extends Controller {
         });
         res.status(200).send(responseItem);
       } else {
-        const getResponse = new GETResponse();
-        let previousItem = undefined;
         result.forEach((item, index) => {
           if (index === 0) {
             const currentItem = new Issue(item);
@@ -77,6 +88,7 @@ class IssueController extends Controller {
       res.status(500).send({ status: error.message });
     }
   };
+
 
   put = async (req, res) => {
     const { title, contents, milestone_id } = req.body;

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import Span from '@atoms/Span.js';
 import DropDown from '../organisms/DropDown';
 
-const AssigneeDropDown = ({ children }) => {
+const LabelDropDown = () => {
     const [users, setUsers] = useState(null);
 
     useEffect(() => {
@@ -17,10 +18,10 @@ const AssigneeDropDown = ({ children }) => {
     if (!users) return <div></div>;
 
     return (
-        <DropDown items={users} subject="Assignees" style={{ float: 'right' }}>
-            {children}
-        </DropDown>
+        <div style={{ border: '1px solid black', height: '100%' }}>
+            <DropDown items={users} subject="Assignees" style={{ float: 'right' }}></DropDown>
+        </div>
     );
 };
 
-export default AssigneeDropDown;
+export default LabelDropDown;
