@@ -32,6 +32,10 @@ struct Milestone: Codable {
         
         return openNum + closedNum == 0 ? 0 : Int(Float(closedNum) / Float(openNum + closedNum) * 100)
     }
+    
+    var shortDate: String {
+        return String(dueDate?.split(separator: "T").first ?? "")
+    }
 }
 
 extension Milestone: Hashable {

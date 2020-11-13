@@ -13,6 +13,7 @@ final class IssueDetailViewController: UIViewController {
     // MARK: - IBOutlet
     
     @IBOutlet private weak var commentCollectionView: UICollectionView!
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
     // MARK: - Properties
     
@@ -104,6 +105,9 @@ extension IssueDetailViewController {
         addPullUpController(pullUpController,
                             initialStickyPointOffset: pullUpController.initialPointOffset,
                             animated: animated)
+        
+        collectionViewHeight.constant = view.frame.height - pullUpController.buttonContainerView.frame.height - 100
+        view.layoutIfNeeded()
     }
     
 }

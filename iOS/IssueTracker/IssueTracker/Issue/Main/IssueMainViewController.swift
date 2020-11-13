@@ -126,7 +126,7 @@ final class IssueMainViewController: UIViewController {
                                           target: self,
                                           action: #selector(selectAllCell))
         
-        filterButton = UIBarButtonItem(title: "filter",
+        filterButton = UIBarButtonItem(title: "Filter",
                                        style: .plain,
                                        target: self,
                                        action: #selector(segueToFilterViewController))

@@ -169,7 +169,31 @@
                     <view key="view" contentMode="scaleToFill" id="7Nm-0m-DDZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ile-LJ-YbC">
+                                <rect key="frame" x="87.5" y="342.5" width="239.5" height="40"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github_logo" translatesAutoresizingMaskIntoConstraints="NO" id="vF4-dX-g3U">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="0oL-EV-uKF"/>
+                                            <constraint firstAttribute="width" secondItem="vF4-dX-g3U" secondAttribute="height" multiplier="15:8" id="ZK7-Xg-tAR"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="패이지 준비중입니다 🔥" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ahf-LA-oO6">
+                                        <rect key="frame" x="75" y="9.5" width="164.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ile-LJ-YbC" firstAttribute="centerX" secondItem="7Nm-0m-DDZ" secondAttribute="centerX" id="3Hc-z8-DFf"/>
+                            <constraint firstItem="Ile-LJ-YbC" firstAttribute="centerY" secondItem="YLq-TR-qrH" secondAttribute="centerY" multiplier="0.8" id="THD-oN-Wej"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="YLq-TR-qrH"/>
                     </view>
                 </viewController>
@@ -188,6 +212,9 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t7o-R9-vM4">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="818" id="dgV-ld-IWm"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="T6d-Mq-eIy">
                                     <size key="itemSize" width="414" height="174"/>
                                     <size key="headerReferenceSize" width="50" height="136"/>
@@ -332,13 +359,13 @@
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이슈 생성 기능이이슈 생성 기능이슈 생성 기능이슈 생성 기능이슈 생성 기능이슈 생성 기능이슈 생성 기능슈 생성 기능" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ot8-sp-rYJ">
-                                                    <rect key="frame" x="0.0" y="46" width="355" height="25"/>
+                                                    <rect key="frame" x="0.0" y="46" width="355" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pk3-bN-Dxo" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="87" width="35.5" height="17"/>
+                                                    <rect key="frame" x="0.0" y="83.5" width="49.5" height="20.5"/>
                                                     <color key="backgroundColor" red="0.93333333333333335" green="0.97254901960784312" blue="0.94117647058823528" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="250" constant="20.5" id="o1N-CD-FiK"/>
@@ -392,11 +419,11 @@
                             <constraint firstItem="t7o-R9-vM4" firstAttribute="leading" secondItem="UNu-Mp-gWG" secondAttribute="leading" id="1lB-0S-2cP"/>
                             <constraint firstItem="t7o-R9-vM4" firstAttribute="top" secondItem="UNu-Mp-gWG" secondAttribute="top" id="1pD-Zg-xgj"/>
                             <constraint firstItem="UNu-Mp-gWG" firstAttribute="trailing" secondItem="t7o-R9-vM4" secondAttribute="trailing" id="Msz-IM-eog"/>
-                            <constraint firstItem="UNu-Mp-gWG" firstAttribute="bottom" secondItem="t7o-R9-vM4" secondAttribute="bottom" id="aBw-VP-MId"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UNu-Mp-gWG"/>
                     </view>
                     <connections>
+                        <outlet property="collectionViewHeight" destination="dgV-ld-IWm" id="jWu-Dx-moI"/>
                         <outlet property="commentCollectionView" destination="t7o-R9-vM4" id="jag-mZ-kHk"/>
                     </connections>
                 </viewController>
@@ -720,13 +747,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="PgO-0U-yWL">
                                                     <rect key="frame" x="5" y="11" width="123" height="37.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBZ-ba-HOQ">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBZ-ba-HOQ">
                                                             <rect key="frame" x="0.0" y="0.0" width="123" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vjj-hV-2EW">
+                                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vjj-hV-2EW">
                                                             <rect key="frame" x="0.0" y="35.5" width="123" height="2"/>
                                                         </progressView>
                                                     </subviews>
@@ -847,9 +874,9 @@
                     <tabBarItem key="tabBarItem" title="이슈" image="1.circle.fill" catalog="system" id="w18-gd-ICJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="9jn-nu-mX1">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -869,7 +896,6 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -982,7 +1008,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="S00-3r-qNJ">
                         <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1020,6 +1045,7 @@
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="chevron.up" catalog="system" width="128" height="72"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
+        <image name="github_logo" width="32" height="32"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="smiley" catalog="system" width="128" height="121"/>
     </resources>

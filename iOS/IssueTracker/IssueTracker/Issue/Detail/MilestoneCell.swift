@@ -21,6 +21,6 @@ final class MilestoneCell: ShadowCollectionViewCell {
 
     func configure(milestone: Milestone?) {
         titleLabel.text = milestone?.title
-        progressView.progress = Float(milestone?.progressPercentage ?? 0)
+        progressView.progress = Float(milestone?.progressPercentage ?? 0) / 100
     }
 }
