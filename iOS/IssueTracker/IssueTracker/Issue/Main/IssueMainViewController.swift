@@ -41,6 +41,8 @@ final class IssueMainViewController: UIViewController {
         return controller
     }()
     
+    private let refreshControl = UIRefreshControl()
+    
     // MARK: - Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +53,9 @@ final class IssueMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        issueCollectionView.refreshControl = refreshControl
+        issueCollectionView.alwaysBounceVertical = true
         registerNotifications()
         configure()
     }
@@ -202,6 +207,11 @@ final class IssueMainViewController: UIViewController {
          else { return }
         filterViewController.delegate = self
         self.present(filterNavigationViewController, animated: true)
+    }
+    
+    @objc func didPullToRefresh(_ sender: Any) {
+        loadIssueList()
+        refreshControl.endRefreshing()
     }
     
 }

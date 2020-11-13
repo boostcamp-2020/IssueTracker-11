@@ -26,6 +26,7 @@ final class MilestoneMainViewController: UIViewController {
     // MARK: - Properties
     private let sections = Section.allCases
     private lazy var dataSource = makeDataSource()
+    private let refreshControl = UIRefreshControl()
     private var milestoneList: [Milestone] = [] {
         didSet { applySnapshot() }
     }
@@ -35,6 +36,9 @@ final class MilestoneMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
+        collectionView.alwaysBounceVertical = true
         registerNotifications()
         loadMilestones()
     }
@@ -93,6 +97,11 @@ final class MilestoneMainViewController: UIViewController {
     @objc private func milestoneDidDelete(_ notification: Notification) {
         guard let id = notification.userInfo?["id"] as? Int else { return }
         milestoneList.removeAll { $0.id == id }
+    }
+    
+    @objc func didPullToRefresh(_ sender: Any) {
+        loadMilestones()
+        refreshControl.endRefreshing()
     }
     
 }
