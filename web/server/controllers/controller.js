@@ -1,10 +1,11 @@
-const SOFT_DELETE = 'SOFT_DELETE_QUERY';
-const OPEN_CLOSED = 'OPEN_CLOSED_QUERY';
+const SOFT_DELETE = "SOFT_DELETE_QUERY";
+const OPEN_CLOSED = "OPEN_CLOSED_QUERY";
 
 class Controller {
-    constructor(Model) {
-        this.Model = Model;
-    }
+  constructor(Model) {
+    this.Model = Model;
+  }
+
 
     get = async (req, res) => {
         try {
@@ -17,8 +18,8 @@ class Controller {
         }
     };
 
-    post = async (req, res) => {};
-    put = async (req, res) => {};
+  post = async (req, res) => {};
+  put = async (req, res) => {};
 
     delete = async (req, res) => {
         const id =
@@ -29,15 +30,15 @@ class Controller {
             (req.body['ids[]'] && [...req.body['ids[]']]?.map(Number));
         const ids = typeof id === 'object' ? [...id] : [id];
 
-        try {
-            ids.forEach((id) => {
-                this.Model.delete(id);
-            });
-            return res.status(200).send({ status: 'OK' });
-        } catch (error) {
-            res.status(500).send({ status: error.message });
-        }
-    };
+    try {
+      ids.forEach((id) => {
+        this.Model.delete(id);
+      });
+      return res.status(200).send({ status: "OK" });
+    } catch (error) {
+      res.status(500).send({ status: error.message });
+    }
+  };
 
     patch = async (req, res) => {
         const id =
