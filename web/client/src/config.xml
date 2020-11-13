@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AllowedOrigin>*</AllowedOrigin>
+<AllowedMethod>GET</AllowedMethod>
+<AllowedMethod>PUT</AllowedMethod>
+<AllowedMethod>HEAD</AllowedMethod>
+<MaxAgeSeconds>3000</MaxAgeSeconds>
+<AllowedHeader>Authorization</AllowedHeader>
